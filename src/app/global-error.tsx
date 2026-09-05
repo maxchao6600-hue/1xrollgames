@@ -16,18 +16,18 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="bg-[#07090c] text-[#e8eef7]">
+      <body className="bg-[#070b10] text-[#f4f1ea]">
         <div className="mx-auto flex min-h-screen max-w-lg flex-col items-center justify-center px-6 text-center">
-          <h1 className="text-3xl font-semibold">Something went wrong</h1>
-          <p className="mt-3 text-sm text-[#9aa8bc]">
-            Please refresh or return home. A single failed asset should not take
-            down the whole experience.
+          <p className="text-xs tracking-[0.2em] text-[#ffc45a] uppercase">1XROLL</p>
+          <h1 className="mt-3 text-3xl font-semibold">Something went wrong</h1>
+          <p className="mt-3 text-sm text-[#a8b0bc]">
+            Please refresh or return home.
           </p>
           <div className="mt-8 flex gap-3">
             <button
               type="button"
               onClick={reset}
-              className="rounded-full bg-[#22e0d0] px-5 py-2.5 text-sm font-medium text-[#041016]"
+              className="rounded-full bg-[#ffc45a] px-5 py-2.5 text-sm font-medium text-[#1a1205]"
             >
               Try again
             </button>

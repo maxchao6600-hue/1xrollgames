@@ -74,7 +74,9 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.name,
+    alternateName: siteConfig.legalName,
     url: siteConfig.url,
+    logo: absoluteUrl(siteConfig.logo),
     email: siteConfig.supportEmail,
     description: siteConfig.description.en,
   };

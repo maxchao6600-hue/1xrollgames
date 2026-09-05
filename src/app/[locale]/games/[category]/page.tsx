@@ -87,7 +87,7 @@ export default async function CategoryPage({
             initialCategory={category.id}
           />
         </div>
-        <article className="prose-aether mt-14 max-w-3xl whitespace-pre-line">
+        <article className="prose-brand mt-14 max-w-3xl whitespace-pre-line">
           {localize(category.description, locale)}
         </article>
         <p className="mt-8 text-sm text-text-muted">

@@ -8,15 +8,16 @@ import { localize } from "@/lib/utils";
 import { getAllGuides } from "@/data";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { HomeHero } from "@/components/home/HomeHero";
-import { DiscoverByExperience } from "@/components/home/DiscoverByExperience";
 import { FeaturedGamesRail } from "@/components/home/FeaturedGamesRail";
-import { GuideFeature } from "@/components/home/GuideFeature";
+import { DiscoverByExperience } from "@/components/home/DiscoverByExperience";
 import { ProviderDiscovery } from "@/components/home/ProviderDiscovery";
-import { WhyPlatform } from "@/components/home/WhyPlatform";
+import { HomePromotions } from "@/components/home/HomePromotions";
 import { LatestGuides } from "@/components/home/LatestGuides";
-import { ResponsibleTeaser } from "@/components/home/ResponsibleTeaser";
+import { WhyPlatform } from "@/components/home/WhyPlatform";
 import { HomeFaq } from "@/components/home/HomeFaq";
+import { ResponsibleTeaser } from "@/components/home/ResponsibleTeaser";
 import { FinalCta } from "@/components/home/FinalCta";
+import { getDictionary, t } from "@/lib/i18n";
 
 export async function generateMetadata({
   params,
@@ -31,8 +32,8 @@ export async function generateMetadata({
     path: "/",
     title:
       locale === "zh"
-        ? "Aether — 数字游戏发现中心"
-        : "Aether — Digital Gaming Discovery",
+        ? "1XROLL — 游戏、优惠与攻略"
+        : "1XROLL — Games, Promotions & Guides",
     description: localize(siteConfig.description, locale),
   });
 }
@@ -46,20 +47,32 @@ export default async function HomePage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const guides = getAllGuides();
+  const dict = getDictionary(locale);
 
   return (
     <>
-      <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+      <JsonLd
+        data={[
+          {
+            ...organizationJsonLd(),
+            name: siteConfig.name,
+            alternateName: siteConfig.legalName,
+            url: siteConfig.url,
+          },
+          websiteJsonLd(),
+        ]}
+      />
       <HomeHero locale={locale} />
-      <DiscoverByExperience locale={locale} />
       <FeaturedGamesRail locale={locale} />
-      <GuideFeature locale={locale} guides={guides} />
+      <DiscoverByExperience locale={locale} />
       <ProviderDiscovery locale={locale} />
-      <WhyPlatform locale={locale} />
+      <HomePromotions locale={locale} />
       <LatestGuides locale={locale} guides={guides} />
-      <ResponsibleTeaser locale={locale} />
+      <WhyPlatform locale={locale} />
       <HomeFaq locale={locale} />
+      <ResponsibleTeaser locale={locale} />
       <FinalCta locale={locale} />
+      <span className="sr-only">{t(dict, "home.ctaTitle")}</span>
     </>
   );
 }

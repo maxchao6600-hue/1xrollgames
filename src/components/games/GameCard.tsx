@@ -16,7 +16,6 @@ export function GameCard({
   locale: Locale;
   priority?: boolean;
 }) {
-  void priority;
   const dict = getDictionary(locale);
   const provider = getProviderBySlug(game.providerSlug);
   const category = getCategory(game.category);
@@ -30,31 +29,32 @@ export function GameCard({
         : "accent";
 
   return (
-    <article className="group w-[11.5rem] sm:w-[13rem]">
-      <Link href={href} className="block focus-visible:rounded-[1.2rem]">
-        <div className="relative overflow-hidden rounded-[1.2rem] border border-border bg-bg-surface transition duration-250 hover:border-accent/35 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
+    <article className="group w-[10.5rem] sm:w-[12.5rem]">
+      <Link href={href} className="block focus-visible:rounded-[1rem]">
+        <div className="relative overflow-hidden rounded-[1rem] border border-border bg-bg-surface transition duration-250 hover:border-accent/40">
           <div className="overflow-hidden">
             <div className="transition duration-300 group-hover:scale-[1.04]">
-              <GameArt name={game.name} gradient={game.imageGradient} />
+              <GameArt
+                name={game.name}
+                gradient={game.imageGradient}
+                image={game.image}
+                priority={priority}
+              />
             </div>
           </div>
-          <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition duration-250 group-hover:opacity-100">
-            <span className="mb-4 rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-[#041016]">
+          <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 transition duration-250 group-hover:opacity-100">
+            <span className="mb-4 rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-[#1a1205]">
               {t(dict, "common.viewGame")}
             </span>
           </div>
           {game.status ? (
             <div className="absolute top-3 left-3">
-              <Badge tone={badgeTone}>
-                {t(dict, `badge.${game.status}`)}
-              </Badge>
+              <Badge tone={badgeTone}>{t(dict, `badge.${game.status}`)}</Badge>
             </div>
           ) : null}
         </div>
         <div className="mt-3 space-y-1 px-0.5">
-          <h3 className="line-clamp-1 text-sm font-medium text-text">
-            {game.name}
-          </h3>
+          <h3 className="line-clamp-1 text-sm font-medium text-text">{game.name}</h3>
           <p className="text-xs text-text-muted">
             {provider?.name ?? game.providerSlug}
             {category ? ` · ${localize(category.name, locale)}` : null}

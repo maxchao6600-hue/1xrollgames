@@ -15,19 +15,19 @@ export function DiscoverByExperience({ locale }: { locale: Locale }) {
     <Section>
       <Container>
         <SectionHeader
-          title={t(dict, "home.discoverTitle")}
-          description={t(dict, "home.discoverSubtitle")}
+          title={t(dict, "home.categoriesTitle")}
+          description={t(dict, "home.categoriesSubtitle")}
         />
         <div className="grid gap-4 lg:grid-cols-2">
           <Link
             href={localePath(locale, `/games/${feature.slug}`)}
-            className="group relative min-h-[22rem] overflow-hidden rounded-[1.5rem] border border-border bg-bg-surface p-8 transition hover:border-accent/35"
+            className="group relative min-h-[22rem] overflow-hidden rounded-[1.25rem] border border-border bg-bg-surface p-8 transition hover:border-accent/35"
             style={{
               background: `linear-gradient(160deg, ${feature.accent}22, transparent 55%), var(--bg-surface)`,
             }}
           >
             <p className="text-xs tracking-[0.16em] text-accent uppercase">
-              {locale === "zh" ? "精选" : "Feature"}
+              {locale === "zh" ? "精选" : "Spotlight"}
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
               {localize(feature.name, locale)}

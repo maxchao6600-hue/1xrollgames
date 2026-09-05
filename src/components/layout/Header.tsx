@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@/types/content";
 import { mainNav } from "@/config/navigation";
-import { ctaConfig } from "@/config/cta";
-import { siteConfig } from "@/config/site";
+import { ctaConfig, siteConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath, switchLocalePath } from "@/lib/paths";
 import { Button } from "@/components/ui/Button";
@@ -30,18 +30,25 @@ export function Header({ locale }: { locale: Locale }) {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-[rgba(7,9,12,0.88)] backdrop-blur-xl">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-border bg-[#0a1018]/95 backdrop-blur-xl">
+      <div className="container-page flex h-[4.25rem] items-center justify-between gap-4">
         <div className="flex items-center gap-8">
           <Link
             href={localePath(locale, "/")}
-            className="font-[family-name:var(--font-display)] text-xl tracking-tight text-text"
+            className="relative block h-8 w-[7.5rem] shrink-0"
             onClick={closeMenu}
+            aria-label={siteConfig.name}
           >
-            <span className="text-accent">{siteConfig.name[0]}</span>
-            <span>{siteConfig.name.slice(1)}</span>
+            <Image
+              src={siteConfig.logo}
+              alt={siteConfig.name}
+              fill
+              className="object-contain object-left"
+              priority
+              sizes="120px"
+            />
           </Link>
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
             {mainNav.map((item) => {
               const href = localePath(locale, item.href);
               const active =
@@ -52,7 +59,7 @@ export function Header({ locale }: { locale: Locale }) {
                   key={item.labelKey + item.href}
                   href={href}
                   className={cn(
-                    "rounded-full px-3 py-2 text-sm text-text-muted transition hover:text-text",
+                    "rounded-lg px-2.5 py-2 text-sm text-text-muted transition hover:text-text",
                     active && "bg-white/5 text-text",
                   )}
                 >
@@ -66,20 +73,30 @@ export function Header({ locale }: { locale: Locale }) {
         <div className="flex items-center gap-2">
           <Link
             href={switchLocalePath(pathname, otherLocale)}
-            className="hidden rounded-full border border-border px-3 py-1.5 text-xs text-text-muted transition hover:border-accent/40 hover:text-text sm:inline-flex"
+            className="hidden rounded-lg border border-border px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/40 hover:text-text md:inline-flex"
             hrefLang={otherLocale}
           >
-            {otherLocale === "en" ? "English" : "中文"}
+            {otherLocale === "en" ? "EN" : "中文"}
           </Link>
-          <Button href={ctaConfig.login.href} variant="ghost" size="sm" className="hidden sm:inline-flex">
+          <Button
+            href={ctaConfig.login.href}
+            external={ctaConfig.login.external}
+            variant="ghost"
+            size="sm"
+          >
             {t(dict, "nav.login")}
           </Button>
-          <Button href={ctaConfig.register.href} size="sm" className="hidden sm:inline-flex">
+          <Button
+            href={ctaConfig.register.href}
+            external={ctaConfig.register.external}
+            size="sm"
+            className="hidden md:inline-flex"
+          >
             {t(dict, "nav.register")}
           </Button>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-text lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? t(dict, "nav.close") : t(dict, "nav.menu")}
@@ -96,7 +113,7 @@ export function Header({ locale }: { locale: Locale }) {
         className="border-t border-border bg-bg-elevated lg:hidden"
       >
         {open ? (
-          <div className="container-page space-y-2 py-4">
+          <div className="container-page space-y-1 py-4">
             {mainNav.map((item) => (
               <Link
                 key={item.labelKey + item.href}
@@ -107,14 +124,6 @@ export function Header({ locale }: { locale: Locale }) {
                 {t(dict, item.labelKey)}
               </Link>
             ))}
-            <div className="flex gap-2 pt-2">
-              <Button href={ctaConfig.login.href} variant="secondary" className="flex-1">
-                {t(dict, "nav.login")}
-              </Button>
-              <Button href={ctaConfig.register.href} className="flex-1">
-                {t(dict, "nav.register")}
-              </Button>
-            </div>
             <Link
               href={switchLocalePath(pathname, otherLocale)}
               className="block rounded-xl px-3 py-3 text-sm text-text-muted"
@@ -122,6 +131,23 @@ export function Header({ locale }: { locale: Locale }) {
             >
               {t(dict, "nav.language")}: {otherLocale === "en" ? "English" : "中文"}
             </Link>
+            <div className="flex gap-2 pt-2">
+              <Button
+                href={ctaConfig.login.href}
+                external={ctaConfig.login.external}
+                variant="secondary"
+                className="flex-1"
+              >
+                {t(dict, "nav.login")}
+              </Button>
+              <Button
+                href={ctaConfig.register.href}
+                external={ctaConfig.register.external}
+                className="flex-1"
+              >
+                {t(dict, "nav.register")}
+              </Button>
+            </div>
           </div>
         ) : null}
       </div>

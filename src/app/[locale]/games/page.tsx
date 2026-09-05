@@ -69,7 +69,7 @@ export default async function GamesPage({
             providers={providers}
           />
         </div>
-        <div className="prose-aether mt-14 max-w-3xl">
+        <div className="prose-brand mt-14 max-w-3xl">
           <h2>
             {locale === "zh" ? "如何使用游戏中心" : "How to use the games hub"}
           </h2>

@@ -60,8 +60,8 @@ export default async function ContactPage({
           </a>
           <p className="mt-6 text-sm leading-relaxed text-text-muted">
             {locale === "zh"
-              ? "请说明你的语言偏好与主题（内容勘误、合作或一般问询）。我们不通过此邮箱处理账户资金问题，因为 Aether 是发现与编辑型站点。"
-              : "Please include your preferred language and topic (content correction, partnership, or general inquiry). We do not handle account or wallet issues here — Aether is a discovery and editorial site."}
+              ? "请说明语言偏好与主题（内容勘误、合作或一般问询）。账户与资金问题请通过 1XROLL 平台客服处理。"
+              : "Please include your preferred language and topic (content correction, partnership, or general inquiry). Account and wallet issues should go through 1XROLL platform support."}
           </p>
         </div>
       </Container>

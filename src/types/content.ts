@@ -59,6 +59,8 @@ export type Game = {
   howToPlay: LocalizedString;
   features: LocalizedStringArray;
   imageGradient: [string, string];
+  /** Local path under /public when artwork exists */
+  image?: string;
   /** Only include when verified from a reliable public source — prefer omit */
   rtp?: number;
   volatility?: "low" | "medium" | "high" | "very-high";

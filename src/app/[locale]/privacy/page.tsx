@@ -22,8 +22,8 @@ export async function generateMetadata({
     title: locale === "zh" ? "隐私政策" : "Privacy policy",
     description:
       locale === "zh"
-        ? "Aether 如何处理访问数据、联系邮件与 Cookie 的隐私说明。"
-        : "How Aether handles visit data, contact email, and cookies.",
+        ? "1XROLL 如何处理访问数据、联系邮件与 Cookie 的隐私说明。"
+        : "How 1XROLL handles visit data, contact email, and cookies.",
   });
 }
 
@@ -49,7 +49,7 @@ export default async function PrivacyPage({
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
           {t(dict, "privacy.title")}
         </h1>
-        <div className="prose-aether mt-8 max-w-3xl">
+        <div className="prose-brand mt-8 max-w-3xl">
           {locale === "zh" ? (
             <>
               <p>最后更新：2026-09-05。</p>
@@ -110,7 +110,7 @@ export default async function PrivacyPage({
               <h2>Third parties</h2>
               <p>
                 Hosting, CDN, or font providers may process request data as part of their
-                service under their own policies. External websites linked from Aether have
+                service under their own policies. External websites linked from 1XROLL have
                 independent privacy practices.
               </p>
               <h2>Retention and security</h2>

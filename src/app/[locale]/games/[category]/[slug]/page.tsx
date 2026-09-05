@@ -147,7 +147,7 @@ export default async function GameDetailPage({
           </div>
         </div>
 
-        <div className="prose-aether mt-12 max-w-3xl">
+        <div className="prose-brand mt-12 max-w-3xl">
           <h2>{t(dict, "games.overview")}</h2>
           <p className="whitespace-pre-line">{localize(game.description, locale)}</p>
           <h2>{t(dict, "games.howToPlay")}</h2>

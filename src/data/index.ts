@@ -1,3 +1,4 @@
+export { promotions, getPromotionBySlug } from "@/data/promotions";
 export { categories, getCategory, getCategoryById, getCategoryBySlug } from "@/data/categories";
 export { faqItems } from "@/data/faq";
 export { games } from "@/data/games";

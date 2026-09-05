@@ -111,7 +111,7 @@ export default async function ProviderDetailPage({
           </div>
         </div>
 
-        <article className="prose-aether max-w-3xl whitespace-pre-line">
+        <article className="prose-brand max-w-3xl whitespace-pre-line">
           {localize(provider.description, locale)}
         </article>
 

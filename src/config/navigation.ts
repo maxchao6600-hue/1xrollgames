@@ -12,9 +12,11 @@ export const mainNav: NavItem[] = [
 
 export const footerExplore: NavItem[] = [
   { href: "/games", labelKey: "nav.games" },
-  { href: "/providers", labelKey: "nav.providers" },
-  { href: "/guides", labelKey: "nav.guides" },
+  { href: "/games/slots", labelKey: "nav.casino" },
+  { href: "/games/live-casino", labelKey: "nav.live" },
   { href: "/promotions", labelKey: "nav.promotions" },
+  { href: "/guides", labelKey: "nav.guides" },
+  { href: "/providers", labelKey: "nav.providers" },
 ];
 
 export const footerCompany: NavItem[] = [
@@ -30,11 +32,4 @@ export const footerHelp: NavItem[] = [
 export const footerLegal: NavItem[] = [
   { href: "/terms", labelKey: "nav.terms" },
   { href: "/privacy", labelKey: "nav.privacy" },
-];
-
-export const mobileBottomNav: NavItem[] = [
-  { href: "/", labelKey: "nav.home" },
-  { href: "/games", labelKey: "nav.games" },
-  { href: "/guides", labelKey: "nav.guides" },
-  { href: "/providers", labelKey: "nav.providers" },
 ];

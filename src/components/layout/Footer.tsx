@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
 import {
@@ -25,7 +26,7 @@ function FooterColumn({
       <p className="mb-3 text-sm font-medium text-text">{title}</p>
       <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item.labelKey}>
+          <li key={item.labelKey + item.href}>
             <Link
               href={localePath(locale, item.href)}
               className="text-sm text-text-muted transition hover:text-accent"
@@ -45,13 +46,18 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="border-t border-border bg-bg-elevated">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.3fr_repeat(4,1fr)]">
         <div>
-          <p className="font-[family-name:var(--font-display)] text-xl text-text">
-            <span className="text-accent">{siteConfig.name[0]}</span>
-            <span>{siteConfig.name.slice(1)}</span>
-          </p>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
+          <div className="relative mb-4 h-9 w-[8.5rem]">
+            <Image
+              src={siteConfig.logo}
+              alt={siteConfig.name}
+              fill
+              className="object-contain object-left"
+              sizes="136px"
+            />
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-text-muted">
             {t(dict, "footer.brandBlurb")}
           </p>
         </div>
@@ -79,7 +85,7 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="container-page flex flex-col gap-2 py-6 text-xs text-text-faint md:flex-row md:items-center md:justify-between">
           <p>{t(dict, "footer.notice")}</p>
           <p>
-            © {year} {siteConfig.name}. {t(dict, "footer.copyright")}
+            © {year} {siteConfig.legalName}. {t(dict, "footer.copyright")}
           </p>
         </div>
       </div>

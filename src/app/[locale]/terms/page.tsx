@@ -22,8 +22,8 @@ export async function generateMetadata({
     title: locale === "zh" ? "使用条款" : "Terms of use",
     description:
       locale === "zh"
-        ? "Aether 网站使用条款：内容性质、免责声明与可接受使用。"
-        : "Terms of use for the Aether website: content nature, disclaimers, and acceptable use.",
+        ? "1XROLL 网站使用条款：内容性质、免责声明与可接受使用。"
+        : "Terms of use for the 1XROLL website: content nature, disclaimers, and acceptable use.",
   });
 }
 
@@ -49,13 +49,13 @@ export default async function TermsPage({
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
           {t(dict, "terms.title")}
         </h1>
-        <div className="prose-aether mt-8 max-w-3xl">
+        <div className="prose-brand mt-8 max-w-3xl">
           {locale === "zh" ? (
             <>
               <p>最后更新：2026-09-05。本条款适用于 {siteConfig.name} 网站的访问与使用。</p>
               <h2>服务性质</h2>
               <p>
-                Aether 提供游戏发现、厂商介绍与编辑向攻略等内容。除非另有明确书面说明，本站不构成博彩运营商、支付中介或持牌平台。我们不在缺乏核实材料时展示牌照信息。
+                1XROLL 提供游戏发现、厂商介绍与编辑向攻略等内容。除非另有明确书面说明，本站不构成博彩运营商、支付中介或持牌平台。我们不在缺乏核实材料时展示牌照信息。
               </p>
               <h2>信息准确性</h2>
               <p>
@@ -84,7 +84,7 @@ export default async function TermsPage({
               <p>Last updated: 2026-09-05. These terms govern access to and use of the {siteConfig.name} website.</p>
               <h2>Nature of the service</h2>
               <p>
-                Aether publishes game discovery content, studio profiles, and editorial guides.
+                1XROLL publishes game discovery content, studio profiles, and editorial guides.
                 Unless expressly stated in writing, this site is not a gambling operator,
                 payment intermediary, or licensed platform. We do not display license claims
                 without verified materials.
@@ -104,7 +104,7 @@ export default async function TermsPage({
               <h2>Third-party links</h2>
               <p>
                 The site may include links to external properties. We do not control third-party
-                content or practices; you assume risk when leaving Aether.
+                content or practices; you assume risk when leaving 1XROLL.
               </p>
               <h2>Disclaimer</h2>
               <p>

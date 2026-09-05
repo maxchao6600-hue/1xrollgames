@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
+import { promotions } from "@/data/promotions";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
+import { localize } from "@/lib/utils";
+import { ctaConfig } from "@/config/site";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
+import Image from "next/image";
 
 export async function generateMetadata({
   params,
@@ -51,28 +54,50 @@ export default async function PromotionsPage({
         <p className="mt-3 max-w-2xl text-text-muted">
           {t(dict, "promotions.subtitle")}
         </p>
-        <div className="mt-10 rounded-[1.4rem] border border-dashed border-border bg-bg-elevated px-6 py-14 text-center">
-          <h2 className="text-2xl text-text">{t(dict, "promotions.emptyTitle")}</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-text-muted">
-            {t(dict, "promotions.emptyBody")}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href={localePath(locale, "/games")}>
-              {t(dict, "common.exploreGames")}
-            </Button>
-            <Button href={localePath(locale, "/guides")} variant="outline">
-              {t(dict, "common.browseGuides")}
-            </Button>
-          </div>
-          <p className="mt-6 text-sm text-text-faint">
-            <Link
-              href={localePath(locale, "/responsible-gaming")}
-              className="text-accent hover:underline"
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {promotions.map((promo) => (
+            <article
+              key={promo.id}
+              className="overflow-hidden rounded-2xl border border-border bg-bg-surface"
             >
-              {t(dict, "nav.responsible")}
-            </Link>
-          </p>
+              {promo.image ? (
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src={promo.image}
+                    alt={localize(promo.title, locale)}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                </div>
+              ) : null}
+              <div className="space-y-3 p-5">
+                <h2 className="text-xl text-text">
+                  {localize(promo.title, locale)}
+                </h2>
+                <p className="text-sm leading-relaxed text-text-muted">
+                  {localize(promo.description, locale)}
+                </p>
+                <Link
+                  href={ctaConfig.register.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex text-sm font-medium text-accent hover:underline"
+                >
+                  {localize(promo.ctaLabel, locale)} →
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
+        <p className="mt-10 text-sm text-text-muted">
+          <Link
+            href={localePath(locale, "/responsible-gaming")}
+            className="text-accent hover:underline"
+          >
+            {t(dict, "nav.responsible")}
+          </Link>
+        </p>
       </Container>
     </Section>
   );

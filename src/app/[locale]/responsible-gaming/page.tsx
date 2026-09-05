@@ -39,9 +39,9 @@ export default async function ResponsibleGamingPage({
 
   const body =
     locale === "zh" ? (
-      <div className="prose-aether mt-8 max-w-3xl">
+      <div className="prose-brand mt-8 max-w-3xl">
         <p>
-          理性游戏意味着把数字娱乐保留在娱乐范畴：设定边界、识别风险信号，并在需要时停下来。Aether
+          理性游戏意味着把数字娱乐保留在娱乐范畴：设定边界、识别风险信号，并在需要时停下来。1XROLL
           是发现与教育型站点；我们不会用刺激文案鼓励你延长会话或追逐损失。
         </p>
         <h2>仅限成人</h2>
@@ -58,7 +58,7 @@ export default async function ResponsibleGamingPage({
         </p>
         <h2>仅在合法地区参与</h2>
         <p>
-          法律因国家与地区而异。在参与任何真钱活动前，确认你所在地的合规要求。Aether
+          法律因国家与地区而异。在参与任何真钱活动前，确认你所在地的合规要求。1XROLL
           不提供法律意见，也不声称拥有特定牌照；我们不会在缺乏核实资料时展示认证徽章。
         </p>
         <h2>识别问题信号</h2>
@@ -73,7 +73,7 @@ export default async function ResponsibleGamingPage({
         <p>
           若你或你关心的人正与问题性游玩搏斗，请联系当地专业组织或健康服务。许多地区提供保密热线与咨询。把求助视为负责任的步骤，而不是耻辱。
         </p>
-        <h2>Aether 如何配合</h2>
+        <h2>1XROLL 如何配合</h2>
         <p>
           我们的文案避免虚假紧迫感与保证结果。游戏与攻略页会链接回本页。若你主要是来学习机制与厂商差异，可以从{" "}
           <Link href={localePath(locale, "/guides")}>攻略</Link>与{" "}
@@ -81,11 +81,11 @@ export default async function ResponsibleGamingPage({
         </p>
       </div>
     ) : (
-      <div className="prose-aether mt-8 max-w-3xl">
+      <div className="prose-brand mt-8 max-w-3xl">
         <p>
           Responsible gaming means keeping digital entertainment inside entertainment
           boundaries: setting limits, recognizing risk signals, and stopping when needed.
-          Aether is a discovery and education site; we do not use hype copy to push longer
+          1XROLL is a discovery and education site; we do not use hype copy to push longer
           sessions or chase losses.
         </p>
         <h2>Adults only</h2>
@@ -111,7 +111,7 @@ export default async function ResponsibleGamingPage({
         <h2>Only where legal</h2>
         <p>
           Laws vary by country and region. Confirm local requirements before any real-money
-          participation. Aether does not provide legal advice and does not claim specific
+          participation. 1XROLL does not provide legal advice and does not claim specific
           licenses; we will not display certification badges without verified materials.
         </p>
         <h2>Warning signs</h2>
@@ -128,7 +128,7 @@ export default async function ResponsibleGamingPage({
           local professional organizations or health services. Many regions offer confidential
           helplines and counseling. Asking for help is a responsible step, not a stigma.
         </p>
-        <h2>How Aether fits</h2>
+        <h2>How 1XROLL fits</h2>
         <p>
           Our copy avoids fake urgency and guaranteed outcomes. Game and guide pages link
           back here. If you are mainly here to learn mechanics and studio differences, start

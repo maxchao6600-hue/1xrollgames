@@ -3,12 +3,12 @@ import { getDictionary, t } from "@/lib/i18n";
 import { Container, Section, SectionHeader } from "@/components/ui/Container";
 
 const WHY_KEYS = [
-  "curated",
-  "mobile",
-  "info",
+  "selection",
   "categories",
   "guides",
-  "support",
+  "providers",
+  "mobile",
+  "entry",
 ] as const;
 
 export function WhyPlatform({ locale }: { locale: Locale }) {

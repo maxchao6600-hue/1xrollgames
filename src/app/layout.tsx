@@ -18,11 +18,14 @@ const body = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Digital Gaming Discovery`,
+    default: `${siteConfig.name} — Games, Promotions & Guides`,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description.en,
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [{ url: siteConfig.logo, type: "image/png" }],
+    apple: siteConfig.logo,
+  },
 };
 
 export default function RootLayout({

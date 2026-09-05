@@ -9,7 +9,7 @@ export function ContentBlocks({
   locale: Locale;
 }) {
   return (
-    <div className="prose-aether max-w-3xl">
+    <div className="prose-brand max-w-3xl">
       {blocks.map((block, index) => {
         if (block.type === "h2") {
           return (
