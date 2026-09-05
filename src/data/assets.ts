@@ -82,14 +82,14 @@ export const CATEGORY_ASSETS: Record<
   { imageSlug?: string; image: string; objectPosition?: string }
 > = {
   slots: {
-    imageSlug: "sweet-bonanza",
-    image: "/games/sweet-bonanza.webp",
-    objectPosition: "center 28%",
+    imageSlug: "gates-of-olympus",
+    image: "/games/gates-of-olympus.webp",
+    objectPosition: "center 20%",
   },
   "live-casino": {
     imageSlug: "crazy-time",
     image: "/games/crazy-time.webp",
-    objectPosition: "18% 42%",
+    objectPosition: "22% 48%",
   },
   "hash-roulette": {
     imageSlug: "lightning-roulette",
@@ -111,18 +111,18 @@ export const CATEGORY_ASSETS: Record<
     objectPosition: "center 35%",
   },
   fishing: {
-    imageSlug: "big-bass-splash",
-    image: "/games/big-bass-splash.webp",
-    objectPosition: "center 22%",
+    imageSlug: "big-bass-bonanza",
+    image: "/games/big-bass-bonanza.webp",
+    objectPosition: "center 30%",
   },
   sports: {
     image: "/categories/sports.svg",
     objectPosition: "center center",
   },
   "chess-card": {
-    imageSlug: "speed-baccarat-b",
-    image: "/games/speed-baccarat-b.webp",
-    objectPosition: "center 40%",
+    imageSlug: "bac-bo",
+    image: "/games/bac-bo.webp",
+    objectPosition: "center 45%",
   },
   lottery: {
     image: "/categories/lottery.svg",
