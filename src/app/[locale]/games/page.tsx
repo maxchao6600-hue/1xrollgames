@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
 import { categories } from "@/data/categories";
-import { getAllGames, getAllProviders } from "@/data";
+import { getAllProviders, getGameCards } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/utils";
@@ -38,8 +38,16 @@ export default async function GamesPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const games = getAllGames();
-  const providers = getAllProviders();
+  const games = getGameCards();
+  const providers = getAllProviders().map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+  }));
+  const categoryOptions = categories.map((c) => ({
+    id: c.id,
+    name: c.name,
+  }));
 
   return (
     <Section className="pt-8">
@@ -66,7 +74,7 @@ export default async function GamesPage({
           <GamesExplorer
             locale={locale}
             games={games}
-            categories={categories}
+            categories={categoryOptions}
             providers={providers}
           />
         </div>

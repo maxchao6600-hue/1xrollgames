@@ -1,22 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Lottery">
   <defs>
     <linearGradient id="lbg" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1a1008"/>
+      <stop offset="0%" stop-color="#160e06"/>
       <stop offset="50%" stop-color="#0c1219"/>
-      <stop offset="100%" stop-color="#1c140a"/>
+      <stop offset="100%" stop-color="#1a1409"/>
     </linearGradient>
-    <radialGradient id="lg" cx="40%" cy="45%" r="50%">
-      <stop offset="0%" stop-color="#ffc45a" stop-opacity="0.28"/>
+    <radialGradient id="lg" cx="42%" cy="42%" r="52%">
+      <stop offset="0%" stop-color="#ffc45a" stop-opacity="0.3"/>
       <stop offset="100%" stop-color="#ffc45a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg2" cx="82%" cy="70%" r="40%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="800" height="450" fill="url(#lbg)"/>
   <rect width="800" height="450" fill="url(#lg)"/>
-  <circle cx="280" cy="220" r="70" fill="#ffc45a" fill-opacity="0.15" stroke="#ffc45a" stroke-opacity="0.55" stroke-width="2"/>
-  <circle cx="400" cy="200" r="58" fill="#2dd4bf" fill-opacity="0.12" stroke="#2dd4bf" stroke-opacity="0.45" stroke-width="2"/>
-  <circle cx="500" cy="250" r="48" fill="#ffc45a" fill-opacity="0.1" stroke="#ffc45a" stroke-opacity="0.4" stroke-width="2"/>
-  <circle cx="340" cy="300" r="36" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5"/>
-  <text x="280" y="230" text-anchor="middle" fill="#ffc45a" fill-opacity="0.85" font-family="system-ui,sans-serif" font-size="28" font-weight="700">7</text>
-  <text x="400" y="210" text-anchor="middle" fill="#2dd4bf" fill-opacity="0.85" font-family="system-ui,sans-serif" font-size="24" font-weight="700">21</text>
-  <text x="500" y="258" text-anchor="middle" fill="#ffc45a" fill-opacity="0.75" font-family="system-ui,sans-serif" font-size="20" font-weight="700">3</text>
+  <rect width="800" height="450" fill="url(#lg2)"/>
+  <circle cx="268" cy="214" r="74" fill="#ffc45a" fill-opacity="0.12" stroke="#ffc45a" stroke-opacity="0.6" stroke-width="2.5"/>
+  <circle cx="400" cy="196" r="60" fill="#2dd4bf" fill-opacity="0.1" stroke="#2dd4bf" stroke-opacity="0.5" stroke-width="2.5"/>
+  <circle cx="516" cy="246" r="50" fill="#ffc45a" fill-opacity="0.09" stroke="#ffc45a" stroke-opacity="0.45" stroke-width="2"/>
+  <circle cx="346" cy="304" r="38" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.28" stroke-width="1.75"/>
+  <text x="268" y="226" text-anchor="middle" fill="#ffc45a" fill-opacity="0.9" font-family="system-ui,sans-serif" font-size="30" font-weight="700">7</text>
+  <text x="400" y="208" text-anchor="middle" fill="#2dd4bf" fill-opacity="0.9" font-family="system-ui,sans-serif" font-size="26" font-weight="700">21</text>
+  <text x="516" y="256" text-anchor="middle" fill="#ffc45a" fill-opacity="0.8" font-family="system-ui,sans-serif" font-size="22" font-weight="700">3</text>
+  <text x="346" y="312" text-anchor="middle" fill="#ffffff" fill-opacity="0.55" font-family="system-ui,sans-serif" font-size="16" font-weight="600">18</text>
 </svg>

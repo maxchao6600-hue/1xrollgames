@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Locale } from "@/types/content";
 import { APP_ASSETS } from "@/data/assets";
-import { ctaConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n";
+import { localePath } from "@/lib/paths";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 
@@ -29,7 +29,7 @@ export function HomeMobileApp({ locale }: { locale: Locale }) {
               <li>{t(dict, "home.mobile.secure")}</li>
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={ctaConfig.register.href} external size="lg">
+              <Button href={localePath(locale, "/download")} size="lg">
                 {t(dict, "home.mobile.cta")}
               </Button>
             </div>
@@ -38,7 +38,11 @@ export function HomeMobileApp({ locale }: { locale: Locale }) {
             <div className="relative aspect-[9/16] w-[42%] overflow-hidden rounded-[1.25rem] border border-border shadow-[var(--shadow)]">
               <Image
                 src={APP_ASSETS.screenshot}
-                alt="1XROLL mobile app screenshot"
+                alt={
+                  locale === "zh"
+                    ? "1XROLL 应用截图"
+                    : "1XROLL mobile app screenshot"
+                }
                 fill
                 className="object-cover object-top"
                 sizes="200px"
@@ -47,7 +51,11 @@ export function HomeMobileApp({ locale }: { locale: Locale }) {
             <div className="relative mb-4 aspect-square w-[38%] overflow-hidden rounded-2xl border border-border bg-bg-elevated p-3">
               <Image
                 src={APP_ASSETS.qr}
-                alt="1XROLL app download QR code"
+                alt={
+                  locale === "zh"
+                    ? "1XROLL 应用下载二维码"
+                    : "1XROLL app download QR code"
+                }
                 fill
                 className="object-contain p-2"
                 sizes="160px"

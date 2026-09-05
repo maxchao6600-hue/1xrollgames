@@ -14,6 +14,7 @@ export type HomeEcosystemCategory = {
   description: LocalizedString;
   image: string;
   objectPosition: string;
+  fit: "cover" | "panel";
   inventoryMode: "catalogue" | "hub";
 };
 
@@ -100,6 +101,7 @@ export function getHomeEcosystemCategories(): HomeEcosystemCategory[] {
       description: ECOSYSTEM_COPY[cat.id].description,
       image: asset.image,
       objectPosition: asset.objectPosition ?? "center center",
+      fit: asset.fit ?? "cover",
       inventoryMode: cat.inventoryMode,
     };
   });

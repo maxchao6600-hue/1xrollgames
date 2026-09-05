@@ -6,9 +6,8 @@ import type { CategoryId, Locale } from "@/types/content";
 import {
   categories,
   getCategory,
-  getAllGames,
-  providers,
-  getGamesByCategory,
+  getAllProviders,
+  getGameCardsByCategory,
 } from "@/data";
 import { CATEGORY_ASSETS } from "@/data/assets";
 import { ctaConfig } from "@/config/site";
@@ -63,10 +62,19 @@ export default async function CategoryPage({
   if (!category) notFound();
   if (category.routeBase === "top") notFound();
   const dict = getDictionary(locale);
-  const list = getGamesByCategory(category.id as CategoryId);
+  const list = getGameCardsByCategory(category.id as CategoryId);
   const isHub = category.inventoryMode === "hub";
   const asset = CATEGORY_ASSETS[category.id];
-  const allGames = getAllGames();
+  const providers = getAllProviders().map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+  }));
+  const categoryOptions = categories.map((c) => ({
+    id: c.id,
+    name: c.name,
+  }));
+  const isPanel = asset?.fit === "panel";
 
   return (
     <Section className="pt-8">
@@ -91,15 +99,34 @@ export default async function CategoryPage({
 
         {asset?.image ? (
           <div className="relative mb-8 aspect-[16/7] overflow-hidden rounded-[1.35rem] border border-border md:aspect-[21/7]">
-            <Image
-              src={asset.image}
-              alt={`${localize(category.name, locale)} on 1XROLL`}
-              fill
-              className="object-cover"
-              style={{ objectPosition: asset.objectPosition ?? "center center" }}
-              sizes="(max-width:768px) 100vw, 1120px"
-              priority
-            />
+            {isPanel ? (
+              <>
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(45,212,191,0.16),transparent_45%),radial-gradient(circle_at_20%_80%,rgba(255,196,90,0.12),transparent_40%),linear-gradient(160deg,#0a1210_0%,#0c1520_55%,#101820_100%)]"
+                />
+                <div className="absolute inset-y-[14%] left-[8%] right-[38%] overflow-hidden rounded-2xl border border-white/10 bg-black/20 md:right-[45%]">
+                  <Image
+                    src={asset.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width:768px) 100vw, 560px"
+                    priority
+                  />
+                </div>
+              </>
+            ) : (
+              <Image
+                src={asset.image}
+                alt={`${localize(category.name, locale)} on 1XROLL`}
+                fill
+                className="object-cover"
+                style={{ objectPosition: asset.objectPosition ?? "center center" }}
+                sizes="(max-width:768px) 100vw, 1120px"
+                priority
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
               <h1 className="font-[family-name:var(--font-display)] text-3xl text-white md:text-4xl">
@@ -143,8 +170,8 @@ export default async function CategoryPage({
             <div className="mt-2">
               <GamesExplorer
                 locale={locale}
-                games={list.length ? list : allGames.filter((g) => g.category === category.id)}
-                categories={categories}
+                games={list}
+                categories={categoryOptions}
                 providers={providers}
                 initialCategory={category.id}
               />

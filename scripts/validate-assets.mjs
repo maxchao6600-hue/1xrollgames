@@ -97,7 +97,7 @@ checkMap("GUIDE_ASSETS", GUIDE_ASSETS);
 const gameSlugs = [...gamesSrc.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
 for (const slug of gameSlugs) {
   if (!GAME_ASSETS[slug]) {
-    warnings.push(`Game slug has no artwork map (gradient placeholder): ${slug}`);
+    warnings.push(`Game slug has no artwork map (premium fallback card): ${slug}`);
   } else if (!exists(GAME_ASSETS[slug])) {
     errors.push(`Game artwork missing on disk: ${slug} → ${GAME_ASSETS[slug]}`);
   } else if (!isRealImage(GAME_ASSETS[slug])) {

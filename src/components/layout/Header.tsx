@@ -90,15 +90,29 @@ export function Header({ locale }: { locale: Locale }) {
                                 className="flex gap-3 rounded-xl border border-transparent p-2 transition hover:border-border hover:bg-white/[0.03]"
                                 onClick={closeMenu}
                               >
-                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-white/5">
+                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-border/70 bg-[#0a1218]">
                                   {asset?.image ? (
-                                    <Image
-                                      src={asset.image}
-                                      alt=""
-                                      fill
-                                      className="object-cover"
-                                      sizes="48px"
-                                    />
+                                    asset.fit === "panel" ? (
+                                      <Image
+                                        src={asset.image}
+                                        alt=""
+                                        fill
+                                        className="object-contain p-1"
+                                        sizes="48px"
+                                      />
+                                    ) : (
+                                      <Image
+                                        src={asset.image}
+                                        alt=""
+                                        fill
+                                        className="object-cover"
+                                        style={{
+                                          objectPosition:
+                                            asset.objectPosition ?? "center",
+                                        }}
+                                        sizes="48px"
+                                      />
+                                    )
                                   ) : null}
                                 </div>
                                 <span className="min-w-0">

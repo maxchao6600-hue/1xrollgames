@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import type { Locale } from "@/types/content";
 import { promotions } from "@/data/promotions";
 import { getDictionary, t } from "@/lib/i18n";
@@ -12,12 +12,14 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 const AUTOPLAY_MS = 6500;
+const SWIPE_THRESHOLD = 48;
 
 export function HomePromoSlider({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const slides = promotions.filter((p) => p.image && p.status === "active");
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
   const count = slides.length;
 
   const go = useCallback(
@@ -38,11 +40,26 @@ export function HomePromoSlider({ locale }: { locale: Locale }) {
 
   const slide = slides[index]!;
 
+  function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    if (count <= 1) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      go(index - 1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      go(index + 1);
+    }
+  }
+
   return (
     <section className="border-b border-border/40 pt-5 pb-2 md:pt-7">
       <Container>
         <div
-          className="relative overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface shadow-[var(--shadow)]"
+          className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface shadow-[var(--shadow)] outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          tabIndex={0}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={t(dict, "home.promoSliderLabel")}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
@@ -50,6 +67,17 @@ export function HomePromoSlider({ locale }: { locale: Locale }) {
             if (!e.currentTarget.contains(e.relatedTarget as Node)) {
               setPaused(false);
             }
+          }}
+          onKeyDown={onKeyDown}
+          onTouchStart={(e) => {
+            touchStartX.current = e.changedTouches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(e) => {
+            if (touchStartX.current == null || count <= 1) return;
+            const dx = (e.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
+            touchStartX.current = null;
+            if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+            go(dx < 0 ? index + 1 : index - 1);
           }}
         >
           <div className="relative aspect-[16/9] w-full md:aspect-[3/1]">
@@ -66,8 +94,8 @@ export function HomePromoSlider({ locale }: { locale: Locale }) {
                     src={item.image}
                     alt={localize(item.title, locale)}
                     fill
-                    className="object-cover object-center"
-                    sizes="(max-width:768px) 100vw, 1280px"
+                    className="object-cover object-[center_30%] md:object-center"
+                    sizes="(max-width:768px) 100vw, 1400px"
                     priority={i === 0}
                   />
                 ) : null}

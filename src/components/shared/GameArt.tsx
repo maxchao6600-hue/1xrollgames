@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BRAND_ASSETS } from "@/data/assets";
 import { cn } from "@/lib/utils";
 
 export function GameArt({
@@ -6,6 +7,9 @@ export function GameArt({
   gradient,
   image,
   alt,
+  providerName,
+  categoryLabel,
+  unavailableLabel,
   className,
   priority = false,
 }: {
@@ -13,6 +17,9 @@ export function GameArt({
   gradient: [string, string];
   image?: string;
   alt?: string;
+  providerName?: string;
+  categoryLabel?: string;
+  unavailableLabel?: string;
   className?: string;
   priority?: boolean;
 }) {
@@ -24,13 +31,6 @@ export function GameArt({
         "relative aspect-[3/4] overflow-hidden rounded-[0.9rem] bg-bg-surface",
         className,
       )}
-      style={
-        image
-          ? undefined
-          : {
-              background: `linear-gradient(145deg, ${gradient[0]}, ${gradient[1]})`,
-            }
-      }
     >
       {image ? (
         <Image
@@ -42,20 +42,48 @@ export function GameArt({
           priority={priority}
         />
       ) : (
-        <>
+        <div
+          className="absolute inset-0 flex flex-col justify-between p-3.5 sm:p-4"
+          style={{
+            background: `linear-gradient(160deg, ${gradient[0]}33 0%, #0a1018 42%, ${gradient[1]}22 100%)`,
+          }}
+        >
           <div
-            className="absolute inset-0 opacity-40"
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-40"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3), transparent 40%)",
+                "radial-gradient(circle at 28% 18%, rgba(255,255,255,0.16), transparent 42%), radial-gradient(circle at 80% 78%, rgba(45,212,191,0.12), transparent 45%)",
             }}
           />
-          <div className="absolute inset-x-0 bottom-0 p-4">
-            <p className="line-clamp-2 text-sm font-medium text-white drop-shadow">
+          <div className="relative flex items-start justify-between gap-2">
+            <div className="relative h-8 w-8 overflow-hidden rounded-lg border border-white/15 bg-black/25 p-1">
+              <Image
+                src={BRAND_ASSETS.logo}
+                alt=""
+                fill
+                className="object-contain"
+                sizes="32px"
+              />
+            </div>
+            {categoryLabel ? (
+              <span className="rounded-md border border-white/10 bg-black/35 px-2 py-0.5 text-[0.65rem] text-white/70">
+                {categoryLabel}
+              </span>
+            ) : null}
+          </div>
+          <div className="relative space-y-1">
+            <p className="line-clamp-2 text-sm font-semibold leading-snug text-white">
               {name}
             </p>
+            {providerName ? (
+              <p className="text-[0.7rem] text-white/55">{providerName}</p>
+            ) : null}
+            <p className="text-[0.65rem] tracking-wide text-white/35 uppercase">
+              {unavailableLabel ?? "Preview unavailable"}
+            </p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

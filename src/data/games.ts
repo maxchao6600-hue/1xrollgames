@@ -316,7 +316,6 @@ export const games: Game[] = [
   {
     id: "monopoly-live",
     slug: "monopoly-live",
-    image: "/games/monopoly-live.webp",
     name: "Monopoly Live",
     providerSlug: "evolution",
     category: "live-casino",
@@ -367,7 +366,6 @@ export const games: Game[] = [
   {
     id: "goal",
     slug: "goal",
-    image: "/games/goal.webp",
     name: "Goal",
     providerSlug: "spribe",
     category: "crypto-games",
@@ -418,7 +416,6 @@ export const games: Game[] = [
   {
     id: "fortune-gems",
     slug: "fortune-gems",
-    image: "/games/fortune-gems.webp",
     name: "Fortune Gems",
     providerSlug: "jili",
     category: "slots",
@@ -443,7 +440,6 @@ export const games: Game[] = [
   {
     id: "super-ace",
     slug: "super-ace",
-    image: "/games/super-ace.webp",
     name: "Super Ace",
     providerSlug: "jili",
     category: "slots",
@@ -469,7 +465,6 @@ export const games: Game[] = [
   {
     id: "boxing-king",
     slug: "boxing-king",
-    image: "/games/boxing-king.webp",
     name: "Boxing King",
     providerSlug: "jili",
     category: "slots",
@@ -567,7 +562,6 @@ export const games: Game[] = [
   {
     id: "riot",
     slug: "riot",
-    image: "/games/riot.webp",
     name: "Riot",
     providerSlug: "endorphina",
     category: "slots",
@@ -592,7 +586,6 @@ export const games: Game[] = [
   {
     id: "money-train-2",
     slug: "money-train-2",
-    image: "/games/money-train-2.webp",
     name: "Money Train 2",
     providerSlug: "relax-gaming",
     category: "slots",
@@ -618,7 +611,6 @@ export const games: Game[] = [
   {
     id: "temple-tumble",
     slug: "temple-tumble",
-    image: "/games/temple-tumble.webp",
     name: "Temple Tumble",
     providerSlug: "relax-gaming",
     category: "slots",
@@ -643,7 +635,6 @@ export const games: Game[] = [
   {
     id: "buffalo-power",
     slug: "buffalo-power",
-    image: "/games/buffalo-power.webp",
     name: "Buffalo Power",
     providerSlug: "playson",
     category: "slots",
@@ -668,7 +659,6 @@ export const games: Game[] = [
   {
     id: "energy-coins",
     slug: "energy-coins",
-    image: "/games/energy-coins.webp",
     name: "Energy Coins: Holding and Winning",
     providerSlug: "playson",
     category: "slots",

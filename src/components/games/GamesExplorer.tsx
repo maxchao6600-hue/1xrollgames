@@ -1,12 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { useDeferredValue, useMemo, useState } from "react";
-import type { CategoryId, Game, Locale } from "@/types/content";
+import type { Category, Locale, Provider } from "@/types/content";
+import type { GameCardModel } from "@/data/queries";
 import { GameCard } from "@/components/games/GameCard";
+import { BRAND_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { Button } from "@/components/ui/Button";
 import { localize } from "@/lib/utils";
-import type { Category, Provider } from "@/types/content";
+
+type ProviderOption = Pick<Provider, "id" | "slug" | "name">;
+type CategoryOption = Pick<Category, "id" | "name">;
 
 export function GamesExplorer({
   locale,
@@ -17,9 +22,9 @@ export function GamesExplorer({
   initialProvider = "all",
 }: {
   locale: Locale;
-  games: Game[];
-  categories: Category[];
-  providers: Provider[];
+  games: GameCardModel[];
+  categories: CategoryOption[];
+  providers: ProviderOption[];
   initialCategory?: string;
   initialProvider?: string;
 }) {
@@ -55,14 +60,25 @@ export function GamesExplorer({
           <span className="mb-1.5 block text-xs text-text-muted">
             {t(dict, "common.search")}
           </span>
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t(dict, "games.searchPlaceholder")}
-            className="h-11 w-full rounded-xl border border-border bg-bg-elevated px-3 text-sm text-text outline-none transition focus:border-accent/50"
-            type="search"
-            autoComplete="off"
-          />
+          <div className="relative">
+            <span className="pointer-events-none absolute top-1/2 left-3 z-[1] h-6 w-6 -translate-y-1/2 overflow-hidden rounded-md border border-border/80 bg-bg-elevated p-0.5">
+              <Image
+                src={BRAND_ASSETS.logo}
+                alt=""
+                width={24}
+                height={24}
+                className="h-full w-full object-contain"
+              />
+            </span>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t(dict, "games.searchPlaceholder")}
+              className="h-11 w-full rounded-xl border border-border bg-bg-elevated py-2 pr-3 pl-11 text-sm text-text outline-none transition focus:border-accent/50"
+              type="search"
+              autoComplete="off"
+            />
+          </div>
         </label>
         <label className="block">
           <span className="mb-1.5 block text-xs text-text-muted">
@@ -127,5 +143,3 @@ export function GamesExplorer({
     </div>
   );
 }
-
-export type { CategoryId };

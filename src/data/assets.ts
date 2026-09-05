@@ -79,55 +79,71 @@ export const FEATURED_RAIL_SLUGS = [
  */
 export const CATEGORY_ASSETS: Record<
   string,
-  { imageSlug?: string; image: string; objectPosition?: string }
+  {
+    imageSlug?: string;
+    image: string;
+    objectPosition?: string;
+    /** `cover` = photo art; `panel` = intentional SVG/brand panel */
+    fit?: "cover" | "panel";
+  }
 > = {
   slots: {
     imageSlug: "gates-of-olympus",
     image: "/games/gates-of-olympus.webp",
     objectPosition: "center 20%",
+    fit: "cover",
   },
   "live-casino": {
     imageSlug: "crazy-time",
     image: "/games/crazy-time.webp",
     objectPosition: "22% 48%",
+    fit: "cover",
   },
   "hash-roulette": {
     imageSlug: "lightning-roulette",
     image: "/games/lightning-roulette.webp",
     objectPosition: "35% 65%",
+    fit: "cover",
   },
   "hash-games": {
     imageSlug: "mines",
     image: "/games/mines.webp",
     objectPosition: "center 30%",
+    fit: "cover",
   },
   "crypto-games": {
     imageSlug: "aviator",
     image: "/games/aviator.webp",
     objectPosition: "center 22%",
+    fit: "cover",
   },
   "fast-games": {
     imageSlug: "crash",
     image: "/games/crash.webp",
     objectPosition: "center 35%",
+    fit: "cover",
   },
   fishing: {
     imageSlug: "big-bass-bonanza",
     image: "/games/big-bass-bonanza.webp",
     objectPosition: "center 30%",
+    fit: "cover",
   },
   sports: {
     image: "/categories/sports.svg",
     objectPosition: "center center",
+    fit: "panel",
   },
   "chess-card": {
     imageSlug: "speed-baccarat-b",
     image: "/games/speed-baccarat-b.webp",
     objectPosition: "55% 40%",
+    fit: "cover",
   },
   lottery: {
     image: "/categories/lottery.svg",
     objectPosition: "center center",
+    fit: "panel",
   },
 };
 

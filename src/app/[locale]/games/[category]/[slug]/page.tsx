@@ -21,6 +21,7 @@ import { GameCard } from "@/components/games/GameCard";
 import { Badge } from "@/components/ui/Badge";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { gameImageAlt } from "@/data/assets";
 
 export function generateStaticParams() {
   return games.flatMap((g) =>
@@ -99,7 +100,25 @@ export default async function GameDetailPage({
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative max-w-md">
-            <GameArt name={game.name} gradient={game.imageGradient} />
+            <GameArt
+              name={game.name}
+              gradient={game.imageGradient}
+              image={game.image}
+              alt={gameImageAlt(
+                game.name,
+                provider?.name ?? game.providerSlug,
+                category ? localize(category.name, locale) : game.category,
+              )}
+              providerName={provider?.name ?? game.providerSlug}
+              categoryLabel={
+                category ? localize(category.name, locale) : game.category
+              }
+              unavailableLabel={
+                locale === "zh" ? "暂无预览图" : "Preview unavailable"
+              }
+              className="aspect-[3/4] w-full"
+              priority
+            />
             {game.status ? (
               <div className="absolute top-4 left-4">
                 <Badge tone={game.status === "hot" ? "hot" : game.status === "featured" ? "violet" : "accent"}>

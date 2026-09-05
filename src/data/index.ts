@@ -46,4 +46,8 @@ export {
   searchGames,
   relatedGames,
   getFaqById,
+  getGameCards,
+  getGameCardsByCategory,
+  toGameCardModel,
 } from "@/data/queries";
+export type { GameCardModel } from "@/data/queries";

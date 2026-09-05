@@ -11,11 +11,53 @@ import {
 } from "@/data/assets";
 import type { CategoryId, Game, GameStatus, Guide, Locale, Provider } from "@/types/content";
 
+/**
+ * Only attach verified artwork from GAME_ASSETS.
+ * Never fall back to unverified paths that 404 and can break Image/SSR.
+ */
 export function withResolvedAssets(game: Game): Game {
+  const image = resolveGameImage(game.slug);
   return {
     ...game,
-    image: resolveGameImage(game.slug) ?? game.image,
+    image,
   };
+}
+
+/** Lightweight card payload — keeps client explorers under Worker CPU/payload limits */
+export type GameCardModel = Pick<
+  Game,
+  | "id"
+  | "slug"
+  | "name"
+  | "providerSlug"
+  | "category"
+  | "status"
+  | "image"
+  | "imageGradient"
+>;
+
+export function toGameCardModel(game: Game): GameCardModel {
+  const resolved = withResolvedAssets(game);
+  return {
+    id: resolved.id,
+    slug: resolved.slug,
+    name: resolved.name,
+    providerSlug: resolved.providerSlug,
+    category: resolved.category,
+    status: resolved.status,
+    image: resolved.image,
+    imageGradient: resolved.imageGradient,
+  };
+}
+
+export function getGameCards(): GameCardModel[] {
+  return games.map(toGameCardModel);
+}
+
+export function getGameCardsByCategory(category: CategoryId | string): GameCardModel[] {
+  return games
+    .filter((g) => g.category === category)
+    .map(toGameCardModel);
 }
 
 export function getAllGames(): Game[] {
@@ -48,13 +90,15 @@ export function getHeroGames(): Game[] {
   );
 }
 
-/** Explicit featured rail — different set from hero */
+/** Explicit featured rail — different set from hero; only verified artwork */
 export function getFeaturedGames(limit = 12): Game[] {
   const listed = FEATURED_RAIL_SLUGS.map((slug) => getGameBySlug(slug)).filter(
-    (g): g is Game => Boolean(g),
+    (g): g is Game => Boolean(g?.image),
   );
   if (listed.length >= limit) return listed.slice(0, limit);
-  const extras = getAllGames().filter((g) => !listed.some((x) => x.slug === g.slug));
+  const extras = getAllGames().filter(
+    (g) => g.image && !listed.some((x) => x.slug === g.slug),
+  );
   return [...listed, ...extras].slice(0, limit);
 }
 

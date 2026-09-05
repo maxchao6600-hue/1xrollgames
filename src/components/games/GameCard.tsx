@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Game, Locale } from "@/types/content";
+import type { GameCardModel } from "@/data/queries";
 import { Badge } from "@/components/ui/Badge";
 import { GameArt } from "@/components/shared/GameArt";
 import { getDictionary, t } from "@/lib/i18n";
@@ -13,7 +14,7 @@ export function GameCard({
   locale,
   priority = false,
 }: {
-  game: Game;
+  game: Game | GameCardModel;
   locale: Locale;
   priority?: boolean;
 }) {
@@ -21,11 +22,11 @@ export function GameCard({
   const provider = getProviderBySlug(game.providerSlug);
   const category = getCategory(game.category);
   const href = gamePath(locale, game.category, game.slug);
-  const alt = gameImageAlt(
-    game.name,
-    provider?.name ?? game.providerSlug,
-    category ? localize(category.name, locale) : game.category,
-  );
+  const categoryLabel = category ? localize(category.name, locale) : game.category;
+  const providerName = provider?.name ?? game.providerSlug;
+  const alt = game.image
+    ? gameImageAlt(game.name, providerName, categoryLabel)
+    : undefined;
 
   const badgeTone =
     game.status === "hot"
@@ -45,6 +46,11 @@ export function GameCard({
                 gradient={game.imageGradient}
                 image={game.image}
                 alt={alt}
+                providerName={providerName}
+                categoryLabel={categoryLabel}
+                unavailableLabel={
+                  locale === "zh" ? "暂无预览图" : "Preview unavailable"
+                }
                 priority={priority}
               />
             </div>
@@ -63,8 +69,8 @@ export function GameCard({
         <div className="mt-3 space-y-1 px-0.5">
           <h3 className="line-clamp-1 text-sm font-medium text-text">{game.name}</h3>
           <p className="text-xs text-text-muted">
-            {provider?.name ?? game.providerSlug}
-            {category ? ` · ${localize(category.name, locale)}` : null}
+            {providerName}
+            {category ? ` · ${categoryLabel}` : null}
           </p>
         </div>
       </Link>
