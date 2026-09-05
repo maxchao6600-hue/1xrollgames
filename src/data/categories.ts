@@ -30,10 +30,10 @@ Use filters on the games hub to combine slots with a preferred studio, or start 
   {
     id: "live-casino",
     slug: "live-casino",
-    name: { en: "Live tables", zh: "真人桌台" },
+    name: { en: "Live Casino", zh: "真人赌场" },
     shortDescription: {
-      en: "Hosted table experiences with real-time pacing and social presentation.",
-      zh: "由主持人带动的真人桌台体验，强调实时节奏与现场感呈现。",
+      en: "Hosted live tables and game shows with real-time pacing and studio presentation.",
+      zh: "由主持人带动的真人桌台与游戏秀，强调实时节奏与工作室呈现。",
     },
     description: {
       en: `Live tables blend traditional game structures with studio production. Roulette, blackjack-style formats, game-show hybrids, and host-led wheels each create a different tempo. 1XROLL’s live category emphasizes what you can observe before joining: table layout language, round cadence, side-feature complexity, and how mobile interfaces compress the same information.

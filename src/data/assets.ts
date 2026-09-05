@@ -30,6 +30,23 @@ export const GAME_ASSETS: Record<string, string> = {
   aviator: "/games/aviator.webp",
   mines: "/games/mines.webp",
   plinko: "/games/plinko.webp",
+  "fruit-party": "/games/fruit-party.webp",
+  "aztec-gems": "/games/aztec-gems.webp",
+  "candy-village": "/games/candy-village.webp",
+  "great-rhino": "/games/great-rhino.webp",
+  "buffalo-king-megaways": "/games/buffalo-king-megaways.webp",
+  "wolf-gold": "/games/wolf-gold.webp",
+  "power-of-thor": "/games/power-of-thor.webp",
+  "hand-of-midas": "/games/hand-of-midas.webp",
+  "fortune-ox": "/games/fortune-ox.webp",
+  "fortune-rabbit": "/games/fortune-rabbit.webp",
+  "fortune-dragon": "/games/fortune-dragon.webp",
+  "fortune-mouse": "/games/fortune-mouse.webp",
+  crash: "/games/crash.webp",
+  "chicken-road": "/games/chicken-road.webp",
+  "speed-baccarat-b": "/games/speed-baccarat-b.webp",
+  "super-sic-bo": "/games/super-sic-bo.webp",
+  "bac-bo": "/games/bac-bo.webp",
 };
 
 /** Homepage hero showcase — order is intentional */
@@ -37,7 +54,6 @@ export const HERO_GAME_SLUGS = [
   "fortune-tiger",
   "mahjong-ways-2",
   "lucky-neko",
-  "gates-of-olympus",
 ] as const;
 
 /** Featured rail — different set / order from hero; only mapped artwork */
@@ -46,14 +62,14 @@ export const FEATURED_RAIL_SLUGS = [
   "crazy-time",
   "aviator",
   "big-bass-splash",
+  "fortune-ox",
   "starlight-princess",
   "lightning-roulette",
-  "mines",
+  "crash",
   "sugar-rush",
+  "bac-bo",
   "wild-bandito",
-  "treasures-of-aztec",
-  "big-bass-bonanza",
-  "the-dog-house",
+  "chicken-road",
 ] as const;
 
 /** Category card artwork = representative game from that category */
