@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Hash Roulette">
+  <defs>
+    <linearGradient id="hrbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0f28"/>
+      <stop offset="55%" stop-color="#0c1219"/>
+      <stop offset="100%" stop-color="#141018"/>
+    </linearGradient>
+    <radialGradient id="hrg" cx="42%" cy="48%" r="45%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#hrbg)"/>
+  <rect width="800" height="450" fill="url(#hrg)"/>
+  <circle cx="340" cy="230" r="130" fill="none" stroke="#ffc45a" stroke-opacity="0.55" stroke-width="4"/>
+  <circle cx="340" cy="230" r="95" fill="none" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="2"/>
+  <circle cx="340" cy="230" r="55" fill="#ffc45a" fill-opacity="0.12" stroke="#ffc45a" stroke-opacity="0.5" stroke-width="2"/>
+  <g stroke="#fff" stroke-opacity="0.25" stroke-width="2">
+    <path d="M340 100v40M340 320v40M210 230h40M430 230h40"/>
+    <path d="M248 138l28 28M404 294l28 28M248 322l28-28M404 166l28-28"/>
+  </g>
+  <circle cx="340" cy="230" r="8" fill="#ffc45a"/>
+  <text x="520" y="200" fill="#ffc45a" fill-opacity="0.85" font-family="ui-monospace,monospace" font-size="20">hash</text>
+  <text x="520" y="232" fill="#a78bfa" fill-opacity="0.75" font-family="ui-monospace,monospace" font-size="18">roulette</text>
+  <text x="520" y="262" fill="#fff" fill-opacity="0.45" font-family="ui-monospace,monospace" font-size="14">0x7a91&</text>
+</svg>

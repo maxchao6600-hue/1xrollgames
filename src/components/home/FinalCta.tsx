@@ -1,7 +1,6 @@
 import type { Locale } from "@/types/content";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
-import { ctaConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 
@@ -11,7 +10,7 @@ export function FinalCta({ locale }: { locale: Locale }) {
   return (
     <Section>
       <Container>
-        <div className="grid items-center gap-6 rounded-[1.25rem] border border-border bg-bg-surface px-8 py-10 md:grid-cols-[1fr_auto] md:px-12">
+        <div className="grid items-center gap-6 rounded-[1.35rem] border border-border bg-bg-surface px-8 py-10 md:grid-cols-[1fr_auto] md:px-12">
           <div>
             <p className="text-xs tracking-[0.18em] text-accent uppercase">
               1XROLL
@@ -26,8 +25,7 @@ export function FinalCta({ locale }: { locale: Locale }) {
               {t(dict, "common.exploreGames")}
             </Button>
             <Button
-              href={ctaConfig.register.href}
-              external={ctaConfig.register.external}
+              href={localePath(locale, "/register")}
               variant="outline"
               size="lg"
             >

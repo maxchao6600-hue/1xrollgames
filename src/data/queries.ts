@@ -14,7 +14,7 @@ import type { CategoryId, Game, GameStatus, Guide, Locale, Provider } from "@/ty
 export function withResolvedAssets(game: Game): Game {
   return {
     ...game,
-    image: resolveGameImage(game.slug),
+    image: resolveGameImage(game.slug) ?? game.image,
   };
 }
 

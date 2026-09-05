@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/Button";
 
 const HERO_ANCHOR = {
   src: GAME_ASSETS["fortune-tiger"],
-  alt: "Fortune Tiger on 1XROLL",
 } as const;
 
 export function HomeHero({ locale }: { locale: Locale }) {
@@ -72,18 +71,15 @@ export function HomeHero({ locale }: { locale: Locale }) {
         </div>
 
         <div className="fade-in relative mx-auto w-full max-w-lg lg:max-w-none">
-          {/* One coherent visual panel — not stacked game cards */}
           <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[1.5rem] border border-border bg-[#0b121b] shadow-[var(--shadow)] sm:aspect-[4/3]">
             <Image
               src={HERO_ANCHOR.src}
-              alt={HERO_ANCHOR.alt}
+              alt={t(dict, "home.heroVisualAlt")}
               fill
               className="object-cover object-[center_18%]"
               sizes="(max-width:1024px) 90vw, 560px"
               priority
             />
-
-            {/* Depth + brand-first overlays */}
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-r from-[#070b10]/92 via-[#070b10]/45 to-transparent"
@@ -114,33 +110,18 @@ export function HomeHero({ locale }: { locale: Locale }) {
                     1XROLL
                   </p>
                   <p className="text-[0.65rem] tracking-[0.16em] text-white/60 uppercase">
-                    {locale === "zh" ? "完整游戏生态" : "Full gaming ecosystem"}
+                    {t(dict, "home.heroVisualEyebrow")}
                   </p>
                 </div>
               </div>
 
-              <div className="max-w-xs">
+              <div className="max-w-sm">
                 <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
-                  {locale === "zh" ? "品牌平台" : "Brand platform"}
+                  {t(dict, "home.heroVisualLabel")}
                 </p>
                 <p className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug text-white sm:text-2xl">
-                  {locale === "zh"
-                    ? "游戏 · 奖励 · 平台服务"
-                    : "Games · Rewards · Platform"}
+                  {t(dict, "home.heroVisualTitle")}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {(locale === "zh"
-                    ? ["老虎机", "真人", "加密", "体育", "奖励"]
-                    : ["Slots", "Live", "Crypto", "Sports", "Rewards"]
-                  ).map((label) => (
-                    <span
-                      key={label}
-                      className="rounded-full border border-white/15 bg-black/35 px-2.5 py-1 text-[0.68rem] text-white/80 backdrop-blur-sm"
-                    >
-                      {label}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

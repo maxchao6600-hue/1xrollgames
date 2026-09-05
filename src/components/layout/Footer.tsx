@@ -6,6 +6,7 @@ import {
   footerGames,
   footerGuidesSupport,
   footerLegal,
+  footerPlatform,
   footerRewards,
 } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -58,7 +59,7 @@ export function Footer({ locale }: { locale: Locale }) {
               sizes="136px"
             />
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-text-muted">
+          <p className="mb-6 max-w-sm text-sm leading-relaxed text-text-muted">
             {t(dict, "footer.brandBlurb")}
           </p>
           <FooterColumn title={t(dict, "footer.company")} items={footerBrand} locale={locale} />
@@ -70,26 +71,42 @@ export function Footer({ locale }: { locale: Locale }) {
           items={footerGuidesSupport}
           locale={locale}
         />
-        <div>
+        <div className="space-y-8">
+          <FooterColumn
+            title={t(dict, "footer.platform")}
+            items={footerPlatform}
+            locale={locale}
+          />
           <FooterColumn title={t(dict, "footer.legal")} items={footerLegal} locale={locale} />
-          <div className="mt-6">
-            <p className="mb-3 text-sm font-medium text-text">
-              {t(dict, "footer.languages")}
-            </p>
-            <div className="flex gap-3 text-sm">
-              <Link href={localePath("en", "/")} className="text-text-muted hover:text-accent" hrefLang="en">
-                English
-              </Link>
-              <Link href={localePath("zh", "/")} className="text-text-muted hover:text-accent" hrefLang="zh">
-                中文
-              </Link>
-            </div>
+        </div>
+        <div>
+          <p className="mb-3 text-sm font-medium text-text">
+            {t(dict, "footer.languages")}
+          </p>
+          <div className="flex gap-3 text-sm">
+            <Link
+              href={localePath("en", "/")}
+              className="text-text-muted hover:text-accent"
+              hrefLang="en"
+            >
+              English
+            </Link>
+            <Link
+              href={localePath("zh", "/")}
+              className="text-text-muted hover:text-accent"
+              hrefLang="zh"
+            >
+              中文
+            </Link>
           </div>
+          <p className="mt-8 text-xs leading-relaxed text-text-faint">
+            {t(dict, "footer.notice")}
+          </p>
         </div>
       </div>
       <div className="border-t border-border">
         <div className="container-page flex flex-col gap-2 py-6 text-xs text-text-faint md:flex-row md:items-center md:justify-between">
-          <p>{t(dict, "footer.notice")}</p>
+          <p>18+</p>
           <p>
             © {year} {siteConfig.legalName}. {t(dict, "footer.copyright")}
           </p>

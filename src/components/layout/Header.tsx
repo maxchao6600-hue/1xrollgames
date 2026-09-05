@@ -207,11 +207,20 @@ export function Header({ locale }: { locale: Locale }) {
             >
               {otherLocale === "en" ? "English" : "中文"}
             </Link>
-            <div className="mt-3 flex gap-2 px-3">
-              <Button href={ctaConfig.login.href} external className="flex-1" size="sm">
+            <div className="mt-3 flex gap-2 px-3 pb-2">
+              <Button
+                href={localePath(locale, ctaConfig.login.path)}
+                className="flex-1"
+                size="sm"
+                variant="secondary"
+              >
                 {t(dict, "nav.login")}
               </Button>
-              <Button href={ctaConfig.register.href} external className="flex-1" size="sm">
+              <Button
+                href={localePath(locale, ctaConfig.register.path)}
+                className="flex-1"
+                size="sm"
+              >
                 {t(dict, "nav.register")}
               </Button>
             </div>

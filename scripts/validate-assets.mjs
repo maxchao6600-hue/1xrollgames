@@ -74,6 +74,9 @@ checkMap("GUIDE_ASSETS", GUIDE_ASSETS);
   "/categories/sports.svg",
   "/categories/lottery.svg",
   "/categories/hash-games.svg",
+  "/categories/hash-roulette.svg",
+  "/categories/chess-card.svg",
+  "/categories/rebates.svg",
 ].forEach((p) => {
   if (!exists(p)) errors.push(`Category panel missing: ${p}`);
 });

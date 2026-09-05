@@ -5,6 +5,16 @@ import { getDictionary, t } from "@/lib/i18n";
 import { guidePath } from "@/lib/paths";
 import { formatDate, localize } from "@/lib/utils";
 
+function guideCategoryLabel(category: string, locale: Locale, dict: ReturnType<typeof getDictionary>) {
+  const key = `nav.cat.${category}`;
+  const translated = t(dict, key);
+  if (translated !== key) return translated;
+  if (category === "education") {
+    return locale === "zh" ? "教程" : "Education";
+  }
+  return category;
+}
+
 export function ArticleCard({
   guide,
   locale,
@@ -18,19 +28,18 @@ export function ArticleCard({
   const href = guidePath(locale, guide.slug);
   const title = localize(guide.title, locale);
   const cover = guide.coverImage;
+  const categoryLabel = guideCategoryLabel(guide.category, locale, dict);
 
   if (featured) {
     return (
-      <article className="overflow-hidden rounded-[1.4rem] border border-border bg-bg-surface">
+      <article className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface">
         <Link href={href} className="block">
-          <CoverArt
-            title={title}
-            gradient={guide.coverGradient}
-            image={cover}
-          />
+          <div className="overflow-hidden">
+            <CoverArt title={title} gradient={guide.coverGradient} image={cover} />
+          </div>
           <div className="space-y-3 p-6">
             <p className="text-xs tracking-wide text-accent uppercase">
-              {guide.category}
+              {categoryLabel}
             </p>
             <h3 className="font-[family-name:var(--font-display)] text-2xl text-text">
               {title}
@@ -49,16 +58,18 @@ export function ArticleCard({
   }
 
   return (
-    <article className="rounded-2xl border border-border bg-bg-surface p-4 transition hover:border-accent/30">
-      <Link href={href} className="block space-y-3">
-        <CoverArt
-          title={title}
-          gradient={guide.coverGradient}
-          image={cover}
-          className="aspect-[16/9] rounded-xl"
-        />
+    <article className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface transition hover:border-accent/30">
+      <Link href={href} className="block space-y-3 p-4">
+        <div className="overflow-hidden rounded-xl">
+          <CoverArt
+            title={title}
+            gradient={guide.coverGradient}
+            image={cover}
+            className="aspect-[16/9] rounded-xl"
+          />
+        </div>
         <p className="text-[11px] tracking-wide text-accent uppercase">
-          {guide.category}
+          {categoryLabel}
         </p>
         <h3 className="text-base font-medium text-text">{title}</h3>
         <p className="line-clamp-2 text-sm text-text-muted">

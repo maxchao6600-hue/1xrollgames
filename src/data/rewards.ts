@@ -1,5 +1,5 @@
 import type { RewardTopic } from "@/types/content";
-import { PROMOTION_ASSETS } from "@/data/assets";
+import { REWARD_ASSETS } from "@/data/assets";
 
 /**
  * Rewards ecosystem topics — copy stays descriptive.
@@ -19,7 +19,7 @@ export const rewardTopics: RewardTopic[] = [
       zh: "活动中心汇总限时活动与精选优惠。本品牌站摘要已发布优惠；资格与实时条款始终以登录后的 1XROLL 平台为准。",
     },
     href: "/promotions",
-    image: PROMOTION_ASSETS["prize-pool"],
+    image: REWARD_ASSETS["activity-center"],
   },
   {
     id: "rewards-center",
@@ -34,7 +34,7 @@ export const rewardTopics: RewardTopic[] = [
       zh: "奖励中心说明 1XROLL 如何组织迎新优惠、VIP 返水摘要与活动类奖励。此处不编造等级阶梯或未发布比例。",
     },
     href: "/rewards",
-    image: PROMOTION_ASSETS["welcome-bonus"],
+    image: REWARD_ASSETS["rewards-center"],
   },
   {
     id: "rebates",
@@ -49,7 +49,7 @@ export const rewardTopics: RewardTopic[] = [
       zh: "本品牌站摘要的已发布 VIP 返水为符合条件投注最高 1.1%，更高等级可解锁更高比例。确切资格以平台钱包与 VIP 区域为准。",
     },
     href: "/rebates",
-    image: PROMOTION_ASSETS["vip-cashback"],
+    image: REWARD_ASSETS.rebates,
   },
   {
     id: "vip-club",
@@ -64,7 +64,7 @@ export const rewardTopics: RewardTopic[] = [
       zh: "VIP 俱乐部页面用清晰语言说明返水类奖励与升级导向礼遇。我们不编造 VIP 1 / VIP 2 表格——实时等级请在平台查看。",
     },
     href: "/vip",
-    image: PROMOTION_ASSETS["vip-cashback"],
+    image: REWARD_ASSETS["vip-club"],
   },
   {
     id: "promotions",
@@ -79,7 +79,7 @@ export const rewardTopics: RewardTopic[] = [
       zh: "浏览已核实优惠摘要，包括 200% 首存（最高 8,888 USDT，25 倍流水，最低 10 USDT）、VIP 返水最高 1.1%，以及奖池活动。",
     },
     href: "/promotions",
-    image: PROMOTION_ASSETS["welcome-bonus"],
+    image: REWARD_ASSETS.promotions,
   },
 ];
 

@@ -85,6 +85,7 @@ const en = {
     updated: "Updated",
     loading: "Loading…",
     claimNow: "Claim now",
+    openPlatform: "Open platform",
   },
   home: {
     heroEyebrow: "1XROLL GAMING ECOSYSTEM",
@@ -92,6 +93,10 @@ const en = {
     heroSubtitle:
       "1XROLL brings games, live entertainment, rewards, guides, VIP access and platform services together in one connected experience.",
     heroSecondaryCta: "Create Account",
+    heroVisualAlt: "1XROLL gaming ecosystem visual featuring Fortune Tiger",
+    heroVisualEyebrow: "Full gaming ecosystem",
+    heroVisualLabel: "Brand platform",
+    heroVisualTitle: "Games · Rewards · Platform",
     featuredTitle: "Featured games",
     featuredSubtitle: "Discover standout titles from the verified 1XROLL catalogue.",
     categoriesTitle: "Game ecosystem",
@@ -169,6 +174,9 @@ const en = {
     howToPlay: "How to play",
     features: "Features",
     overview: "Overview",
+    howToUseTitle: "How to use the games hub",
+    howToUseBody:
+      "Search by name or filter by category and studio. Results stay on this page and do not create indexable query URLs. When a title looks interesting, open its detail page for mechanics notes, then follow internal links to the provider profile or a related guide. Category pages offer longer topical introductions; if studio style matters more to you, start from the providers index.",
   },
   providers: {
     hubTitle: "Providers",
@@ -206,6 +214,7 @@ const en = {
     rewards: "Rewards",
     guidesSupport: "Guides & Support",
     company: "Company",
+    platform: "Platform",
     help: "Help",
     legal: "Legal",
     languages: "Languages",
@@ -307,6 +316,7 @@ const zh = {
     updated: "更新",
     loading: "加载中…",
     claimNow: "立即领取",
+    openPlatform: "前往平台",
   },
   home: {
     heroEyebrow: "1XROLL 游戏生态",
@@ -314,6 +324,10 @@ const zh = {
     heroSubtitle:
       "1XROLL 把游戏、真人娱乐、奖励、攻略、VIP 与平台服务连接成完整体验。",
     heroSecondaryCta: "创建账户",
+    heroVisualAlt: "1XROLL 游戏生态视觉，以招财虎为代表",
+    heroVisualEyebrow: "完整游戏生态",
+    heroVisualLabel: "品牌平台",
+    heroVisualTitle: "游戏 · 奖励 · 平台服务",
     featuredTitle: "精选游戏",
     featuredSubtitle: "从已核实的 1XROLL 目录中发现亮点作品。",
     categoriesTitle: "游戏生态",
@@ -384,6 +398,9 @@ const zh = {
     howToPlay: "怎么玩",
     features: "特色",
     overview: "概览",
+    howToUseTitle: "如何使用游戏中心",
+    howToUseBody:
+      "用名称搜索，或按分类与厂商筛选。结果留在本页，不会生成可被索引的查询 URL。想了解某款作品时，进入详情页阅读机制说明，再通过内链前往厂商档案或相关攻略。分类页提供更长的主题介绍；若你更关心工作室风格，从厂商索引开始通常更快。",
   },
   providers: {
     hubTitle: "厂商",
@@ -421,6 +438,7 @@ const zh = {
     rewards: "奖励",
     guidesSupport: "攻略与支持",
     company: "公司",
+    platform: "平台",
     help: "帮助",
     legal: "法律",
     languages: "语言",

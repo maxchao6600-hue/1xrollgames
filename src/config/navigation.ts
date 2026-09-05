@@ -58,6 +58,12 @@ export const footerLegal: NavItem[] = [
   { href: "/privacy", labelKey: "nav.privacy" },
 ];
 
+export const footerPlatform: NavItem[] = [
+  { href: "/providers", labelKey: "nav.providers" },
+  { href: "/login", labelKey: "nav.login" },
+  { href: "/register", labelKey: "nav.register" },
+];
+
 /** @deprecated use footerGames / footerBrand — kept for gradual migration */
 export const footerExplore = footerGames;
 export const footerCompany = footerBrand;

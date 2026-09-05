@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Rebates">
+  <defs>
+    <linearGradient id="rbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1a18"/>
+      <stop offset="100%" stop-color="#0c1219"/>
+    </linearGradient>
+    <radialGradient id="rg" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#rbg)"/>
+  <rect width="800" height="450" fill="url(#rg)"/>
+  <path d="M280 280 L400 140 L520 280 Z" fill="none" stroke="#2dd4bf" stroke-opacity="0.55" stroke-width="3"/>
+  <path d="M320 280 L400 180 L480 280" fill="none" stroke="#ffc45a" stroke-opacity="0.45" stroke-width="2"/>
+  <circle cx="400" cy="160" r="14" fill="#ffc45a" fill-opacity="0.7"/>
+  <text x="400" y="330" text-anchor="middle" fill="#fff" fill-opacity="0.7" font-family="system-ui,sans-serif" font-size="22" font-weight="600">cashback</text>
+</svg>

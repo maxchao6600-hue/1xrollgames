@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Chess and Card">
+  <defs>
+    <linearGradient id="ccbg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="50%" stop-color="#0c1219"/>
+      <stop offset="100%" stop-color="#121820"/>
+    </linearGradient>
+    <radialGradient id="ccg" cx="55%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#ffc45a" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffc45a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#ccbg)"/>
+  <rect width="800" height="450" fill="url(#ccg)"/>
+  <!-- card backs -->
+  <rect x="220" y="120" width="120" height="170" rx="12" fill="#1a2230" stroke="#ffc45a" stroke-opacity="0.55" stroke-width="2" transform="rotate(-12 280 205)"/>
+  <rect x="310" y="110" width="120" height="170" rx="12" fill="#182230" stroke="#2dd4bf" stroke-opacity="0.45" stroke-width="2" transform="rotate(6 370 195)"/>
+  <rect x="400" y="125" width="120" height="170" rx="12" fill="#1c2434" stroke="#ffc45a" stroke-opacity="0.4" stroke-width="2" transform="rotate(14 460 210)"/>
+  <!-- suit marks -->
+  <text x="365" y="205" fill="#ffc45a" fill-opacity="0.85" font-size="36" text-anchor="middle">`</text>
+  <text x="455" y="220" fill="#fb7185" fill-opacity="0.8" font-size="32" text-anchor="middle">e</text>
+  <!-- chess hint -->
+  <path d="M560 280 L575 240 L590 280 Z" fill="#ffc45a" fill-opacity="0.35"/>
+  <rect x="555" y="280" width="40" height="12" rx="2" fill="#ffc45a" fill-opacity="0.45"/>
+  <rect x="560" y="292" width="30" height="8" rx="2" fill="#ffc45a" fill-opacity="0.3"/>
+</svg>

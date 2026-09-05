@@ -34,15 +34,22 @@ export const siteConfig = {
   logo: "/brand/logo.png",
   ogImage: "/og-default.svg",
   author: "1XROLL Editorial Team",
-  gameCountClaim: "1187+",
+  gameCountClaim: "47",
 } as const;
 
+/**
+ * Brand-site CTA destinations.
+ * Login / Register first open orientation hubs on this site; hubs CTA to the live platform.
+ * `platform*` URLs are the only places that deep-link account actions.
+ */
 export const ctaConfig = {
   login: {
+    path: "/login" as const,
     href: platformUrl("/"),
     external: true,
   },
   register: {
+    path: "/register" as const,
     href: platformUrl("/"),
     external: true,
   },

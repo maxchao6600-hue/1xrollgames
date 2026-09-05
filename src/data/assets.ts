@@ -92,9 +92,8 @@ export const CATEGORY_ASSETS: Record<
     objectPosition: "22% 48%",
   },
   "hash-roulette": {
-    imageSlug: "lightning-roulette",
-    image: "/games/lightning-roulette.webp",
-    objectPosition: "32% 68%",
+    image: "/categories/hash-roulette.svg",
+    objectPosition: "center center",
   },
   "hash-games": {
     image: "/categories/hash-games.svg",
@@ -120,9 +119,8 @@ export const CATEGORY_ASSETS: Record<
     objectPosition: "center center",
   },
   "chess-card": {
-    imageSlug: "bac-bo",
-    image: "/games/bac-bo.webp",
-    objectPosition: "center 45%",
+    image: "/categories/chess-card.svg",
+    objectPosition: "center center",
   },
   lottery: {
     image: "/categories/lottery.svg",
@@ -133,7 +131,7 @@ export const CATEGORY_ASSETS: Record<
 export const REWARD_ASSETS: Record<string, string> = {
   "activity-center": "/promotions/jackpot.webp",
   "rewards-center": "/promotions/welcome.webp",
-  rebates: "/promotions/vip.webp",
+  rebates: "/categories/rebates.svg",
   "vip-club": "/promotions/vip.webp",
   promotions: "/promotions/welcome.webp",
 };
