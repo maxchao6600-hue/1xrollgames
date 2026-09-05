@@ -16,6 +16,13 @@
 # next.js
 /.next/
 /out/
+.open-next
+
+# Cloudflare
+.wrangler
+.dev.vars
+cf-*.json
+_cf_inspect
 
 # production
 /build
