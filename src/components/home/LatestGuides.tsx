@@ -18,8 +18,8 @@ export function LatestGuides({
     <Section className="bg-[rgba(14,18,24,0.45)]">
       <Container>
         <SectionHeader
-          title={t(dict, "home.latestTitle")}
-          description={t(dict, "home.latestSubtitle")}
+          title={t(dict, "home.guidesTitle")}
+          description={t(dict, "home.guidesSubtitle")}
           action={
             <Button href={localePath(locale, "/guides")} variant="outline">
               {t(dict, "common.browseGuides")}

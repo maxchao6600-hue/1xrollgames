@@ -485,7 +485,7 @@ export const guides: Guide[] = [
       zh: "Gates of Olympus 攻略：倍数、消除与 Pragmatic 节奏",
     },
     excerpt: {
-      en: "An 1XROLL original on Gates of Olympus’ spectacle-driven loop, what to watch in multiplier moments, and how it pairs thematically with Starlight Princess.",
+      en: "A 1XROLL original on Gates of Olympus’ spectacle-driven loop, what to watch in multiplier moments, and how it pairs thematically with Starlight Princess.",
       zh: "1XROLL 原创：Gates of Olympus 的场面驱动循环、倍数时刻该看什么，以及它如何与 Starlight Princess 在主题上呼应。",
     },
     content: [

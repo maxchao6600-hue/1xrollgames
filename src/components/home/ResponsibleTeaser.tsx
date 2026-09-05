@@ -12,7 +12,7 @@ export function ResponsibleTeaser({ locale }: { locale: Locale }) {
   return (
     <Section>
       <Container>
-        <div className="rounded-[1.5rem] border border-border bg-gradient-to-br from-[rgba(34,224,208,0.08)] to-[rgba(124,106,239,0.06)] p-8 md:p-10">
+        <div className="rounded-[1.25rem] border border-border bg-gradient-to-br from-[rgba(255,196,90,0.1)] to-[rgba(45,212,191,0.06)] p-8 md:p-10">
           <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
             <div>
               <h2 className="font-[family-name:var(--font-display)] text-3xl text-text">
