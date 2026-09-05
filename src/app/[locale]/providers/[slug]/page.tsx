@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
@@ -94,12 +95,25 @@ export default async function ProviderDetailPage({
         />
 
         <div className="mb-8 flex items-center gap-4">
-          <div
-            className="grid h-16 w-16 place-items-center rounded-2xl text-lg font-bold text-white"
-            style={{ background: provider.logoColor }}
-            aria-hidden
-          >
-            {provider.name.slice(0, 2).toUpperCase()}
+          <div className="relative grid h-16 w-16 place-items-center overflow-hidden rounded-2xl border border-border bg-bg-elevated p-2">
+            {provider.logo ? (
+              <Image
+                src={provider.logo}
+                alt={`${provider.name} logo`}
+                width={56}
+                height={56}
+                className="h-full w-full object-contain"
+                priority
+              />
+            ) : (
+              <span
+                className="grid h-full w-full place-items-center text-lg font-bold text-white"
+                style={{ background: provider.logoColor }}
+                aria-hidden
+              >
+                {provider.name.slice(0, 2).toUpperCase()}
+              </span>
+            )}
           </div>
           <div>
             <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
@@ -107,6 +121,11 @@ export default async function ProviderDetailPage({
             </h1>
             <p className="mt-1 text-sm text-text-muted">
               {localize(provider.shortDescription, locale)}
+            </p>
+            <p className="mt-2 text-xs text-text-muted">
+              {locale === "zh"
+                ? `${list.length} 款已收录游戏`
+                : `${list.length} catalogue games`}
             </p>
           </div>
         </div>
@@ -161,6 +180,20 @@ export default async function ProviderDetailPage({
             </ul>
           </div>
         ) : null}
+
+        <p className="mt-10 text-sm text-text-muted">
+          <Link href={localePath(locale, "/games")} className="text-accent hover:underline">
+            {t(dict, "nav.games")}
+          </Link>
+          {" · "}
+          <Link href={localePath(locale, "/guides")} className="text-accent hover:underline">
+            {t(dict, "nav.guides")}
+          </Link>
+          {" · "}
+          <Link href={localePath(locale, "/providers")} className="text-accent hover:underline">
+            {t(dict, "providers.hubTitle")}
+          </Link>
+        </p>
       </Container>
     </Section>
   );

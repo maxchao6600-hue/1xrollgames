@@ -113,9 +113,6 @@ export default async function GameDetailPage({
               categoryLabel={
                 category ? localize(category.name, locale) : game.category
               }
-              unavailableLabel={
-                locale === "zh" ? "暂无预览图" : "Preview unavailable"
-              }
               className="aspect-[3/4] w-full"
               priority
             />

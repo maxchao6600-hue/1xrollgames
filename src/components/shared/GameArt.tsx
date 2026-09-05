@@ -9,7 +9,6 @@ export function GameArt({
   alt,
   providerName,
   categoryLabel,
-  unavailableLabel,
   className,
   priority = false,
 }: {
@@ -19,7 +18,6 @@ export function GameArt({
   alt?: string;
   providerName?: string;
   categoryLabel?: string;
-  unavailableLabel?: string;
   className?: string;
   priority?: boolean;
 }) {
@@ -45,42 +43,44 @@ export function GameArt({
         <div
           className="absolute inset-0 flex flex-col justify-between p-3.5 sm:p-4"
           style={{
-            background: `linear-gradient(160deg, ${gradient[0]}33 0%, #0a1018 42%, ${gradient[1]}22 100%)`,
+            background: `linear-gradient(165deg, ${gradient[0]}40 0%, #070d14 38%, ${gradient[1]}28 100%)`,
           }}
+          role="img"
+          aria-label={resolvedAlt}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-40"
+            className="pointer-events-none absolute inset-0"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 28% 18%, rgba(255,255,255,0.16), transparent 42%), radial-gradient(circle at 80% 78%, rgba(45,212,191,0.12), transparent 45%)",
+                "radial-gradient(circle at 26% 16%, rgba(255,255,255,0.14), transparent 40%), radial-gradient(circle at 82% 78%, rgba(45,212,191,0.14), transparent 46%), linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.35))",
             }}
           />
           <div className="relative flex items-start justify-between gap-2">
-            <div className="relative h-8 w-8 overflow-hidden rounded-lg border border-white/15 bg-black/25 p-1">
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/15 bg-black/30 p-1 shadow-sm">
               <Image
                 src={BRAND_ASSETS.logo}
                 alt=""
                 fill
                 className="object-contain"
-                sizes="32px"
+                sizes="36px"
               />
             </div>
             {categoryLabel ? (
-              <span className="rounded-md border border-white/10 bg-black/35 px-2 py-0.5 text-[0.65rem] text-white/70">
+              <span className="rounded-md border border-white/10 bg-black/40 px-2 py-0.5 text-[0.65rem] font-medium text-white/75">
                 {categoryLabel}
               </span>
             ) : null}
           </div>
-          <div className="relative space-y-1">
-            <p className="line-clamp-2 text-sm font-semibold leading-snug text-white">
+          <div className="relative space-y-1.5">
+            <p className="line-clamp-2 text-[0.95rem] font-semibold leading-snug text-white">
               {name}
             </p>
             {providerName ? (
-              <p className="text-[0.7rem] text-white/55">{providerName}</p>
+              <p className="text-xs text-white/60">{providerName}</p>
             ) : null}
-            <p className="text-[0.65rem] tracking-wide text-white/35 uppercase">
-              {unavailableLabel ?? "Preview unavailable"}
+            <p className="text-[0.65rem] font-medium tracking-[0.14em] text-accent/80 uppercase">
+              1XROLL
             </p>
           </div>
         </div>

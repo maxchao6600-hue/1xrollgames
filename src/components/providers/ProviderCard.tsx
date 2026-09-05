@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Locale, Provider } from "@/types/content";
 import { getDictionary, t } from "@/lib/i18n";
-import { providerPath } from "@/lib/paths";
+import { providerPath, localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
 import { getGamesByProvider } from "@/data";
 import { providerLogoAlt } from "@/data/assets";
@@ -15,24 +15,26 @@ export function ProviderCard({
   locale: Locale;
 }) {
   const dict = getDictionary(locale);
-  const count = getGamesByProvider(provider.slug).length;
+  const games = getGamesByProvider(provider.slug);
+  const count = games.length;
+  const featured = games.filter((g) => g.image).slice(0, 3);
   const href = providerPath(locale, provider.slug);
 
   return (
-    <article className="min-w-0 w-full rounded-[1.35rem] border border-border bg-bg-surface p-5 transition duration-250 hover:border-accent/30 hover:bg-bg-surface-2">
+    <article className="flex min-w-0 w-full flex-col rounded-[1.35rem] border border-border bg-bg-surface p-5 transition duration-250 hover:border-accent/30 hover:bg-bg-surface-2">
       <div className="mb-4 flex items-center gap-3">
-        <div className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-2xl border border-border bg-bg-elevated">
+        <div className="relative grid h-14 w-14 place-items-center overflow-hidden rounded-2xl border border-border bg-bg-elevated p-2">
           {provider.logo ? (
             <Image
               src={provider.logo}
               alt={providerLogoAlt(provider.name)}
-              width={40}
-              height={40}
-              className="object-contain p-1"
+              width={48}
+              height={48}
+              className="h-full w-full object-contain"
             />
           ) : (
             <span
-              className="text-sm font-bold text-white"
+              className="grid h-full w-full place-items-center text-sm font-bold text-white"
               style={{ background: provider.logoColor }}
               aria-hidden
             >
@@ -41,15 +43,29 @@ export function ProviderCard({
           )}
         </div>
         <div>
-          <h3 className="text-base font-medium text-text">{provider.name}</h3>
+          <h2 className="text-base font-medium text-text">{provider.name}</h2>
           <p className="text-xs text-text-muted">
-            {locale === "zh" ? `${count} 款游戏` : `${count} games`}
+            {locale === "zh" ? `${count} 款已收录游戏` : `${count} catalogue games`}
           </p>
         </div>
       </div>
-      <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-text-muted">
+      <p className="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-text-muted">
         {localize(provider.shortDescription, locale)}
       </p>
+      {featured.length ? (
+        <ul className="mb-4 space-y-1.5 border-t border-border/70 pt-3">
+          {featured.map((game) => (
+            <li key={game.id} className="text-xs text-text-muted">
+              <Link
+                href={localePath(locale, `/games/${game.category}/${game.slug}`)}
+                className="hover:text-accent"
+              >
+                {game.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <Link
         href={href}
         className="text-sm font-medium text-accent transition hover:brightness-110"

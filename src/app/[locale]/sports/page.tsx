@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getEcosystemHub } from "@/data";
+import { getEcosystemHub, getFaqByGroup } from "@/data";
 import { isLocale } from "@/lib/i18n";
 import { EcosystemHubView, ecosystemMetadata } from "@/components/ecosystem/EcosystemHubView";
 
@@ -33,6 +33,8 @@ export default async function Page({
       locale={raw}
       hub={hub}
       path={PATH}
+      categoryId="sports"
+      faqItems={getFaqByGroup("games").slice(0, 4)}
     />
   );
 }

@@ -13,7 +13,7 @@ function platformUrl(path = "/") {
 export const siteConfig = {
   name: "1XROLL",
   shortName: "1XROLL",
-  legalName: "1XROLL Malaysia",
+  legalName: "1XROLL",
   tagline: {
     en: "Your next game starts here",
     zh: "你的下一款游戏，从这里开始",

@@ -48,9 +48,6 @@ export function GameCard({
                 alt={alt}
                 providerName={providerName}
                 categoryLabel={categoryLabel}
-                unavailableLabel={
-                  locale === "zh" ? "暂无预览图" : "Preview unavailable"
-                }
                 priority={priority}
               />
             </div>

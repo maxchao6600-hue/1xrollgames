@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
-import { providers } from "@/data/providers";
+import { getAllProviders } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/utils";
@@ -63,7 +63,7 @@ export default async function ProvidersPage({
           {t(dict, "providers.hubSubtitle")}
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {providers.map((p) => (
+          {getAllProviders().map((p) => (
             <ProviderCard key={p.id} provider={p} locale={locale} />
           ))}
         </div>

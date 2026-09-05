@@ -494,26 +494,45 @@ export const ecosystemHubs: EcosystemHub[] = [
       zh: "Android、手机网页与桌面访问指引。",
     },
     intro: {
-      en: "Access 1XROLL through mobile web, desktop browser, or Android APK guidance using official assets on this page. iOS users typically continue via mobile browser or platform instructions after login.",
-      zh: "可通过手机网页、桌面浏览器，或本页官方资源提供的 Android APK 指引访问 1XROLL。iOS 用户通常在登录后通过手机浏览器或平台说明继续。",
+      en: "Access 1XROLL through mobile web, desktop browser, or Android download guidance using the QR and screenshot assets on this page. iOS users typically continue via mobile browser or platform instructions after login. Download packages should only come from official 1XROLL paths.",
+      zh: "可通过手机网页、桌面浏览器，或本页二维码与截图资源提供的 Android 下载指引访问 1XROLL。iOS 用户通常在登录后通过手机浏览器或平台说明继续。安装包仅应从官方 1XROLL 路径获取。",
     },
     sections: [
       {
         type: "h2",
-        text: { en: "What you get", zh: "你可以获得" },
+        text: { en: "Supported access paths", zh: "支持的访问路径" },
       },
       {
         type: "ul",
         items: {
           en: [
-            "Official QR and app screenshot assets for orientation",
-            "CTA into the platform for the latest install package",
-            "Reminder to download only from official 1XROLL paths",
+            "Mobile web and desktop browser access to the 1XROLL platform",
+            "Android download guidance via official QR / platform CTA when offered",
+            "iOS: continue with mobile browser or platform instructions — no invented App Store claim on this page",
           ],
           zh: [
-            "用于导览的官方二维码与应用截图资源",
-            "进入平台获取最新安装包的 CTA",
-            "提醒仅从官方 1XROLL 路径下载",
+            "通过手机网页与桌面浏览器访问 1XROLL 平台",
+            "在提供时，通过官方二维码 / 平台 CTA 获取 Android 下载指引",
+            "iOS：以手机浏览器或平台说明继续——本页不编造 App Store 上架宣称",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "What the assets on this page are for", zh: "本页资源用途" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "QR and screenshot assets help you recognise official orientation materials",
+            "CTAs route you to the platform for the latest install package when available",
+            "Never install APKs from unofficial mirrors or messaging links",
+          ],
+          zh: [
+            "二维码与截图帮助你识别官方导览材料",
+            "CTA 在可用时将你带到平台获取最新安装包",
+            "切勿从非官方镜像或聊天链接安装 APK",
           ],
         },
       },
@@ -522,6 +541,7 @@ export const ecosystemHubs: EcosystemHub[] = [
       { href: "/beginner-guide", label: { en: "Beginner Guide", zh: "新手指南" } },
       { href: "/register", label: { en: "Register", zh: "注册" } },
       { href: "/login", label: { en: "Login", zh: "登录" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
     ],
   },
   {
@@ -653,6 +673,189 @@ export const ecosystemHubs: EcosystemHub[] = [
     ],
   },
   {
+    id: "hash-roulette",
+    slug: "hash-roulette",
+    title: { en: "Hash Roulette", zh: "哈希轮盘" },
+    summary: {
+      en: "Hash roulette orientation — platform lobby titles, not an invented catalogue.",
+      zh: "哈希轮盘导览——平台大厅作品，而非虚构目录。",
+    },
+    intro: {
+      en: "Hash Roulette is a transparency-oriented roulette lane on the 1XROLL platform. This brand site explains the category and connects Fair Play, related games and platform access. Individual lobby titles open after login — we do not invent a local game list or artwork.",
+      zh: "哈希轮盘是 1XROLL 平台上偏透明取向的轮盘通道。本品牌站说明类别，并连接公平游戏、相关游戏与平台入口。具体大厅作品需登录后查看——我们不虚构本地游戏列表或美术。",
+    },
+    sections: [
+      {
+        type: "h2",
+        text: { en: "What Hash Roulette means on 1XROLL", zh: "哈希轮盘在 1XROLL 意味着什么" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "The lane sits beside live casino roulette and hash-style short formats. Brand pages describe the idea of hash-inspired transparency language without fabricating cryptographic audits or unverifiable on-chain guarantees.",
+          zh: "该通道与真人轮盘、哈希短格式并列。品牌页说明哈希灵感透明度表述，但不编造密码学审计或无法核实的链上保证。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "How platform access works", zh: "平台入口如何运作" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Browse this hub for orientation and related ecosystem links",
+            "Use Open platform / Register / Login to reach the live lobby",
+            "Confirm current titles, rules and presentation inside the platform",
+          ],
+          zh: [
+            "在本中心获取导览与相关生态链接",
+            "使用打开平台 / 注册 / 登录进入实时大厅",
+            "在平台内确认当前作品、规则与呈现",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Fair Play connection", zh: "与公平游戏的关系" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Read Fair Play for how 1XROLL talks about transparency concepts. Hash language never replaces personal limits — continue to Responsible Gaming.",
+          zh: "请阅读公平游戏，了解 1XROLL 如何谈论透明度概念。哈希表述不能替代个人限额——请继续阅读理性游戏。",
+        },
+      },
+    ],
+    relatedHrefs: [
+      { href: "/games/hash-games", label: { en: "Hash Games", zh: "哈希游戏" } },
+      { href: "/games/live-casino", label: { en: "Live Casino", zh: "真人赌场" } },
+      { href: "/fair-play", label: { en: "Fair Play", zh: "公平游戏" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/guides", label: { en: "Guides", zh: "攻略" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/register", label: { en: "Register", zh: "注册" } },
+    ],
+  },
+  {
+    id: "hash-games",
+    slug: "hash-games",
+    title: { en: "Hash Games", zh: "哈希游戏" },
+    summary: {
+      en: "Hash entertainment formats on the platform — orientation without invented titles.",
+      zh: "平台上的哈希娱乐玩法——导览而不虚构作品。",
+    },
+    intro: {
+      en: "Hash Games cover blockchain-inspired short formats on the 1XROLL platform. This hub describes the lane, links Fair Play and related categories, and routes you to platform access. Catalogue detail pages are not invented here.",
+      zh: "哈希游戏涵盖 1XROLL 平台上偏区块链灵感的短格式玩法。本页说明通道、链接公平游戏与相关分类，并导向平台入口。此处不虚构作品详情页。",
+    },
+    sections: [
+      {
+        type: "h2",
+        text: { en: "Overview", zh: "概览" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Expect short decision loops and lobby presentation that sits near crypto/fast lanes. Exact titles change on the platform — this site stays educational.",
+          zh: "可预期短决策循环，以及靠近加密/快速通道的大厅呈现。确切作品以平台为准——本站保持教育向。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "How it works on this brand site", zh: "在本品牌站如何运作" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Read category orientation and Fair Play notes",
+            "Jump to related catalogue lanes (crypto, fast, live) when useful",
+            "Open the platform for the live hash lobby",
+          ],
+          zh: [
+            "阅读分类导览与公平游戏说明",
+            "需要时跳转到相关目录通道（加密、快速、真人）",
+            "打开平台进入实时哈希大厅",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Responsible play", zh: "理性游玩" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Short formats can encourage rapid re-entry. Set a session clock before you open the lobby.",
+          zh: "短格式容易促使快速再进入。打开大厅前先设定会话时钟。",
+        },
+      },
+    ],
+    relatedHrefs: [
+      { href: "/games/hash-roulette", label: { en: "Hash Roulette", zh: "哈希轮盘" } },
+      { href: "/games/crypto-games", label: { en: "Crypto Games", zh: "加密游戏" } },
+      { href: "/games/fast-games", label: { en: "Fast Games", zh: "快速游戏" } },
+      { href: "/fair-play", label: { en: "Fair Play", zh: "公平游戏" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/register", label: { en: "Register", zh: "注册" } },
+    ],
+  },
+  {
+    id: "chess-card",
+    slug: "chess-card",
+    title: { en: "Chess & Card", zh: "棋牌" },
+    summary: {
+      en: "Card and table-style entertainment — platform lobby orientation.",
+      zh: "棋牌与桌台风格娱乐——平台大厅导览。",
+    },
+    intro: {
+      en: "Chess & Card covers platform card and table formats. This hub explains the lane and links related live/table experiences. Specific lobby titles open on the 1XROLL platform after login — we do not invent a local inventory.",
+      zh: "棋牌涵盖平台卡牌与桌台玩法。本页说明通道并链接相关真人/桌台体验。具体大厅作品需登录 1XROLL 平台后查看——我们不虚构本地库存。",
+    },
+    sections: [
+      {
+        type: "h2",
+        text: { en: "What this lane covers", zh: "本通道涵盖什么" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Card and table-style entertainment available in the platform lobby",
+            "Adjacent discovery via Live Casino catalogue titles on this brand site",
+            "Responsible pacing tips for longer table sessions",
+          ],
+          zh: [
+            "平台大厅中的棋牌与桌台风格娱乐",
+            "可通过本站真人赌场目录作品做相邻发现",
+            "面向较长桌台会话的理性节奏提示",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Platform access", zh: "平台入口" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Use Open platform, Register or Login to reach live chess/card products. Brand pages remain informational.",
+          zh: "使用打开平台、注册或登录进入实时棋牌产品。品牌页保持信息向。",
+        },
+      },
+    ],
+    relatedHrefs: [
+      { href: "/games/live-casino", label: { en: "Live Casino", zh: "真人赌场" } },
+      { href: "/games", label: { en: "Games hub", zh: "游戏中心" } },
+      { href: "/guides/live-casino-basics", label: { en: "Live Casino Basics", zh: "真人娱乐场基础" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/register", label: { en: "Register", zh: "注册" } },
+    ],
+  },
+  {
     id: "sports",
     slug: "sports",
     title: { en: "Sports", zh: "体育" },
@@ -661,25 +864,73 @@ export const ecosystemHubs: EcosystemHub[] = [
       zh: "体育娱乐概览——本品牌站不提供实时赔率。",
     },
     intro: {
-      en: "Sports is part of the 1XROLL platform ecosystem. This page orients you to the lane and links to platform access. We do not publish fixtures, odds or invented match results.",
-      zh: "体育属于 1XROLL 平台生态。本页提供通道导览并链接平台入口。我们不发布赛程、赔率或虚构比赛结果。",
+      en: "Sports is part of the 1XROLL platform ecosystem. This page orients you to the lane and links to platform access. We do not publish fixtures, odds, scores or invented match results.",
+      zh: "体育属于 1XROLL 平台生态。本页提供通道导览并链接平台入口。我们不发布赛程、赔率、比分或虚构比赛结果。",
     },
     sections: [
       {
         type: "h2",
-        text: { en: "How to continue", zh: "如何继续" },
+        text: { en: "Sports overview", zh: "体育概览" },
       },
       {
         type: "p",
         text: {
-          en: "Open the 1XROLL platform after login to browse live sports products. Return here for ecosystem context and responsible-play reminders.",
-          zh: "登录后打开 1XROLL 平台浏览实时体育产品。回到本站获取生态上下文与理性游戏提醒。",
+          en: "On 1XROLL, sports entertainment is delivered inside the live platform lobby after login. This brand site explains the lane, connects related ecosystem pages, and keeps discovery honest — without pretending we have a local fixtures feed.",
+          zh: "在 1XROLL，体育娱乐在登录后的实时平台大厅中提供。本品牌站说明通道、连接相关生态页面，并保持发现诚实——不会假装我们有本地赛程源。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "What you can explore here", zh: "你可以在这里探索什么" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "How sports fits beside slots, live casino, crypto and fast games",
+            "Platform access via Register / Login / Open platform",
+            "Responsible Gaming and Fair Play context before you participate",
+            "Related guides and FAQ answers that stay free of fake odds",
+          ],
+          zh: [
+            "体育如何与老虎机、真人、加密与快速游戏并列",
+            "通过注册 / 登录 / 打开平台进入",
+            "参与前的理性游戏与公平游戏上下文",
+            "不含虚假赔率的相关攻略与常见问题",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "How platform access works", zh: "平台入口如何运作" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Open the 1XROLL platform after login to browse live sports products. Brand pages stay informational; markets and settlement tools live on the platform only.",
+          zh: "登录后打开 1XROLL 平台浏览实时体育产品。品牌页保持信息向；盘口与结算工具仅存在于平台。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Responsible participation", zh: "理性参与" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Sports entertainment can feel continuous. Set time and spend limits before you open the lobby, and return to Responsible Gaming whenever you need a reset.",
+          zh: "体育娱乐容易感觉“一直在进行”。打开大厅前先设定时间与花费限额，需要重置时请回到理性游戏页。",
         },
       },
     ],
     relatedHrefs: [
-      { href: "/games", label: { en: "Games", zh: "游戏" } },
+      { href: "/games", label: { en: "Games hub", zh: "游戏中心" } },
+      { href: "/games/live-casino", label: { en: "Live Casino", zh: "真人赌场" } },
+      { href: "/games/crypto-games", label: { en: "Crypto Games", zh: "加密游戏" } },
       { href: "/fair-play", label: { en: "Fair Play", zh: "公平游戏" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/guides", label: { en: "Guides", zh: "攻略" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
       { href: "/register", label: { en: "Register", zh: "注册" } },
     ],
   },
@@ -692,10 +943,40 @@ export const ecosystemHubs: EcosystemHub[] = [
       zh: "彩票娱乐概览，不含虚构开奖数据。",
     },
     intro: {
-      en: "Lottery products live on the 1XROLL platform lobby. This hub explains the category for discovery SEO and user orientation — never inventing draw results or jackpot promises.",
-      zh: "彩票产品位于 1XROLL 平台大厅。本中心为发现与导览说明类别——绝不编造开奖结果或头奖承诺。",
+      en: "Lottery products live on the 1XROLL platform lobby. This hub explains the category for orientation — never inventing draw results, numbers, jackpots or live odds.",
+      zh: "彩票产品位于 1XROLL 平台大厅。本中心为导览说明类别——绝不编造开奖结果、号码、头奖或实时赔率。",
     },
     sections: [
+      {
+        type: "h2",
+        text: { en: "Lottery lane overview", zh: "彩票通道概览" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Lottery-style entertainment sits alongside other 1XROLL ecosystem lanes. Use this page to understand the category and reach the platform — not as a results board.",
+          zh: "彩票风格娱乐与其他 1XROLL 生态通道并列。用本页理解类别并进入平台——而不是把它当作开奖看板。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "What we publish vs what we do not", zh: "我们发布什么、不发布什么" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Publish: category orientation, platform CTAs, responsible-play links",
+            "Do not publish: draw results, winning numbers, jackpot ledgers or odds tables",
+            "Live lottery products and schedules open only inside the platform lobby",
+          ],
+          zh: [
+            "发布：类别导览、平台 CTA、理性游戏链接",
+            "不发布：开奖结果、中奖号码、头奖账本或赔率表",
+            "实时彩票产品与日程仅在平台大厅开放",
+          ],
+        },
+      },
       {
         type: "h2",
         text: { en: "Platform access", zh: "平台入口" },
@@ -703,15 +984,18 @@ export const ecosystemHubs: EcosystemHub[] = [
       {
         type: "p",
         text: {
-          en: "Use Register or Login to reach the live lottery lobby. Pair with Responsible Gaming before you participate.",
-          zh: "使用注册或登录进入实时彩票大厅。参与前请结合理性游戏。",
+          en: "Use Register or Login to reach the live lottery lobby. Pair with Responsible Gaming and Fair Play before you participate.",
+          zh: "使用注册或登录进入实时彩票大厅。参与前请结合理性游戏与公平游戏。",
         },
       },
     ],
     relatedHrefs: [
-      { href: "/games", label: { en: "Games", zh: "游戏" } },
-      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/games", label: { en: "Games hub", zh: "游戏中心" } },
+      { href: "/games/hash-games", label: { en: "Hash Games", zh: "哈希游戏" } },
       { href: "/fair-play", label: { en: "Fair Play", zh: "公平游戏" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/register", label: { en: "Register", zh: "注册" } },
     ],
   },
 ];
