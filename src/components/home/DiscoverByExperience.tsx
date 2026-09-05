@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
-import { categories, categoryPath } from "@/data/categories";
-import { CATEGORY_ASSETS } from "@/data/assets";
-import { getGamesByCategory, getGameBySlug } from "@/data";
+import {
+  ecosystemEyebrowLabel,
+  ecosystemMetricLabel,
+  getHomeEcosystemCategories,
+} from "@/data/home-ecosystem";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
@@ -11,79 +13,68 @@ import { Container, Section, SectionHeader } from "@/components/ui/Container";
 
 export function DiscoverByExperience({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
+  const lanes = getHomeEcosystemCategories();
 
   return (
     <Section>
       <Container>
         <SectionHeader
+          eyebrow={locale === "zh" ? "娱乐通道" : "Entertainment lanes"}
           title={t(dict, "home.categoriesTitle")}
           description={t(dict, "home.categoriesSubtitle")}
         />
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {categories.map((cat, index) => {
-            const asset = CATEGORY_ASSETS[cat.id];
-            const rep = asset?.imageSlug ? getGameBySlug(asset.imageSlug) : undefined;
-            const count = getGamesByCategory(cat.id).length;
-            const large = index < 2;
+        <div className="grid gap-4 sm:grid-cols-2">
+          {lanes.map((cat) => (
+            <Link
+              key={cat.id}
+              href={localePath(locale, cat.href)}
+              className="group relative block aspect-[16/9] overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface shadow-[0_12px_40px_rgba(0,0,0,0.28)] transition duration-300 hover:border-accent/45 md:aspect-[16/7]"
+            >
+              {/* Bounded image viewport — card owns dimensions; image never escapes */}
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src={cat.image}
+                  alt={`${localize(cat.name, locale)} on 1XROLL`}
+                  fill
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
+                  style={{ objectPosition: cat.objectPosition }}
+                />
+              </div>
 
-            return (
-              <Link
-                key={cat.id}
-                href={localePath(locale, categoryPath(cat.id))}
-                className={`group relative overflow-hidden rounded-[1.25rem] border border-border bg-bg-surface transition hover:border-accent/40 ${
-                  large
-                    ? "min-h-[14rem] sm:col-span-2 lg:col-span-3 lg:min-h-[16rem]"
-                    : "min-h-[12rem] lg:col-span-2"
-                }`}
-              >
-                {asset?.image ? (
-                  <Image
-                    src={asset.image}
-                    alt={
-                      rep
-                        ? `${localize(cat.name, locale)} — ${rep.name} on 1XROLL`
-                        : localize(cat.name, locale)
-                    }
-                    fill
-                    className="object-cover transition duration-300 group-hover:scale-[1.03]"
-                    sizes={large ? "(max-width:768px) 100vw, 60vw" : "(max-width:768px) 100vw, 40vw"}
-                  />
-                ) : null}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-                <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
-                  <p className="text-[0.65rem] tracking-[0.16em] text-accent uppercase">
-                    {cat.inventoryMode === "hub"
-                      ? locale === "zh"
-                        ? "平台通道"
-                        : "Platform lane"
-                      : locale === "zh"
-                        ? "目录"
-                        : "Catalogue"}
-                  </p>
-                  <h3 className="mt-1.5 font-[family-name:var(--font-display)] text-xl text-white md:text-2xl">
-                    {localize(cat.name, locale)}
-                  </h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-white/75">
-                    {localize(cat.shortDescription, locale)}
-                  </p>
-                  <div className="mt-3 flex items-center justify-between gap-3 text-sm">
-                    <span className="text-white/60">
-                      {cat.inventoryMode === "hub"
-                        ? locale === "zh"
-                          ? "导览中心"
-                          : "Orientation hub"
-                        : locale === "zh"
-                          ? `${count} 款游戏`
-                          : `${count} games`}
-                    </span>
-                    <span className="font-medium text-accent">
-                      {t(dict, "common.explore")} →
-                    </span>
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-transparent"
+              />
+
+              <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6">
+                <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+                  {ecosystemEyebrowLabel(cat.eyebrow, locale)}
+                </p>
+
+                <div className="flex items-end justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl text-white md:text-2xl">
+                      {localize(cat.name, locale)}
+                    </h3>
+                    <p className="mt-1.5 line-clamp-2 max-w-md text-sm leading-relaxed text-white/75">
+                      {localize(cat.description, locale)}
+                    </p>
+                    <p className="mt-3 text-xs font-medium text-white/55">
+                      {ecosystemMetricLabel(cat, locale)}
+                    </p>
                   </div>
+                  <span className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-sm font-medium text-accent backdrop-blur-sm transition group-hover:border-accent/40 group-hover:bg-accent/10">
+                    {t(dict, "common.explore")} →
+                  </span>
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          ))}
         </div>
       </Container>
     </Section>

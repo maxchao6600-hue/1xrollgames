@@ -33,8 +33,8 @@ export function Header({ locale }: { locale: Locale }) {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-[#0a1018]/95 backdrop-blur-xl">
-      <div className="container-page flex h-[4.25rem] items-center justify-between gap-3">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-[#0a1018]/92 backdrop-blur-xl">
+      <div className="container-page flex h-16 items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-6">
           <Link
             href={localePath(locale, "/")}

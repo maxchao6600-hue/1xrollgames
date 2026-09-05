@@ -16,6 +16,7 @@ export function HomePromotions({ locale }: { locale: Locale }) {
     <Section>
       <Container>
         <SectionHeader
+          eyebrow={locale === "zh" ? "活动" : "Campaigns"}
           title={t(dict, "home.promotionsTitle")}
           description={t(dict, "home.promotionsSubtitle")}
           action={
@@ -28,10 +29,10 @@ export function HomePromotions({ locale }: { locale: Locale }) {
           {promotions.map((promo) => (
             <article
               key={promo.id}
-              className="overflow-hidden rounded-2xl border border-border bg-bg-surface"
+              className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface transition hover:border-accent/35"
             >
               {promo.image ? (
-                <div className="relative aspect-[16/9]">
+                <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
                     src={promo.image}
                     alt={localize(promo.title, locale)}
@@ -42,7 +43,10 @@ export function HomePromotions({ locale }: { locale: Locale }) {
                 </div>
               ) : null}
               <div className="space-y-3 p-5">
-                <h3 className="text-lg font-medium text-text">
+                <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-accent uppercase">
+                  {locale === "zh" ? "当前活动" : "Current offer"}
+                </p>
+                <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
                   {localize(promo.title, locale)}
                 </h3>
                 <p className="text-sm leading-relaxed text-text-muted">

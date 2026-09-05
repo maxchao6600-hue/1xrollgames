@@ -13,6 +13,7 @@ export function ProviderDiscovery({ locale }: { locale: Locale }) {
     <Section className="bg-[rgba(14,18,24,0.45)]">
       <Container>
         <SectionHeader
+          eyebrow={locale === "zh" ? "工作室" : "Studios"}
           title={t(dict, "home.providersTitle")}
           description={t(dict, "home.providersSubtitle")}
           action={
@@ -21,7 +22,7 @@ export function ProviderDiscovery({ locale }: { locale: Locale }) {
             </Button>
           }
         />
-        <div className="rail-scroll md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-4 md:overflow-visible">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {providers.map((provider) => (
             <ProviderCard key={provider.id} provider={provider} locale={locale} />
           ))}

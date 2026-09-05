@@ -26,6 +26,11 @@ export {
   getEcosystemHub,
 } from "@/data/ecosystem";
 export {
+  getHomeEcosystemCategories,
+  ecosystemMetricLabel,
+  ecosystemEyebrowLabel,
+} from "@/data/home-ecosystem";
+export {
   getAllGames,
   getGameBySlug,
   getGamesByCategory,

@@ -39,7 +39,7 @@ export function GameCard({
       <Link href={href} className="block focus-visible:rounded-[1rem]">
         <div className="relative overflow-hidden rounded-[1rem] border border-border bg-bg-surface transition duration-250 hover:border-accent/40">
           <div className="overflow-hidden">
-            <div className="transition duration-300 group-hover:scale-[1.04]">
+            <div className="origin-center transition duration-300 group-hover:scale-[1.04]">
               <GameArt
                 name={game.name}
                 gradient={game.imageGradient}

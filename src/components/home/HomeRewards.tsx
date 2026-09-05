@@ -5,24 +5,31 @@ import { rewardTopics } from "@/data/rewards";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
 import { Container, Section, SectionHeader } from "@/components/ui/Container";
 
 export function HomeRewards({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
-    <Section>
+    <Section className="bg-[rgba(14,18,24,0.4)]">
       <Container>
         <SectionHeader
+          eyebrow={locale === "zh" ? "礼遇体系" : "Benefits"}
           title={t(dict, "home.rewardsTitle")}
           description={t(dict, "home.rewardsSubtitle")}
+          action={
+            <Button href={localePath(locale, "/rewards")} variant="secondary">
+              {t(dict, "nav.rewards")}
+            </Button>
+          }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {rewardTopics.map((topic) => (
             <Link
               key={topic.id}
               href={localePath(locale, topic.href)}
-              className="group overflow-hidden rounded-2xl border border-border bg-bg-surface transition hover:border-accent/40"
+              className="group overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface transition hover:border-accent/40"
             >
               {topic.image ? (
                 <div className="relative aspect-[16/9] overflow-hidden">
@@ -39,9 +46,12 @@ export function HomeRewards({ locale }: { locale: Locale }) {
                 <h3 className="font-[family-name:var(--font-display)] text-xl text-text">
                   {localize(topic.title, locale)}
                 </h3>
-                <p className="mt-2 text-sm text-text-muted">
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">
                   {localize(topic.summary, locale)}
                 </p>
+                <span className="mt-4 inline-flex text-sm font-medium text-accent">
+                  {t(dict, "common.explore")} →
+                </span>
               </div>
             </Link>
           ))}

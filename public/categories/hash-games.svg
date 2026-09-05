@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Hash Games">
+  <defs>
+    <linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12081f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <radialGradient id="hg" cx="65%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#hbg)"/>
+  <rect width="800" height="450" fill="url(#hg)"/>
+  <g stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.5" fill="none">
+    <rect x="180" y="120" width="90" height="90" rx="10"/>
+    <rect x="290" y="120" width="90" height="90" rx="10"/>
+    <rect x="400" y="120" width="90" height="90" rx="10"/>
+    <rect x="230" y="230" width="90" height="90" rx="10"/>
+    <rect x="340" y="230" width="90" height="90" rx="10"/>
+    <rect x="450" y="230" width="90" height="90" rx="10"/>
+  </g>
+  <text x="520" y="200" fill="#ffc45a" fill-opacity="0.8" font-family="ui-monospace,monospace" font-size="22">#a7f3</text>
+  <text x="520" y="235" fill="#a78bfa" fill-opacity="0.7" font-family="ui-monospace,monospace" font-size="18">0x91c2</text>
+  <text x="520" y="268" fill="#2dd4bf" fill-opacity="0.55" font-family="ui-monospace,monospace" font-size="16">hash</text>
+</svg>

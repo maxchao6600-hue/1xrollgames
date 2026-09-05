@@ -72,45 +72,61 @@ export const FEATURED_RAIL_SLUGS = [
   "chicken-road",
 ] as const;
 
-/** Category card artwork — catalogue cats use representative game art; hub cats use brand mark */
+/**
+ * Category card artwork — deterministic map (never random / index-based).
+ * Catalogue lanes use representative game art; hub lanes use thematic art or dedicated category panels.
+ * objectPosition tuned for wide 16:7 / 16:9 card crops.
+ */
 export const CATEGORY_ASSETS: Record<
   string,
-  { imageSlug?: string; image: string }
+  { imageSlug?: string; image: string; objectPosition?: string }
 > = {
   slots: {
-    imageSlug: "gates-of-olympus",
-    image: "/games/gates-of-olympus.webp",
+    imageSlug: "sweet-bonanza",
+    image: "/games/sweet-bonanza.webp",
+    objectPosition: "center 28%",
   },
   "live-casino": {
     imageSlug: "crazy-time",
     image: "/games/crazy-time.webp",
+    objectPosition: "18% 42%",
   },
   "hash-roulette": {
-    image: "/brand/logo.png",
+    imageSlug: "lightning-roulette",
+    image: "/games/lightning-roulette.webp",
+    objectPosition: "32% 68%",
   },
   "hash-games": {
-    image: "/brand/logo.png",
+    image: "/categories/hash-games.svg",
+    objectPosition: "center center",
   },
   "crypto-games": {
     imageSlug: "aviator",
     image: "/games/aviator.webp",
+    objectPosition: "center 22%",
   },
   "fast-games": {
     imageSlug: "crash",
     image: "/games/crash.webp",
+    objectPosition: "center 35%",
   },
   fishing: {
     imageSlug: "big-bass-splash",
     image: "/games/big-bass-splash.webp",
+    objectPosition: "center 22%",
   },
   sports: {
-    image: "/brand/logo.png",
+    image: "/categories/sports.svg",
+    objectPosition: "center center",
   },
   "chess-card": {
-    image: "/brand/logo.png",
+    imageSlug: "speed-baccarat-b",
+    image: "/games/speed-baccarat-b.webp",
+    objectPosition: "center 40%",
   },
   lottery: {
-    image: "/brand/logo.png",
+    image: "/categories/lottery.svg",
+    objectPosition: "center center",
   },
 };
 

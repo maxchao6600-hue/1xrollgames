@@ -72,9 +72,9 @@ export default async function HomePage({
       <HomeRewards locale={locale} />
       <ProviderDiscovery locale={locale} />
       <HowItWorks locale={locale} />
+      <HomeVipAgent locale={locale} />
       <HomeMobileApp locale={locale} />
       <LatestGuides locale={locale} guides={guides} />
-      <HomeVipAgent locale={locale} />
       <HomeWallet locale={locale} />
       <WhyPlatform locale={locale} />
       <HomeFaq locale={locale} />

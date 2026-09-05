@@ -19,7 +19,7 @@ export function ProviderCard({
   const href = providerPath(locale, provider.slug);
 
   return (
-    <article className="min-w-[16.5rem] flex-1 rounded-2xl border border-border bg-bg-surface p-5 transition duration-250 hover:border-accent/30 hover:bg-bg-surface-2">
+    <article className="min-w-0 w-full rounded-[1.35rem] border border-border bg-bg-surface p-5 transition duration-250 hover:border-accent/30 hover:bg-bg-surface-2">
       <div className="mb-4 flex items-center gap-3">
         <div className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-2xl border border-border bg-bg-elevated">
           {provider.logo ? (

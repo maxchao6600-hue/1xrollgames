@@ -18,6 +18,7 @@ export function LatestGuides({
     <Section className="bg-[rgba(14,18,24,0.45)]">
       <Container>
         <SectionHeader
+          eyebrow={locale === "zh" ? "入门" : "Onboarding"}
           title={t(dict, "home.guidesTitle")}
           description={t(dict, "home.guidesSubtitle")}
           action={
