@@ -217,7 +217,7 @@ export const games: Game[] = [
     image: "/games/big-bass-bonanza.webp",
     name: "Big Bass Bonanza",
     providerSlug: "pragmatic-play",
-    category: "slots",
+    category: "fishing",
     shortDescription: {
       en: "Fishing-themed slot series entry with character collection energy during free games.",
       zh: "钓鱼主题系列作，免费游戏中带有角色收集张力。"
@@ -344,7 +344,7 @@ export const games: Game[] = [
     image: "/games/aviator.webp",
     name: "Aviator",
     providerSlug: "spribe",
-    category: "fast-games",
+    category: "crypto-games",
     status: "hot",
     shortDescription: {
       en: "Crash-style flight where you exit before the plane flies away—simple, tense, mobile-native.",
@@ -370,7 +370,7 @@ export const games: Game[] = [
     image: "/games/goal.webp",
     name: "Goal",
     providerSlug: "spribe",
-    category: "fast-games",
+    category: "crypto-games",
     shortDescription: {
       en: "Quick football-flavored challenge rounds with immediate win/lose clarity.",
       zh: "足球风味的快速挑战回合，胜负即时清晰。"
@@ -395,7 +395,7 @@ export const games: Game[] = [
     image: "/games/mines.webp",
     name: "Mines",
     providerSlug: "spribe",
-    category: "fast-games",
+    category: "crypto-games",
     status: "new",
     shortDescription: {
       en: "Tile-reveal puzzle where each safe pick raises tension until you cash out or hit a mine.",
@@ -745,7 +745,7 @@ export const games: Game[] = [
     slug: "plinko",
     name: "Plinko",
     providerSlug: "spribe",
-    category: "fast-games",
+    category: "crypto-games",
     shortDescription: {
       en: "Drop-ball instant game with row risk choices and quick resolution.",
       zh: "落球即时游戏，行数风险可选，结算迅速。",

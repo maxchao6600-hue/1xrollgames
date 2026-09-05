@@ -33,11 +33,11 @@ export function HomeHero({ locale }: { locale: Locale }) {
               {t(dict, "common.exploreGames")}
             </Button>
             <Button
-              href={localePath(locale, "/promotions")}
+              href={localePath(locale, "/register")}
               variant="outline"
               size="lg"
             >
-              {t(dict, "common.viewPromotions")}
+              {t(dict, "nav.register")}
             </Button>
           </div>
           <p className="mt-4 text-sm text-text-faint">

@@ -19,8 +19,8 @@ export const siteConfig = {
     zh: "你的下一款游戏，从这里开始",
   },
   description: {
-    en: "1XROLL official brand website variation — explore slots, live casino, fast games, providers, promotions and game guides. Open your account on the 1XROLL platform to play.",
-    zh: "1XROLL 官方品牌网站版本——浏览老虎机、真人娱乐场、快速游戏、厂商、优惠活动与游戏攻略。前往 1XROLL 平台注册并开始游戏。",
+    en: "1XROLL complete digital gaming ecosystem — games, rewards, VIP, agent, guides, wallet orientation and platform access. Official brand website variation.",
+    zh: "1XROLL 完整数字游戏生态——游戏、奖励、VIP、代理、攻略、钱包导览与平台入口。官方品牌网站版本。",
   },
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   platformUrl: platformBase,

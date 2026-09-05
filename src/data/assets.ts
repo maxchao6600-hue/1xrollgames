@@ -72,10 +72,10 @@ export const FEATURED_RAIL_SLUGS = [
   "chicken-road",
 ] as const;
 
-/** Category card artwork = representative game from that category */
+/** Category card artwork — catalogue cats use representative game art; hub cats use brand mark */
 export const CATEGORY_ASSETS: Record<
-  "slots" | "live-casino" | "fast-games" | "fishing",
-  { imageSlug: string; image: string }
+  string,
+  { imageSlug?: string; image: string }
 > = {
   slots: {
     imageSlug: "gates-of-olympus",
@@ -85,14 +85,41 @@ export const CATEGORY_ASSETS: Record<
     imageSlug: "crazy-time",
     image: "/games/crazy-time.webp",
   },
-  "fast-games": {
+  "hash-roulette": {
+    image: "/brand/logo.png",
+  },
+  "hash-games": {
+    image: "/brand/logo.png",
+  },
+  "crypto-games": {
     imageSlug: "aviator",
     image: "/games/aviator.webp",
+  },
+  "fast-games": {
+    imageSlug: "crash",
+    image: "/games/crash.webp",
   },
   fishing: {
     imageSlug: "big-bass-splash",
     image: "/games/big-bass-splash.webp",
   },
+  sports: {
+    image: "/brand/logo.png",
+  },
+  "chess-card": {
+    image: "/brand/logo.png",
+  },
+  lottery: {
+    image: "/brand/logo.png",
+  },
+};
+
+export const REWARD_ASSETS: Record<string, string> = {
+  "activity-center": "/promotions/jackpot.webp",
+  "rewards-center": "/promotions/welcome.webp",
+  rebates: "/promotions/vip.webp",
+  "vip-club": "/promotions/vip.webp",
+  promotions: "/promotions/welcome.webp",
 };
 
 export const PROVIDER_ASSETS: Record<string, string> = {

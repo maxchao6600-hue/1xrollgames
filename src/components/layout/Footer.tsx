@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
 import {
-  footerCompany,
-  footerExplore,
-  footerHelp,
+  footerBrand,
+  footerGames,
+  footerGuidesSupport,
   footerLegal,
+  footerRewards,
 } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n";
@@ -46,8 +47,8 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="border-t border-border bg-bg-elevated">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.3fr_repeat(4,1fr)]">
-        <div>
+      <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="sm:col-span-2 xl:col-span-1">
           <div className="relative mb-4 h-9 w-[8.5rem]">
             <Image
               src={siteConfig.logo}
@@ -60,10 +61,15 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="max-w-sm text-sm leading-relaxed text-text-muted">
             {t(dict, "footer.brandBlurb")}
           </p>
+          <FooterColumn title={t(dict, "footer.company")} items={footerBrand} locale={locale} />
         </div>
-        <FooterColumn title={t(dict, "footer.explore")} items={footerExplore} locale={locale} />
-        <FooterColumn title={t(dict, "footer.company")} items={footerCompany} locale={locale} />
-        <FooterColumn title={t(dict, "footer.help")} items={footerHelp} locale={locale} />
+        <FooterColumn title={t(dict, "footer.games")} items={footerGames} locale={locale} />
+        <FooterColumn title={t(dict, "footer.rewards")} items={footerRewards} locale={locale} />
+        <FooterColumn
+          title={t(dict, "footer.guidesSupport")}
+          items={footerGuidesSupport}
+          locale={locale}
+        />
         <div>
           <FooterColumn title={t(dict, "footer.legal")} items={footerLegal} locale={locale} />
           <div className="mt-6">

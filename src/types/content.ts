@@ -3,8 +3,16 @@ export type Locale = "en" | "zh";
 export type CategoryId =
   | "slots"
   | "live-casino"
+  | "hash-roulette"
+  | "hash-games"
+  | "crypto-games"
   | "fast-games"
-  | "fishing";
+  | "fishing"
+  | "sports"
+  | "chess-card"
+  | "lottery";
+
+export type InventoryMode = "catalogue" | "hub";
 
 export type GameStatus = "new" | "hot" | "featured";
 
@@ -31,6 +39,10 @@ export type Category = {
   shortDescription: LocalizedString;
   description: LocalizedString;
   accent: string;
+  /** catalogue = local game rows; hub = educational page + platform CTA only */
+  inventoryMode: InventoryMode;
+  /** Top-level route outside /games when set (sports, lottery) */
+  routeBase?: "games" | "top";
 };
 
 export type Provider = {
@@ -40,10 +52,8 @@ export type Provider = {
   shortDescription: LocalizedString;
   description: LocalizedString;
   specialties: LocalizedStringArray;
-  /** Number of games in this site's dataset that reference this provider */
   gameCount: number;
   logoColor: string;
-  /** Provider logo path from PROVIDER_ASSETS — never use game artwork */
   logo?: string;
   foundedYear?: number;
   headquarters?: string;
@@ -61,9 +71,7 @@ export type Game = {
   howToPlay: LocalizedString;
   features: LocalizedStringArray;
   imageGradient: [string, string];
-  /** Local path under /public when artwork exists */
   image?: string;
-  /** Only include when verified from a reliable public source — prefer omit */
   rtp?: number;
   volatility?: "low" | "medium" | "high" | "very-high";
 };
@@ -84,19 +92,75 @@ export type Guide = {
   readingTimeMinutes: number;
   author: string;
   coverGradient: [string, string];
-  /** Explicit guide cover from GUIDE_ASSETS */
   coverImage?: string;
 };
 
+export type FaqGroupId =
+  | "general"
+  | "games"
+  | "account"
+  | "deposit"
+  | "withdraw"
+  | "promotions"
+  | "rewards"
+  | "vip"
+  | "agent"
+  | "download"
+  | "mobile"
+  | "responsible";
+
 export type FaqItem = {
   id: string;
+  group: FaqGroupId;
   question: LocalizedString;
   answer: LocalizedString;
+};
+
+export type RewardTopic = {
+  id: string;
+  slug: string;
+  title: LocalizedString;
+  summary: LocalizedString;
+  body: LocalizedString;
+  href: string;
+  image?: string;
+};
+
+export type PaymentMethod = {
+  id: string;
+  name: LocalizedString;
+  kind: "bank" | "ewallet" | "crypto" | "card";
+  summary: LocalizedString;
+};
+
+export type JourneyStep = {
+  id: string;
+  step: number;
+  title: LocalizedString;
+  summary: LocalizedString;
+  href: string;
+};
+
+export type EcosystemHub = {
+  id: string;
+  slug: string;
+  title: LocalizedString;
+  summary: LocalizedString;
+  intro: LocalizedString;
+  sections: ContentBlock[];
+  relatedHrefs: { href: string; label: LocalizedString }[];
 };
 
 export type NavItem = {
   href: string;
   labelKey: string;
+};
+
+export type MegaNavItem = {
+  href: string;
+  labelKey: string;
+  categoryId?: CategoryId;
+  descriptionKey?: string;
 };
 
 export type CtaLinks = {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
-import { faqItems } from "@/data/faq";
+import { getGroupedFaq } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { absoluteUrl, localize } from "@/lib/utils";
@@ -37,11 +37,13 @@ export default async function FaqPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const items = faqItems.map((item) => ({
-    id: item.id,
-    title: localize(item.question, locale),
-    content: localize(item.answer, locale),
-  }));
+  const groups = getGroupedFaq();
+  const flatForLd = groups.flatMap((g) =>
+    g.items.map((item) => ({
+      question: localize(item.question, locale),
+      answer: localize(item.answer, locale),
+    })),
+  );
 
   return (
     <Section className="pt-8">
@@ -58,9 +60,7 @@ export default async function FaqPage({
               { name: t(dict, "nav.home"), url: absoluteUrl(localePath(locale, "/")) },
               { name: t(dict, "faq.title"), url: absoluteUrl(localePath(locale, "/faq")) },
             ]),
-            faqJsonLd(
-              items.map((i) => ({ question: i.title, answer: i.content })),
-            ),
+            faqJsonLd(flatForLd),
           ]}
         />
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
@@ -69,8 +69,23 @@ export default async function FaqPage({
         <p className="mt-3 max-w-2xl text-text-muted">
           {t(dict, "faq.subtitle")}
         </p>
-        <div className="mt-8">
-          <Accordion items={items} />
+        <div className="mt-10 space-y-10">
+          {groups.map((group) => (
+            <div key={group.group}>
+              <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
+                {localize(group.label, locale)}
+              </h2>
+              <div className="mt-4">
+                <Accordion
+                  items={group.items.map((item) => ({
+                    id: item.id,
+                    title: localize(item.question, locale),
+                    content: localize(item.answer, locale),
+                  }))}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
     </Section>

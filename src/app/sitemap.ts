@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
-import { categories } from "@/data/categories";
+import { categories, categoryPath } from "@/data/categories";
 import { games } from "@/data/games";
 import { providers } from "@/data/providers";
 import { getAllGuides } from "@/data";
@@ -18,6 +18,21 @@ const staticPaths = [
   "/responsible-gaming",
   "/terms",
   "/privacy",
+  "/rewards",
+  "/rebates",
+  "/vip",
+  "/agent",
+  "/beginner-guide",
+  "/currency-purchase",
+  "/deposit",
+  "/withdraw",
+  "/payment-methods",
+  "/download",
+  "/fair-play",
+  "/login",
+  "/register",
+  "/sports",
+  "/lottery",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const category of categories) {
       entries.push({
-        url: `${siteConfig.url.replace(/\/$/, "")}${localePath(locale, `/games/${category.slug}`)}`,
+        url: `${siteConfig.url.replace(/\/$/, "")}${localePath(locale, categoryPath(category.id))}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.8,

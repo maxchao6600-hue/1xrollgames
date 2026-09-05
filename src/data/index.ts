@@ -1,9 +1,30 @@
 export { promotions, getPromotionBySlug } from "@/data/promotions";
-export { categories, getCategory, getCategoryById, getCategoryBySlug } from "@/data/categories";
-export { faqItems } from "@/data/faq";
+export {
+  categories,
+  getCategory,
+  getCategoryById,
+  getCategoryBySlug,
+  getCatalogueCategories,
+  categoryPath,
+  categoryHref,
+} from "@/data/categories";
+export {
+  faqItems,
+  faqGroupOrder,
+  faqGroupLabels,
+  getFaqByGroup,
+  getGroupedFaq,
+} from "@/data/faq";
 export { games } from "@/data/games";
 export { guides } from "@/data/guides";
 export { providers } from "@/data/providers";
+export { rewardTopics, getRewardTopic } from "@/data/rewards";
+export { paymentMethods, getPaymentMethodsByKind } from "@/data/payments";
+export {
+  journeySteps,
+  ecosystemHubs,
+  getEcosystemHub,
+} from "@/data/ecosystem";
 export {
   getAllGames,
   getGameBySlug,
