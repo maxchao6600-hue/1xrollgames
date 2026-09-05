@@ -7,7 +7,6 @@ import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
-import { ctaConfig } from "@/config/site";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container, Section } from "@/components/ui/Container";
 import Image from "next/image";
@@ -96,9 +95,7 @@ export default async function PromotionsPage({
                   {localize(promo.description, locale)}
                 </p>
                 <Link
-                  href={ctaConfig.register.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={localePath(locale, promo.href)}
                   className="inline-flex text-sm font-medium text-accent hover:underline"
                 >
                   {localize(promo.ctaLabel, locale)} →

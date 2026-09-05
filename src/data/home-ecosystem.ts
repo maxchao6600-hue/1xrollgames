@@ -24,62 +24,62 @@ const ECOSYSTEM_COPY: Record<
 > = {
   slots: {
     description: {
-      en: "Reel games, feature rounds and studio-specific titles.",
-      zh: "转轴游戏、特色回合与各工作室代表作品。",
+      en: "Reel games and feature rounds from leading studios.",
+      zh: "主流工作室的转轴游戏与特色回合。",
     },
   },
   "live-casino": {
     description: {
-      en: "Hosted tables and live game shows with real-time pacing.",
-      zh: "主持人桌台与真人游戏秀，强调实时节奏。",
+      en: "Hosted tables and live game shows.",
+      zh: "主持人桌台与真人游戏秀。",
     },
   },
   "hash-roulette": {
     description: {
-      en: "Hash-based roulette experiences on the 1XROLL platform.",
-      zh: "1XROLL 平台上的哈希轮盘体验。",
+      en: "Hash roulette on the 1XROLL platform.",
+      zh: "1XROLL 平台上的哈希轮盘。",
     },
   },
   "hash-games": {
     description: {
-      en: "Short hash entertainment formats in the live lobby.",
-      zh: "平台大厅中的哈希短格式娱乐玩法。",
+      en: "Short hash entertainment formats.",
+      zh: "哈希短格式娱乐玩法。",
     },
   },
   "crypto-games": {
     description: {
-      en: "Spribe-style crypto rounds with clear decision loops.",
-      zh: "偏加密风格、决策清晰的短回合玩法。",
+      en: "Fast crypto-style rounds and decision loops.",
+      zh: "加密风格短回合与决策玩法。",
     },
   },
   "fast-games": {
     description: {
-      en: "Crash and timing loops built for quick sessions.",
-      zh: "适合短局的崩溃与时机类玩法。",
+      en: "Crash and timing games for quick sessions.",
+      zh: "适合短局的崩溃与时机玩法。",
     },
   },
   fishing: {
     description: {
-      en: "Arcade fishing rooms with skill-forward pacing.",
-      zh: "偏技巧节奏的街机捕鱼房间。",
+      en: "Arcade fishing rooms with skill pacing.",
+      zh: "偏技巧节奏的街机捕鱼。",
     },
   },
   sports: {
     description: {
-      en: "Sports entertainment access through the 1XROLL platform.",
-      zh: "通过 1XROLL 平台进入体育娱乐。",
+      en: "Sports entertainment on the platform.",
+      zh: "平台体育娱乐入口。",
     },
   },
   "chess-card": {
     description: {
-      en: "Card and table-style entertainment on the platform.",
-      zh: "平台上的棋牌与桌台风格娱乐。",
+      en: "Card and table-style entertainment.",
+      zh: "棋牌与桌台风格娱乐。",
     },
   },
   lottery: {
     description: {
-      en: "Lottery-style entertainment lanes on 1XROLL.",
-      zh: "1XROLL 上的彩票风格娱乐通道。",
+      en: "Lottery-style entertainment on 1XROLL.",
+      zh: "1XROLL 彩票风格娱乐。",
     },
   },
 };

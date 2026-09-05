@@ -24,9 +24,9 @@ export function FeaturedGamesRail({ locale }: { locale: Locale }) {
           }
         />
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {featured.map((game, i) => (
+          {featured.map((game) => (
             <div key={game.id} className="min-w-0 [&_article]:!w-full">
-              <GameCard game={game} locale={locale} priority={i < 4} />
+              <GameCard game={game} locale={locale} />
             </div>
           ))}
         </div>

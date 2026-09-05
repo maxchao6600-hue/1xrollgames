@@ -5,7 +5,6 @@ import { promotions } from "@/data/promotions";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
-import { ctaConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Container, Section, SectionHeader } from "@/components/ui/Container";
 
@@ -16,7 +15,7 @@ export function HomePromotions({ locale }: { locale: Locale }) {
     <Section>
       <Container>
         <SectionHeader
-          eyebrow={locale === "zh" ? "活动" : "Campaigns"}
+          eyebrow={locale === "zh" ? "活动浏览" : "Browse offers"}
           title={t(dict, "home.promotionsTitle")}
           description={t(dict, "home.promotionsSubtitle")}
           action={
@@ -53,9 +52,7 @@ export function HomePromotions({ locale }: { locale: Locale }) {
                   {localize(promo.description, locale)}
                 </p>
                 <Link
-                  href={ctaConfig.register.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={localePath(locale, promo.href)}
                   className="inline-flex text-sm font-medium text-accent hover:underline"
                 >
                   {localize(promo.ctaLabel, locale)} →

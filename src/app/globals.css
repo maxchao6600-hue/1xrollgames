@@ -18,7 +18,7 @@
   --radius-sm: 0.5rem;
   --shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
   --header-h: 4rem;
-  --container: 80rem;
+  --container: 84rem;
 }
 
 @theme inline {

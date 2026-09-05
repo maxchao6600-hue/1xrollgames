@@ -38,7 +38,7 @@ export function Header({ locale }: { locale: Locale }) {
         <div className="flex min-w-0 items-center gap-6">
           <Link
             href={localePath(locale, "/")}
-            className="relative block h-8 w-[7.5rem] shrink-0"
+            className="relative block h-9 w-[8.75rem] shrink-0"
             onClick={closeMenu}
             aria-label={siteConfig.name}
           >

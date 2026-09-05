@@ -8,11 +8,12 @@ export type Promotion = {
   description: LocalizedString;
   image?: string;
   ctaLabel: LocalizedString;
+  href: string;
   status: "active" | "info";
 };
 
 /** Official 1XROLL offers as published on the brand network. */
-const promotionsRaw: Promotion[] = [
+const promotionsRaw: Omit<Promotion, "image">[] = [
   {
     id: "welcome-200",
     slug: "welcome-bonus",
@@ -25,6 +26,7 @@ const promotionsRaw: Promotion[] = [
       zh: "首次充值最高 8,888 USDT。25 倍流水。最低存款 10 USDT。以活动条款为准。",
     },
     ctaLabel: { en: "Claim now", zh: "立即领取" },
+    href: "/register",
     status: "active",
   },
   {
@@ -39,6 +41,7 @@ const promotionsRaw: Promotion[] = [
       zh: "符合条件的投注可获 VIP 返水。更高等级解锁更高比例与礼遇。",
     },
     ctaLabel: { en: "Learn more", zh: "了解更多" },
+    href: "/vip",
     status: "active",
   },
   {
@@ -53,6 +56,7 @@ const promotionsRaw: Promotion[] = [
       zh: "活动期间可在指定老虎机作品中参与奖池竞赛。",
     },
     ctaLabel: { en: "View details", zh: "查看详情" },
+    href: "/promotions",
     status: "active",
   },
 ];

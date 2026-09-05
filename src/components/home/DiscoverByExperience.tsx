@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
 import {
-  ecosystemEyebrowLabel,
   ecosystemMetricLabel,
   getHomeEcosystemCategories,
 } from "@/data/home-ecosystem";
@@ -19,55 +18,41 @@ export function DiscoverByExperience({ locale }: { locale: Locale }) {
     <Section>
       <Container>
         <SectionHeader
-          eyebrow={locale === "zh" ? "娱乐通道" : "Entertainment lanes"}
           title={t(dict, "home.categoriesTitle")}
           description={t(dict, "home.categoriesSubtitle")}
         />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {lanes.map((cat) => (
             <Link
               key={cat.id}
               href={localePath(locale, cat.href)}
-              className="group block overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface shadow-[0_12px_40px_rgba(0,0,0,0.28)] transition duration-300 hover:border-accent/45"
+              className="group block overflow-hidden rounded-[1.15rem] border border-border bg-bg-surface transition duration-300 hover:border-accent/45"
             >
-              {/* Card owns the viewport; image cannot drive layout height */}
-              <div className="relative isolate aspect-[16/9] overflow-hidden rounded-[inherit] md:aspect-[16/7.25]">
+              <div className="relative isolate aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
                 <Image
                   src={cat.image}
                   alt={`${localize(cat.name, locale)} on 1XROLL`}
                   fill
-                  sizes="(max-width:768px) 100vw, 50vw"
+                  sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
                   className="object-cover transition duration-500 ease-out will-change-transform group-hover:scale-[1.04]"
                   style={{ objectPosition: cat.objectPosition }}
                 />
-
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20"
+                  className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10"
                 />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent"
-                />
-
-                <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6">
-                  <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
-                    {ecosystemEyebrowLabel(cat.eyebrow, locale)}
+                <div className="absolute inset-0 flex flex-col justify-end p-3.5 sm:p-4">
+                  <h3 className="font-[family-name:var(--font-display)] text-base text-white sm:text-lg">
+                    {localize(cat.name, locale)}
+                  </h3>
+                  <p className="mt-1 line-clamp-2 text-[0.72rem] leading-snug text-white/70 sm:text-xs">
+                    {localize(cat.description, locale)}
                   </p>
-
-                  <div className="flex items-end justify-between gap-4">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-[family-name:var(--font-display)] text-xl text-white md:text-2xl">
-                        {localize(cat.name, locale)}
-                      </h3>
-                      <p className="mt-1.5 line-clamp-2 max-w-md text-sm leading-relaxed text-white/75">
-                        {localize(cat.description, locale)}
-                      </p>
-                      <p className="mt-3 text-xs font-medium text-white/55">
-                        {ecosystemMetricLabel(cat, locale)}
-                      </p>
-                    </div>
-                    <span className="shrink-0 rounded-full border border-white/15 bg-black/35 px-3.5 py-2 text-sm font-medium text-accent backdrop-blur-sm transition group-hover:border-accent/40 group-hover:bg-accent/10">
+                  <div className="mt-2.5 flex items-center justify-between gap-2 text-[0.7rem] sm:text-xs">
+                    <span className="text-white/50">
+                      {ecosystemMetricLabel(cat, locale)}
+                    </span>
+                    <span className="font-medium text-accent">
                       {t(dict, "common.explore")} →
                     </span>
                   </div>

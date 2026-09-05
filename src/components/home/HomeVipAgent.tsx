@@ -1,67 +1,86 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
+import { REWARD_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
-import { Container, Section, SectionHeader } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Container, Section } from "@/components/ui/Container";
 
-export function HomeVipAgent({ locale }: { locale: Locale }) {
+export function HomeVip({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
     <Section>
       <Container>
-        <SectionHeader
-          eyebrow={locale === "zh" ? "会员与合作" : "Membership & partners"}
-          title={t(dict, "home.vipAgentTitle")}
-          description={t(dict, "home.vipAgentSubtitle")}
-        />
-        <div className="grid gap-4 md:grid-cols-2">
-          <Link
-            href={localePath(locale, "/vip")}
-            className="group relative overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface p-8 transition hover:border-accent/50"
-          >
+        <div className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[17rem]">
+            <Image
+              src={REWARD_ASSETS["vip-club"]}
+              alt={t(dict, "nav.vip")}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width:768px) 100vw, 50vw"
+            />
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-2xl transition group-hover:bg-accent/15"
+              className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:bg-gradient-to-r md:from-transparent md:to-bg-surface"
             />
+          </div>
+          <div className="flex flex-col justify-center p-7 md:p-10">
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
               VIP
             </p>
-            <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl text-text">
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
               {t(dict, "nav.vip")}
-            </h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-text-muted">
-              {locale === "zh"
-                ? "VIP 返水摘要与俱乐部导览——仅展示已发布信息，不编造等级表。"
-                : "VIP cashback summaries and club guidance — published facts only, no invented tier tables."}
+            </h2>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-text-muted">
+              {t(dict, "home.vipSectionBody")}
             </p>
-            <span className="mt-6 inline-flex text-sm font-medium text-accent">
-              {t(dict, "common.explore")} →
-            </span>
-          </Link>
-          <Link
-            href={localePath(locale, "/agent")}
-            className="group relative overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface p-8 transition hover:border-accent/50"
-          >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-2/10 blur-2xl transition group-hover:bg-accent-2/15"
-            />
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Button href={localePath(locale, "/vip")}>
+                {t(dict, "common.explore")} →
+              </Button>
+              <Link
+                href={localePath(locale, "/rebates")}
+                className="text-sm text-accent hover:underline"
+              >
+                {t(dict, "nav.rebates")}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+export function HomeAgent({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+
+  return (
+    <Section className="bg-[rgba(14,18,24,0.4)]">
+      <Container>
+        <div className="rounded-[1.35rem] border border-border bg-bg-surface px-7 py-9 md:flex md:items-end md:justify-between md:gap-8 md:px-10 md:py-11">
+          <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
               Agent
             </p>
-            <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl text-text">
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
               {t(dict, "nav.agent")}
-            </h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-text-muted">
-              {locale === "zh"
-                ? "代理与推荐生态导览——不编造佣金比例。"
-                : "Agent and referral paths on 1XROLL — no invented commission rates."}
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-text-muted">
+              {t(dict, "home.agentSectionBody")}
             </p>
-            <span className="mt-6 inline-flex text-sm font-medium text-accent">
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3 md:mt-0">
+            <Button href={localePath(locale, "/agent")}>
               {t(dict, "common.explore")} →
-            </span>
-          </Link>
+            </Button>
+            <Button href={localePath(locale, "/contact")} variant="outline">
+              {t(dict, "nav.contact")}
+            </Button>
+          </div>
         </div>
       </Container>
     </Section>

@@ -7,17 +7,13 @@ import { siteConfig } from "@/config/site";
 import { localize } from "@/lib/utils";
 import { getAllGuides } from "@/data";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { HomeHero } from "@/components/home/HomeHero";
+import { HomePromoSlider } from "@/components/home/HomePromoSlider";
 import { FeaturedGamesRail } from "@/components/home/FeaturedGamesRail";
 import { DiscoverByExperience } from "@/components/home/DiscoverByExperience";
-import { HowItWorks } from "@/components/home/HowItWorks";
 import { HomeRewards } from "@/components/home/HomeRewards";
 import { HomePromotions } from "@/components/home/HomePromotions";
-import { ProviderDiscovery } from "@/components/home/ProviderDiscovery";
-import { HomeWallet } from "@/components/home/HomeWallet";
 import { LatestGuides } from "@/components/home/LatestGuides";
-import { HomeVipAgent } from "@/components/home/HomeVipAgent";
-import { WhyPlatform } from "@/components/home/WhyPlatform";
+import { HomeVip, HomeAgent } from "@/components/home/HomeVipAgent";
 import { HomeMobileApp } from "@/components/home/HomeMobileApp";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { ResponsibleTeaser } from "@/components/home/ResponsibleTeaser";
@@ -65,18 +61,15 @@ export default async function HomePage({
           websiteJsonLd(),
         ]}
       />
-      <HomeHero locale={locale} />
+      <HomePromoSlider locale={locale} />
       <DiscoverByExperience locale={locale} />
       <FeaturedGamesRail locale={locale} />
       <HomePromotions locale={locale} />
       <HomeRewards locale={locale} />
-      <ProviderDiscovery locale={locale} />
-      <HowItWorks locale={locale} />
-      <HomeVipAgent locale={locale} />
-      <HomeMobileApp locale={locale} />
+      <HomeVip locale={locale} />
       <LatestGuides locale={locale} guides={guides} />
-      <HomeWallet locale={locale} />
-      <WhyPlatform locale={locale} />
+      <HomeMobileApp locale={locale} />
+      <HomeAgent locale={locale} />
       <HomeFaq locale={locale} />
       <ResponsibleTeaser locale={locale} />
       <FinalCta locale={locale} />

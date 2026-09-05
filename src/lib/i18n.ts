@@ -99,9 +99,16 @@ const en = {
     heroVisualTitle: "Games · Rewards · Platform",
     featuredTitle: "Featured games",
     featuredSubtitle: "Discover standout titles from the verified 1XROLL catalogue.",
-    categoriesTitle: "Game ecosystem",
+    categoriesTitle: "Gaming Ecosystem",
     categoriesSubtitle:
-      "Ten entertainment lanes across the 1XROLL platform — explore catalogue collections and platform access points.",
+      "Explore the entertainment experiences available across 1XROLL — from slots and live tables to sports, hash and more.",
+    promoSliderLabel: "Campaign",
+    promoPrev: "Previous promotion",
+    promoNext: "Next promotion",
+    vipSectionBody:
+      "VIP cashback summaries and club orientation — published facts only, without invented tier tables.",
+    agentSectionBody:
+      "Partner and referral orientation for the 1XROLL ecosystem — no invented commission rates.",
     journeyTitle: "How 1XROLL works",
     journeySubtitle: "From register to responsible play — each step links into the ecosystem.",
     rewardsTitle: "Rewards & benefits",
@@ -332,7 +339,14 @@ const zh = {
     featuredSubtitle: "从已核实的 1XROLL 目录中发现亮点作品。",
     categoriesTitle: "游戏生态",
     categoriesSubtitle:
-      "覆盖 1XROLL 平台的十条娱乐通道——浏览已核实合集，或进入平台入口。",
+      "探索 1XROLL 的各类娱乐体验——从老虎机、真人桌台到体育、哈希等通道。",
+    promoSliderLabel: "活动",
+    promoPrev: "上一则活动",
+    promoNext: "下一则活动",
+    vipSectionBody:
+      "VIP 返水摘要与俱乐部导览——仅展示已发布信息，不编造等级表。",
+    agentSectionBody:
+      "1XROLL 生态中的代理与推荐导览——不编造佣金比例。",
     journeyTitle: "1XROLL 如何运作",
     journeySubtitle: "从注册到理性游戏——每一步都链入生态。",
     rewardsTitle: "奖励与礼遇",

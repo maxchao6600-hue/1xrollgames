@@ -92,12 +92,14 @@ export const CATEGORY_ASSETS: Record<
     objectPosition: "22% 48%",
   },
   "hash-roulette": {
-    image: "/categories/hash-roulette.svg",
-    objectPosition: "center center",
+    imageSlug: "lightning-roulette",
+    image: "/games/lightning-roulette.webp",
+    objectPosition: "35% 65%",
   },
   "hash-games": {
-    image: "/categories/hash-games.svg",
-    objectPosition: "center center",
+    imageSlug: "mines",
+    image: "/games/mines.webp",
+    objectPosition: "center 30%",
   },
   "crypto-games": {
     imageSlug: "aviator",
@@ -119,8 +121,9 @@ export const CATEGORY_ASSETS: Record<
     objectPosition: "center center",
   },
   "chess-card": {
-    image: "/categories/chess-card.svg",
-    objectPosition: "center center",
+    imageSlug: "speed-baccarat-b",
+    image: "/games/speed-baccarat-b.webp",
+    objectPosition: "55% 40%",
   },
   lottery: {
     image: "/categories/lottery.svg",
