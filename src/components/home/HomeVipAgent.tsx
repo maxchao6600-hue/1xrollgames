@@ -64,7 +64,7 @@ export function HomeAgent({ locale }: { locale: Locale }) {
         <div className="rounded-[1.35rem] border border-border bg-bg-surface px-7 py-9 md:flex md:items-end md:justify-between md:gap-8 md:px-10 md:py-11">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
-              Agent
+              {t(dict, "nav.agent")}
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
               {t(dict, "nav.agent")}
