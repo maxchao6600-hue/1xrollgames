@@ -5,15 +5,19 @@ export function GameArt({
   name,
   gradient,
   image,
+  alt,
   className,
   priority = false,
 }: {
   name: string;
   gradient: [string, string];
   image?: string;
+  alt?: string;
   className?: string;
   priority?: boolean;
 }) {
+  const resolvedAlt = alt ?? `${name} on 1XROLL`;
+
   return (
     <div
       className={cn(
@@ -31,7 +35,7 @@ export function GameArt({
       {image ? (
         <Image
           src={image}
-          alt={`${name} on 1XROLL`}
+          alt={resolvedAlt}
           fill
           sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 180px"
           className="object-cover"
@@ -78,13 +82,21 @@ export function CoverArt({
       }
     >
       {image ? (
-        <Image src={image} alt={title} fill className="object-cover" sizes="(max-width:768px) 100vw, 640px" />
+        <Image
+          src={image}
+          alt={`${title} — 1XROLL guide cover`}
+          fill
+          className="object-cover"
+          sizes="(max-width:768px) 100vw, 640px"
+        />
       ) : (
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_45%)]" />
       )}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5">
-        <p className="max-w-md text-lg font-medium text-white md:text-xl">{title}</p>
-      </div>
+      {!image ? (
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+          <p className="max-w-md text-lg font-medium text-white md:text-xl">{title}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

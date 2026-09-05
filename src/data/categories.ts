@@ -82,10 +82,10 @@ Use this category to compare pacing across providers, then open individual title
   {
     id: "fishing",
     slug: "fishing",
-    name: { en: "Arcade & fishing", zh: "街机与捕鱼" },
+    name: { en: "Fishing Games", zh: "捕鱼游戏" },
     shortDescription: {
-      en: "Skill-leaning arcade shooters and fishing-style skill-and-score experiences.",
-      zh: "偏技巧的街机射击与捕鱼式得分体验。",
+      en: "Arcade fishing and skill-and-score rooms with wave bosses and targeting loops.",
+      zh: "街机捕鱼与得分房间，包含波次首领与瞄准循环。",
     },
     description: {
       en: `Arcade and fishing-style titles sit closer to skill-and-score loops than to classic reel math. Targeting, timing, and room-scale spectacle define the feel. 1XROLL separates this lane so players looking for interactive aiming and wave-based progression are not forced through a slots-only mental model.

@@ -1,4 +1,5 @@
 import type { LocalizedString } from "@/types/content";
+import { resolvePromotionImage } from "@/data/assets";
 
 export type Promotion = {
   id: string;
@@ -11,7 +12,7 @@ export type Promotion = {
 };
 
 /** Official 1XROLL offers as published on the brand network. */
-export const promotions: Promotion[] = [
+const promotionsRaw: Promotion[] = [
   {
     id: "welcome-200",
     slug: "welcome-bonus",
@@ -23,7 +24,6 @@ export const promotions: Promotion[] = [
       en: "Up to 8,888 USDT on your first top-up. 25× turnover. Min. deposit 10 USDT. Terms apply.",
       zh: "首次充值最高 8,888 USDT。25 倍流水。最低存款 10 USDT。以活动条款为准。",
     },
-    image: "/promotions/welcome.webp",
     ctaLabel: { en: "Claim now", zh: "立即领取" },
     status: "active",
   },
@@ -38,7 +38,6 @@ export const promotions: Promotion[] = [
       en: "Earn VIP cashback on eligible bets. Higher tiers unlock increased rates and perks.",
       zh: "符合条件的投注可获 VIP 返水。更高等级解锁更高比例与礼遇。",
     },
-    image: "/promotions/vip.webp",
     ctaLabel: { en: "Learn more", zh: "了解更多" },
     status: "active",
   },
@@ -53,11 +52,15 @@ export const promotions: Promotion[] = [
       en: "Compete for progressive jackpots across selected slot titles when events are live.",
       zh: "活动期间可在指定老虎机作品中参与奖池竞赛。",
     },
-    image: "/promotions/jackpot.webp",
     ctaLabel: { en: "View details", zh: "查看详情" },
     status: "active",
   },
 ];
+
+export const promotions: Promotion[] = promotionsRaw.map((p) => ({
+  ...p,
+  image: resolvePromotionImage(p.slug),
+}));
 
 export function getPromotionBySlug(slug: string) {
   return promotions.find((p) => p.slug === slug);

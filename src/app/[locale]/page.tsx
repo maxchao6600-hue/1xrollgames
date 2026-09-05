@@ -14,6 +14,7 @@ import { ProviderDiscovery } from "@/components/home/ProviderDiscovery";
 import { HomePromotions } from "@/components/home/HomePromotions";
 import { LatestGuides } from "@/components/home/LatestGuides";
 import { WhyPlatform } from "@/components/home/WhyPlatform";
+import { HomeMobileApp } from "@/components/home/HomeMobileApp";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { ResponsibleTeaser } from "@/components/home/ResponsibleTeaser";
 import { FinalCta } from "@/components/home/FinalCta";
@@ -69,6 +70,7 @@ export default async function HomePage({
       <HomePromotions locale={locale} />
       <LatestGuides locale={locale} guides={guides} />
       <WhyPlatform locale={locale} />
+      <HomeMobileApp locale={locale} />
       <HomeFaq locale={locale} />
       <ResponsibleTeaser locale={locale} />
       <FinalCta locale={locale} />

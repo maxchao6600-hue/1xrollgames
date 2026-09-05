@@ -17,12 +17,17 @@ export function ArticleCard({
   const dict = getDictionary(locale);
   const href = guidePath(locale, guide.slug);
   const title = localize(guide.title, locale);
+  const cover = guide.coverImage;
 
   if (featured) {
     return (
       <article className="overflow-hidden rounded-[1.4rem] border border-border bg-bg-surface">
         <Link href={href} className="block">
-          <CoverArt title={title} gradient={guide.coverGradient} />
+          <CoverArt
+            title={title}
+            gradient={guide.coverGradient}
+            image={cover}
+          />
           <div className="space-y-3 p-6">
             <p className="text-xs tracking-wide text-accent uppercase">
               {guide.category}
@@ -49,6 +54,7 @@ export function ArticleCard({
         <CoverArt
           title={title}
           gradient={guide.coverGradient}
+          image={cover}
           className="aspect-[16/9] rounded-xl"
         />
         <p className="text-[11px] tracking-wide text-accent uppercase">

@@ -58,8 +58,8 @@ const en = {
       "Explore slots, live casino, fast games and fishing titles on 1XROLL — then open your account on the platform when you are ready to play.",
     featuredTitle: "Featured on 1XROLL",
     featuredSubtitle: "Standout titles from the lobby with studio and category context.",
-    categoriesTitle: "Explore games",
-    categoriesSubtitle: "Pick a lane — slots, live tables, fast rounds, or arcade fishing.",
+    categoriesTitle: "Explore 1XROLL games",
+    categoriesSubtitle: "Slots, live casino, fast games and fishing — each lane with its own artwork.",
     providersTitle: "Popular providers",
     providersSubtitle: "Studios you will meet across the 1XROLL catalogue.",
     promotionsTitle: "Latest promotions",
@@ -68,6 +68,16 @@ const en = {
     guidesSubtitle: "Read before you play — mechanics, pacing, and what to notice.",
     whyTitle: "Why 1XROLL",
     whySubtitle: "A brand site built around discovery, guides, and clear entry to play.",
+    mobileTitle: "Play on the 1XROLL app",
+    mobileSubtitle:
+      "Download the official Android app for faster lobby access, notifications and secure sign-in — or continue in the mobile browser.",
+    mobile: {
+      fast: "Fast login on supported Android devices",
+      android: "Optimised for smooth slots and live tables",
+      notify: "Stay informed about offers and account alerts",
+      secure: "Secure access aligned with the 1XROLL platform",
+      cta: "Open platform / download",
+    },
     why: {
       selection: "Broad game selection",
       selectionBody:
@@ -173,8 +183,8 @@ const zh = {
   nav: {
     home: "首页",
     games: "游戏",
-    casino: "娱乐场",
-    live: "真人娱乐场",
+    casino: "赌场",
+    live: "真人赌场",
     promotions: "优惠活动",
     guides: "游戏攻略",
     providers: "厂商",
@@ -222,8 +232,8 @@ const zh = {
       "在 1XROLL 浏览老虎机、真人娱乐场、快速游戏与捕鱼类作品——准备好时再前往平台注册并开始游戏。",
     featuredTitle: "1XROLL 精选",
     featuredSubtitle: "大厅亮点作品，卡片上直接展示工作室与分类。",
-    categoriesTitle: "探索游戏",
-    categoriesSubtitle: "选择你的赛道——老虎机、真人桌台、快速回合或街机捕鱼。",
+    categoriesTitle: "探索 1XROLL 游戏",
+    categoriesSubtitle: "老虎机、真人娱乐场、快速游戏与捕鱼——每个分类使用对应真实画面。",
     providersTitle: "热门厂商",
     providersSubtitle: "你会在 1XROLL 目录中遇到的工作室。",
     promotionsTitle: "最新优惠",
@@ -232,6 +242,16 @@ const zh = {
     guidesSubtitle: "先读再玩——机制、节奏与观察重点。",
     whyTitle: "为什么选择 1XROLL",
     whySubtitle: "围绕发现、攻略与清晰入门路径打造的品牌网站。",
+    mobileTitle: "在 1XROLL App 畅玩",
+    mobileSubtitle:
+      "下载官方 Android 应用，更快进入大厅、接收通知并安全登录——也可继续使用手机浏览器。",
+    mobile: {
+      fast: "在支持的 Android 设备上快速登录",
+      android: "针对老虎机与真人桌台流畅体验优化",
+      notify: "及时了解优惠与账户提醒",
+      secure: "与 1XROLL 平台对齐的安全访问",
+      cta: "打开平台 / 下载",
+    },
     why: {
       selection: "丰富游戏选择",
       selectionBody: "老虎机、真人、快速游戏与捕鱼内容结构化整理，便于浏览。",

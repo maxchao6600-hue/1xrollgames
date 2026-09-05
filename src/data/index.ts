@@ -11,6 +11,7 @@ export {
   getGamesByProvider,
   getGamesByStatus,
   getFeaturedGames,
+  getHeroGames,
   getProviderBySlug,
   getAllProviders,
   getGuideBySlug,

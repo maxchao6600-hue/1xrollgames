@@ -6,6 +6,7 @@ import { getDictionary, t } from "@/lib/i18n";
 import { gamePath } from "@/lib/paths";
 import { getProviderBySlug, getCategory } from "@/data";
 import { localize } from "@/lib/utils";
+import { gameImageAlt } from "@/data/assets";
 
 export function GameCard({
   game,
@@ -20,6 +21,11 @@ export function GameCard({
   const provider = getProviderBySlug(game.providerSlug);
   const category = getCategory(game.category);
   const href = gamePath(locale, game.category, game.slug);
+  const alt = gameImageAlt(
+    game.name,
+    provider?.name ?? game.providerSlug,
+    category ? localize(category.name, locale) : game.category,
+  );
 
   const badgeTone =
     game.status === "hot"
@@ -38,6 +44,7 @@ export function GameCard({
                 name={game.name}
                 gradient={game.imageGradient}
                 image={game.image}
+                alt={alt}
                 priority={priority}
               />
             </div>

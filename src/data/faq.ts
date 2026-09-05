@@ -133,4 +133,26 @@ export const faqItems: FaqItem[] = [
       zh: "1XROLL 发布不止一个品牌网站版本。本项目是第二套面向官方品牌的变体，拥有独立布局与体验，同时共享 1XROLL 品牌、目录主题与平台入口。内容覆盖可与其他品牌站对齐，但不会复制其视觉设计。",
     },
   },
+  {
+    id: "payments",
+    question: {
+      en: "What payment methods does 1XROLL support?",
+      zh: "1XROLL 支持哪些支付方式？",
+    },
+    answer: {
+      en: "On the 1XROLL platform, players commonly use Malaysian banks, e-wallets such as Touch 'n Go, GrabPay and Boost, DuitNow, and cryptocurrency including USDT. Exact availability can vary by account and region — confirm methods inside the platform wallet after login. This brand site does not process deposits.",
+      zh: "在 1XROLL 平台上，玩家常用马来西亚银行、Touch 'n Go、GrabPay、Boost 等电子钱包、DuitNow，以及包括 USDT 在内的加密货币。具体可用性可能因账户与地区而异——登录后请在平台钱包内确认。本品牌站不处理存款。",
+    },
+  },
+  {
+    id: "support",
+    question: {
+      en: "How can I contact 1XROLL support?",
+      zh: "如何联系 1XROLL 客服？",
+    },
+    answer: {
+      en: "Account, deposit and withdrawal help is handled on the 1XROLL platform via live chat and related support channels. For editorial corrections on this brand site, use the Contact page email. Always verify you are on an official 1XROLL property before sharing account details.",
+      zh: "账户、存款与取款问题请通过 1XROLL 平台的在线客服及相关支持渠道处理。本品牌站的内容勘误请使用「联系我们」页面邮箱。分享账户信息前，请确认你处于官方 1XROLL 站点。",
+    },
+  },
 ];

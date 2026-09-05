@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/types/content";
 import { categories } from "@/data/categories";
-import { getGamesByCategory } from "@/data";
+import { CATEGORY_ASSETS } from "@/data/assets";
+import { getGamesByCategory, getGameBySlug } from "@/data";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
@@ -9,7 +11,6 @@ import { Container, Section, SectionHeader } from "@/components/ui/Container";
 
 export function DiscoverByExperience({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const [feature, ...rest] = categories;
 
   return (
     <Section>
@@ -18,68 +19,55 @@ export function DiscoverByExperience({ locale }: { locale: Locale }) {
           title={t(dict, "home.categoriesTitle")}
           description={t(dict, "home.categoriesSubtitle")}
         />
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Link
-            href={localePath(locale, `/games/${feature.slug}`)}
-            className="group relative min-h-[22rem] overflow-hidden rounded-[1.25rem] border border-border bg-bg-surface p-8 transition hover:border-accent/35"
-            style={{
-              background: `linear-gradient(160deg, ${feature.accent}22, transparent 55%), var(--bg-surface)`,
-            }}
-          >
-            <p className="text-xs tracking-[0.16em] text-accent uppercase">
-              {locale === "zh" ? "精选" : "Spotlight"}
-            </p>
-            <h3 className="mt-4 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
-              {localize(feature.name, locale)}
-            </h3>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-text-muted md:text-base">
-              {localize(feature.shortDescription, locale)}
-            </p>
-            <p className="mt-6 text-sm text-text-faint">
-              {locale === "zh"
-                ? `${getGamesByCategory(feature.id).length} 款游戏`
-                : `${getGamesByCategory(feature.id).length} games`}
-            </p>
-            <span className="mt-8 inline-flex text-sm font-medium text-accent">
-              {t(dict, "common.explore")} →
-            </span>
-          </Link>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {categories.map((cat, index) => {
+            const asset = CATEGORY_ASSETS[cat.id];
+            const rep = getGameBySlug(asset.imageSlug);
+            const count = getGamesByCategory(cat.id).length;
+            const large = index === 0;
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-1">
-            {rest.map((cat, i) => (
+            return (
               <Link
                 key={cat.id}
                 href={localePath(locale, `/games/${cat.slug}`)}
-                className={`rounded-2xl border border-border bg-bg-elevated p-5 transition hover:border-accent/30 ${
-                  i === 0 ? "sm:col-span-2 lg:col-span-1" : ""
+                className={`group relative overflow-hidden rounded-[1.25rem] border border-border bg-bg-surface transition hover:border-accent/40 ${
+                  large ? "sm:col-span-2 min-h-[16rem] md:min-h-[18rem]" : "min-h-[14rem]"
                 }`}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-medium text-text">
-                      {localize(cat.name, locale)}
-                    </h3>
-                    <p className="mt-2 text-sm text-text-muted">
-                      {localize(cat.shortDescription, locale)}
-                    </p>
+                <Image
+                  src={asset.image}
+                  alt={
+                    rep
+                      ? `${localize(cat.name, locale)} — ${rep.name} on 1XROLL`
+                      : localize(cat.name, locale)
+                  }
+                  fill
+                  className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                  sizes={large ? "(max-width:768px) 100vw, 1100px" : "(max-width:768px) 100vw, 50vw"}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <p className="text-xs tracking-[0.16em] text-accent uppercase">
+                    {locale === "zh" ? "分类" : "Category"}
+                  </p>
+                  <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-white md:text-3xl">
+                    {localize(cat.name, locale)}
+                  </h3>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/80">
+                    {localize(cat.shortDescription, locale)}
+                  </p>
+                  <div className="mt-4 flex items-center justify-between gap-3 text-sm">
+                    <span className="text-white/65">
+                      {locale === "zh" ? `${count} 款游戏` : `${count} games`}
+                    </span>
+                    <span className="font-medium text-accent">
+                      {t(dict, "common.explore")} →
+                    </span>
                   </div>
-                  <span
-                    className="mt-1 h-2.5 w-2.5 rounded-full"
-                    style={{ background: cat.accent }}
-                    aria-hidden
-                  />
-                </div>
-                <div className="mt-4 flex items-center justify-between text-sm">
-                  <span className="text-text-faint">
-                    {locale === "zh"
-                      ? `${getGamesByCategory(cat.id).length} 款游戏`
-                      : `${getGamesByCategory(cat.id).length} games`}
-                  </span>
-                  <span className="text-accent">{t(dict, "common.explore")} →</span>
                 </div>
               </Link>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </Container>
     </Section>

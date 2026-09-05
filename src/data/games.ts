@@ -492,80 +492,77 @@ export const games: Game[] = [
     imageGradient: ["#f43f5e", "#111827"]
   },
   {
-    id: "mega-fishing",
-    slug: "mega-fishing",
-    image: "/games/mega-fishing.webp",
-    name: "Mega Fishing",
-    providerSlug: "jili",
+    id: "big-bass-splash",
+    slug: "big-bass-splash",
+    name: "Big Bass Splash",
+    providerSlug: "pragmatic-play",
     category: "fishing",
     status: "hot",
     shortDescription: {
-      en: "Shared-room fishing shooter with tiered weapons and boss fish spectacles.",
-      zh: "共享房间捕鱼射击，武器分档，Boss 鱼场面夸张。"
+      en: "Bass-themed fishing spectacle with splashy feature moments and clear on-screen targets.",
+      zh: "鲈鱼主题捕鱼场面，特色时刻泼溅感强，目标清晰。",
     },
     description: {
-      en: "Mega Fishing is an active aiming room: choose firepower, track schools, and decide when to spend special shots on bosses. 1XROLL explains room etiquette basics, weapon tiers, and why chasing every boss can empty a budget fast—without inventing drop rates. Ideal if you want skillful aiming over reel spins. Stretch fingers between rooms; aiming fatigue is real. Leave when your session plan ends—not when a boss appears.",
-      zh: "Mega Fishing 是主动瞄准房间：选择火力、追踪鱼群，决定何时对 Boss 使用特殊弹。1XROLL 说明房间基本礼仪、武器档位，以及为何追每条 Boss 会让预算见底——不编造掉落率。若想要比转轮更偏技巧瞄准，很理想。房间之间活动手指；瞄准疲劳是真实的。按会话计划离开——而不是看见 Boss 才走。"
+      en: "Big Bass Splash extends the Big Bass language into a splashier fishing presentation. On 1XROLL we describe targeting focus, feature bursts and session pacing—without inventing catch tables. Pair it with Big Bass Bonanza on the slots shelf if you want the same motif in reel form.",
+      zh: "Big Bass Splash 把 Big Bass 语汇延伸到更泼溅的捕鱼呈现。1XROLL 说明瞄准重点、特色爆发与会话节奏——不编造渔获表。若想要同意象的转轮版本，可搭配老虎机架上的 Big Bass Bonanza。",
     },
     howToPlay: {
-      en: "Enter a room, select a weapon tier, aim at targets, and use specials intentionally. Leave when your session plan ends—not when a boss appears.",
-      zh: "进入房间，选择武器档，瞄准目标，有意识地使用特殊弹。按会话计划离开——而不是看见 Boss 才走。"
+      en: "Enter the room, choose firepower carefully, aim at schools and bosses, and end when your session plan ends.",
+      zh: "进入房间，谨慎选择火力，瞄准鱼群与 Boss，并在会话计划结束时离开。",
     },
     features: {
-      en: ["Multiplayer room feel", "Weapon tiers", "Boss targets", "Arcade aiming"],
-      zh: ["多人房间感", "武器分档", "Boss 目标", "街机瞄准"]
+      en: ["Bass fishing theme", "Splash features", "Target aiming", "Arcade room feel"],
+      zh: ["鲈鱼捕鱼主题", "泼溅特色", "目标瞄准", "街机房间感"],
     },
-    imageGradient: ["#0ea5e9", "#075985"]
+    imageGradient: ["#0ea5e9", "#075985"],
   },
   {
-    id: "happy-fishing",
-    slug: "happy-fishing",
-    image: "/games/happy-fishing.webp",
-    name: "Happy Fishing",
-    providerSlug: "jili",
+    id: "big-bass-hold-and-spinner",
+    slug: "big-bass-hold-and-spinner",
+    name: "Big Bass Hold & Spinner",
+    providerSlug: "pragmatic-play",
     category: "fishing",
     shortDescription: {
-      en: "Lighter-toned fishing room with approachable weapon choices and colorful seascapes.",
-      zh: "气质更轻松的捕鱼房，武器选择好上手，海景色彩明快。"
+      en: "Hold-and-spinner bass adventure bridging collection meters and fishing energy.",
+      zh: "锁定旋转鲈鱼冒险，连接收集进度与捕鱼能量。",
     },
     description: {
-      en: "Happy Fishing softens the arcade fishing formula with brighter seas and a friendlier onboarding curve. 1XROLL covers aiming basics and special-shot timing for newcomers migrating from slots. No fabricated jackpot fish tables. Prefer Wi-Fi for video-heavy rooms when possible, and keep one entertainment wallet separate from daily-pay apps as our mobile guide recommends.",
-      zh: "Happy Fishing 用更亮的海色与更友好的上手曲线软化街机捕鱼公式。1XROLL 为从老虎机转来的新人覆盖瞄准基础与特殊弹时机。没有虚构头奖鱼表。视频向房间尽可能用 Wi-Fi，并按移动攻略建议把娱乐钱包与日常支付应用分离。"
+      en: "Big Bass Hold & Spinner blends collection/hold moments with bass motif energy. 1XROLL explains how hold sequences change pacing versus free-aim rooms, and why budget caps matter when features extend. No fabricated jackpot fish schedules.",
+      zh: "Big Bass Hold & Spinner 把收集/锁定时刻与鲈鱼意象能量结合。1XROLL 说明锁定序列相对自由瞄准房间如何改节奏，以及特色延长时为何预算上限重要。没有虚构头奖鱼时间表。",
     },
     howToPlay: {
-      en: "Pick a comfortable weapon level, practice on smaller fish, then attempt larger targets with a budget cap in mind.",
-      zh: "选择舒适的武器等级，先在小鱼上练习，再带着预算上限尝试更大目标。"
+      en: "Follow hold-and-spinner prompts in the rules panel, keep stake changes between resolved rounds, and leave on schedule.",
+      zh: "按规则面板跟随锁定旋转提示，仅在回合结算之间改注，并按时离开。",
     },
     features: {
-      en: ["Colorful seascape", "Approachable weapons", "Special shots", "Room play"],
-      zh: ["明快海景", "好上手武器", "特殊弹", "房间玩法"]
+      en: ["Hold & spinner modes", "Bass motif", "Collection meters", "Feature pacing"],
+      zh: ["锁定与旋转模式", "鲈鱼意象", "收集进度", "特色节奏"],
     },
-    imageGradient: ["#38bdf8", "#0369a1"]
+    imageGradient: ["#38bdf8", "#0369a1"],
   },
   {
     id: "lucky-streak-3",
     slug: "lucky-streak-3",
-    image: "/games/lucky-streak-3.webp",
     name: "Lucky Streak 3",
     providerSlug: "endorphina",
     category: "slots",
     shortDescription: {
       en: "Polished luck iconography with a compact feature set and strong illustration craft.",
-      zh: "精致好运符号，特色集紧凑，插画工艺扎实。"
+      zh: "精致好运符号，特色集紧凑，插画工艺扎实。",
     },
     description: {
       en: "Lucky Streak 3 shows Endorphina’s preference for readable rules wrapped in stylish luck motifs—cards, charms, and clean typography. 1XROLL focuses on how quickly a new player can finish the rules skim and what the free-spin chapter changes. No fake streak guarantees. If you shop by mood first, this is the polished pole of the studio’s board opposite Riot’s grit.",
-      zh: "Lucky Streak 3 体现 Endorphina 偏好：用时髦好运意象——卡牌、护符、干净字体——包裹可读规则。1XROLL 关注新人多久能读完规则，以及免费旋转篇章改变了什么。没有假连胜保证。若你先按情绪选游，这是工作室情绪板上与 Riot 粗粝相对的精致一极。"
+      zh: "Lucky Streak 3 体现 Endorphina 偏好：用时髦好运意象——卡牌、护符、干净字体——包裹可读规则。1XROLL 关注新人多久能读完规则，以及免费旋转篇章改变了什么。没有假连胜保证。若你先按情绪选游，这是工作室情绪板上与 Riot 粗粝相对的精致一极。",
     },
     howToPlay: {
       en: "Spin, learn wild and scatter roles from the paytable, and enjoy free spins when they trigger.",
-      zh: "旋转，从赔付表学习百搭与散布角色，触发时享受免费旋转。"
+      zh: "旋转，从赔付表学习百搭与散布角色，触发时享受免费旋转。",
     },
     features: {
       en: ["Luck motifs", "Compact rules", "Illustration-led UI", "Free spins"],
-      zh: ["好运意象", "紧凑规则", "插画主导界面", "免费旋转"]
+      zh: ["好运意象", "紧凑规则", "插画主导界面", "免费旋转"],
     },
-    imageGradient: ["#eab308", "#7c3aed"]
+    imageGradient: ["#eab308", "#7c3aed"],
   },
   {
     id: "riot",
@@ -693,28 +690,79 @@ export const games: Game[] = [
       zh: ["锁定派彩模式", "能量进度", "硬币主题", "好教规则"]
     },
     imageGradient: ["#facc15", "#1d4ed8"]
-  }
+  },
+  {
+    id: "sugar-rush",
+    slug: "sugar-rush",
+    name: "Sugar Rush",
+    providerSlug: "pragmatic-play",
+    category: "slots",
+    status: "hot",
+    shortDescription: {
+      en: "Candy-grid cascade slot with cluster pays and bright multiplier trails.",
+      zh: "糖果网格连消老虎机，集群赔付与明亮倍率轨迹。",
+    },
+    description: {
+      en: "Sugar Rush builds on Pragmatic’s cascade vocabulary with a candy aesthetic and cluster evaluation. On 1XROLL we describe how cascades rearrange the board and how free-game chapters change pace—without inventing RTP. Pair it with Sweet Bonanza if you want a related candy lane with a different feature signature.",
+      zh: "Sugar Rush 建立在 Pragmatic 的连消语汇上，糖果美学与集群结算并存。1XROLL 说明连消如何重组盘面、免费游戏如何改节奏——不编造返还率。若想同属糖果赛道但特色签名不同，可搭配 Sweet Bonanza。",
+    },
+    howToPlay: {
+      en: "Spin the candy grid, watch cascades clear clusters, and follow free-game prompts when they appear.",
+      zh: "旋转糖果网格，观察连消清除集群，出现免费游戏时按提示进行。",
+    },
+    features: {
+      en: ["Cluster cascades", "Candy theme", "Multiplier trails", "Mobile-clear UI"],
+      zh: ["集群连消", "糖果主题", "倍率轨迹", "手机清晰界面"],
+    },
+    imageGradient: ["#ec4899", "#7c3aed"],
+  },
+  {
+    id: "caishen-wins",
+    slug: "caishen-wins",
+    name: "Caishen Wins",
+    providerSlug: "pragmatic-play",
+    category: "slots",
+    shortDescription: {
+      en: "Festive prosperity-themed slot with clear symbol hierarchy and feature bursts.",
+      zh: "节庆财神主题老虎机，符号层级清晰，特色爆发明确。",
+    },
+    description: {
+      en: "Caishen Wins leans into prosperity motifs and readable feature cues. On 1XROLL we describe pacing and motif hierarchy without inventing lucky-hour claims. A useful companion to Fortune Tiger when comparing festive presentation across studios.",
+      zh: "Caishen Wins 倚重财神意象与可读特色提示。1XROLL 说明节奏与意象层级，不编造幸运时段。比较不同工作室节庆呈现时，可与 Fortune Tiger 对照阅读。",
+    },
+    howToPlay: {
+      en: "Spin, watch for feature cues in the paytable, and keep stake changes between resolved rounds.",
+      zh: "旋转，按赔付表留意特色提示，仅在回合结算之间调整注额。",
+    },
+    features: {
+      en: ["Prosperity theme", "Clear features", "Festive art", "Mobile-readable UI"],
+      zh: ["财神主题", "清晰特色", "节庆美术", "手机可读界面"],
+    },
+    imageGradient: ["#f59e0b", "#b91c1c"],
+  },
+  {
+    id: "plinko",
+    slug: "plinko",
+    name: "Plinko",
+    providerSlug: "spribe",
+    category: "fast-games",
+    shortDescription: {
+      en: "Drop-ball instant game with row risk choices and quick resolution.",
+      zh: "落球即时游戏，行数风险可选，结算迅速。",
+    },
+    description: {
+      en: "Plinko is a Spribe-style instant drop: choose risk and rows, release the ball, and read the pocket result. 1XROLL focuses on control clarity and session pacing—not invented hit rates. A useful companion to Mines and Aviator when you want discrete rounds without reel grammar.",
+      zh: "Plinko 是 Spribe 式即时落球：选择风险与行数、释放球体、读取落袋结果。1XROLL 聚焦控件清晰与会话节奏——不编造命中率。当你想要离散回合而非转轮语法时，可与 Mines、Aviator 搭配理解。",
+    },
+    howToPlay: {
+      en: "Select risk and row count, set a stake, drop the ball, and review the pocket outcome before the next drop.",
+      zh: "选择风险与行数，设定注额，落球，并在下一次落球前查看落袋结果。",
+    },
+    features: {
+      en: ["Instant drops", "Risk rows", "Minimal chrome", "Fast rounds"],
+      zh: ["即时落球", "风险行数", "极简界面", "短回合"],
+    },
+    imageGradient: ["#38bdf8", "#0f172a"],
+  },
 ];
 
-export function getGameBySlug(slug: string) {
-  return games.find((g) => g.slug === slug);
-}
-
-export function getGamesByCategory(category: string) {
-  return games.filter((g) => g.category === category);
-}
-
-export function getGamesByProvider(providerSlug: string) {
-  return games.filter((g) => g.providerSlug === providerSlug);
-}
-
-export function searchGames(query: string) {
-  const q = query.trim().toLowerCase();
-  if (!q) return games;
-  return games.filter(
-    (g) =>
-      g.name.toLowerCase().includes(q) ||
-      g.slug.includes(q) ||
-      g.providerSlug.includes(q),
-  );
-}

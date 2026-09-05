@@ -43,6 +43,8 @@ export type Provider = {
   /** Number of games in this site's dataset that reference this provider */
   gameCount: number;
   logoColor: string;
+  /** Provider logo path from PROVIDER_ASSETS — never use game artwork */
+  logo?: string;
   foundedYear?: number;
   headquarters?: string;
 };
@@ -82,6 +84,8 @@ export type Guide = {
   readingTimeMinutes: number;
   author: string;
   coverGradient: [string, string];
+  /** Explicit guide cover from GUIDE_ASSETS */
+  coverImage?: string;
 };
 
 export type FaqItem = {
