@@ -23,7 +23,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     path: "/responsible-gaming",
-    title: locale === "zh" ? "理性游戏" : "Responsible gaming",
+    title: locale === "zh" ? "理性游戏" : "Responsible Gaming",
     description:
       locale === "zh"
         ? "关于年龄限制、个人限额、休息、合法性与求助渠道的理性游戏指引。"

@@ -532,12 +532,12 @@ export const faqItems: FaqItem[] = [
     id: "download-faq",
     group: "download",
     question: {
-      en: "How do I download the app?",
-      zh: "如何下载应用？",
+      en: "How do I access 1XROLL on mobile?",
+      zh: "如何在手机上访问 1XROLL？",
     },
     answer: {
-      en: "Open the Download page for QR and screenshot access orientation, then use official platform CTAs for the latest access or install options when offered. Prefer official 1XROLL paths only — this brand site does not host a store-listed app claim.",
-      zh: "打开下载页查看二维码与截图访问导览，再通过官方平台 CTA 获取（在提供时）最新访问或安装选项。请只使用官方 1XROLL 路径——本品牌站不作应用商店上架宣称。",
+      en: "Open the Access page for QR and screenshot orientation, then use platform CTAs for current browser or install options when the platform offers them. Prefer 1XROLL platform paths only — this brand site does not host a store listing.",
+      zh: "打开访问页查看二维码与截图导览，再通过平台 CTA 获取（在提供时）当前浏览器或安装选项。请只使用 1XROLL 平台路径——本品牌站不托管应用商店上架。",
     },
   },
   {

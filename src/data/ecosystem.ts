@@ -67,7 +67,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {
     id: "rewards",
     slug: "rewards",
-    title: { en: "Rewards Center", zh: "奖励中心" },
+    title: { en: "1XROLL Rewards", zh: "1XROLL 奖励" },
     summary: {
       en: "Orientation for activity rewards, VIP cashback summaries and welcome offers.",
       zh: "活动奖励、VIP 返水摘要与迎新优惠的导览。",
@@ -149,7 +149,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {
     id: "vip",
     slug: "vip",
-    title: { en: "VIP Club", zh: "VIP 俱乐部" },
+    title: { en: "1XROLL VIP", zh: "1XROLL VIP" },
     summary: {
       en: "VIP benefits orientation without invented tier tables.",
       zh: "VIP 礼遇导览，不编造等级表。",
@@ -566,14 +566,14 @@ export const ecosystemHubs: EcosystemHub[] = [
   {
     id: "download",
     slug: "download",
-    title: { en: "Download", zh: "下载" },
+    title: { en: "1XROLL Access", zh: "1XROLL 访问" },
     summary: {
       en: "Mobile web, desktop and access-orientation guidance for reaching 1XROLL.",
       zh: "通过手机网页、桌面与访问导览进入 1XROLL 的指引。",
     },
     intro: {
-      en: "Reach 1XROLL through mobile web, desktop browser, or the access orientation materials on this page (QR / screenshots and platform CTAs when offered). iOS users typically continue via mobile browser or platform instructions after login. Treat this hub as orientation — not a claim that a store-listed “official Android app” is hosted on this brand site. Any install package should only come from official 1XROLL paths.",
-      zh: "可通过手机网页、桌面浏览器，或本页访问导览材料（二维码 / 截图，以及提供时的平台 CTA）进入 1XROLL。iOS 用户通常在登录后通过手机浏览器或平台说明继续。请把本中心当作访问导览——而非宣称本品牌站托管已上架的“官方 Android 应用”。任何安装包仅应从官方 1XROLL 路径获取。",
+      en: "Reach 1XROLL through mobile web, a desktop browser, or the orientation materials on this page (QR, screenshots, and platform CTAs when offered). iOS users typically continue in a mobile browser or follow platform instructions after login. This hub explains access paths — it does not host or certify a store listing. Use only 1XROLL platform paths if an install package is offered.",
+      zh: "可通过手机网页、桌面浏览器，或本页导览材料（二维码、截图，以及提供时的平台 CTA）进入 1XROLL。iOS 用户通常在登录后以手机浏览器或平台说明继续。本中心说明访问路径——不托管、也不认证应用商店上架。若平台提供安装包，请只走 1XROLL 平台路径。",
     },
     sections: [
       {

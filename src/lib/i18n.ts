@@ -176,7 +176,7 @@ const en = {
     searchPlaceholder: "Search by game name",
     filterCategory: "Category",
     filterProvider: "Provider",
-    empty: "No games match your current filters",
+    empty: "No games match your current filters.",
     emptyHint: "Clear filters or explore a category shelf instead.",
     exploreCategories: "Explore Categories",
     howToPlay: "How to play",
@@ -205,16 +205,16 @@ const en = {
   },
   about: { title: "About 1XROLL" },
   contact: {
-    title: "Contact",
+    title: "Contact 1XROLL",
     subtitle:
       "Account help belongs on the 1XROLL platform. Use this page for brand-site orientation and links to FAQ / Responsible Gaming — we do not invent phone or WhatsApp contacts.",
     emailLabel: "Email",
   },
   faq: {
-    title: "FAQ",
+    title: "1XROLL FAQ",
     subtitle: "Answers about 1XROLL games, providers, promotions and responsible play.",
   },
-  responsible: { title: "Responsible gaming" },
+  responsible: { title: "Responsible Gaming" },
   terms: { title: "Terms of use" },
   privacy: { title: "Privacy policy" },
   footer: {
@@ -409,7 +409,7 @@ const zh = {
     searchPlaceholder: "按游戏名称搜索",
     filterCategory: "分类",
     filterProvider: "厂商",
-    empty: "没有符合当前筛选的游戏",
+    empty: "没有符合当前筛选的游戏。",
     emptyHint: "请清除筛选，或改从分类货架浏览。",
     exploreCategories: "浏览分类",
     howToPlay: "怎么玩",
@@ -438,13 +438,13 @@ const zh = {
   },
   about: { title: "关于 1XROLL" },
   contact: {
-    title: "联系我们",
+    title: "联系 1XROLL",
     subtitle:
       "账户帮助请走 1XROLL 平台。本页提供品牌站导览，并链接常见问题 / 理性游戏——我们不编造电话或 WhatsApp 联系方式。",
     emailLabel: "邮箱",
   },
   faq: {
-    title: "常见问题",
+    title: "1XROLL 常见问题",
     subtitle: "关于 1XROLL 游戏、厂商、优惠与理性游戏的解答。",
   },
   responsible: { title: "理性游戏" },

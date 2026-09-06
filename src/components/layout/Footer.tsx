@@ -95,9 +95,7 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="border-t border-border">
         <div className="container-page flex flex-col gap-2 py-6 text-xs text-text-faint md:flex-row md:items-center md:justify-between">
           <p>18+</p>
-          <p>
-            © {year} {siteConfig.legalName}. {t(dict, "footer.copyright")}
-          </p>
+          <p>{`© ${year} ${siteConfig.legalName}. ${t(dict, "footer.copyright")}`}</p>
         </div>
       </div>
     </footer>
