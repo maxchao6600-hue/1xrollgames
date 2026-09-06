@@ -75,22 +75,55 @@ export function CatalogueCategoryExtras({
   locale,
   categoryId,
   games,
+  phase = "all",
 }: {
   locale: Locale;
   categoryId: CategoryId;
   games: GameCardModel[];
+  phase?: "featured" | "body" | "all";
 }) {
   const featured = games.filter((g) => g.image).slice(0, 6);
   const z = zh(locale);
+  const railGames = featured.length ? featured : games.slice(0, 6);
+
+  if (phase === "featured") {
+    const title =
+      categoryId === "slots"
+        ? z
+          ? "精选老虎机"
+          : "Featured slots"
+        : categoryId === "live-casino"
+          ? z
+            ? "精选真人作品"
+            : "Featured live titles"
+          : categoryId === "fast-games"
+            ? z
+              ? "可浏览的快速游戏"
+              : "Available fast games"
+            : categoryId === "fishing"
+              ? z
+                ? "精选捕鱼作品"
+                : "Featured fishing titles"
+              : categoryId === "crypto-games"
+                ? z
+                  ? "已核实加密短回合"
+                  : "Verified crypto short rounds"
+                : z
+                  ? "本分类作品"
+                  : "Titles in this category";
+    return <FeaturedGamesRail locale={locale} title={title} games={railGames} />;
+  }
 
   if (categoryId === "slots") {
     return (
       <>
+        {phase !== "body" ? (
         <FeaturedGamesRail
           locale={locale}
           title={z ? "精选老虎机" : "Featured slots"}
           games={featured}
         />
+        ) : null}
         <InfoGrid
           title={z ? "游戏风格" : "Game styles"}
           columns={3}
@@ -169,6 +202,66 @@ export function CatalogueCategoryExtras({
             ? "公平游戏页说明透明度语言。老虎机页不编造可验证的链上或返还保证。"
             : "Fair Play explains how we talk about transparency. Slot pages do not invent verifiable on-chain or RTP guarantees.",
         )}
+        <InfoGrid
+          title={z ? "如何阅读老虎机信息" : "How to read slot information"}
+          columns={3}
+          items={
+            z
+              ? [
+                  { title: "作品页", body: "机制说明与会话建议在此。不编造返还率。" },
+                  { title: "厂商页", body: "比较工艺家族，而不是传闻数字。" },
+                  { title: "平台", body: "实际规则与开玩在登录之后。" },
+                ]
+              : [
+                  { title: "Title pages", body: "Mechanics notes and session advice live here. No invented RTP." },
+                  { title: "Provider pages", body: "Compare craft families — not rumour numbers." },
+                  { title: "Platform", body: "Live rules and play follow login." },
+                ]
+          }
+        />
+        <StepGrid
+          title={z ? "如何探索老虎机" : "How to explore slots"}
+          steps={
+            z
+              ? [
+                  { title: "看精选", body: "先比较有画作的轨道。" },
+                  { title: "筛厂商", body: "用下方资源管理器缩小工艺。" },
+                  { title: "打开一款", body: "读机制后再到平台。" },
+                  { title: "设时钟", body: "短时体验，需要时停止。" },
+                ]
+              : [
+                  { title: "Use featured", body: "Compare the illustrated rail first." },
+                  { title: "Filter studios", body: "Narrow craft in the explorer below." },
+                  { title: "Open one title", body: "Read mechanics, then the platform." },
+                  { title: "Set a clock", body: "Short session. Stop when needed." },
+                ]
+          }
+        />
+        <RelatedCards
+          title={z ? "相关攻略" : "Related guides"}
+          items={[
+            {
+              href: localePath(locale, "/guides/understanding-rtp-volatility"),
+              title: z ? "RTP 与波动率" : "RTP and volatility",
+              body: z ? "教育概念，无编造百分比。" : "Literacy concepts — no invented percentages.",
+            },
+            {
+              href: localePath(locale, "/guides/beginners-guide-1xroll-games"),
+              title: z ? "入门指南" : "Beginner guide",
+              body: z ? "先建立会话边界。" : "Set session boundaries first.",
+            },
+            {
+              href: localePath(locale, "/guides/understanding-game-providers"),
+              title: z ? "理解厂商" : "Providers",
+              body: z ? "工作室工艺识读。" : "Studio craft literacy.",
+            },
+            {
+              href: localePath(locale, "/guides/fortune-tiger-guide"),
+              title: "Fortune Tiger",
+              body: z ? "竖屏节庆作品解读。" : "Portrait festive title explainer.",
+            },
+          ]}
+        />
       </>
     );
   }
@@ -176,11 +269,13 @@ export function CatalogueCategoryExtras({
   if (categoryId === "live-casino") {
     return (
       <>
+        {phase !== "body" ? (
         <FeaturedGamesRail
           locale={locale}
           title={z ? "精选真人作品" : "Featured live titles"}
           games={featured}
         />
+        ) : null}
         <InfoGrid
           title={z ? "桌台体验" : "Table experience"}
           columns={3}
@@ -250,11 +345,13 @@ export function CatalogueCategoryExtras({
   if (categoryId === "fast-games") {
     return (
       <>
+        {phase !== "body" ? (
         <FeaturedGamesRail
           locale={locale}
           title={z ? "可浏览的快速游戏" : "Available fast games"}
           games={featured.length ? featured : games.slice(0, 6)}
         />
+        ) : null}
         <InfoGrid
           title={z ? "短会话游戏概念" : "Fast-session gaming concept"}
           columns={3}
@@ -302,11 +399,13 @@ export function CatalogueCategoryExtras({
   if (categoryId === "fishing") {
     return (
       <>
+        {phase !== "body" ? (
         <FeaturedGamesRail
           locale={locale}
           title={z ? "精选捕鱼作品" : "Featured fishing titles"}
           games={featured.length ? featured : games.slice(0, 6)}
         />
+        ) : null}
         <InfoGrid
           title={z ? "玩法特征与会话" : "Gameplay features and session feel"}
           columns={3}
@@ -354,11 +453,13 @@ export function CatalogueCategoryExtras({
   if (categoryId === "crypto-games") {
     return (
       <>
+        {phase !== "body" ? (
         <FeaturedGamesRail
           locale={locale}
           title={z ? "已核实加密短回合" : "Verified crypto short rounds"}
           games={featured.length ? featured : games.slice(0, 6)}
         />
+        ) : null}
         <InfoGrid
           title={z ? "分类说明与平台导航" : "Category explanation and platform navigation"}
           columns={3}
@@ -405,11 +506,13 @@ export function CatalogueCategoryExtras({
 
   return (
     <>
+      {phase !== "body" ? (
       <FeaturedGamesRail
         locale={locale}
         title={z ? "本分类作品" : "Titles in this category"}
         games={featured.length ? featured : games.slice(0, 6)}
       />
+      ) : null}
       {providerChips(locale, games)}
     </>
   );
@@ -418,12 +521,111 @@ export function CatalogueCategoryExtras({
 export function HubCategoryExtras({
   locale,
   categoryId,
+  hubSlug,
 }: {
   locale: Locale;
   categoryId?: string;
+  hubSlug?: string;
 }) {
-  if (!categoryId) return null;
   const z = zh(locale);
+
+  if (hubSlug === "agent") {
+    return (
+      <>
+        <InfoGrid
+          title={z ? "计划面向谁" : "Who the programme is for"}
+          columns={3}
+          items={
+            z
+              ? [
+                  { title: "探索合作", body: "面向想了解推荐式参与的人。本页不是合同。" },
+                  { title: "无公开佣金", body: "本站不编造比例或阶梯。费率只在获批账户的平台出现（若有）。" },
+                  { title: "责任先行", body: "推广语言必须诚实，不能承诺未核实数字。" },
+                ]
+              : [
+                  { title: "Exploring partnership", body: "For people learning referral-style participation. This page is not a contract." },
+                  { title: "No public commissions", body: "This site does not invent rates or ladders. Any dashboard appears only after an approved platform account." },
+                  { title: "Responsibility first", body: "Promotion language must stay honest — never promise unpublished figures." },
+                ]
+          }
+        />
+        <StepGrid
+          title={z ? "实务旅程" : "Practical agent journey"}
+          steps={
+            z
+              ? [
+                  { title: "阅读本页", body: "先建立边界：无编造佣金。" },
+                  { title: "打开平台", body: "用官方 CTA 申请或登录。" },
+                  { title: "核对规则", body: "推广规范只在平台有效。" },
+                  { title: "保持诚实", body: "不要向他人复述未核实数字。" },
+                ]
+              : [
+                  { title: "Read this hub", body: "Set the boundary: no invented commissions." },
+                  { title: "Open the platform", body: "Apply or log in via official CTAs." },
+                  { title: "Confirm rules", body: "Promotion guidelines are valid only on the platform." },
+                  { title: "Stay honest", body: "Do not repeat unpublished figures to others." },
+                ]
+          }
+        />
+      </>
+    );
+  }
+
+  if (hubSlug === "download") {
+    return (
+      <>
+        <InfoGrid
+          title={z ? "访问路径" : "Supported access paths"}
+          columns={3}
+          items={
+            z
+              ? [
+                  { title: "手机网页", body: "品牌站与平台均可在手机浏览器阅读/使用。" },
+                  { title: "官方 CTA", body: "安装选项只在平台提供时跟随官方路径。本站不托管商店上架。" },
+                  { title: "核对目的地", body: "认准 1XROLL 平台域名与本站导览素材，避开第三方安装包。" },
+                ]
+              : [
+                  { title: "Mobile web", body: "This brand site and the platform work in a phone browser." },
+                  { title: "Official CTAs", body: "Install options follow official paths only when the platform offers them. This site does not host a store listing." },
+                  { title: "Verify destination", body: "Prefer 1XROLL platform domains and this site’s orientation assets — avoid third-party packages." },
+                ]
+          }
+        />
+        <ChecklistPanel
+          title={z ? "访问前核对" : "Check before you continue"}
+          items={
+            z
+              ? ["是否官方 CTA", "是否需要登录", "不要安装非官方包", "理性限额仍然有效"]
+              : ["Official CTA only", "Login if required", "No unofficial packages", "Personal limits still apply"]
+          }
+        />
+      </>
+    );
+  }
+
+  if (hubSlug === "fair-play") {
+    return (
+      <InfoGrid
+        title={z ? "公平游戏如何阅读" : "How to read Fair Play"}
+        columns={3}
+        items={
+          z
+            ? [
+                { title: "结果", body: "娱乐结果仍是机会驱动。透明度语言不是必赢系统。" },
+                { title: "厂商", body: "工作室提供玩法呈现；本站不编造审计印章。" },
+                { title: "用户", body: "限额与离开路径见理性游戏。" },
+              ]
+            : [
+                { title: "Outcomes", body: "Entertainment outcomes remain chance-driven. Transparency language is not a winning system." },
+                { title: "Providers", body: "Studios present the game. This site does not invent audit seals." },
+                { title: "Users", body: "Limits and leaving live on Responsible Gaming." },
+              ]
+        }
+      />
+    );
+  }
+
+  if (!categoryId) return null;
 
   if (categoryId === "hash-roulette") {
     return (

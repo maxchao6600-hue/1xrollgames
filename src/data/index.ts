@@ -1,4 +1,9 @@
-export { promotions, getPromotionBySlug } from "@/data/promotions";
+export {
+  promotions,
+  getPromotionBySlug,
+  PUBLISHED_WELCOME,
+  PUBLISHED_VIP_CASHBACK,
+} from "@/data/promotions";
 export {
   categories,
   getCategory,
@@ -54,6 +59,7 @@ export {
   getFaqById,
   getGameCards,
   getGameCardsByCategory,
+  getProviderCategoryMatrix,
   toGameCardModel,
 } from "@/data/queries";
 export type { GameCardModel } from "@/data/queries";

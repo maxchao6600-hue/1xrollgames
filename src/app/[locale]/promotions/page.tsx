@@ -18,9 +18,12 @@ import {
   ChecklistPanel,
   CompareGrid,
   FeatureSplit,
+  HighlightPanel,
+  HubAnchorNav,
   HubCtaBand,
   HubH2,
   InfoGrid,
+  JourneyStrip,
   RelatedCards,
   StepGrid,
 } from "@/components/content/HubModules";
@@ -95,7 +98,27 @@ export default async function PromotionsPage({
             : "This hub is for discovering published offers: scan summaries, understand terms as concepts, then confirm eligibility and claims on the platform after login. Figures on cards come from verified config — this is not a separate claim system."}
         </p>
 
-        <div className="mt-12">
+        <HubAnchorNav
+          items={
+            zh
+              ? [
+                  { href: "#current", label: "当前活动" },
+                  { href: "#featured", label: "精选" },
+                  { href: "#how", label: "如何运作" },
+                  { href: "#terms", label: "条款" },
+                  { href: "#faq", label: "常见问题" },
+                ]
+              : [
+                  { href: "#current", label: "Overview" },
+                  { href: "#featured", label: "Featured" },
+                  { href: "#how", label: "How it works" },
+                  { href: "#terms", label: "Terms" },
+                  { href: "#faq", label: "FAQ" },
+                ]
+          }
+        />
+
+        <div className="mt-12 scroll-mt-28" id="current">
           <HubH2>{zh ? "当前活动" : "Current promotions"}</HubH2>
           <p className="mt-3 max-w-3xl text-sm text-text-muted">
             {zh
@@ -176,6 +199,7 @@ export default async function PromotionsPage({
           ]}
         />
 
+        <div id="featured" className="scroll-mt-28">
         <FeatureSplit
           kicker={zh ? "精选优惠" : "Featured offer"}
           title={localize(welcome.title, locale)}
@@ -212,7 +236,9 @@ export default async function PromotionsPage({
             </>
           }
         />
+        </div>
 
+        <div id="how" className="scroll-mt-28">
         <StepGrid
           title={zh ? "优惠如何运作" : "How promotions work"}
           subtitle={
@@ -260,7 +286,9 @@ export default async function PromotionsPage({
                 ]
           }
         />
+        </div>
 
+        <div id="terms" className="scroll-mt-28">
         <InfoGrid
           title={zh ? "理解优惠条款" : "Understanding promotion terms"}
           subtitle={
@@ -326,6 +354,57 @@ export default async function PromotionsPage({
           }
         />
 
+        <HighlightPanel
+          kicker={zh ? "为何这些条件重要" : "Why these conditions matter"}
+          title={zh ? "优惠条款识读" : "Promotion terms explained"}
+          body={
+            zh
+              ? "资格、流水、计入、时限、过期与领取步骤决定摘要数字会不会变成压力。它们不是找漏洞的清单，而是保护预算墙的阅读顺序。"
+              : "Eligibility, wagering, contribution, timing, expiry and claim steps decide whether a headline figure becomes pressure. This is a reading order to protect a budget wall — not a loophole hunt."
+          }
+          points={
+            zh
+              ? [
+                  "资格：卡片不等于人人可领",
+                  "流水：25 倍只属于首存摘要",
+                  "计入：哪些游戏贡献只在平台列出",
+                  "时限与过期：窗口只在实时条款中",
+                  "领取：品牌站不能代领",
+                ]
+              : [
+                  "Eligibility: a card is not a personal entitlement",
+                  "Wagering: 25× belongs only to the welcome summary",
+                  "Contribution: eligible activity is listed only on the platform",
+                  "Timing and expiry: windows live in live terms",
+                  "Claiming: this brand site cannot claim for you",
+                ]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "常见优惠误解" : "Common promotion mistakes"}
+          columns={3}
+          items={
+            zh
+              ? [
+                  { title: "以为人人可领", body: "同一张卡可能因账户与地区而不可见。先看平台提示。" },
+                  { title: "忽略窗口", body: "摘要不会倒数。过期规则只在实时条款。" },
+                  { title: "误解流水", body: "把 25 倍套到返水或奖池，会读错通道。" },
+                  { title: "不核对计入游戏", body: "不是所有分类都以同样方式贡献。" },
+                  { title: "只信摘要", body: "冲突时以平台全文为准。" },
+                  { title: "为做完而加注", body: "倍数是规则，不是必须完成的任务。" },
+                ]
+              : [
+                  { title: "Assuming every offer applies", body: "The same card can be hidden by account or region. Read platform prompts first." },
+                  { title: "Ignoring windows", body: "A summary does not count down. Expiry lives in live terms." },
+                  { title: "Misreading wagering", body: "Reusing 25× on cashback or prize pools mixes lanes." },
+                  { title: "Skipping eligible activity", body: "Not every category contributes the same way." },
+                  { title: "Trusting only the summary", body: "When texts conflict, the platform terms win." },
+                  { title: "Raising stakes to finish", body: "A multiple is a rule, not a quest." },
+                ]
+          }
+        />
+
         <InfoGrid
           title={zh ? "如何选择适合自己的优惠" : "How to choose the right promotion"}
           columns={2}
@@ -369,6 +448,7 @@ export default async function PromotionsPage({
                 ]
           }
         />
+        </div>
 
         <CompareGrid
           title={zh ? "优惠、奖励、返水与 VIP" : "Promotion vs Rewards"}
@@ -446,6 +526,32 @@ export default async function PromotionsPage({
           }
         />
 
+        <JourneyStrip
+          title={zh ? "优惠旅程" : "Promotion journey"}
+          subtitle={
+            zh
+              ? "发现 → 阅读 → 参与 → 跟踪 → 结束。任何一步都可以离开。"
+              : "Discover → Review → Participate → Track → Complete. You can leave at any step."
+          }
+          steps={
+            zh
+              ? [
+                  { title: "发现", body: "从本页卡片与类型一览开始。" },
+                  { title: "阅读", body: "把摘要当地图，打开平台条款。" },
+                  { title: "参与", body: "只完成规则要求的动作，不超出预算。" },
+                  { title: "跟踪", body: "进度只在登录后的工具。" },
+                  { title: "结束", body: "窗口结束或限额到达就停止。" },
+                ]
+              : [
+                  { title: "Discover", body: "Start with the cards and type overview on this hub." },
+                  { title: "Review", body: "Treat summaries as a map, then open platform terms." },
+                  { title: "Participate", body: "Complete only required actions — do not raise your budget wall." },
+                  { title: "Track", body: "Progress lives only in logged-in tools." },
+                  { title: "Complete", body: "Stop when the window ends or your limit is reached." },
+                ]
+          }
+        />
+
         <InfoGrid
           title={zh ? "理性参与" : "Responsible participation"}
           columns={2}
@@ -476,7 +582,7 @@ export default async function PromotionsPage({
           }
         />
 
-        <div className="mt-14">
+        <div id="faq" className="mt-14 scroll-mt-28">
           <HubH2>{zh ? "优惠常见问题" : "Promotion FAQ"}</HubH2>
           <div className="mt-5">
             <Accordion
@@ -508,6 +614,11 @@ export default async function PromotionsPage({
               body: zh ? "阅读返水上限与关系通道说明。" : "Read cashback ceiling and relationship-lane notes.",
             },
             {
+              href: localePath(locale, "/games"),
+              title: zh ? "游戏库" : "Games",
+              body: zh ? "把优惠放回发现路径。" : "Put offers back on the discovery path.",
+            },
+            {
               href: localePath(locale, "/guides/understanding-promotions-terms"),
               title: zh ? "优惠条款攻略" : "Promotions guide",
               body: zh ? "更慢的条款识读练习。" : "A slower walkthrough of reading terms.",
@@ -528,6 +639,8 @@ export default async function PromotionsPage({
               ? "用本页完成识读。领取、进度与冲突规则只在 1XROLL 平台生效。"
               : "Finish literacy here. Claiming, progress and conflict rules take effect only on the 1XROLL platform."
           }
+          secondaryHref={localePath(locale, "/rewards")}
+          secondaryLabel={zh ? "继续了解奖励" : "Continue to Rewards"}
         />
       </Container>
     </Section>

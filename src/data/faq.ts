@@ -433,6 +433,78 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "promo-eligibility",
+    group: "promotions",
+    question: {
+      en: "Does every published offer apply to every account?",
+      zh: "每条公开优惠都适用于每个账户吗？",
+    },
+    answer: {
+      en: "No. Eligibility can depend on account status, region and offer windows. A card on this brand site is a map, not a personal entitlement. Confirm prompts after login.",
+      zh: "不是。资格可能取决于账户状态、地区与活动窗口。品牌站卡片是地图，不是个人权利。登录后核对提示。",
+    },
+  },
+  {
+    id: "promo-turnover",
+    group: "promotions",
+    question: {
+      en: "What does 25× turnover mean on the welcome summary?",
+      zh: "首存摘要里的 25 倍流水是什么意思？",
+    },
+    answer: {
+      en: "It is a published wagering multiple on that first-deposit summary only. Do not reuse 25× on VIP cashback or prize-pool events. Exact contributing games are listed only on the platform.",
+      zh: "它只属于该首存摘要的公开流水倍数。不要把 25 倍套用到 VIP 返水或奖池活动。计入游戏只在平台列出。",
+    },
+  },
+  {
+    id: "promo-ceiling",
+    group: "promotions",
+    question: {
+      en: "Is 8,888 USDT a typical bonus amount?",
+      zh: "8,888 USDT 是典型优惠金额吗？",
+    },
+    answer: {
+      en: "No. It is a published ceiling on the first-deposit summary. Typical outcomes depend on deposit size, eligibility and terms — this site does not forecast personal results.",
+      zh: "不是。它是首存摘要的公开上限。典型结果取决于存款额、资格与条款——本站不预测个人结果。",
+    },
+  },
+  {
+    id: "promo-claim",
+    group: "promotions",
+    question: {
+      en: "Can I claim a promotion on this website?",
+      zh: "可以在本站领取优惠吗？",
+    },
+    answer: {
+      en: "No. This brand site summarises published offers. Claiming, progress and cancel flows exist only on the 1XROLL platform after login.",
+      zh: "不能。本品牌站只摘要已发布优惠。领取、进度与取消流程只存在于登录后的 1XROLL 平台。",
+    },
+  },
+  {
+    id: "promo-expiry",
+    group: "promotions",
+    question: {
+      en: "Where do I check expiry and contribution rules?",
+      zh: "在哪里查看过期与计入规则？",
+    },
+    answer: {
+      en: "In the live offer terms on the platform. This site explains the concepts (windows, eligible activity, claim steps) without inventing extra dates or weighting tables.",
+      zh: "在平台的实时活动条款中。本站解释窗口、计入活动与领取步骤等概念，不编造额外日期或权重表。",
+    },
+  },
+  {
+    id: "promo-prize-pool",
+    group: "promotions",
+    question: {
+      en: "Are prize-pool amounts published here?",
+      zh: "本站会公布奖池金额吗？",
+    },
+    answer: {
+      en: "No. Prize-pool events are described as a type. Current pools, title lists and windows belong on the platform when an event is live.",
+      zh: "不会。奖池活动只作为类型说明。当期奖池、作品名单与窗口在活动上线时属于平台。",
+    },
+  },
+  {
     id: "rewards-center",
     group: "rewards",
     question: {
@@ -466,6 +538,54 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "A 200% first deposit bonus up to 8,888 USDT, with 25× turnover and a minimum deposit of 10 USDT — confirm live terms on the platform.",
       zh: "200% 首存最高 8,888 USDT，25 倍流水，最低存款 10 USDT——实时条款以平台为准。",
+    },
+  },
+  {
+    id: "rewards-vs-promos",
+    group: "rewards",
+    question: {
+      en: "How do Rewards differ from Promotions?",
+      zh: "奖励和优惠有何不同？",
+    },
+    answer: {
+      en: "Promotions are usually time-bound opt-in offers. Rewards is the map that places those offers beside activity, rebate and VIP lanes so you can compare purposes — not stack figures.",
+      zh: "优惠通常是限时可加入的活动。奖励是把这些活动放在活动、返水与 VIP 车道旁边比较用途的地图——不是把数字叠在一起。",
+    },
+  },
+  {
+    id: "rewards-guarantee",
+    group: "rewards",
+    question: {
+      en: "Does this page guarantee I will receive a reward?",
+      zh: "本页保证我会获得奖励吗？",
+    },
+    answer: {
+      en: "No. Nothing on this brand site is a personal entitlement. Eligibility, progress and claims exist only on the platform after login.",
+      zh: "不保证。品牌站内容不是个人权利。资格、进度与领取只存在于登录后的平台。",
+    },
+  },
+  {
+    id: "rewards-find",
+    group: "rewards",
+    question: {
+      en: "How do I find the right reward type?",
+      zh: "如何找到适合自己的奖励类型？",
+    },
+    answer: {
+      en: "Match the lane to your session plan: welcome-style offers for a first path, activity events as optional entertainment, rebate/VIP language for ongoing eligible play. Read conditions before you opt in.",
+      zh: "让车道匹配你的会话计划：首存类适合第一次路径，活动当可选娱乐，返水/VIP 适合持续符合条件的游玩。加入前先读条件。",
+    },
+  },
+  {
+    id: "rewards-terms",
+    group: "rewards",
+    question: {
+      en: "Where should I read reward terms?",
+      zh: "应在哪里阅读奖励条款？",
+    },
+    answer: {
+      en: "Use this hub for concepts, then read the full terms on the platform for the specific offer or VIP area you open. Summaries here never replace those terms.",
+      zh: "用本枢纽理解概念，再在平台阅读你打开的具体活动或 VIP 区域全文条款。这里的摘要不能替代那些条款。",
     },
   },
   {
@@ -505,6 +625,54 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "vip-vs-rewards",
+    group: "vip",
+    question: {
+      en: "How does VIP relate to Rewards and Promotions?",
+      zh: "VIP 与奖励、优惠是什么关系？",
+    },
+    answer: {
+      en: "VIP is the ongoing relationship and cashback-concept lane. Rewards is the map. Promotions are timed opt-ins. Do not mix the 25× welcome multiple with the 1.1% cashback ceiling.",
+      zh: "VIP 是持续关系与返水概念车道。奖励是地图。优惠是限时加入。不要把首存 25 倍与 1.1% 返水上限混用。",
+    },
+  },
+  {
+    id: "vip-mobile",
+    group: "vip",
+    question: {
+      en: "Can I review VIP information on a phone?",
+      zh: "可以在手机上查看 VIP 信息吗？",
+    },
+    answer: {
+      en: "This VIP page is mobile-readable. Live tier tools, progress and support paths exist only in the platform client or mobile web after login.",
+      zh: "本 VIP 页可在手机阅读。实时等级工具、进度与客服路径只存在于登录后的平台客户端或移动网页。",
+    },
+  },
+  {
+    id: "vip-account",
+    group: "vip",
+    question: {
+      en: "Why is my VIP status not shown here?",
+      zh: "为何这里看不到我的 VIP 状态？",
+    },
+    answer: {
+      en: "This brand site does not display personal meters. Account-specific conditions belong on the platform after authentication.",
+      zh: "本品牌站不显示个人进度条。账户专属条件属于认证后的平台。",
+    },
+  },
+  {
+    id: "vip-terms",
+    group: "vip",
+    question: {
+      en: "What VIP terms should I read before participating?",
+      zh: "参与前应阅读哪些 VIP 条款？",
+    },
+    answer: {
+      en: "Eligibility, eligible bets, timing and how cashback is calculated — all on the platform VIP area. This site only repeats the published up-to-1.1% ceiling as orientation.",
+      zh: "资格、符合条件的投注、时间以及返水如何计算——全部在平台 VIP 区域。本站只把公开的最高 1.1% 上限作为导览重复。",
+    },
+  },
+  {
     id: "agent-faq",
     group: "agent",
     question: {
@@ -526,6 +694,42 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "An optional tracking parameter appended to platform URLs when configured in environment settings.",
       zh: "在环境配置启用时附加到平台 URL 的可选追踪参数。",
+    },
+  },
+  {
+    id: "agent-commission",
+    group: "agent",
+    question: {
+      en: "Where are agent commission rates listed?",
+      zh: "代理佣金比例在哪里列出？",
+    },
+    answer: {
+      en: "They are not invented on this brand site. If a dashboard or rate table exists, it appears on the platform after an approved agent account — not as a public percentage here.",
+      zh: "本品牌站不编造比例。若存在后台或费率表，只在获批的代理账户登录后出现在平台——不会作为公开百分比写在这里。",
+    },
+  },
+  {
+    id: "agent-who",
+    group: "agent",
+    question: {
+      en: "Who is the Agent programme for?",
+      zh: "代理计划面向谁？",
+    },
+    answer: {
+      en: "Orientation for people exploring referral-style partnership. Responsibilities, promotion guidelines and live tools belong on the platform after application — this page is literacy, not a contract.",
+      zh: "面向探索推荐式合作的人。责任、推广规范与实时工具属于申请后的平台——本页是识读，不是合同。",
+    },
+  },
+  {
+    id: "agent-start",
+    group: "agent",
+    question: {
+      en: "How do I get started as an agent?",
+      zh: "如何开始成为代理？",
+    },
+    answer: {
+      en: "Read this hub, then use Open platform / Register paths. Do not promise unpublished rates to others; confirm live rules after login.",
+      zh: "先读本枢纽，再使用打开平台 / 注册路径。不要向他人承诺未公布的比例；登录后确认实时规则。",
     },
   },
   {

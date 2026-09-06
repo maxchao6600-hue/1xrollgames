@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
-import { getAllProviders, getFaqByIds, getGamesByProvider } from "@/data";
+import { getAllProviders, getCategory, getFaqByIds, getGamesByProvider, getProviderCategoryMatrix } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { absoluteUrl, localize } from "@/lib/utils";
@@ -13,8 +13,10 @@ import { ProviderCard } from "@/components/providers/ProviderCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   FeatureSplit,
+  HubAnchorNav,
   HubCtaBand,
   InfoGrid,
+  ProviderMatrix,
   StepGrid,
 } from "@/components/content/HubModules";
 import {
@@ -57,6 +59,16 @@ export default async function ProvidersPage({
         .map((g) => g.name)
         .slice(0, 4)
     : [];
+  const matrix = getProviderCategoryMatrix().map((row) => ({
+    name: row.provider.name,
+    href: localePath(locale, `/providers/${row.provider.slug}`),
+    count: row.count,
+    categories: row.categoryIds
+      .map((id) => getCategory(id))
+      .filter((c): c is NonNullable<typeof c> => Boolean(c))
+      .map((c) => localize(c.name, locale)),
+    titles: row.featuredNames,
+  }));
   const faqItems = getFaqByIds([
     "providers",
     "providers-why",
@@ -100,8 +112,26 @@ export default async function ProvidersPage({
             ? "厂商决定界面语言、特色语法与会话节奏。本目录只列出本站已核实工作室：Pragmatic Play、PG Soft、Evolution、Spribe、Jili、Endorphina、Relax Gaming、Playson——不编造额外厂商或奖项。"
             : "Providers shape UI language, feature grammar, and session pacing. This directory lists only verified studios on this site: Pragmatic Play, PG Soft, Evolution, Spribe, Jili, Endorphina, Relax Gaming, and Playson — we do not invent extra studios or awards."}
         </p>
+        <HubAnchorNav
+          items={
+            locale === "zh"
+              ? [
+                  { href: "#directory", label: "目录" },
+                  { href: "#featured", label: "精选" },
+                  { href: "#matrix", label: "矩阵" },
+                  { href: "#faq", label: "常见问题" },
+                ]
+              : [
+                  { href: "#directory", label: "Directory" },
+                  { href: "#featured", label: "Featured" },
+                  { href: "#matrix", label: "Matrix" },
+                  { href: "#faq", label: "FAQ" },
+                ]
+          }
+        />
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-8 scroll-mt-28" id="directory">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {providers.map((p) => {
             const count = getGamesByProvider(p.slug).length;
             return (
@@ -115,6 +145,7 @@ export default async function ProvidersPage({
               </div>
             );
           })}
+        </div>
         </div>
 
         <InfoGrid
@@ -158,6 +189,7 @@ export default async function ProvidersPage({
           }
         />
 
+        <div id="featured" className="scroll-mt-28">
         {featuredStudio ? (
           <FeatureSplit
             kicker={locale === "zh" ? "精选厂商" : "Featured provider"}
@@ -189,6 +221,7 @@ export default async function ProvidersPage({
             }
           />
         ) : null}
+        </div>
 
         <StepGrid
           title={locale === "zh" ? "如何按厂商探索" : "How to explore by provider"}
@@ -205,6 +238,37 @@ export default async function ProvidersPage({
                   { title: "Read verified titles", body: "Counts describe this site’s curated footprint — not a quality score." },
                   { title: "Compare categories", body: "Jump from slots to live or short rounds to feel pacing differences." },
                   { title: "Open the platform", body: "Live play still goes through Login / Register." },
+                ]
+          }
+        />
+
+        <div id="matrix" className="scroll-mt-28">
+        <ProviderMatrix
+          locale={locale}
+          title={locale === "zh" ? "厂商 × 分类矩阵" : "Provider + category matrix"}
+          subtitle={
+            locale === "zh"
+              ? "仅统计本站已核实目录。空分类表示该工作室未出现在对应货架——不是质量判断。"
+              : "Counts only this site’s verified catalogue. A missing category means the studio is not on that shelf here — not a quality score."
+          }
+          rows={matrix}
+        />
+        </div>
+
+        <InfoGrid
+          title={locale === "zh" ? "如何按厂商选游戏" : "How to choose games by provider"}
+          columns={3}
+          items={
+            locale === "zh"
+              ? [
+                  { title: "先认控件习惯", body: "竖屏、连消或真人转播，选你已经读得懂的工艺。" },
+                  { title: "再比分类足迹", body: "用矩阵看工作室落在哪些货架。" },
+                  { title: "打开一款作品页", body: "机制说明在作品页；开玩在平台。" },
+                ]
+              : [
+                  { title: "Start with control habits", body: "Portrait, cascade or live broadcast — pick a craft you already read." },
+                  { title: "Then compare footprints", body: "Use the matrix to see which shelves a studio occupies." },
+                  { title: "Open one title page", body: "Mechanics notes live there; play lives on the platform." },
                 ]
           }
         />
@@ -243,7 +307,9 @@ export default async function ProvidersPage({
             { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
           ]}
         />
+        <div id="faq" className="scroll-mt-28">
         <PageFaqSection locale={locale} items={faqItems} />
+        </div>
       </Container>
     </Section>
   );

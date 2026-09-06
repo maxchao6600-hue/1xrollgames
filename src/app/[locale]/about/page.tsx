@@ -8,11 +8,11 @@ import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
-import { siteConfig, ctaConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
+import { HubCtaBand } from "@/components/content/HubModules";
 
 export async function generateMetadata({
   params,
@@ -136,7 +136,7 @@ export default async function AboutPage({
             { label: t(dict, "about.title") },
           ]}
         />
-        <div className="prose-brand mt-8 max-w-3xl">
+        <div className="prose-brand mt-8 max-w-4xl">
           <h1 className="font-[family-name:var(--font-display)] !mt-0 text-4xl text-text">
             {copy.h1}
           </h1>
@@ -202,17 +202,15 @@ export default async function AboutPage({
           <p>{copy.legalBody}</p>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button href={ctaConfig.register.href} external>
-            {t(dict, "nav.register")}
-          </Button>
-          <Button href={localePath(locale, "/games")} variant="secondary">
-            {t(dict, "nav.games")}
-          </Button>
-          <Button href={localePath(locale, "/faq")} variant="outline">
-            {t(dict, "nav.faq")}
-          </Button>
-        </div>
+        <HubCtaBand
+          locale={locale}
+          title={locale === "zh" ? "继续探索 1XROLL 生态" : "Explore the 1XROLL ecosystem"}
+          body={
+            locale === "zh"
+              ? "本站是品牌网站版本：发现、教育与入口。账户与大厅在平台。"
+              : "This is a brand website variation: discovery, education and entry. Accounts and lobby live on the platform."
+          }
+        />
 
         {faq.length ? (
           <div className="mt-14 max-w-3xl">

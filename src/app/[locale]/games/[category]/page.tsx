@@ -197,6 +197,7 @@ export default async function CategoryPage({
           locale={locale}
           categoryId={category.id}
           games={list}
+          phase="featured"
         />
 
         <div className="mt-2">
@@ -208,6 +209,13 @@ export default async function CategoryPage({
             initialCategory={category.id}
           />
         </div>
+
+        <CatalogueCategoryExtras
+          locale={locale}
+          categoryId={category.id}
+          games={list}
+          phase="body"
+        />
 
         {deep?.sections?.length ? (
           <GroupedSectionGrid
@@ -228,12 +236,20 @@ export default async function CategoryPage({
           />
         )}
 
+        <PageFaqSection locale={locale} items={faqItems} />
+
+        <RelatedLinkGrid
+          locale={locale}
+          title={locale === "zh" ? "相关生态" : "Related ecosystem"}
+          links={relatedLinks}
+        />
+
         <HubCtaBand
           locale={locale}
           title={
             locale === "zh"
-              ? "在平台继续浏览大厅"
-              : "Continue in the live lobby"
+              ? "继续探索游戏库"
+              : "Explore the game library"
           }
           body={
             locale === "zh"
@@ -241,14 +257,6 @@ export default async function CategoryPage({
               : "This page helps you compare verified titles and mechanics language. Live play still goes through Open platform."
           }
         />
-
-        <RelatedLinkGrid
-          locale={locale}
-          title={locale === "zh" ? "相关分类与页面" : "Related categories & pages"}
-          links={relatedLinks}
-        />
-
-        <PageFaqSection locale={locale} items={faqItems} />
 
         <p className="mt-8 text-sm text-text-muted">
           <Link href={localePath(locale, "/providers")} className="text-accent hover:underline">

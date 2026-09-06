@@ -10,7 +10,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container, Section } from "@/components/ui/Container";
 import { ArticleCard } from "@/components/guides/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { InfoGrid } from "@/components/content/HubModules";
+import { HubCtaBand, HubH2, InfoGrid } from "@/components/content/HubModules";
 
 export async function generateMetadata({
   params,
@@ -85,11 +85,59 @@ export default async function GuidesPage({
                 ]
           }
         />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((guide) => (
-            <ArticleCard key={guide.id} guide={guide} locale={locale} />
-          ))}
-        </div>
+        {[
+          {
+            title: locale === "zh" ? "入门攻略" : "Beginner guides",
+            slugs: [
+              "beginners-guide-1xroll-games",
+              "explore-game-categories",
+              "mobile-gaming-guide",
+            ],
+          },
+          {
+            title: locale === "zh" ? "游戏攻略" : "Game guides",
+            slugs: [
+              "fortune-tiger-guide",
+              "mahjong-ways-2-guide",
+              "gates-of-olympus-guide",
+            ],
+          },
+          {
+            title: locale === "zh" ? "教育与条款" : "Education",
+            slugs: [
+              "understanding-rtp-volatility",
+              "understanding-game-providers",
+              "live-casino-basics",
+              "understanding-promotions-terms",
+              "understanding-rewards-vip",
+              "responsible-gaming-guide",
+            ],
+          },
+        ].map((group) => {
+          const items = group.slugs
+            .map((slug) => guides.find((g) => g.slug === slug))
+            .filter((g): g is NonNullable<typeof g> => Boolean(g));
+          if (!items.length) return null;
+          return (
+            <div key={group.title} className="mt-12">
+              <HubH2>{group.title}</HubH2>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {items.map((guide) => (
+                  <ArticleCard key={guide.id} guide={guide} locale={locale} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+        <HubCtaBand
+          locale={locale}
+          title={locale === "zh" ? "把识读带回游戏库" : "Take literacy back to the library"}
+          body={
+            locale === "zh"
+              ? "攻略是编辑向说明，不是必胜系统。日期以各篇页脚为准，不编造更新。"
+              : "Guides are editorial explainers, not winning systems. Dates follow each article footer — we do not invent updates."
+          }
+        />
         <p className="mt-10 text-sm text-text-muted">
           <a href={localePath(locale, "/games")} className="text-accent hover:underline">
             {t(dict, "nav.games")}

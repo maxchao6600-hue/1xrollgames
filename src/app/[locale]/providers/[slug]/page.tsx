@@ -17,6 +17,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container, Section } from "@/components/ui/Container";
 import { GameCard } from "@/components/games/GameCard";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { HubCtaBand, RelatedCards } from "@/components/content/HubModules";
 
 export function generateStaticParams() {
   return providers.flatMap((p) =>
@@ -130,7 +131,7 @@ export default async function ProviderDetailPage({
           </div>
         </div>
 
-        <article className="prose-brand max-w-3xl whitespace-pre-line">
+        <article className="prose-brand mt-8 max-w-4xl whitespace-pre-line">
           {localize(provider.description, locale)}
         </article>
 
@@ -181,19 +182,43 @@ export default async function ProviderDetailPage({
           </div>
         ) : null}
 
-        <p className="mt-10 text-sm text-text-muted">
-          <Link href={localePath(locale, "/games")} className="text-accent hover:underline">
-            {t(dict, "nav.games")}
-          </Link>
-          {" · "}
-          <Link href={localePath(locale, "/guides")} className="text-accent hover:underline">
-            {t(dict, "nav.guides")}
-          </Link>
-          {" · "}
-          <Link href={localePath(locale, "/providers")} className="text-accent hover:underline">
-            {t(dict, "providers.hubTitle")}
-          </Link>
-        </p>
+        <RelatedCards
+          title={locale === "zh" ? "相关生态" : "Related ecosystem"}
+          items={[
+            {
+              href: localePath(locale, "/providers"),
+              title: t(dict, "providers.hubTitle"),
+              body: locale === "zh" ? "返回厂商目录。" : "Back to the directory.",
+            },
+            {
+              href: localePath(locale, "/games"),
+              title: t(dict, "nav.games"),
+              body: locale === "zh" ? "进入游戏库。" : "Enter the game library.",
+            },
+            {
+              href: localePath(locale, "/guides"),
+              title: t(dict, "nav.guides"),
+              body: locale === "zh" ? "阅读工艺攻略。" : "Read craft guides.",
+            },
+            {
+              href: localePath(locale, "/fair-play"),
+              title: t(dict, "nav.fairPlay"),
+              body: locale === "zh" ? "透明度表述边界。" : "Transparency wording bounds.",
+            },
+          ]}
+        />
+
+        <HubCtaBand
+          locale={locale}
+          title={
+            locale === "zh" ? "从这家工作室走进大厅" : "Move from this studio into the lobby"
+          }
+          body={
+            locale === "zh"
+              ? "本档案只列出本站已核实作品。实时库存以登录后平台为准。"
+              : "This profile lists this site’s verified titles only. Live inventory belongs to the platform after login."
+          }
+        />
       </Container>
     </Section>
   );

@@ -8,6 +8,7 @@ import {
   getFaqByIds,
   getFeaturedGames,
   getGameCards,
+  getGameCardsByCategory,
 } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
@@ -21,7 +22,7 @@ import {
   PageFaqSection,
   RelatedLinkGrid,
 } from "@/components/content/PageSections";
-import { InfoGrid, StepGrid, HubCtaBand } from "@/components/content/HubModules";
+import { FeaturedGamesRail, HubAnchorNav, InfoGrid, StepGrid, HubCtaBand } from "@/components/content/HubModules";
 import { GameCard } from "@/components/games/GameCard";
 
 const GAMES_HUB_FAQ = [
@@ -65,6 +66,10 @@ export default async function GamesPage({
   const dict = getDictionary(locale);
   const games = getGameCards();
   const featured = getFeaturedGames().slice(0, 6);
+  const slotPicks = getGameCardsByCategory("slots").filter((g) => g.image).slice(0, 6);
+  const livePicks = getGameCardsByCategory("live-casino").filter((g) => g.image).slice(0, 6);
+  const fastPicks = getGameCardsByCategory("fast-games").slice(0, 6);
+  const fishPicks = getGameCardsByCategory("fishing").slice(0, 6);
   const providers = getAllProviders();
   const providerOptions = providers.map((p) => ({
     id: p.id,
@@ -111,8 +116,25 @@ export default async function GamesPage({
             ? "游戏库枢纽：浏览已核实目录（老虎机 32、真人 6、加密 4、快速 2、捕鱼 3），并通过枢纽页了解哈希、体育、棋牌与彩票等平台通道。筛选可在下方使用；无匹配时请清除筛选并改从分类进入。"
             : "Game library hub: browse the verified catalogue (32 slots, 6 live, 4 crypto, 2 fast, 3 fishing) and use hub pages for hash, sports, chess & card, and lottery lanes. Filters work below; if nothing matches, clear filters and explore by category."}
         </p>
+        <HubAnchorNav
+          items={
+            locale === "zh"
+              ? [
+                  { href: "#featured", label: "精选" },
+                  { href: "#categories", label: "分类" },
+                  { href: "#collections", label: "合集" },
+                  { href: "#faq", label: "常见问题" },
+                ]
+              : [
+                  { href: "#featured", label: "Featured" },
+                  { href: "#categories", label: "Categories" },
+                  { href: "#collections", label: "Collections" },
+                  { href: "#faq", label: "FAQ" },
+                ]
+          }
+        />
 
-        <div className="mt-10">
+        <div className="mt-10 scroll-mt-28" id="featured">
           <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
             {locale === "zh" ? "精选游戏" : "Featured Games"}
           </h2>
@@ -125,9 +147,9 @@ export default async function GamesPage({
           </div>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-14 scroll-mt-28" id="categories">
           <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
-            {locale === "zh" ? "游戏分类" : "Game Categories"}
+            {locale === "zh" ? "按分类探索" : "Explore by category"}
           </h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat) => (
@@ -166,6 +188,29 @@ export default async function GamesPage({
               {locale === "zh" ? "全部厂商 →" : "All providers →"}
             </Link>
           </div>
+        </div>
+
+        <div id="collections" className="scroll-mt-28">
+          <FeaturedGamesRail
+            locale={locale}
+            title={locale === "zh" ? "精选老虎机合集" : "Featured slots collection"}
+            games={slotPicks}
+          />
+          <FeaturedGamesRail
+            locale={locale}
+            title={locale === "zh" ? "真人赌场精选" : "Live casino highlights"}
+            games={livePicks}
+          />
+          <FeaturedGamesRail
+            locale={locale}
+            title={locale === "zh" ? "快速游戏精选" : "Fast game picks"}
+            games={fastPicks}
+          />
+          <FeaturedGamesRail
+            locale={locale}
+            title={locale === "zh" ? "捕鱼合集" : "Fishing collection"}
+            games={fishPicks}
+          />
         </div>
 
         <div className="mt-10">
@@ -270,7 +315,9 @@ export default async function GamesPage({
           ]}
         />
 
+        <div id="faq" className="scroll-mt-28">
         <PageFaqSection locale={locale} items={faqItems} />
+        </div>
         <HubCtaBand
           locale={locale}
           title={locale === "zh" ? "从目录走进大厅" : "Move from catalogue to lobby"}

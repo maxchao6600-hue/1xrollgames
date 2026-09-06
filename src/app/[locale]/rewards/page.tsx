@@ -15,9 +15,12 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import {
   ChecklistPanel,
   CompareGrid,
+  HighlightPanel,
+  HubAnchorNav,
   HubCtaBand,
   HubH2,
   InfoGrid,
+  JourneyStrip,
   RelatedCards,
   StepGrid,
 } from "@/components/content/HubModules";
@@ -92,7 +95,25 @@ export default async function RewardsPage({
           {localize(hub.intro, locale)}
         </p>
 
-        <div className="mt-12">
+        <HubAnchorNav
+          items={
+            zh
+              ? [
+                  { href: "#ecosystem", label: "生态" },
+                  { href: "#compare", label: "比较" },
+                  { href: "#discover", label: "发现" },
+                  { href: "#faq", label: "常见问题" },
+                ]
+              : [
+                  { href: "#ecosystem", label: "Ecosystem" },
+                  { href: "#compare", label: "Compare" },
+                  { href: "#discover", label: "Discover" },
+                  { href: "#faq", label: "FAQ" },
+                ]
+          }
+        />
+
+        <div className="mt-12 scroll-mt-28" id="ecosystem">
           <HubH2>{zh ? "奖励生态四部分" : "Rewards ecosystem overview"}</HubH2>
           <p className="mt-3 max-w-3xl text-sm text-text-muted">
             {zh
@@ -133,6 +154,33 @@ export default async function RewardsPage({
           </div>
         </div>
 
+        <JourneyStrip
+          title={zh ? "奖励旅程" : "Rewards journey"}
+          subtitle={
+            zh
+              ? "发现 → 核资格 → 参与 → 看进度 → 适用礼遇。全程不保证发放。"
+              : "Discover → Check eligibility → Participate → Review progress → Access applicable benefit. Nothing here is a guaranteed payout."
+          }
+          steps={
+            zh
+              ? [
+                  { title: "发现", body: "从主题卡与优惠页开始。" },
+                  { title: "核资格", body: "只相信登录后的提示。" },
+                  { title: "参与", body: "完成要求动作，不加高限额。" },
+                  { title: "进度", body: "工具只在平台。" },
+                  { title: "礼遇", body: "适用时进入，不适用就离开。" },
+                ]
+              : [
+                  { title: "Discover", body: "Start from topic cards and Promotions." },
+                  { title: "Eligibility", body: "Trust only post-login prompts." },
+                  { title: "Participate", body: "Complete required actions without raising limits." },
+                  { title: "Progress", body: "Tools live only on the platform." },
+                  { title: "Benefit", body: "Enter when applicable — leave when not." },
+                ]
+          }
+        />
+
+        <div id="compare" className="scroll-mt-28">
         <StepGrid
           title={zh ? "奖励如何串在一起" : "How rewards fit together"}
           subtitle={
@@ -175,7 +223,62 @@ export default async function RewardsPage({
                 ]
           }
         />
+        </div>
 
+        <InfoGrid
+          title={zh ? "奖励类型说明" : "Reward types explained"}
+          columns={4}
+          items={
+            zh
+              ? [
+                  { title: "迎新式", body: "首存类公开摘要。数字只在该活动条款内。" },
+                  { title: "活动式", body: "限时参与。把它当可选娱乐。" },
+                  { title: "返水式", body: "符合条件投注的回馈概念；上限摘要 1.1%。" },
+                  { title: "VIP 礼遇", body: "关系通道。无编造阶梯表。" },
+                ]
+              : [
+                  { title: "Welcome-style", body: "First-deposit public summaries. Figures apply only inside that offer." },
+                  { title: "Activity-based", body: "Timed participation. Treat as optional entertainment." },
+                  { title: "Rebate-style", body: "Cashback-concept on eligible bets; ceiling summarised at 1.1%." },
+                  { title: "VIP benefits", body: "Relationship lane. No invented ladder tables." },
+                ]
+          }
+        />
+
+        <HighlightPanel
+          kicker={zh ? "条款识读" : "Terms literacy"}
+          title={zh ? "如何阅读奖励条款" : "How to read reward terms"}
+          body={
+            zh
+              ? "先分通道，再读资格、计入、窗口与领取。摘要是地图。冲突时以平台为准。"
+              : "Separate lanes first, then read eligibility, contribution, windows and claiming. Summaries are maps. The platform wins conflicts."
+          }
+          points={
+            zh
+              ? ["不要跨页混用 25 倍与 1.1%", "上限不是典型结果", "品牌站不能显示个人进度"]
+              : ["Do not mix 25× with 1.1% across pages", "A ceiling is not a typical outcome", "This brand site cannot show personal progress"]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "如何找到适合的奖励" : "How to find the right reward"}
+          columns={3}
+          items={
+            zh
+              ? [
+                  { title: "看会话计划", body: "一次路径选迎新摘要；持续游玩看返水语言。" },
+                  { title: "看资格提示", body: "登录后看不见的活动，就不是你的当前路径。" },
+                  { title: "看预算墙", body: "标题再大声也不能加高限额。" },
+                ]
+              : [
+                  { title: "Match your session plan", body: "A first path fits welcome summaries; ongoing play fits cashback language." },
+                  { title: "Trust eligibility prompts", body: "If it does not appear after login, it is not your current path." },
+                  { title: "Keep the budget wall", body: "A loud headline still cannot raise your limit." },
+                ]
+          }
+        />
+
+        <div id="discover" className="scroll-mt-28">
         <StepGrid
           title={zh ? "如何发现奖励" : "Reward discovery"}
           steps={
@@ -194,6 +297,7 @@ export default async function RewardsPage({
                 ]
           }
         />
+        </div>
 
         <InfoGrid
           title={zh ? "理解资格" : "Understanding reward eligibility"}
@@ -286,6 +390,11 @@ export default async function RewardsPage({
               body: zh ? "返水上限与关系通道。" : "Cashback ceiling and relationship lane.",
             },
             {
+              href: localePath(locale, "/agent"),
+              title: zh ? "代理" : "Agent",
+              body: zh ? "合作通道识读（无编造佣金）。" : "Partnership-lane literacy (no invented commissions).",
+            },
+            {
               href: localePath(locale, "/guides/understanding-rewards-vip"),
               title: zh ? "奖励攻略" : "Rewards guide",
               body: zh ? "更慢的生态识读。" : "A slower ecosystem walkthrough.",
@@ -318,7 +427,7 @@ export default async function RewardsPage({
           ]}
         />
 
-        <div className="mt-14">
+        <div id="faq" className="mt-14 scroll-mt-28">
           <HubH2>{zh ? "奖励常见问题" : "Rewards FAQ"}</HubH2>
           <div className="mt-5">
             <Accordion
@@ -344,6 +453,8 @@ export default async function RewardsPage({
               ? "用奖励中心保持识读，再用打开平台处理领取与进度。"
               : "Use the Rewards Hub for literacy, then Open platform for claims and progress."
           }
+          secondaryHref={localePath(locale, "/promotions")}
+          secondaryLabel={zh ? "查看优惠" : "Explore Promotions"}
         />
       </Container>
     </Section>

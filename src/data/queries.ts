@@ -125,6 +125,19 @@ export function getAllProviders(): Provider[] {
   return providers.map(withProviderLogo);
 }
 
+export function getProviderCategoryMatrix() {
+  return getAllProviders().map((provider) => {
+    const list = getGamesByProvider(provider.slug);
+    const categoryIds = [...new Set(list.map((g) => g.category))];
+    return {
+      provider,
+      count: list.length,
+      categoryIds,
+      featuredNames: list.slice(0, 3).map((g) => g.name),
+    };
+  });
+}
+
 export function getGuideBySlug(slug: string): Guide | undefined {
   const guide = guides.find((g) => g.slug === slug);
   return guide ? withGuideCover(guide) : undefined;

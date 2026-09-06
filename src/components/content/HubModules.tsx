@@ -314,10 +314,14 @@ export function HubCtaBand({
   locale,
   title,
   body,
+  secondaryHref,
+  secondaryLabel,
 }: {
   locale: Locale;
   title: string;
   body: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
 }) {
   const dict = getDictionary(locale);
   return (
@@ -331,10 +335,174 @@ export function HubCtaBand({
           <Button href={ctaConfig.play.href} external>
             {t(dict, "common.openPlatform")}
           </Button>
-          <Button href={localePath(locale, "/responsible-gaming")} variant="outline">
-            {t(dict, "nav.responsible")}
+          <Button
+            href={secondaryHref ?? localePath(locale, "/games")}
+            variant="secondary"
+          >
+            {secondaryLabel ?? t(dict, "common.exploreGames")}
           </Button>
         </div>
+      </div>
+    </HubBand>
+  );
+}
+
+export function HubAnchorNav({
+  items,
+}: {
+  items: { href: string; label: string }[];
+}) {
+  if (!items.length) return null;
+  return (
+    <nav
+      aria-label="On this page"
+      className="sticky top-[var(--header-h)] z-20 mt-8 -mx-1 overflow-x-auto border-y border-border bg-bg/90 py-2.5 backdrop-blur-md"
+    >
+      <ul className="flex min-w-max gap-2 px-1">
+        {items.map((item) => (
+          <li key={item.href}>
+            <a
+              href={item.href}
+              className="inline-flex rounded-full border border-border bg-bg-surface px-3 py-1.5 text-xs text-text-muted transition hover:border-accent/40 hover:text-text"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export function JourneyStrip({
+  title,
+  subtitle,
+  steps,
+}: {
+  title: string;
+  subtitle?: string;
+  steps: { title: string; body: string }[];
+}) {
+  return (
+    <HubBand>
+      <HubH2>{title}</HubH2>
+      {subtitle ? (
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted md:text-base">
+          {subtitle}
+        </p>
+      ) : null}
+      <ol className="mt-6 grid gap-3 md:grid-cols-5">
+        {steps.map((step, i) => (
+          <li
+            key={step.title}
+            className="relative rounded-[1.15rem] border border-border bg-bg-elevated p-4"
+          >
+            <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-accent uppercase">
+              {String(i + 1).padStart(2, "0")}
+              {i < steps.length - 1 ? " →" : ""}
+            </p>
+            <h3 className="mt-2 text-sm font-medium text-text">{step.title}</h3>
+            <p className="mt-2 text-xs leading-relaxed text-text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </HubBand>
+  );
+}
+
+export function HighlightPanel({
+  kicker,
+  title,
+  body,
+  points,
+}: {
+  kicker?: string;
+  title: string;
+  body: string;
+  points?: string[];
+}) {
+  return (
+    <HubBand>
+      <div className="grid gap-6 rounded-[1.35rem] border border-accent/25 bg-gradient-to-br from-bg-surface to-bg-elevated p-6 md:grid-cols-2 md:p-8">
+        <div>
+          {kicker ? (
+            <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+              {kicker}
+            </p>
+          ) : null}
+          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text">
+            {title}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">{body}</p>
+        </div>
+        {points?.length ? (
+          <ul className="grid gap-3 content-center">
+            {points.map((p) => (
+              <li
+                key={p}
+                className="rounded-xl border border-border bg-bg p-4 text-sm text-text"
+              >
+                {p}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </HubBand>
+  );
+}
+
+export function ProviderMatrix({
+  title,
+  subtitle,
+  rows,
+  locale,
+}: {
+  title: string;
+  subtitle?: string;
+  locale: Locale;
+  rows: {
+    name: string;
+    href: string;
+    count: number;
+    categories: string[];
+    titles: string[];
+  }[];
+}) {
+  const zh = locale === "zh";
+  return (
+    <HubBand>
+      <HubH2>{title}</HubH2>
+      {subtitle ? (
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted md:text-base">
+          {subtitle}
+        </p>
+      ) : null}
+      <div className="mt-6 overflow-x-auto rounded-[1.25rem] border border-border">
+        <table className="min-w-full text-left text-sm">
+          <thead className="bg-bg-elevated text-text-muted">
+            <tr>
+              <th className="px-4 py-3 font-medium">{zh ? "厂商" : "Provider"}</th>
+              <th className="px-4 py-3 font-medium">{zh ? "已核实" : "Verified"}</th>
+              <th className="px-4 py-3 font-medium">{zh ? "分类" : "Categories"}</th>
+              <th className="px-4 py-3 font-medium">{zh ? "示例作品" : "Example titles"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.href} className="border-t border-border">
+                <td className="px-4 py-3">
+                  <Link href={row.href} className="font-medium text-accent hover:underline">
+                    {row.name}
+                  </Link>
+                </td>
+                <td className="px-4 py-3 text-text-muted">{row.count}</td>
+                <td className="px-4 py-3 text-text-muted">{row.categories.join(" · ")}</td>
+                <td className="px-4 py-3 text-text-muted">{row.titles.join(" · ")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </HubBand>
   );

@@ -12,6 +12,17 @@ export type Promotion = {
   status: "active" | "info";
 };
 
+/** Verified welcome figures mirrored from published brand summaries. */
+export const PUBLISHED_WELCOME = {
+  match: "200%",
+  ceiling: "8,888 USDT",
+  turnover: "25×",
+  minDeposit: "10 USDT",
+} as const;
+
+/** Verified VIP cashback ceiling mirrored from published brand summaries. */
+export const PUBLISHED_VIP_CASHBACK = "1.1%" as const;
+
 /** Published 1XROLL offers as mirrored on this brand site. */
 const promotionsRaw: Omit<Promotion, "image">[] = [
   {

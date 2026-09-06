@@ -18,9 +18,12 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import {
   CompareGrid,
   FeatureSplit,
+  HighlightPanel,
+  HubAnchorNav,
   HubCtaBand,
   HubH2,
   InfoGrid,
+  JourneyStrip,
   RelatedCards,
   StepGrid,
 } from "@/components/content/HubModules";
@@ -115,6 +118,39 @@ export default async function VipPage({
           </div>
         </div>
 
+        <HubAnchorNav
+          items={
+            zh
+              ? [
+                  { href: "#experience", label: "体验" },
+                  { href: "#cashback", label: "返水" },
+                  { href: "#compare", label: "比较" },
+                  { href: "#faq", label: "常见问题" },
+                ]
+              : [
+                  { href: "#experience", label: "Experience" },
+                  { href: "#cashback", label: "Cashback" },
+                  { href: "#compare", label: "Compare" },
+                  { href: "#faq", label: "FAQ" },
+                ]
+          }
+        />
+
+        <div id="experience" className="scroll-mt-28">
+        <HighlightPanel
+          kicker={zh ? "定位" : "Positioning"}
+          title={zh ? "什么是 1XROLL VIP？" : "What is 1XROLL VIP?"}
+          body={
+            zh
+              ? "VIP 是持续关系与返水概念通道。本页帮助你读懂公开语言，而不是展示个人等级条或编造 1–4 阶梯。"
+              : "VIP is the ongoing relationship and cashback-concept lane. This page helps you read published language — it does not show a personal meter or invent a 1–4 ladder."
+          }
+          points={
+            zh
+              ? ["不是投资产品", "上限 1.1% 是导览事实", "办理只在登录后"]
+              : ["Not an investment product", "The 1.1% ceiling is orientation", "Actions exist only after login"]
+          }
+        />
         <InfoGrid
           title={zh ? "VIP 生态概念" : "VIP ecosystem overview"}
           columns={3}
@@ -132,7 +168,9 @@ export default async function VipPage({
                 ]
           }
         />
+        </div>
 
+        <div id="cashback" className="scroll-mt-28">
         <FeatureSplit
           kicker={zh ? "已核实公开上限" : "Published ceiling"}
           title={zh ? "VIP 返水最高 1.1%" : "VIP cashback up to 1.1%"}
@@ -154,6 +192,7 @@ export default async function VipPage({
             </Button>
           }
         />
+        </div>
 
         <StepGrid
           title={zh ? "如何理解资格与礼遇" : "How eligibility and benefits work"}
@@ -174,6 +213,28 @@ export default async function VipPage({
           }
         />
 
+        <JourneyStrip
+          title={zh ? "VIP 礼遇如何运作" : "How VIP benefits work"}
+          steps={
+            zh
+              ? [
+                  { title: "资格", body: "只在平台提示中确认。" },
+                  { title: "参与", body: "符合条件的游玩，不加高限额。" },
+                  { title: "账户信息", body: "VIP 区查看状态。" },
+                  { title: "适用礼遇", body: "有则进入，无则离开。" },
+                  { title: "分开读优惠", body: "不要叠 25 倍与 1.1%。" },
+                ]
+              : [
+                  { title: "Eligibility", body: "Confirmed only in platform prompts." },
+                  { title: "Participation", body: "Eligible play — do not raise limits." },
+                  { title: "Account info", body: "Review status in the VIP area." },
+                  { title: "Applicable benefits", body: "Enter when they apply; leave when they do not." },
+                  { title: "Separate offers", body: "Do not stack 25× with 1.1%." },
+                ]
+          }
+        />
+
+        <div id="compare" className="scroll-mt-28">
         <CompareGrid
           title={zh ? "VIP 与奖励、优惠的关系" : "VIP, Rewards and Promotions"}
           columns={
@@ -190,6 +251,7 @@ export default async function VipPage({
                 ]
           }
         />
+        </div>
 
         <InfoGrid
           title={zh ? "条款、访问与移动端" : "Terms, access and mobile"}
@@ -227,7 +289,7 @@ export default async function VipPage({
           ]}
         />
 
-        <div className="mt-14">
+        <div id="faq" className="mt-14 scroll-mt-28">
           <HubH2>{zh ? "VIP 常见问题" : "VIP FAQ"}</HubH2>
           <div className="mt-5">
             <Accordion
@@ -279,6 +341,8 @@ export default async function VipPage({
               ? "本页帮助你读懂公开语言。等级与返水工具在登录之后。"
               : "This page helps you read published language. Tier and cashback tools follow login."
           }
+          secondaryHref={localePath(locale, "/rewards")}
+          secondaryLabel={zh ? "返回奖励中心" : "Continue to Rewards"}
         />
       </Container>
     </Section>

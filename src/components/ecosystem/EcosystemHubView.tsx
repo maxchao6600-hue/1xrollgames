@@ -165,40 +165,7 @@ export function EcosystemHubView({
 
         <GroupedSectionGrid blocks={sections} locale={locale} />
 
-        <HubCategoryExtras locale={locale} categoryId={categoryId} />
-
-        {showPlatformCtas ? (
-          <HubCtaBand
-            locale={locale}
-            title={
-              locale === "zh" ? "实时操作在平台完成" : "Live actions happen on the platform"
-            }
-            body={
-              locale === "zh"
-                ? "本页提供通道识读与导航。登录后的工具、库存与条款以平台为准。"
-                : "This page is lane literacy and navigation. Tools, inventory and terms after login belong to the platform."
-            }
-          />
-        ) : null}
-
-        {related.length ? (
-          <div className="mt-14">
-            <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
-              {locale === "zh" ? "相关入口" : "Related destinations"}
-            </h2>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <Link
-                  key={item.href}
-                  href={localePath(locale, item.href)}
-                  className="rounded-2xl border border-border bg-bg-surface px-4 py-4 text-sm text-text transition hover:border-accent/40"
-                >
-                  {localize(item.label, locale)} →
-                </Link>
-              ))}
-            </div>
-          </div>
-        ) : null}
+        <HubCategoryExtras locale={locale} categoryId={categoryId} hubSlug={hub.slug} />
 
         {faqItems.length ? (
           <div className="mt-14">
@@ -218,6 +185,39 @@ export function EcosystemHubView({
               </Link>
             </p>
           </div>
+        ) : null}
+
+        {related.length ? (
+          <div className="mt-14">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
+              {locale === "zh" ? "相关生态" : "Related ecosystem"}
+            </h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {related.map((item) => (
+                <Link
+                  key={item.href}
+                  href={localePath(locale, item.href)}
+                  className="rounded-2xl border border-border bg-bg-surface px-4 py-4 text-sm text-text transition hover:border-accent/40"
+                >
+                  {localize(item.label, locale)} →
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {showPlatformCtas ? (
+          <HubCtaBand
+            locale={locale}
+            title={
+              locale === "zh" ? "继续探索 1XROLL 生态" : "Explore the 1XROLL ecosystem"
+            }
+            body={
+              locale === "zh"
+                ? "本页提供通道识读与导航。登录后的工具、库存与条款以平台为准。"
+                : "This page is lane literacy and navigation. Tools, inventory and terms after login belong to the platform."
+            }
+          />
         ) : null}
       </Container>
     </Section>
