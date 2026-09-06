@@ -104,14 +104,31 @@ export function InfoGrid({
           );
           const className =
             "rounded-[1.2rem] border border-border bg-bg-surface p-5 transition hover:border-accent/35";
-          return item.href ? (
+          if (!item.href) {
+            return (
+              <article key={item.title} className={className}>
+                {inner}
+              </article>
+            );
+          }
+          const external = /^https?:\/\//.test(item.href);
+          if (external) {
+            return (
+              <a
+                key={item.title}
+                href={item.href}
+                className={className}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {inner}
+              </a>
+            );
+          }
+          return (
             <Link key={item.title} href={item.href} className={className}>
               {inner}
             </Link>
-          ) : (
-            <article key={item.title} className={className}>
-              {inner}
-            </article>
           );
         })}
       </div>
@@ -186,6 +203,70 @@ export function CompareGrid({
               {col.title}
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">{col.body}</p>
+          </article>
+        ))}
+      </div>
+    </HubBand>
+  );
+}
+
+export function ComparisonTable({
+  title,
+  subtitle,
+  columns,
+  rows,
+}: {
+  title: string;
+  subtitle?: string;
+  columns: string[];
+  rows: { label: string; cells: string[] }[];
+}) {
+  return (
+    <HubBand>
+      <HubH2>{title}</HubH2>
+      {subtitle ? (
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted md:text-base">
+          {subtitle}
+        </p>
+      ) : null}
+      <div className="mt-6 hidden overflow-x-auto rounded-[1.2rem] border border-border md:block">
+        <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
+          <thead className="bg-bg-surface">
+            <tr>
+              <th className="px-4 py-3 font-medium text-text-muted"> </th>
+              {columns.map((col) => (
+                <th key={col} className="px-4 py-3 font-[family-name:var(--font-display)] text-base text-accent">
+                  {col}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.label} className="border-t border-border">
+                <th className="bg-bg-elevated px-4 py-3 align-top font-medium text-text">{row.label}</th>
+                {row.cells.map((cell, i) => (
+                  <td key={`${row.label}-${i}`} className="px-4 py-3 align-top text-text-muted">
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-6 grid gap-4 md:hidden">
+        {columns.map((col, colIndex) => (
+          <article key={col} className="rounded-[1.2rem] border border-border bg-bg-surface p-5">
+            <h3 className="font-[family-name:var(--font-display)] text-lg text-accent">{col}</h3>
+            <dl className="mt-4 space-y-3">
+              {rows.map((row) => (
+                <div key={`${col}-${row.label}`}>
+                  <dt className="text-xs font-medium tracking-wide text-text uppercase">{row.label}</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-text-muted">{row.cells[colIndex]}</dd>
+                </div>
+              ))}
+            </dl>
           </article>
         ))}
       </div>
@@ -316,14 +397,31 @@ export function HubCtaBand({
   body,
   secondaryHref,
   secondaryLabel,
+  actions,
 }: {
   locale: Locale;
   title: string;
   body: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  actions?: {
+    href: string;
+    label: string;
+    variant?: "primary" | "secondary" | "outline";
+    external?: boolean;
+  }[];
 }) {
   const dict = getDictionary(locale);
+  const buttons = actions?.length
+    ? actions
+    : [
+        { href: ctaConfig.play.href, label: t(dict, "common.openPlatform"), variant: "primary" as const, external: true },
+        {
+          href: secondaryHref ?? localePath(locale, "/games"),
+          label: secondaryLabel ?? t(dict, "common.exploreGames"),
+          variant: "secondary" as const,
+        },
+      ];
   return (
     <HubBand>
       <div className="rounded-[1.35rem] border border-accent/25 bg-gradient-to-br from-[rgba(255,196,90,0.1)] to-[rgba(45,212,191,0.06)] p-7 md:flex md:items-center md:justify-between md:gap-8 md:p-9">
@@ -332,15 +430,16 @@ export function HubCtaBand({
           <p className="mt-2 text-sm leading-relaxed text-text-muted md:text-base">{body}</p>
         </div>
         <div className="mt-5 flex flex-wrap gap-3 md:mt-0">
-          <Button href={ctaConfig.play.href} external>
-            {t(dict, "common.openPlatform")}
-          </Button>
-          <Button
-            href={secondaryHref ?? localePath(locale, "/games")}
-            variant="secondary"
-          >
-            {secondaryLabel ?? t(dict, "common.exploreGames")}
-          </Button>
+          {buttons.map((btn) => (
+            <Button
+              key={`${btn.href}-${btn.label}`}
+              href={btn.href}
+              external={btn.external}
+              variant={btn.variant ?? "secondary"}
+            >
+              {btn.label}
+            </Button>
+          ))}
         </div>
       </div>
     </HubBand>
@@ -349,13 +448,15 @@ export function HubCtaBand({
 
 export function HubAnchorNav({
   items,
+  ariaLabel,
 }: {
   items: { href: string; label: string }[];
+  ariaLabel?: string;
 }) {
   if (!items.length) return null;
   return (
     <nav
-      aria-label="On this page"
+      aria-label={ariaLabel ?? "On this page"}
       className="sticky top-[var(--header-h)] z-20 mt-8 -mx-1 overflow-x-auto border-y border-border bg-bg/90 py-2.5 backdrop-blur-md"
     >
       <ul className="flex min-w-max gap-2 px-1">
@@ -391,7 +492,16 @@ export function JourneyStrip({
           {subtitle}
         </p>
       ) : null}
-      <ol className="mt-6 grid gap-3 md:grid-cols-5">
+      <ol
+        className={cn(
+          "mt-6 grid gap-3",
+          steps.length >= 6
+            ? "sm:grid-cols-2 xl:grid-cols-6"
+            : steps.length === 4
+              ? "sm:grid-cols-2 lg:grid-cols-4"
+              : "sm:grid-cols-2 md:grid-cols-5",
+        )}
+      >
         {steps.map((step, i) => (
           <li
             key={step.title}
@@ -403,6 +513,46 @@ export function JourneyStrip({
             </p>
             <h3 className="mt-2 text-sm font-medium text-text">{step.title}</h3>
             <p className="mt-2 text-xs leading-relaxed text-text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </HubBand>
+  );
+}
+
+export function EcosystemFlow({
+  title,
+  subtitle,
+  items,
+}: {
+  title: string;
+  subtitle?: string;
+  items: { title: string; body: string; href: string }[];
+}) {
+  return (
+    <HubBand>
+      <HubH2>{title}</HubH2>
+      {subtitle ? (
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted md:text-base">
+          {subtitle}
+        </p>
+      ) : null}
+      <ol className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        {items.map((item, i) => (
+          <li key={`${item.title}-${item.href}`}>
+            <Link
+              href={item.href}
+              className="flex h-full flex-col rounded-[1.2rem] border border-border bg-bg-surface p-5 transition hover:border-accent/40"
+            >
+              <span className="text-[0.65rem] font-semibold tracking-[0.16em] text-accent uppercase">
+                {String(i + 1).padStart(2, "0")}
+                {i < items.length - 1 ? " ↓" : ""}
+              </span>
+              <h3 className="mt-2 font-[family-name:var(--font-display)] text-lg text-text">
+                {item.title}
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{item.body}</p>
+            </Link>
           </li>
         ))}
       </ol>
@@ -423,7 +573,12 @@ export function HighlightPanel({
 }) {
   return (
     <HubBand>
-      <div className="grid gap-6 rounded-[1.35rem] border border-accent/25 bg-gradient-to-br from-bg-surface to-bg-elevated p-6 md:grid-cols-2 md:p-8">
+      <div
+        className={cn(
+          "grid gap-6 rounded-[1.35rem] border border-accent/25 bg-gradient-to-br from-bg-surface to-bg-elevated p-6 md:p-8",
+          points?.length ? "md:grid-cols-2" : "",
+        )}
+      >
         <div>
           {kicker ? (
             <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">

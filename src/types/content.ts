@@ -109,6 +109,7 @@ export type FaqGroupId =
   | "rewards"
   | "vip"
   | "agent"
+  | "guides"
   | "download"
   | "mobile"
   | "responsible";

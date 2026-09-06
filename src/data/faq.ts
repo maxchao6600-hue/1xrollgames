@@ -14,6 +14,7 @@ export const faqGroupOrder: FaqGroupId[] = [
   "rewards",
   "vip",
   "agent",
+  "guides",
   "download",
   "mobile",
   "responsible",
@@ -33,6 +34,7 @@ export const faqGroupLabels: Record<FaqGroupId, { en: string; zh: string }> = {
   rewards: { en: "Rewards", zh: "奖励" },
   vip: { en: "VIP", zh: "VIP" },
   agent: { en: "Agent", zh: "代理" },
+  guides: { en: "Guides", zh: "攻略" },
   download: { en: "Download", zh: "下载" },
   mobile: { en: "Mobile", zh: "移动端" },
   responsible: { en: "Responsible Gaming", zh: "理性游戏" },
@@ -673,6 +675,66 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "vip-what",
+    group: "vip",
+    question: {
+      en: "What is 1XROLL VIP?",
+      zh: "什么是 1XROLL VIP？",
+    },
+    answer: {
+      en: "VIP is the ongoing-benefits lane in the 1XROLL ecosystem. This hub explains published language such as cashback orientation, how VIP sits beside Rewards and Promotions, and where to review live details after you open the platform.",
+      zh: "VIP 是 1XROLL 生态中的持续礼遇通道。本枢纽说明已公开的表述（例如返水导览）、VIP 与奖励/优惠的关系，以及打开平台后应在何处核对实时细节。",
+    },
+  },
+  {
+    id: "vip-auto",
+    group: "vip",
+    question: {
+      en: "Is VIP cashback automatically available to everyone?",
+      zh: "VIP 返水是否自动适用于所有人？",
+    },
+    answer: {
+      en: "No. “Up to 1.1%” is a published ceiling for eligible activity. Eligibility, weighting and timing are confirmed in the live VIP area — not assumed from this page.",
+      zh: "不是。“最高 1.1%”是符合条件活动的公开上限。资格、权重与时间以实时 VIP 区域为准——不能从本页自行假定。",
+    },
+  },
+  {
+    id: "vip-change",
+    group: "vip",
+    question: {
+      en: "Can VIP information change?",
+      zh: "VIP 信息会变化吗？",
+    },
+    answer: {
+      en: "Yes. Programme details can be updated on the platform. Treat this site as orientation and confirm current wording in the account VIP area before you rely on a benefit.",
+      zh: "会。计划细节可在平台更新。请把本站当作导览，并在依赖某项礼遇前于账户 VIP 区域核对当前表述。",
+    },
+  },
+  {
+    id: "vip-vs-promos",
+    group: "vip",
+    question: {
+      en: "How are VIP benefits different from promotions?",
+      zh: "VIP 礼遇与优惠活动有何不同？",
+    },
+    answer: {
+      en: "Promotions are typically timed opt-in offers with their own turnover and eligibility. VIP is an ongoing relationship lane. Read each set of terms separately — do not stack figures such as welcome 25× turnover with the 1.1% cashback ceiling.",
+      zh: "优惠通常是限时、需加入的活动，有各自的流水与资格。VIP 是持续关系通道。请分开阅读两套条款——不要把欢迎优惠的 25 倍流水与 1.1% 返水上限叠在一起计算。",
+    },
+  },
+  {
+    id: "vip-support",
+    group: "vip",
+    question: {
+      en: "Where can I find support about VIP?",
+      zh: "在哪里可以获得 VIP 相关支持？",
+    },
+    answer: {
+      en: "Use Contact on this site for orientation questions, and the platform support path after login for account-specific VIP status.",
+      zh: "导览类问题可使用本站联系页；账户专属 VIP 状态请在登录后通过平台支持路径处理。",
+    },
+  },
+  {
     id: "agent-faq",
     group: "agent",
     question: {
@@ -730,6 +792,246 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "Read this hub, then use Open platform / Register paths. Do not promise unpublished rates to others; confirm live rules after login.",
       zh: "先读本枢纽，再使用打开平台 / 注册路径。不要向他人承诺未公布的比例；登录后确认实时规则。",
+    },
+  },
+  {
+    id: "agent-player",
+    group: "agent",
+    question: {
+      en: "How is an Agent different from a player?",
+      zh: "代理与玩家有何不同？",
+    },
+    answer: {
+      en: "A player account is for exploring games, promotions, rewards and VIP. The Agent area is partnership orientation: programme information, inquiry/application paths and responsible promotion principles. Live commercial terms stay on official channels after review.",
+      zh: "玩家账户用于探索游戏、优惠、奖励与 VIP。代理区域是合作导览：计划信息、咨询/申请路径，以及负责任推广原则。实时商业条款在审核后仍通过官方渠道确认。",
+    },
+  },
+  {
+    id: "agent-apply",
+    group: "agent",
+    question: {
+      en: "How do I apply or make an inquiry?",
+      zh: "如何申请或提出咨询？",
+    },
+    answer: {
+      en: "Use Contact on this site for orientation questions, then Open platform when you are ready to discuss live partnership terms. This page describes a general journey — it does not guarantee approval.",
+      zh: "导览问题请使用本站联系页；准备讨论实时合作条款时再打开平台。本页描述的是一般路径——不保证获批。",
+    },
+  },
+  {
+    id: "agent-review",
+    group: "agent",
+    question: {
+      en: "What information should I review before applying?",
+      zh: "申请前应阅读哪些信息？",
+    },
+    answer: {
+      en: "This Agent hub, Promotions and Guides for accurate public wording, Responsible Gaming principles, and the latest programme details shown through official 1XROLL channels.",
+      zh: "本代理枢纽、优惠与攻略中的公开表述、理性游戏原则，以及官方 1XROLL 渠道展示的最新计划细节。",
+    },
+  },
+  {
+    id: "agent-fixed",
+    group: "agent",
+    question: {
+      en: "Are agent benefits fixed?",
+      zh: "代理权益是固定的吗？",
+    },
+    answer: {
+      en: "This brand site does not publish a fixed commission table. Any live rates, tools or eligibility appear only through official channels after review.",
+      zh: "本品牌站不发布固定佣金表。任何实时费率、工具或资格仅在审核后通过官方渠道出现。",
+    },
+  },
+  {
+    id: "agent-change",
+    group: "agent",
+    question: {
+      en: "Can agent program terms change?",
+      zh: "代理计划条款会变化吗？",
+    },
+    answer: {
+      en: "Yes. Conditions, eligibility and operating terms may change. Review the latest information before publishing or relying on programme details.",
+      zh: "会。条件、资格与运营条款可能变化。在发布或依赖计划细节前，请核对最新信息。",
+    },
+  },
+  {
+    id: "agent-where",
+    group: "agent",
+    question: {
+      en: "Where can I find current agent information?",
+      zh: "在哪里可以找到当前的代理信息？",
+    },
+    answer: {
+      en: "Start with this hub, then confirm live details on the platform after an official inquiry. Contact is the orientation path on this site.",
+      zh: "先从本枢纽开始，官方咨询后再在平台核对实时细节。本站的导览路径是联系页。",
+    },
+  },
+  {
+    id: "agent-promote",
+    group: "agent",
+    question: {
+      en: "What should agents consider when promoting 1XROLL?",
+      zh: "推广 1XROLL 时，代理应注意什么？",
+    },
+    answer: {
+      en: "Use accurate, current information; present terms clearly; avoid guaranteeing winnings or inventing bonuses; and respect responsible-gaming principles.",
+      zh: "使用准确、最新的信息；清楚展示相关条款；不保证赢利、不编造优惠；并遵守理性游戏原则。",
+    },
+  },
+  {
+    id: "agent-wins",
+    group: "agent",
+    question: {
+      en: "Can agents guarantee player winnings?",
+      zh: "代理可以保证玩家赢利吗？",
+    },
+    answer: {
+      en: "No. Outcomes are uncertain. Promotional language should never guarantee winnings, fabricated bonuses or misleading urgency.",
+      zh: "不可以。结果具有不确定性。推广用语绝不应该保证赢利、编造优惠或制造误导性紧迫感。",
+    },
+  },
+  {
+    id: "agent-support",
+    group: "agent",
+    question: {
+      en: "Where can I get partnership support?",
+      zh: "在哪里可以获得合作支持？",
+    },
+    answer: {
+      en: "Use Contact for orientation, and official platform channels after you have submitted an inquiry. Account-specific tools are not displayed on this brand site.",
+      zh: "导览请使用联系页；提交咨询后通过官方平台渠道沟通。账户专属工具不会显示在本品牌站。",
+    },
+  },
+  {
+    id: "agent-terms-page",
+    group: "agent",
+    question: {
+      en: "Where can I read the applicable terms?",
+      zh: "在哪里阅读适用条款？",
+    },
+    answer: {
+      en: "Read Terms on this site for website orientation, then confirm live agent-programme terms through official 1XROLL channels. Promotions and Rewards hubs explain player-facing offer language separately.",
+      zh: "网站导览请阅读本站条款页，实时代理计划条款请通过官方 1XROLL 渠道确认。优惠与奖励枢纽则分别说明面向玩家的活动用语。",
+    },
+  },
+  {
+    id: "guides-hub",
+    group: "guides",
+    question: {
+      en: "What is the 1XROLL Guides hub?",
+      zh: "什么是 1XROLL 攻略中心？",
+    },
+    answer: {
+      en: "It is the knowledge centre for getting started, game categories, promotions, rewards, VIP, wallet concepts, fair play and responsible participation — plus individual articles for deeper reading.",
+      zh: "这是入门、游戏分类、优惠、奖励、VIP、钱包概念、公平游戏与理性参与的知识中心，并配有可深入阅读的单篇文章。",
+    },
+  },
+  {
+    id: "guides-start",
+    group: "guides",
+    question: {
+      en: "Where should a new user start?",
+      zh: "新用户应该从哪里开始？",
+    },
+    answer: {
+      en: "Begin with the four-step journey on this page, then the beginner articles and the game library. Review promotions, rewards and responsible-gaming information before you participate.",
+      zh: "先从本页的四步路径开始，再阅读入门文章并浏览游戏库。参与前请查看优惠、奖励与理性游戏信息。",
+    },
+  },
+  {
+    id: "guides-categories",
+    group: "guides",
+    question: {
+      en: "Where can I learn about game categories?",
+      zh: "在哪里了解游戏分类？",
+    },
+    answer: {
+      en: "Use the Game Guides section on this hub, the category pages in the library, and the article “Explore game categories”.",
+      zh: "使用本枢纽的游戏攻略分区、游戏库中的分类页，以及「探索游戏分类」文章。",
+    },
+  },
+  {
+    id: "guides-promo-terms",
+    group: "guides",
+    question: {
+      en: "How can I understand promotion terms?",
+      zh: "如何理解优惠条款？",
+    },
+    answer: {
+      en: "Read the Promotions hub and the promotions-terms guide. Check eligibility, turnover, expiry and whether an offer applies to you before opting in.",
+      zh: "阅读优惠枢纽与优惠条款攻略。加入前请核对资格、流水、有效期，以及活动是否适用于你。",
+    },
+  },
+  {
+    id: "guides-rewards",
+    group: "guides",
+    question: {
+      en: "Where can I learn about rewards?",
+      zh: "在哪里了解奖励？",
+    },
+    answer: {
+      en: "Open the Rewards hub and the rewards & VIP guide. Rewards sit beside promotions as a map of benefit lanes — not as a substitute for live eligibility.",
+      zh: "打开奖励枢纽以及奖励与 VIP 攻略。奖励与优惠并列，作为礼遇通道地图——不能替代实时资格确认。",
+    },
+  },
+  {
+    id: "guides-vip",
+    group: "guides",
+    question: {
+      en: "Where can I find VIP information?",
+      zh: "在哪里查看 VIP 信息？",
+    },
+    answer: {
+      en: "Use the VIP hub on this site for orientation, including the published cashback ceiling of up to 1.1%. Live status remains on the platform after login.",
+      zh: "使用本站 VIP 枢纽作为导览，其中包含已公开的返水上限最高 1.1%。实时状态仍需登录后在平台查看。",
+    },
+  },
+  {
+    id: "guides-wallet",
+    group: "guides",
+    question: {
+      en: "Where can I find wallet information?",
+      zh: "在哪里查看钱包信息？",
+    },
+    answer: {
+      en: "Use the Wallet section on this hub, then Deposit, Withdraw, Rebates and Payment Methods pages. Methods and processing conditions are shown on the platform — this site does not invent providers or speeds.",
+      zh: "使用本枢纽的钱包分区，再进入存款、取款、返水与支付方式页。方法与处理条件以平台展示为准——本站不编造支付商或到账速度。",
+    },
+  },
+  {
+    id: "guides-rg",
+    group: "guides",
+    question: {
+      en: "Where can I learn about responsible gaming?",
+      zh: "在哪里了解理性游戏？",
+    },
+    answer: {
+      en: "Read the Responsible Gaming page and the dedicated responsible-gaming guide. Keep entertainment within personal limits and take a break if play stops feeling manageable.",
+      zh: "阅读理性游戏页与对应攻略。把娱乐控制在个人限额内；若游戏不再可控，请暂停并寻求支持。",
+    },
+  },
+  {
+    id: "guides-mobile",
+    group: "guides",
+    question: {
+      en: "Can I access the Guides section on mobile?",
+      zh: "可以在手机上使用攻略中心吗？",
+    },
+    answer: {
+      en: "Yes. This hub and its articles are designed to stack on phones. Live play still follows the platform’s mobile web or client experience.",
+      zh: "可以。本枢纽与文章会在手机上自然堆叠。实时游玩仍跟随平台的移动网页或客户端体验。",
+    },
+  },
+  {
+    id: "guides-support",
+    group: "guides",
+    question: {
+      en: "Where can I find additional support information?",
+      zh: "在哪里找到更多支持信息？",
+    },
+    answer: {
+      en: "Use FAQ, Contact and the platform support path after login. Guides explain concepts; they do not replace account-specific help.",
+      zh: "使用常见问题、联系页，以及登录后的平台支持路径。攻略解释概念，不能替代账户专属帮助。",
     },
   },
   {

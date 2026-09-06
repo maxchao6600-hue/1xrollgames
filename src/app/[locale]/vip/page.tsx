@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
-import { getEcosystemHub, getFaqByGroup } from "@/data";
+import { getFaqByIds, PUBLISHED_VIP_CASHBACK } from "@/data";
 import { REWARD_ASSETS } from "@/data/assets";
-import { ctaConfig } from "@/config/site";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
@@ -16,7 +15,9 @@ import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
-  CompareGrid,
+  ChecklistPanel,
+  ComparisonTable,
+  EcosystemFlow,
   FeatureSplit,
   HighlightPanel,
   HubAnchorNav,
@@ -25,10 +26,21 @@ import {
   InfoGrid,
   JourneyStrip,
   RelatedCards,
-  StepGrid,
 } from "@/components/content/HubModules";
 
 const PATH = "/vip";
+const FAQ_IDS = [
+  "vip-what",
+  "vip-vs-rewards",
+  "vip-cashback",
+  "vip-auto",
+  "vip-vs-promos",
+  "vip-terms",
+  "vip-change",
+  "vip-support",
+  "vip-how",
+  "vip-mobile",
+] as const;
 
 export async function generateMetadata({
   params,
@@ -37,13 +49,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
-  const hub = getEcosystemHub("vip");
-  if (!hub) return {};
+  const locale = raw as Locale;
   return buildMetadata({
-    locale: raw,
+    locale,
     path: PATH,
-    title: localize(hub.title, raw),
-    description: localize(hub.summary, raw),
+    title:
+      locale === "zh"
+        ? "1XROLL VIP | 礼遇、返水与奖励导览"
+        : "1XROLL VIP | VIP Benefits, Cashback & Rewards Guide",
+    description:
+      locale === "zh"
+        ? `了解 1XROLL VIP 如何融入奖励生态。公开摘要：VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}。资格与细则以平台当前展示为准。`
+        : `Learn how 1XROLL VIP fits the rewards ecosystem. Published summary: VIP cashback up to ${PUBLISHED_VIP_CASHBACK}. Eligibility and details follow what the platform currently shows.`,
   });
 }
 
@@ -56,28 +73,25 @@ export default async function VipPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const hub = getEcosystemHub("vip");
-  if (!hub) notFound();
-  const faq = getFaqByGroup("vip").slice(0, 10);
+  const faq = getFaqByIds([...FAQ_IDS]);
   const zh = locale === "zh";
+  const lp = (path: string) => localePath(locale, path);
+  const h1 = zh ? "1XROLL VIP" : "1XROLL VIP";
 
   return (
     <Section className="pt-8">
       <Container>
         <Breadcrumbs
           items={[
-            { label: t(dict, "nav.home"), href: localePath(locale, "/") },
-            { label: localize(hub.title, locale) },
+            { label: t(dict, "nav.home"), href: lp("/") },
+            { label: t(dict, "nav.vip") },
           ]}
         />
         <JsonLd
           data={[
             breadcrumbJsonLd([
-              { name: t(dict, "nav.home"), url: absoluteUrl(localePath(locale, "/")) },
-              {
-                name: localize(hub.title, locale),
-                url: absoluteUrl(localePath(locale, PATH)),
-              },
+              { name: t(dict, "nav.home"), url: absoluteUrl(lp("/")) },
+              { name: t(dict, "nav.vip"), url: absoluteUrl(lp(PATH)) },
             ]),
             faqJsonLd(
               faq.map((item) => ({
@@ -92,7 +106,7 @@ export default async function VipPage({
           <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[20rem]">
             <Image
               src={REWARD_ASSETS["vip-club"]}
-              alt={localize(hub.title, locale)}
+              alt={h1}
               fill
               className="object-cover object-center"
               sizes="(max-width:768px) 100vw, 50vw"
@@ -102,191 +116,313 @@ export default async function VipPage({
           <div className="flex flex-col justify-center p-7 md:p-10">
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">VIP</p>
             <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
-              {localize(hub.title, locale)}
+              {h1}
             </h1>
             <p className="mt-3 text-base leading-relaxed text-text-muted">
-              {localize(hub.intro, locale)}
+              {zh
+                ? "VIP 是 1XROLL 礼遇生态的一部分：帮助你理解持续关系通道、公开返水语言，以及它与奖励、优惠如何并列。实时状态仍在登录后的平台查看。"
+                : "VIP is part of the wider 1XROLL benefits ecosystem: an orientation to the ongoing relationship lane, published cashback language, and how it sits beside Rewards and Promotions. Live status remains on the platform after login."}
+            </p>
+            <p className="mt-4 font-[family-name:var(--font-display)] text-2xl text-accent">
+              {zh
+                ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
+                : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={ctaConfig.play.href} external>
-                {t(dict, "common.openPlatform")}
-              </Button>
-              <Button href={localePath(locale, "/rewards")} variant="secondary">
-                {t(dict, "nav.rewards")}
+              <Button href={lp("/rewards")}>{t(dict, "nav.rewards")}</Button>
+              <Button href={lp("/promotions")} variant="secondary">
+                {t(dict, "nav.promotions")}
               </Button>
             </div>
           </div>
         </div>
 
         <HubAnchorNav
+          ariaLabel={zh ? "本页目录" : "On this page"}
           items={
             zh
               ? [
-                  { href: "#experience", label: "体验" },
+                  { href: "#glance", label: "总览" },
                   { href: "#cashback", label: "返水" },
                   { href: "#compare", label: "比较" },
+                  { href: "#ecosystem", label: "生态" },
                   { href: "#faq", label: "常见问题" },
                 ]
               : [
-                  { href: "#experience", label: "Experience" },
+                  { href: "#glance", label: "Overview" },
                   { href: "#cashback", label: "Cashback" },
                   { href: "#compare", label: "Compare" },
+                  { href: "#ecosystem", label: "Ecosystem" },
                   { href: "#faq", label: "FAQ" },
                 ]
           }
         />
 
-        <div id="experience" className="scroll-mt-28">
+        <div id="glance" className="scroll-mt-28">
+          <InfoGrid
+            title={zh ? "VIP 一览" : "VIP at a glance"}
+            columns={4}
+            items={
+              zh
+                ? [
+                    { title: "VIP 礼遇", body: "持续关系通道的导览，帮助你阅读公开语言。" },
+                    { title: "返水", body: `符合条件活动的回馈概念。公开上限最高 ${PUBLISHED_VIP_CASHBACK}。` },
+                    { title: "奖励", body: "把 VIP 放进奖励中心地图，与活动、优惠并列。" },
+                    { title: "专属体验", body: "请在当前 VIP 计划中探索已提供的礼遇与功能——本站不编造具体等级礼包。" },
+                  ]
+                : [
+                    { title: "VIP Benefits", body: "Orientation for the ongoing relationship lane and published language." },
+                    { title: "Cashback", body: `Return language on eligible activity. Published ceiling up to ${PUBLISHED_VIP_CASHBACK}.` },
+                    { title: "Rewards", body: "Places VIP on the Rewards map beside activity and offers." },
+                    { title: "Exclusive Experience", body: "Explore the benefits and features made available through the current VIP program." },
+                  ]
+            }
+          />
+        </div>
+
         <HighlightPanel
-          kicker={zh ? "定位" : "Positioning"}
-          title={zh ? "什么是 1XROLL VIP？" : "What is 1XROLL VIP?"}
+          kicker={zh ? "含义" : "Meaning"}
+          title={zh ? "VIP 在生态中的位置" : "What VIP means"}
           body={
             zh
-              ? "VIP 是持续关系与返水概念通道。本页帮助你读懂公开语言，而不是展示个人等级条或编造 1–4 阶梯。"
-              : "VIP is the ongoing relationship and cashback-concept lane. This page helps you read published language — it does not show a personal meter or invent a 1–4 ladder."
+              ? "VIP 属于更广的奖励生态。应与当前条款一起阅读；礼遇可能受资格限制。请在平台核对当前展示的信息，再决定如何参与。"
+              : "VIP belongs to the broader rewards ecosystem. Review it together with current terms; benefits may be subject to eligibility. Verify the information shown on the platform before you participate."
           }
           points={
             zh
-              ? ["不是投资产品", "上限 1.1% 是导览事实", "办理只在登录后"]
-              : ["Not an investment product", "The 1.1% ceiling is orientation", "Actions exist only after login"]
-          }
-        />
-        <InfoGrid
-          title={zh ? "VIP 生态概念" : "VIP ecosystem overview"}
-          columns={3}
-          items={
-            zh
-              ? [
-                  { title: "关系通道", body: "面向持续参与的识读页，不是投资产品介绍。" },
-                  { title: "返水概念", body: "符合条件投注的回馈语言；公开上限最高 1.1%。" },
-                  { title: "平台办理", body: "实时状态、礼遇进度与客服路径只在登录后存在。" },
-                ]
-              : [
-                  { title: "Relationship lane", body: "Literacy for ongoing engagement — not an investment-product pitch." },
-                  { title: "Cashback concept", body: "Return language on eligible bets; published ceiling up to 1.1%." },
-                  { title: "Platform actions", body: "Live status, perk progress and support paths exist only after login." },
-                ]
-          }
-        />
-        </div>
-
-        <div id="cashback" className="scroll-mt-28">
-        <FeatureSplit
-          kicker={zh ? "已核实公开上限" : "Published ceiling"}
-          title={zh ? "VIP 返水最高 1.1%" : "VIP cashback up to 1.1%"}
-          image={REWARD_ASSETS.rebates}
-          imageAlt={zh ? "返水导览视觉" : "Rebate orientation visual"}
-          body={
-            zh
-              ? "本品牌站公开摘要的上限为符合条件投注最高 1.1%。更高等级可解锁更高比例与礼遇——细节以平台为准。该数字是导览事实，不是个人收益预测。本站不编造 VIP 1–4 阶梯或周月固定金额。"
-              : "Up to 1.1% on eligible bets is the publicly summarised ceiling on this brand site. Higher tiers unlock increased rates and perks — details on the platform. That figure is orientation, not a personal yield forecast. This site does not invent VIP 1–4 ladders or weekly/monthly amounts."
-          }
-          points={
-            zh
-              ? ["仅限符合条件的投注", "资格与权重在平台确认", "不要与首存 25 倍流水混用"]
-              : ["Eligible bets only", "Eligibility and weighting confirmed on the platform", "Do not mix with the 25× welcome multiple"]
-          }
-          cta={
-            <Button href={localePath(locale, "/rebates")} variant="secondary">
-              {t(dict, "nav.rebates")}
-            </Button>
-          }
-        />
-        </div>
-
-        <StepGrid
-          title={zh ? "如何理解资格与礼遇" : "How eligibility and benefits work"}
-          steps={
-            zh
-              ? [
-                  { title: "阅读公开语言", body: "先认出 1.1% 上限等已核实用语。" },
-                  { title: "打开平台 VIP 区", body: "实时条件、状态与工具只在登录后。" },
-                  { title: "分开读优惠条款", body: "限时活动可能另有流水，不要叠数字。" },
-                  { title: "保持限额", body: "返水比例不是提高注额的理由。" },
-                ]
-              : [
-                  { title: "Read published language", body: "Recognise verified wording such as the 1.1% ceiling first." },
-                  { title: "Open the platform VIP area", body: "Live conditions, status and tools exist only after login." },
-                  { title: "Read offer terms separately", body: "Timed promotions may add wagering — do not stack figures." },
-                  { title: "Keep limits", body: "A cashback rate is not a reason to raise stakes." },
-                ]
+              ? ["不是投资产品", "上限是导览事实", "办理在登录后"]
+              : ["Not an investment product", "The ceiling is orientation", "Actions follow login"]
           }
         />
 
         <JourneyStrip
-          title={zh ? "VIP 礼遇如何运作" : "How VIP benefits work"}
+          title={zh ? "VIP 路径" : "VIP journey"}
+          subtitle={
+            zh
+              ? "这是识读路径，不是自动升级承诺。"
+              : "This is a literacy path — not an automatic upgrade promise."
+          }
           steps={
             zh
               ? [
-                  { title: "资格", body: "只在平台提示中确认。" },
-                  { title: "参与", body: "符合条件的游玩，不加高限额。" },
-                  { title: "账户信息", body: "VIP 区查看状态。" },
-                  { title: "适用礼遇", body: "有则进入，无则离开。" },
-                  { title: "分开读优惠", body: "不要叠 25 倍与 1.1%。" },
+                  { title: "发现 VIP", body: "从本枢纽与奖励地图认识通道。" },
+                  { title: "阅读可用礼遇", body: "先理解公开语言，例如返水上限。" },
+                  { title: "理解资格与条款", body: "在平台核对谁适用、何时适用。" },
+                  { title: "参与符合条件的活动", body: "按平台提示进行，不因此提高限额。" },
+                  { title: "查看可用奖励", body: "有则进入，无则离开。" },
                 ]
               : [
-                  { title: "Eligibility", body: "Confirmed only in platform prompts." },
-                  { title: "Participation", body: "Eligible play — do not raise limits." },
-                  { title: "Account info", body: "Review status in the VIP area." },
-                  { title: "Applicable benefits", body: "Enter when they apply; leave when they do not." },
-                  { title: "Separate offers", body: "Do not stack 25× with 1.1%." },
+                  { title: "Discover VIP", body: "Meet the lane on this hub and the Rewards map." },
+                  { title: "Review available benefits", body: "Start with published language such as the cashback ceiling." },
+                  { title: "Understand eligibility and terms", body: "Confirm who and when on the platform." },
+                  { title: "Participate in eligible activities", body: "Follow platform prompts — do not raise limits for a rate." },
+                  { title: "Review available rewards", body: "Enter when they apply; leave when they do not." },
                 ]
           }
         />
 
+        <div id="cashback" className="scroll-mt-28">
+          <FeatureSplit
+            kicker={zh ? "已核实公开上限" : "Published ceiling"}
+            title={zh ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}` : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
+            image={REWARD_ASSETS.rebates}
+            imageAlt={zh ? "返水导览视觉" : "Rebate orientation visual"}
+            body={
+              zh
+                ? `返水通常指符合条件活动的回馈语言。「最高 ${PUBLISHED_VIP_CASHBACK}」是公开上限，不是人人自动获得的固定比例。条款决定资格、权重与时间。返水不同于限时优惠，也不同于奖励中心里其他通道——请分开阅读。`
+                : `Cashback generally means return language on eligible activity. “Up to ${PUBLISHED_VIP_CASHBACK}” is a published ceiling, not a fixed rate for every user. Terms decide eligibility, weighting and timing. Cashback is different from timed promotions and from other reward lanes — read each separately.`
+            }
+            points={
+              zh
+                ? ["在平台核对当前信息", "不要与首存流水叠算", "比例不是加注理由"]
+                : ["Confirm current details on the platform", "Do not stack with welcome wagering", "A rate is not a reason to raise stakes"]
+            }
+            cta={
+              <Button href={lp("/rebates")} variant="secondary">
+                {t(dict, "nav.rebates")}
+              </Button>
+            }
+          />
+        </div>
+
         <div id="compare" className="scroll-mt-28">
-        <CompareGrid
-          title={zh ? "VIP 与奖励、优惠的关系" : "VIP, Rewards and Promotions"}
-          columns={
-            zh
-              ? [
-                  { title: "VIP", body: "持续关系与返水概念。无编造阶梯表。" },
-                  { title: "奖励中心", body: "把 VIP 放在活动、返水与优惠旁边的地图。" },
-                  { title: "优惠", body: "限时加入。已核实首存：200% / 8,888 / 25× / 10 USDT。" },
-                ]
-              : [
-                  { title: "VIP", body: "Ongoing relationship and cashback concepts. No invented ladder tables." },
-                  { title: "Rewards Hub", body: "Places VIP beside activity, rebate and offer lanes as a map." },
-                  { title: "Promotions", body: "Timed opt-ins. Verified welcome: 200% / 8,888 / 25× / 10 USDT." },
-                ]
-          }
-        />
+          <ComparisonTable
+            title={zh ? "VIP 与其他礼遇" : "VIP vs other benefits"}
+            columns={
+              zh ? ["优惠", "奖励", "返水", "VIP"] : ["Promotions", "Rewards", "Rebates", "VIP"]
+            }
+            rows={
+              zh
+                ? [
+                    {
+                      label: "目的",
+                      cells: ["限时加入的活动语言", "礼遇通道地图", "回馈概念说明", "持续关系与返水导览"],
+                    },
+                    {
+                      label: "发现位置",
+                      cells: ["优惠枢纽 / 平台活动", "奖励中心", "返水页与奖励地图", "本 VIP 枢纽与平台 VIP 区"],
+                    },
+                    {
+                      label: "应核对的信息",
+                      cells: ["资格、流水、有效期", "通道是否适用", "计算与到账条件", "资格、上限与时间"],
+                    },
+                    {
+                      label: "生态位置",
+                      cells: ["可与其他通道并存，但不叠数字", "把各通道放在一起理解", "常与 VIP 语言相邻", "属于奖励生态的持续一层"],
+                    },
+                  ]
+                : [
+                    {
+                      label: "Purpose",
+                      cells: [
+                        "Timed opt-in offer language",
+                        "Map of benefit lanes",
+                        "Cashback-concept explanation",
+                        "Ongoing relationship and cashback orientation",
+                      ],
+                    },
+                    {
+                      label: "Where users discover it",
+                      cells: [
+                        "Promotions hub / platform activity",
+                        "Rewards Center",
+                        "Rebates page and the rewards map",
+                        "This VIP hub and the platform VIP area",
+                      ],
+                    },
+                    {
+                      label: "Typical information to review",
+                      cells: [
+                        "Eligibility, turnover, expiry",
+                        "Whether a lane applies to you",
+                        "Calculation and credit conditions",
+                        "Eligibility, ceiling and timing",
+                      ],
+                    },
+                    {
+                      label: "How it fits into the ecosystem",
+                      cells: [
+                        "Can sit beside other lanes — do not stack figures",
+                        "Helps you read the lanes together",
+                        "Often adjacent to VIP language",
+                        "The ongoing layer inside rewards",
+                      ],
+                    },
+                  ]
+            }
+          />
         </div>
 
         <InfoGrid
-          title={zh ? "条款、访问与移动端" : "Terms, access and mobile"}
-          columns={3}
+          title={zh ? "如何阅读 VIP 信息" : "How to read VIP information"}
+          columns={4}
           items={
             zh
               ? [
-                  { title: "条款真实性", body: "只重复公开摘要。冲突以平台为准。" },
-                  { title: "如何查看 VIP 信息", body: "使用打开平台进入账户 / VIP 区域。本站不显示个人等级条。" },
-                  { title: "移动体验", body: "本页可在手机阅读。实时 VIP 工具跟随平台客户端或移动网页。" },
+                  { title: "资格", body: "谁适用、需要满足哪些提示，只在平台确认。" },
+                  { title: "礼遇说明", body: "公开摘要帮助识读；账户细节不在本站显示。" },
+                  { title: "条件", body: "符合条件的活动、权重与排除项应逐条阅读。" },
+                  { title: "时间 / 可用性", body: "礼遇可能有窗口。过期或变更以平台为准。" },
                 ]
               : [
-                  { title: "Terms authenticity", body: "Only published summaries are repeated. Conflicts: trust the platform." },
-                  { title: "How to review VIP information", body: "Use Open platform for the account / VIP area. This site does not show personal tier meters." },
-                  { title: "Mobile experience", body: "This page is readable on a phone. Live VIP tools follow the platform client or mobile web." },
+                  { title: "Eligibility", body: "Who it applies to, and which prompts apply, is confirmed on the platform." },
+                  { title: "Benefit description", body: "Published summaries help you read the language; account details are not shown here." },
+                  { title: "Conditions", body: "Eligible activity, weighting and exclusions should be read line by line." },
+                  { title: "Timing / availability", body: "Benefits can have windows. Expiry or changes follow the platform." },
+                ]
+          }
+        />
+
+        <div id="ecosystem" className="scroll-mt-28">
+          <EcosystemFlow
+            title={zh ? "VIP 与奖励生态" : "VIP + rewards ecosystem"}
+            subtitle={
+              zh
+                ? "这些通道彼此相邻，但一个不会自动授予另一个。请按链接分别阅读。"
+                : "These lanes sit beside each other; one does not automatically grant another. Follow each link separately."
+            }
+            items={[
+              {
+                href: lp("/vip"),
+                title: "VIP",
+                body: zh ? "持续礼遇导览。" : "Ongoing benefits orientation.",
+              },
+              {
+                href: lp("/rewards"),
+                title: zh ? "奖励" : "Rewards",
+                body: zh ? "生态地图。" : "Ecosystem map.",
+              },
+              {
+                href: lp("/promotions"),
+                title: zh ? "优惠" : "Promotions",
+                body: zh ? "限时加入。" : "Timed opt-ins.",
+              },
+              {
+                href: lp("/rebates"),
+                title: zh ? "返水" : "Rebates",
+                body: zh ? "回馈概念。" : "Cashback concepts.",
+              },
+              {
+                href: lp("/promotions"),
+                title: zh ? "活动入口" : "Activity Center",
+                body: zh ? "当期活动语言入口。" : "Entry to current activity language.",
+              },
+            ]}
+          />
+        </div>
+
+        <ChecklistPanel
+          title={zh ? "参与前清单" : "VIP checklist"}
+          subtitle={zh ? "在依赖任何礼遇前，建议核对这些方向。" : "Review these points before relying on a benefit."}
+          items={
+            zh
+              ? [
+                  "查看当前 VIP 信息",
+                  "核对资格",
+                  "阅读适用条款",
+                  "理解返水条件",
+                  "核对其它优惠 / 奖励条款",
+                  "阅读理性参与指引",
+                ]
+              : [
+                  "Check current VIP information",
+                  "Review eligibility",
+                  "Read applicable terms",
+                  "Understand cashback conditions",
+                  "Check relevant promotion / reward terms",
+                  "Review responsible participation guidance",
                 ]
           }
         />
 
         <InfoGrid
-          title={zh ? "理性参与" : "Responsible participation"}
+          title={zh ? "VIP 移动体验" : "VIP mobile experience"}
           columns={2}
-          items={[
-            {
-              title: zh ? "等级感不是任务" : "Tier feeling is not a quest",
-              body: zh
-                ? "不要为了“看起来更高等级”而延长对局。"
-                : "Do not extend sessions to feel like a higher tier.",
-            },
-            {
-              title: zh ? "需要时停止" : "Stop when needed",
-              body: zh ? "追逐损失时离开，并阅读理性游戏。" : "Leave if chasing losses, and read Responsible Gaming.",
-              href: localePath(locale, "/responsible-gaming"),
-            },
-          ]}
+          items={
+            zh
+              ? [
+                  {
+                    title: "本页可在手机阅读",
+                    body: "枢纽在支持的设备上自然堆叠。实时 VIP 工具跟随平台移动网页或客户端。",
+                  },
+                  {
+                    title: "下载导览",
+                    body: "移动访问说明见下载页。本站不声称特定应用商店上架，除非已核实。",
+                    href: lp("/download"),
+                  },
+                ]
+              : [
+                  {
+                    title: "This page is readable on phones",
+                    body: "The hub stacks on supported devices. Live VIP tools follow the platform’s mobile web or client.",
+                  },
+                  {
+                    title: "Download orientation",
+                    body: "Mobile access notes live on Download. This site does not claim specific app-store listings unless verified.",
+                    href: lp("/download"),
+                  },
+                ]
+          }
         />
 
         <div id="faq" className="mt-14 scroll-mt-28">
@@ -301,48 +437,37 @@ export default async function VipPage({
             />
           </div>
           <p className="mt-4 text-sm text-text-muted">
-            <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
+            <Link href={lp("/faq")} className="text-accent hover:underline">
               {zh ? "查看全部常见问题" : "View all FAQ"} →
             </Link>
           </p>
         </div>
 
         <RelatedCards
-          title={zh ? "相关页面" : "Related pages"}
+          title={zh ? "相关内容" : "Related content"}
           items={[
-            {
-              href: localePath(locale, "/rewards"),
-              title: zh ? "奖励" : "Rewards",
-              body: zh ? "生态地图。" : "Ecosystem map.",
-            },
-            {
-              href: localePath(locale, "/promotions"),
-              title: zh ? "优惠" : "Promotions",
-              body: zh ? "限时摘要。" : "Timed summaries.",
-            },
-            {
-              href: localePath(locale, "/rebates"),
-              title: zh ? "返水" : "Rebates",
-              body: zh ? "回馈概念通道。" : "Cashback-concept lane.",
-            },
-            {
-              href: localePath(locale, "/guides/understanding-rewards-vip"),
-              title: zh ? "攻略" : "Guide",
-              body: zh ? "VIP 识读长文。" : "Longer VIP literacy.",
-            },
+            { href: lp("/rewards"), title: t(dict, "nav.rewards"), body: zh ? "礼遇地图。" : "Benefits map." },
+            { href: lp("/promotions"), title: t(dict, "nav.promotions"), body: zh ? "限时摘要。" : "Timed summaries." },
+            { href: lp("/guides"), title: t(dict, "nav.guides"), body: zh ? "知识中心。" : "Knowledge hub." },
+            { href: lp("/games"), title: t(dict, "nav.games"), body: zh ? "游戏库。" : "Game library." },
+            { href: lp("/faq"), title: t(dict, "nav.faq"), body: zh ? "全站问答。" : "Site-wide answers." },
+            { href: lp("/responsible-gaming"), title: t(dict, "nav.responsible"), body: zh ? "限额与支持。" : "Limits and support." },
           ]}
         />
 
         <HubCtaBand
           locale={locale}
-          title={zh ? "实时 VIP 状态在平台" : "Live VIP status is on the platform"}
+          title={zh ? "探索 1XROLL 礼遇生态" : "Explore the 1XROLL Benefits Ecosystem"}
           body={
             zh
-              ? "本页帮助你读懂公开语言。等级与返水工具在登录之后。"
-              : "This page helps you read published language. Tier and cashback tools follow login."
+              ? "VIP 是持续一层。把公开语言带回奖励、优惠与攻略，再在平台核对实时状态。"
+              : "VIP is the ongoing layer. Take published language back to Rewards, Promotions and Guides, then confirm live status on the platform."
           }
-          secondaryHref={localePath(locale, "/rewards")}
-          secondaryLabel={zh ? "返回奖励中心" : "Continue to Rewards"}
+          actions={[
+            { href: lp("/rewards"), label: zh ? "探索奖励" : "Explore Rewards", variant: "primary" },
+            { href: lp("/promotions"), label: zh ? "查看优惠" : "View Promotions", variant: "secondary" },
+            { href: lp("/guides"), label: zh ? "阅读攻略" : "Read Guides", variant: "outline" },
+          ]}
         />
       </Container>
     </Section>
