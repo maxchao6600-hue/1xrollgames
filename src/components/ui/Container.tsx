@@ -32,12 +32,15 @@ export function SectionHeader({
   title,
   description,
   action,
+  heading = "h2",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   action?: ReactNode;
+  heading?: "h1" | "h2";
 }) {
+  const HeadingTag = heading;
   return (
     <div className="mb-8 flex flex-col gap-4 md:mb-10 md:flex-row md:items-end md:justify-between">
       <div className="max-w-2xl">
@@ -46,9 +49,9 @@ export function SectionHeader({
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
+        <HeadingTag className="font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
           {title}
-        </h2>
+        </HeadingTag>
         {description ? (
           <p className="mt-3 text-base leading-relaxed text-text-muted md:text-[1.05rem]">
             {description}

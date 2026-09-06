@@ -18,6 +18,7 @@ export function DiscoverByExperience({ locale }: { locale: Locale }) {
     <Section>
       <Container>
         <SectionHeader
+          heading="h1"
           title={t(dict, "home.categoriesTitle")}
           description={t(dict, "home.categoriesSubtitle")}
         />
