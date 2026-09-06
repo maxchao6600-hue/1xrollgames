@@ -59,7 +59,7 @@ export default async function AboutPage({
     locale === "zh"
       ? {
           h1: "关于 1XROLL",
-          lead: `${siteConfig.name} 是面向符合条件玩家的数字娱乐品牌，覆盖老虎机、真人娱乐场、快速玩法、捕鱼、体育等通道，以及奖励、VIP、代理与入门导览。本站是官方品牌网站版本：以独立布局发布游戏信息、厂商背景、优惠摘要与编辑攻略，并清晰导向 ${siteConfig.platformUrl} 的平台入口。`,
+          lead: `${siteConfig.name} 是面向符合条件玩家的数字娱乐品牌，覆盖老虎机、真人娱乐场、快速玩法、捕鱼、体育等通道，以及奖励、VIP、代理与入门导览。本站是 1XROLL 品牌网站版本：以独立布局发布游戏信息、厂商背景、优惠摘要与编辑攻略，并清晰导向 ${siteConfig.platformUrl} 的平台入口。`,
           ecoTitle: "完整生态",
           ecoBody:
             "本站把发现路径组织成一个连贯生态：游戏分类与作品页、厂商档案、优惠与奖励导览、VIP / 返水摘要、代理介绍、钱包与支付方式导览、下载 / 访问说明，以及理性游戏与公平游戏教育页。你可以用本站理解“有什么、怎么走”，再在平台完成开户、入金与开玩。",
@@ -93,7 +93,7 @@ export default async function AboutPage({
         }
       : {
           h1: "About 1XROLL",
-          lead: `${siteConfig.name} is a digital entertainment brand for eligible players — covering slots, live casino, fast formats, fishing, sports and related lanes, plus rewards, VIP, agent and onboarding orientation. This site is an official brand website variation: it publishes game information, provider context, promotions summaries and editorial guides in a distinct layout, and connects clearly to platform entry at ${siteConfig.platformUrl}.`,
+          lead: `${siteConfig.name} is a digital entertainment brand for eligible players — covering slots, live casino, fast formats, fishing, sports and related lanes, plus rewards, VIP, agent and onboarding orientation. This site is a 1XROLL brand website variation: it publishes game information, provider context, promotions summaries and editorial guides in a distinct layout, and connects clearly to platform entry at ${siteConfig.platformUrl}.`,
           ecoTitle: "The ecosystem",
           ecoBody:
             "We organise discovery as one coherent ecosystem: game categories and title pages, provider profiles, promotions and rewards orientation, VIP / rebate summaries, agent introduction, wallet and payment-method orientation, download / access guidance, plus Fair Play and Responsible Gaming education. Use this site to understand what exists and how to navigate — then complete account, funding and play on the platform.",
@@ -123,7 +123,7 @@ export default async function AboutPage({
             "This brand site and the platform work in mobile browsers. The Download page provides access orientation (including Android path guidance when offered) and official CTAs — never install packages from unofficial mirrors.",
           faqTitle: "FAQ",
           legalTitle: "Legal note",
-          legalBody: `${siteConfig.name} is not a Malaysia legal entity. Mentions of 1XROLL on this site are not company-registration, licensing or local-entity claims. “Malaysia” labels on payment rails name market-oriented funding options on the platform — not a legal entity called 1XROLL Malaysia. Follow local law and participate only where lawful.`,
+          legalBody: `${siteConfig.name} is not a Malaysia legal entity. Mentions of 1XROLL on this site are not company-registration, licensing or local-entity claims. “Malaysia” labels on payment rails name market-oriented funding options on the platform — rail names are not the same as a local corporate entity for the brand. Follow local law and participate only where lawful.`,
           relatedTitle: "Related links",
         };
 

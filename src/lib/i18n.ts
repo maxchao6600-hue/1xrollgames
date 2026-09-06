@@ -229,7 +229,7 @@ const en = {
     brandBlurb:
       "This site is a 1XROLL brand website variation for the complete gaming ecosystem — games, rewards, guides, wallet orientation and platform entry.",
     notice:
-      "18+ only. Gambling can be addictive. Please play within your limits and follow local laws. 1XROLL is not a Malaysia legal entity; market payment-rail names are not entity claims.",
+      "18+ only. Gambling can be addictive. Please play within your limits and follow local laws. Mentions of market payment rails are not company-registration or local-entity claims for 1XROLL.",
     copyright: "All rights reserved.",
   },
   notFound: {
@@ -461,7 +461,7 @@ const zh = {
     brandBlurb:
       "本站是 1XROLL 品牌网站版本，面向完整游戏生态——游戏、奖励、攻略、钱包导览与平台入口。",
     notice:
-      "仅限 18 岁以上。博彩可能令人沉迷。请在限额内游玩，并遵守当地法律。1XROLL 不是马来西亚法律实体；市场支付通道命名不等于实体主张。",
+      "仅限 18 岁以上。博彩可能令人沉迷。请在限额内游玩，并遵守当地法律。市场支付通道命名不等于 1XROLL 的公司注册或本地法律实体主张。",
     copyright: "保留所有权利。",
   },
   notFound: {

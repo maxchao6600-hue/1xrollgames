@@ -40,7 +40,9 @@ export function buildMetadata({
   );
 
   return {
-    title: fullTitle,
+    title: {
+      absolute: fullTitle,
+    },
     description,
     metadataBase: new URL(siteConfig.url),
     authors: [{ name: siteConfig.author }],

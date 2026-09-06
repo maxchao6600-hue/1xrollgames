@@ -68,8 +68,8 @@ export const faqItems: FaqItem[] = [
       zh: "1XROLL 有多少款游戏？",
     },
     answer: {
-      en: "The platform catalogue includes 1,187+ titles. This brand site documents a curated set across slots, live casino, crypto games, fast games and fishing, plus hub pages for hash, sports, chess & card and lottery lanes.",
-      zh: "平台目录包含 1,187+ 款作品。本品牌站策展覆盖老虎机、真人、加密游戏、快速游戏与捕鱼，并为哈希、体育、棋牌与彩票通道提供中心页。",
+      en: "This brand site documents a verified curated set: 32 slots, 6 live casino, 4 crypto, 2 fast, and 3 fishing titles, plus hub pages for hash, sports, chess & card and lottery lanes. Additional titles may be available through the wider 1XROLL platform after login — we do not invent platform-wide inventory counts here.",
+      zh: "本品牌站策展的已核实集合为：老虎机 32、真人 6、加密 4、快速 2、捕鱼 3，并为哈希、体育、棋牌与彩票提供枢纽页。登录后更广的 1XROLL 平台可能还有其他作品——本站不编造全平台库存数量。",
     },
   },
   {
@@ -128,8 +128,8 @@ export const faqItems: FaqItem[] = [
       zh: "这里会列出所有哈希或彩票作品吗？",
     },
     answer: {
-      en: "No. Hash and lottery lanes are explained as hubs. Individual lobby titles open on the platform so we never invent games or artwork.",
-      zh: "不会。哈希与彩票以中心页说明。具体大厅作品在平台打开，避免虚构游戏或图片。",
+      en: "No. Hash and lottery lanes are explained as educational hubs on this brand site. Individual lobby titles open on the 1XROLL platform after login, so we never invent games, artwork, draw boards, or inventory counts. Additional titles may be available on the platform depending on your account.",
+      zh: "不会。哈希与彩票在本品牌站以教育向中心页说明。具体大厅作品需登录后在 1XROLL 平台打开，因此我们从不虚构游戏、图片、开奖看板或库存数量。视账户情况，平台上可能还有更多作品。",
     },
   },
   {
@@ -176,8 +176,8 @@ export const faqItems: FaqItem[] = [
       zh: "彩票如何覆盖？",
     },
     answer: {
-      en: "Lottery is presented as a hub with educational orientation. Specific draws and tickets open on the platform so this site does not invent jackpot figures.",
-      zh: "彩票以中心页与教育导览呈现。具体开奖与购票在平台完成，本站不编造奖池数字。",
+      en: "Lottery is presented as an educational hub about draw-based entertainment: what to check before you participate, how anticipation windows feel, and how to reach the live lobby. Specific draws, tickets, and settlement tools open on the 1XROLL platform after login. This site does not invent results, winning numbers, or jackpot figures.",
+      zh: "彩票以教育向中心页呈现开奖类娱乐：参与前应检查什么、期待窗口给人什么感觉，以及如何进入实时大厅。具体开奖、购票与结算工具需登录后在 1XROLL 平台完成。本站不编造结果、中奖号码或头奖数字。",
     },
   },
   {
@@ -188,8 +188,8 @@ export const faqItems: FaqItem[] = [
       zh: "什么是棋牌？",
     },
     answer: {
-      en: "Chess & Card covers table and card-style entertainment lanes. Read the hub for orientation, then open live tables or rooms on the platform.",
-      zh: "棋牌覆盖桌面与纸牌类娱乐通道。可阅读中心页做导览，再在平台打开实时桌台或房间。",
+      en: "Chess & Card Games covers table and card-style entertainment on the 1XROLL platform. This brand hub teaches room pacing, UI literacy, and responsible session habits without inventing a local table inventory. Open live rooms on the platform after login; additional titles may be available there.",
+      zh: "棋牌游戏涵盖 1XROLL 平台上的桌台与纸牌类娱乐。本品牌中心教授房间节奏、界面识读与理性会话习惯，不虚构本地桌台库存。登录后在平台打开实时房间；那里可能还有更多作品。",
     },
   },
   {
@@ -260,8 +260,8 @@ export const faqItems: FaqItem[] = [
       zh: "本站会公布体育赔率吗？",
     },
     answer: {
-      en: "No. Odds change continuously. Use the Sports hub for orientation, then check live markets on the platform.",
-      zh: "不会。赔率持续变动。可阅读体育中心页做导览，实时盘口请在平台查看。",
+      en: "No. Odds and fixtures change continuously and belong on the live platform. Use the 1XROLL Sports hub for educational orientation — including how players typically explore football, basketball, tennis, and esports categories — then check live markets after login. Sports-related categories may vary by platform availability.",
+      zh: "不会。赔率与赛程持续变动，属于实时平台。请阅读 1XROLL 体育中心页做教育向导览——包括玩家通常如何探索足球、篮球、网球与电竞分类——再于登录后查看实时盘口。体育相关分类可能因平台可用性而异。",
     },
   },
   {
@@ -272,8 +272,8 @@ export const faqItems: FaqItem[] = [
       zh: "如何进入体育投注？",
     },
     answer: {
-      en: "Open the Sports page on this brand site for context, then Login or Register to reach the platform sports lobby.",
-      zh: "先在本品牌站打开体育页了解背景，再点击登录或注册进入平台体育大厅。",
+      en: "Open the 1XROLL Sports page on this brand site for literacy and context, then Login or Register to reach the platform sports lobby when sports products are offered for your account. This site does not stream live odds or scores.",
+      zh: "先在本品牌站打开 1XROLL 体育页了解识读与背景，再在账户提供体育产品时点击登录或注册进入平台体育大厅。本站不串流实时赔率或比分。",
     },
   },
   {
@@ -284,8 +284,8 @@ export const faqItems: FaqItem[] = [
       zh: "什么是哈希游戏？",
     },
     answer: {
-      en: "Hash games and Hash Roulette are entertainment lanes that use hash-style result presentation. Read the hash hubs here; individual titles open on the platform.",
-      zh: "哈希游戏与哈希轮盘是以哈希风格呈现结果的娱乐通道。可阅读本站哈希中心页；具体作品在平台打开。",
+      en: "Hash Games and Hash Roulette are platform entertainment lanes that use hash-style presentation language around short rounds or wheel-shaped loops. Read the hash hubs here for educational concepts; individual titles open on the 1XROLL platform after login. We do not invent cryptographic proofs or local inventory counts.",
+      zh: "哈希游戏与哈希轮盘是围绕短回合或转轮形循环、使用哈希风格呈现语汇的平台娱乐通道。可阅读本站哈希中心页了解教育向概念；具体作品需登录后在 1XROLL 平台打开。我们不编造密码学证明或本地库存数量。",
     },
   },
   {
@@ -296,8 +296,8 @@ export const faqItems: FaqItem[] = [
       zh: "公平游戏与哈希游戏有何关系？",
     },
     answer: {
-      en: "Fair Play on this site is orientation language around transparency for hash-inspired entertainment. It does not invent audit seals or guarantee outcomes.",
-      zh: "本站公平游戏页是面向哈希灵感娱乐透明度的导览表述。不编造审计印章，也不保证结果。",
+      en: "Fair Play on this site explains how we talk about transparency for hash-inspired entertainment without inventing audit seals, on-chain guarantees, or outcome promises. Use it alongside the hash hubs when marketing vocabulary feels overloaded.",
+      zh: "本站公平游戏页说明我们如何谈论哈希灵感娱乐的透明度，而不编造审计印章、链上保证或结果承诺。当营销语汇显得过载时，可与哈希中心页一并阅读。",
     },
   },
   {
@@ -680,8 +680,8 @@ export const faqItems: FaqItem[] = [
       zh: "在哪里打开哈希轮盘？",
     },
     answer: {
-      en: "Use this hub for orientation, then open the 1XROLL platform via Login/Register or Play CTAs. Lobby placement can vary by account and region.",
-      zh: "先用本枢纽做导览，再通过登录/注册或游玩 CTA 打开 1XROLL 平台。大厅位置可能因账户与地区而异。",
+      en: "Use the Hash Roulette hub for wheel literacy and editorial boundaries, then open the 1XROLL platform via Login, Register, or Play CTAs. Confirm current lobby placement, rules, and presentation after authentication — they can vary by account and region. Additional titles may be available on the platform.",
+      zh: "先用哈希轮盘中心页了解转轮识读与编辑边界，再通过登录、注册或游玩 CTA 打开 1XROLL 平台。认证后确认当前大厅位置、规则与呈现——可能因账户与地区而异。平台上可能还有更多作品。",
     },
   },
   {
@@ -692,8 +692,8 @@ export const faqItems: FaqItem[] = [
       zh: "这里会列出哈希游戏注额吗？",
     },
     answer: {
-      en: "No. Stake ranges and round tools live on the platform client. Set personal limits before you open any hash-style round.",
-      zh: "不会。注额范围与回合工具在平台客户端。打开任何哈希风格回合前请先设定个人限额。",
+      en: "No. Stake ranges and round tools live on the platform client after login. Set personal time and spend limits before you open any hash-style round; technical framing does not replace Responsible Gaming habits.",
+      zh: "不会。注额范围与回合工具在登录后的平台客户端。打开任何哈希风格回合前请先设定个人时间与花费限额；技术包装不能替代理性游戏习惯。",
     },
   },
   {
@@ -704,8 +704,8 @@ export const faqItems: FaqItem[] = [
       zh: "哈希游戏与哈希轮盘有何不同？",
     },
     answer: {
-      en: "Both are orientation hubs for hash-inspired entertainment. Roulette focuses on wheel-style framing; Hash Games covers a wider short-round family. Exact lobbies are on the platform.",
-      zh: "两者都是哈希灵感娱乐的导览枢纽。轮盘侧重轮盘式框架；哈希游戏覆盖更广的短回合家族。具体大厅在平台侧。",
+      en: "Both are educational hubs for hash-inspired entertainment on this brand site. Hash Roulette focuses on wheel-shaped framing and roulette literacy; Hash Games covers a wider short-round family and transparency concepts without inventing proofs. Exact lobby tiles open on the platform after login.",
+      zh: "两者都是本品牌站面向哈希灵感娱乐的教育向中心。哈希轮盘聚焦转轮形包装与轮盘识读；哈希游戏覆盖更广的短回合家族与透明度概念，但不编造证明。确切大厅瓷砖需登录后在平台打开。",
     },
   },
   {
@@ -716,8 +716,8 @@ export const faqItems: FaqItem[] = [
       zh: "哈希风格游戏的节奏如何？",
     },
     answer: {
-      en: "Expect short decision loops. That speed can feel intense — use time boxes and avoid stacking rounds when tired.",
-      zh: "预期是短决策循环。这种速度可能显得强烈——请使用时间盒，疲劳时避免叠回合。",
+      en: "Expect short decision loops that resolve quickly. That speed can feel intense and can stack many decisions into a short commute — use round budgets and time boxes, and avoid stacking rounds when tired or when “one more verify” becomes a loop.",
+      zh: "预期是快速结算的短决策循环。这种速度可能很强烈，也能把许多决策塞进一次短通勤——请使用局数预算与时间盒；疲劳时，或当「再核验一次」变成循环时，避免继续叠回合。",
     },
   },
   {
@@ -836,8 +836,8 @@ export const faqItems: FaqItem[] = [
       zh: "体育页是做什么的？",
     },
     answer: {
-      en: "Orientation for sports-related entertainment on 1XROLL. Availability can vary by platform — this site does not invent fixtures, odds or live scores.",
-      zh: "为 1XROLL 体育相关娱乐提供导览。可用性可能因平台而异——本站不编造赛程、赔率或实时比分。",
+      en: "The 1XROLL Sports page is educational orientation for sports-related entertainment: how players typically explore categories such as football, basketball, tennis, and esports, plus session design around match clocks. Sports-related categories may vary by platform availability — this site does not invent fixtures, odds, or live scores.",
+      zh: "1XROLL 体育页为体育相关娱乐提供教育向导览：玩家通常如何探索足球、篮球、网球与电竞等分类，以及围绕比赛时钟的会话设计。体育相关分类可能因平台可用性而异——本站不编造赛程、赔率或实时比分。",
     },
   },
   {
@@ -848,8 +848,8 @@ export const faqItems: FaqItem[] = [
       zh: "在哪里进行体育投注？",
     },
     answer: {
-      en: "On the 1XROLL platform after login, when sports markets are offered for your account. This brand page explains concepts only.",
-      zh: "在登录后的 1XROLL 平台（若你的账户提供体育盘口）。本品牌页仅解释概念。",
+      en: "On the 1XROLL platform after login, when sports markets are offered for your account. This brand page explains concepts and browsing habits only — confirm current categories and rules inside the live client.",
+      zh: "在登录后的 1XROLL 平台（若你的账户提供体育盘口）。本品牌页仅解释概念与浏览习惯——请在实时客户端内确认当前分类与规则。",
     },
   },
   {
@@ -860,8 +860,8 @@ export const faqItems: FaqItem[] = [
       zh: "为何本站没有赔率？",
     },
     answer: {
-      en: "Odds and fixtures change constantly and belong on the live platform. Publishing invented numbers here would mislead readers.",
-      zh: "赔率与赛程不断变化，属于实时平台。在此发布编造数字会误导读者。",
+      en: "Odds and fixtures change constantly and belong on the live platform. Publishing invented numbers here would mislead readers. Use Responsible Gaming for personal limits; use this Sports hub for literacy without a fake odds board.",
+      zh: "赔率与赛程不断变化，属于实时平台。在此发布编造数字会误导读者。个人限额请用理性游戏；需要识读而非虚假赔率看板时，请用本体育中心页。",
     },
   },
   {
@@ -872,8 +872,8 @@ export const faqItems: FaqItem[] = [
       zh: "如何进入棋牌游戏？",
     },
     answer: {
-      en: "Use this hub for orientation, then open the platform. Local catalogue cards may be limited — we do not invent table names that are not verified here.",
-      zh: "先用本枢纽导览，再打开平台。本地目录卡可能有限——我们不编造未在本站核实的桌名。",
+      en: "Use the Chess & Card Games hub for table literacy and pacing notes, then Login or Register to open rooms on the 1XROLL platform when offered for your account. We do not invent table names that are not verified on this brand site; additional titles may be available after login.",
+      zh: "先用棋牌游戏中心页了解桌台识读与节奏说明，再在账户提供时登录或注册于 1XROLL 平台打开房间。我们不编造未在本品牌站核实的桌名；登录后可能还有更多作品。",
     },
   },
   {
@@ -884,8 +884,8 @@ export const faqItems: FaqItem[] = [
       zh: "棋牌会列出所有桌面游戏吗？",
     },
     answer: {
-      en: "No. This page explains the category and links related verified experiences (such as live or slots neighbours) without inventing a full table inventory.",
-      zh: "不会。本页解释分类并链接相关已核实体验（如真人或老虎机邻近页），不编造完整桌台库存。",
+      en: "No. This page explains the category, turn-based pacing, and links related verified experiences (such as Live Casino neighbours) without inventing a full table inventory. Confirm live rooms inside the platform after login.",
+      zh: "不会。本页解释分类、回合制节奏，并链接相关已核实体验（如真人赌场邻近页），不编造完整桌台库存。登录后请在平台内确认实时房间。",
     },
   },
   {
@@ -896,8 +896,8 @@ export const faqItems: FaqItem[] = [
       zh: "尝试棋牌前有什么建议？",
     },
     answer: {
-      en: "Learn the rules of the specific table you open on the platform, set a budget, and treat multiplayer pace as social entertainment — not a recovery plan.",
-      zh: "先了解你在平台打开的具体桌规，设定预算，并把多人节奏当作社交娱乐——而不是回本计划。",
+      en: "Learn the rules of the specific table you open on the platform, map seat and confirm controls first, set a budget and clock, and treat multiplayer pace as social entertainment — not a recovery plan. Leave between hands if social pressure starts writing larger stakes.",
+      zh: "先了解你在平台打开的具体桌规，优先摸清座位与确认控件，设定预算与时钟，并把多人节奏当作社交娱乐——而不是回本计划。若社交压力开始写出更大注，请在手与手之间离开。",
     },
   },
   {
@@ -908,8 +908,8 @@ export const faqItems: FaqItem[] = [
       zh: "在哪里购买彩票产品？",
     },
     answer: {
-      en: "Through the 1XROLL platform when lottery products are available for your account. This site is an orientation hub only.",
-      zh: "在账户可用时通过 1XROLL 平台。本站仅为导览枢纽。",
+      en: "Through the 1XROLL platform after login when lottery products are available for your account. This brand site is an educational hub only — confirm product names, rules, and selection tools in the live client.",
+      zh: "在账户可用时，登录后通过 1XROLL 平台。本品牌站仅为教育向中心——请在实时客户端确认产品名称、规则与选择工具。",
     },
   },
   {
@@ -920,8 +920,8 @@ export const faqItems: FaqItem[] = [
       zh: "为何这里不显示中奖号码？",
     },
     answer: {
-      en: "Draw results and jackpots must come from live, integrated sources. This brand site does not invent schedules, probabilities or results.",
-      zh: "开奖结果与头奖须来自实时、已集成来源。本品牌站不编造时间表、概率或结果。",
+      en: "Draw results and jackpot figures must come from live, integrated platform sources. This brand site teaches draw literacy and what to check before participating — it does not invent schedules, probabilities, winning numbers, or results boards.",
+      zh: "开奖结果与头奖数字须来自实时、已集成的平台来源。本品牌站教授开奖识读与参与前应检查什么——不编造时间表、概率、中奖号码或开奖看板。",
     },
   },
   {
@@ -932,8 +932,8 @@ export const faqItems: FaqItem[] = [
       zh: "应如何看待彩票类游玩？",
     },
     answer: {
-      en: "Treat tickets as entertainment spend within a pre-set budget. Do not chase losses across draws, and verify product terms on the platform before participating.",
-      zh: "把购票当作预设预算内的娱乐支出。不要跨期追逐损失，参与前在平台核实产品条款。",
+      en: "Treat entries as entertainment spend within a pre-set budget decided before countdown pressure starts. Do not chase misses across draws, avoid stacking entries only to soothe waiting anxiety, and verify product terms on the platform before participating.",
+      zh: "把投入当作在倒计时压力开始前就设定好的预算内娱乐支出。不要跨期追逐落空，避免只为安抚等待焦虑而加码，参与前在平台核实产品条款。",
     },
   },
 ];

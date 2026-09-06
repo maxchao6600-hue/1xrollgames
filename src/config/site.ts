@@ -19,10 +19,11 @@ export const siteConfig = {
     zh: "你的下一款游戏，从这里开始",
   },
   description: {
-    en: "1XROLL complete digital gaming ecosystem — games, rewards, VIP, agent, guides, wallet orientation and platform access. Official brand website variation.",
-    zh: "1XROLL 完整数字游戏生态——游戏、奖励、VIP、代理、攻略、钱包导览与平台入口。官方品牌网站版本。",
+    en: "1XROLL complete digital gaming ecosystem — games, rewards, VIP, agent, guides, wallet orientation and platform access. A 1XROLL brand website variation.",
+    zh: "1XROLL 完整数字游戏生态——游戏、奖励、VIP、代理、攻略、钱包导览与平台入口。1XROLL 品牌网站版本。",
   },
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  /** Production canonical host. Override with NEXT_PUBLIC_SITE_URL for local/preview. */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://1xrollgames.com",
   platformUrl: platformBase,
   localeDefault: "en" as Locale,
   locales: ["en", "zh"] as const satisfies readonly Locale[],
