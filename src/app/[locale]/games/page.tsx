@@ -104,7 +104,7 @@ export default async function GamesPage({
           ]}
         />
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
-          {locale === "zh" ? "1XROLL 游戏" : "1XROLL Games"}
+          {t(dict, "games.hubTitle")}
         </h1>
         <p className="mt-3 max-w-3xl text-text-muted">
           {locale === "zh"

@@ -9,6 +9,7 @@ import { BRAND_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { Button } from "@/components/ui/Button";
 import { localize } from "@/lib/utils";
+import { localePath } from "@/lib/paths";
 
 type ProviderOption = Pick<Provider, "id" | "slug" | "name">;
 type CategoryOption = Pick<Category, "id" | "name">;
@@ -120,14 +121,17 @@ export function GamesExplorer({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border bg-bg-elevated px-6 py-16 text-center">
+        <div className="rounded-2xl border border-border bg-bg-elevated px-6 py-16 text-center">
           <p className="text-lg text-text">{t(dict, "games.empty")}</p>
           <p className="mt-2 text-sm text-text-muted">
             {t(dict, "games.emptyHint")}
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button type="button" variant="outline" onClick={clear}>
               {t(dict, "common.clearFilters")}
+            </Button>
+            <Button href={localePath(locale, "/games")} variant="secondary">
+              {t(dict, "games.exploreCategories")}
             </Button>
           </div>
         </div>

@@ -203,14 +203,10 @@ export function resolveGuideImage(slug: string): string | undefined {
   return GUIDE_ASSETS[slug];
 }
 
-export function gameImageAlt(
-  gameName: string,
-  providerName: string,
-  categoryLabel: string,
-): string {
-  return `${gameName} ${categoryLabel} by ${providerName} on 1XROLL`;
+export function gameImageAlt(gameName: string): string {
+  return `${gameName} game artwork`;
 }
 
 export function providerLogoAlt(providerName: string): string {
-  return `${providerName} game provider logo`;
+  return `${providerName} logo`;
 }

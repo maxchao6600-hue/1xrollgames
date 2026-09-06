@@ -9,21 +9,27 @@ export default function NotFound() {
         Page not found
       </h1>
       <p className="mt-4 max-w-md text-text-muted">
-        That URL is not on this {siteConfig.name} site. Browse games or return
-        home.
+        That URL is not on this {siteConfig.name} site. Browse games, read a
+        guide, or return home.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Link
-          href="/en/games"
-          className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-[#1a1205]"
-        >
-          Browse Games
-        </Link>
         <Link
           href="/en"
           className="inline-flex h-11 items-center rounded-full border border-border px-5 text-sm text-text"
         >
-          Back Home
+          Home
+        </Link>
+        <Link
+          href="/en/games"
+          className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-[#1a1205]"
+        >
+          Explore Games
+        </Link>
+        <Link
+          href="/en/guides"
+          className="inline-flex h-11 items-center rounded-full border border-border px-5 text-sm text-text"
+        >
+          Browse Guides
         </Link>
       </div>
     </div>

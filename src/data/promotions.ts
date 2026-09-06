@@ -12,7 +12,7 @@ export type Promotion = {
   status: "active" | "info";
 };
 
-/** Official 1XROLL offers as published on the brand network. */
+/** Published 1XROLL offers as mirrored on this brand site. */
 const promotionsRaw: Omit<Promotion, "image">[] = [
   {
     id: "welcome-200",
@@ -40,7 +40,7 @@ const promotionsRaw: Omit<Promotion, "image">[] = [
       en: "Earn VIP cashback on eligible bets. Higher tiers unlock increased rates and perks.",
       zh: "符合条件的投注可获 VIP 返水。更高等级解锁更高比例与礼遇。",
     },
-    ctaLabel: { en: "Learn more", zh: "了解更多" },
+    ctaLabel: { en: "View VIP", zh: "查看 VIP" },
     href: "/vip",
     status: "active",
   },
@@ -52,8 +52,8 @@ const promotionsRaw: Omit<Promotion, "image">[] = [
       zh: "奖池活动",
     },
     description: {
-      en: "Compete for progressive jackpots across selected slot titles when events are live.",
-      zh: "活动期间可在指定老虎机作品中参与奖池竞赛。",
+      en: "Prize-pool style events run on selected slot titles when they are live. Confirm current event rules on the platform.",
+      zh: "活动期间可在指定老虎机作品中参与奖池类竞赛。请在平台确认当期规则。",
     },
     ctaLabel: { en: "View details", zh: "查看详情" },
     href: "/promotions",

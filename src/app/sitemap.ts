@@ -49,9 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
+    const seen = new Set(entries.map((e) => e.url));
     for (const category of categories) {
+      const url = `${siteConfig.url.replace(/\/$/, "")}${localePath(locale, categoryPath(category.id))}`;
+      if (seen.has(url)) continue;
+      seen.add(url);
       entries.push({
-        url: `${siteConfig.url.replace(/\/$/, "")}${localePath(locale, categoryPath(category.id))}`,
+        url,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.8,

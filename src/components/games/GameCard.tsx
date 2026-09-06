@@ -24,9 +24,7 @@ export function GameCard({
   const href = gamePath(locale, game.category, game.slug);
   const categoryLabel = category ? localize(category.name, locale) : game.category;
   const providerName = provider?.name ?? game.providerSlug;
-  const alt = game.image
-    ? gameImageAlt(game.name, providerName, categoryLabel)
-    : undefined;
+  const alt = game.image ? gameImageAlt(game.name) : undefined;
 
   const badgeTone =
     game.status === "hot"

@@ -14,6 +14,18 @@ type BuildMetadataInput = {
   type?: "website" | "article";
 };
 
+function clipMetaDescription(text: string, max = 168): string {
+  const compact = text.replace(/\s+/g, " ").trim();
+  if (compact.length <= max) return compact;
+  const slice = compact.slice(0, max);
+  const breakAt = Math.max(slice.lastIndexOf(" "), slice.lastIndexOf("，"), slice.lastIndexOf("。"));
+  const clipped = (breakAt > 72 ? slice.slice(0, breakAt) : slice).replace(
+    /[\s.,;:：、—-]+$/u,
+    "",
+  );
+  return `${clipped}…`;
+}
+
 export function buildMetadata({
   locale,
   path = "/",
@@ -26,6 +38,7 @@ export function buildMetadata({
   const fullTitle = title.includes(siteConfig.name)
     ? title
     : `${title} · ${siteConfig.name}`;
+  const metaDescription = clipMetaDescription(description);
   const localizedPath = localePath(locale, path);
   const url = absoluteUrl(localizedPath);
   const bare = stripLocalePrefix(localizedPath);
@@ -43,7 +56,7 @@ export function buildMetadata({
     title: {
       absolute: fullTitle,
     },
-    description,
+    description: metaDescription,
     metadataBase: new URL(siteConfig.url),
     authors: [{ name: siteConfig.author }],
     alternates: {
@@ -55,7 +68,7 @@ export function buildMetadata({
       : { index: true, follow: true },
     openGraph: {
       title: fullTitle,
-      description,
+      description: metaDescription,
       url,
       siteName: siteConfig.name,
       locale: locale === "zh" ? "zh_CN" : "en_US",
@@ -65,7 +78,7 @@ export function buildMetadata({
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
-      description,
+      description: metaDescription,
       images: [ogImage],
     },
   };

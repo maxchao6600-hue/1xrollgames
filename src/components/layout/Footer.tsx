@@ -12,6 +12,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
+import { FooterLocaleLinks } from "@/components/layout/FooterLocaleLinks";
 
 function FooterColumn({
   title,
@@ -84,20 +85,7 @@ export function Footer({ locale }: { locale: Locale }) {
             {t(dict, "footer.languages")}
           </p>
           <div className="flex gap-3 text-sm">
-            <Link
-              href={localePath("en", "/")}
-              className="text-text-muted hover:text-accent"
-              hrefLang="en"
-            >
-              English
-            </Link>
-            <Link
-              href={localePath("zh", "/")}
-              className="text-text-muted hover:text-accent"
-              hrefLang="zh"
-            >
-              中文
-            </Link>
+            <FooterLocaleLinks />
           </div>
           <p className="mt-8 text-xs leading-relaxed text-text-faint">
             {t(dict, "footer.notice")}

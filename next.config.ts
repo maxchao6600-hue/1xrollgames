@@ -42,11 +42,26 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   async redirects() {
-    return unlocalizedPaths.map((path) => ({
-      source: `/${path}`,
-      destination: `/en/${path}`,
-      permanent: false,
-    }));
+    const localeAliases = [
+      {
+        source: "/:locale(en|zh)/games/fishing-games",
+        destination: "/:locale/games/fishing",
+        permanent: true,
+      },
+      {
+        source: "/games/fishing-games",
+        destination: "/en/games/fishing",
+        permanent: true,
+      },
+    ];
+    return [
+      ...localeAliases,
+      ...unlocalizedPaths.map((path) => ({
+        source: `/${path}`,
+        destination: `/en/${path}`,
+        permanent: false,
+      })),
+    ];
   },
 };
 

@@ -104,11 +104,7 @@ export default async function GameDetailPage({
               name={game.name}
               gradient={game.imageGradient}
               image={game.image}
-              alt={gameImageAlt(
-                game.name,
-                provider?.name ?? game.providerSlug,
-                category ? localize(category.name, locale) : game.category,
-              )}
+              alt={gameImageAlt(game.name)}
               providerName={provider?.name ?? game.providerSlug}
               categoryLabel={
                 category ? localize(category.name, locale) : game.category
