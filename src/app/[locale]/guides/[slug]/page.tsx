@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
 import { getAllGuides, getGameBySlug, getGuideBySlug, getProviderBySlug } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { articleJsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 import { absoluteUrl, formatDate, localize } from "@/lib/utils";
-import { gamePath, guidePath, localePath, providerPath } from "@/lib/paths";
+import { guidePath, localePath, providerPath } from "@/lib/paths";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container, Section } from "@/components/ui/Container";
 import { CoverArt } from "@/components/shared/GameArt";
-import { ContentBlocks } from "@/components/guides/ContentBlocks";
 import { ArticleCard } from "@/components/guides/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import {
+  FeaturedGamesRail,
+  GroupedSectionGrid,
+  HubCtaBand,
+  RelatedCards,
+} from "@/components/content/HubModules";
 
 export function generateStaticParams() {
   return getAllGuides().flatMap((g) =>
@@ -55,6 +59,9 @@ export default async function GuideDetailPage({
   const related = getAllGuides()
     .filter((g) => g.slug !== guide.slug)
     .slice(0, 3);
+  const relatedGames = guide.relatedGameSlugs
+    .map((s) => getGameBySlug(s))
+    .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
   return (
     <Section className="pt-8">
@@ -93,10 +100,10 @@ export default async function GuideDetailPage({
         <p className="text-xs tracking-wide text-accent uppercase">
           {guide.category}
         </p>
-        <h1 className="mt-2 max-w-3xl font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
+        <h1 className="mt-2 max-w-5xl font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
           {title}
         </h1>
-        <p className="mt-4 max-w-2xl text-text-muted">
+        <p className="mt-4 max-w-4xl text-lg text-text-muted">
           {localize(guide.excerpt, locale)}
         </p>
         <p className="mt-4 text-sm text-text-faint">
@@ -106,72 +113,90 @@ export default async function GuideDetailPage({
           {t(dict, "common.minRead")}
         </p>
 
-        <div className="mt-8 max-w-3xl">
-          <CoverArt title={title} gradient={guide.coverGradient} />
-        </div>
-
-        <div className="mt-10">
-          <ContentBlocks blocks={guide.content} locale={locale} />
-        </div>
-
-        {guide.relatedGameSlugs.length ? (
-          <div className="mt-12">
-            <h2 className="mb-3 text-xl text-text">
-              {t(dict, "common.relatedGames")}
-            </h2>
-            <ul className="space-y-2">
-              {guide.relatedGameSlugs.map((s) => {
-                const game = getGameBySlug(s);
-                if (!game) return null;
-                return (
-                  <li key={s}>
-                    <Link
-                      href={gamePath(locale, game.category, game.slug)}
-                      className="text-accent hover:underline"
-                    >
-                      {game.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+        <div className="mt-8 overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-[1.1fr_0.9fr]">
+          <div className="p-6 md:p-8">
+            <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+              {locale === "zh" ? "编辑导读" : "Editorial note"}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
+              {locale === "zh"
+                ? "这是识读长文，不是赔率预测或必胜攻略。公开摘要不能替代平台全文条款。读完后用相关游戏、分类与理性游戏页继续。"
+                : "This is a literacy article — not an odds forecast or a guaranteed system. Published summaries do not replace full platform terms. Continue via related games, categories and Responsible Gaming."}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button href={localePath(locale, "/games")} size="sm">
+                {t(dict, "common.exploreGames")}
+              </Button>
+              <Button href={localePath(locale, "/responsible-gaming")} variant="outline" size="sm">
+                {t(dict, "nav.responsible")}
+              </Button>
+            </div>
           </div>
-        ) : null}
-
-        {guide.relatedProviderSlug ? (
-          <p className="mt-6 text-sm text-text-muted">
-            {t(dict, "common.provider")}:{" "}
-            <Link
-              href={providerPath(locale, guide.relatedProviderSlug)}
-              className="text-accent hover:underline"
-            >
-              {getProviderBySlug(guide.relatedProviderSlug)?.name ??
-                guide.relatedProviderSlug}
-            </Link>
-          </p>
-        ) : null}
-
-        <div className="mt-10 rounded-2xl border border-border bg-bg-surface p-5 text-sm text-text-muted">
-          <p>
-            {locale === "zh"
-              ? "请理性游戏，设定限额，并仅在合法地区参与。"
-              : "Play responsibly, set limits, and only participate where it is legal."}{" "}
-            <Link
-              href={localePath(locale, "/responsible-gaming")}
-              className="text-accent hover:underline"
-            >
-              {t(dict, "nav.responsible")}
-            </Link>
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Button href={localePath(locale, "/games")} size="sm">
-              {t(dict, "common.exploreGames")}
-            </Button>
-            <Button href={localePath(locale, "/guides")} variant="outline" size="sm">
-              {t(dict, "common.browseGuides")}
-            </Button>
+          <div className="border-t border-border md:border-t-0 md:border-l">
+            {guide.coverImage ? (
+              <div className="relative min-h-[12rem] md:h-full">
+                <CoverArt title={title} gradient={guide.coverGradient} />
+              </div>
+            ) : (
+              <div className="p-4 md:p-5">
+                <CoverArt title={title} gradient={guide.coverGradient} />
+              </div>
+            )}
           </div>
         </div>
+
+        <GroupedSectionGrid blocks={guide.content} locale={locale} />
+
+        <FeaturedGamesRail
+          locale={locale}
+          title={t(dict, "common.relatedGames")}
+          games={relatedGames}
+        />
+
+        <RelatedCards
+          title={locale === "zh" ? "继续阅读" : "Keep exploring"}
+          items={[
+            ...(guide.relatedProviderSlug
+              ? [
+                  {
+                    href: providerPath(locale, guide.relatedProviderSlug),
+                    title: getProviderBySlug(guide.relatedProviderSlug)?.name ?? "Provider",
+                    body:
+                      locale === "zh"
+                        ? "打开相关厂商档案。"
+                        : "Open the related studio profile.",
+                  },
+                ]
+              : []),
+            {
+              href: localePath(locale, "/guides"),
+              title: t(dict, "guides.hubTitle"),
+              body: locale === "zh" ? "返回攻略中心。" : "Back to the guides hub.",
+            },
+            {
+              href: localePath(locale, "/games"),
+              title: t(dict, "nav.games"),
+              body: locale === "zh" ? "进入游戏库。" : "Enter the game library.",
+            },
+            {
+              href: localePath(locale, "/responsible-gaming"),
+              title: t(dict, "nav.responsible"),
+              body: locale === "zh" ? "限额与离开路径。" : "Limits and how to leave.",
+            },
+          ]}
+        />
+
+        <HubCtaBand
+          locale={locale}
+          title={
+            locale === "zh" ? "把识读带回大厅" : "Take literacy back to the lobby"
+          }
+          body={
+            locale === "zh"
+              ? "请理性游戏，设定限额，并仅在合法地区参与。公开摘要不能替代平台条款。"
+              : "Play responsibly, set limits, and only participate where it is legal. Published summaries do not replace platform terms."
+          }
+        />
 
         {related.length ? (
           <div className="mt-14">

@@ -19,9 +19,9 @@ import { GamesExplorer } from "@/components/games/GamesExplorer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   PageFaqSection,
-  PlatformCtaRow,
   RelatedLinkGrid,
 } from "@/components/content/PageSections";
+import { InfoGrid, StepGrid, HubCtaBand } from "@/components/content/HubModules";
 import { GameCard } from "@/components/games/GameCard";
 
 const GAMES_HUB_FAQ = [
@@ -106,7 +106,7 @@ export default async function GamesPage({
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
           {t(dict, "games.hubTitle")}
         </h1>
-        <p className="mt-3 max-w-3xl text-text-muted">
+        <p className="mt-3 max-w-4xl text-text-muted">
           {locale === "zh"
             ? "游戏库枢纽：浏览已核实目录（老虎机 32、真人 6、加密 4、快速 2、捕鱼 3），并通过枢纽页了解哈希、体育、棋牌与彩票等平台通道。筛选可在下方使用；无匹配时请清除筛选并改从分类进入。"
             : "Game library hub: browse the verified catalogue (32 slots, 6 live, 4 crypto, 2 fast, 3 fishing) and use hub pages for hash, sports, chess & card, and lottery lanes. Filters work below; if nothing matches, clear filters and explore by category."}
@@ -177,42 +177,61 @@ export default async function GamesPage({
           />
         </div>
 
-        <div className="prose-brand mt-14 max-w-3xl space-y-4">
-          <h2>
-            {locale === "zh" ? "如何探索游戏" : "How to Explore Games"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "先选分类或厂商，再打开作品页阅读机制与会话建议。本站保持信息向；实际开玩在平台完成。筛选与清除筛选在上方资源管理器中可用——无结果时不会生成可索引的空查询页，而是提示你改走分类路径。"
-              : "Pick a category or provider first, then open title pages for mechanics and session notes. This site stays informational; live play happens on the platform. Search/filters and clear-filters work in the explorer above — no-results states stay professional and do not create indexable empty query pages."}
-          </p>
-          <h2>
-            {locale === "zh" ? "游戏发现指南" : "Game Discovery Guide"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "用精选轨道比较节奏，用攻略学习 RTP/波动率等教育概念（不编造具体返还率），再用厂商页理解工作室工艺。新手可从入门攻略与老虎机货架开始。"
-              : "Use featured rails to compare pacing, guides for educational concepts like RTP/volatility (without inventing percentages), and provider pages for studio craft. Beginners can start with the beginner guide and the slots shelf."}
-          </p>
-          <h2>
-            {locale === "zh" ? "移动端游戏体验" : "Mobile Game Experience"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "目录与详情页面向手机阅读。进入直播或时机敏感回合时请保持稳定网络，并优先单手可及的控件布局。"
-              : "Catalogue and detail pages are built for phone reading. Prefer a stable connection for live or timing-sensitive rounds, and titles whose controls stay reachable with one thumb."}
-          </p>
-          <h2>
-            {locale === "zh" ? "新手选游建议" : "Beginner Game Guide"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "先读一篇攻略，再选一款作品做短时体验。避免同时打开多条短回合车道。理性游戏页与常见问题可帮助你设定限额与预期。"
-              : "Read one guide, then try one title in a short timed session. Avoid opening multiple short-round lanes at once. Responsible Gaming and FAQ help you set limits and expectations."}
-          </p>
-        </div>
-
-        <PlatformCtaRow locale={locale} />
+        <StepGrid
+          title={locale === "zh" ? "如何探索游戏" : "How to explore games"}
+          steps={
+            locale === "zh"
+              ? [
+                  { title: "选分类或厂商", body: "先缩小工艺家族，再打开作品页。" },
+                  { title: "读机制说明", body: "作品页解释节奏与会话建议。本站保持信息向。" },
+                  { title: "使用筛选", body: "无匹配时清除筛选，改走分类路径——不生成可索引空查询页。" },
+                  { title: "打开平台", body: "实际开玩在登录 / 注册之后。" },
+                ]
+              : [
+                  { title: "Pick category or studio", body: "Narrow a craft family, then open a title page." },
+                  { title: "Read mechanics notes", body: "Title pages explain pacing and session notes. This site stays informational." },
+                  { title: "Use filters", body: "If nothing matches, clear filters and use category paths — we do not create indexable empty query pages." },
+                  { title: "Open the platform", body: "Live play follows Login / Register." },
+                ]
+          }
+        />
+        <InfoGrid
+          title={locale === "zh" ? "发现、移动端与新手" : "Discovery, mobile and beginners"}
+          columns={3}
+          items={
+            locale === "zh"
+              ? [
+                  {
+                    title: "发现指南",
+                    body: "用精选轨道比较节奏，用攻略学习 RTP/波动率等教育概念（不编造具体返还率），再用厂商页理解工作室工艺。",
+                  },
+                  {
+                    title: "移动端",
+                    body: "目录与详情页面向手机阅读。进入直播或时机敏感回合时请保持稳定网络。",
+                  },
+                  {
+                    title: "新手建议",
+                    body: "先读一篇攻略，再选一款作品做短时体验。避免同时打开多条短回合车道。",
+                    href: localePath(locale, "/guides/beginners-guide-1xroll-games"),
+                  },
+                ]
+              : [
+                  {
+                    title: "Discovery guide",
+                    body: "Use featured rails to compare pacing, guides for RTP/volatility literacy (without inventing percentages), and provider pages for studio craft.",
+                  },
+                  {
+                    title: "Mobile",
+                    body: "Catalogue and detail pages are built for phone reading. Prefer a stable connection for live or timing-sensitive rounds.",
+                  },
+                  {
+                    title: "Beginners",
+                    body: "Read one guide, then try one title in a short timed session. Avoid opening multiple short-round lanes at once.",
+                    href: localePath(locale, "/guides/beginners-guide-1xroll-games"),
+                  },
+                ]
+          }
+        />
 
         <RelatedLinkGrid
           locale={locale}
@@ -252,6 +271,15 @@ export default async function GamesPage({
         />
 
         <PageFaqSection locale={locale} items={faqItems} />
+        <HubCtaBand
+          locale={locale}
+          title={locale === "zh" ? "从目录走进大厅" : "Move from catalogue to lobby"}
+          body={
+            locale === "zh"
+              ? "本枢纽列出已核实作品与分类。实时库存与开玩在平台。"
+              : "This hub lists verified titles and categories. Live inventory and play stay on the platform."
+          }
+        />
       </Container>
     </Section>
   );

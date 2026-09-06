@@ -24,10 +24,10 @@ import { EcosystemHubView } from "@/components/ecosystem/EcosystemHubView";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   PageFaqSection,
-  PlatformCtaRow,
   RelatedLinkGrid,
-  RichContentBlocks,
 } from "@/components/content/PageSections";
+import { GroupedSectionGrid, HubCtaBand } from "@/components/content/HubModules";
+import { CatalogueCategoryExtras } from "@/components/content/CategoryHubExtras";
 
 export function generateStaticParams() {
   return categories
@@ -173,7 +173,7 @@ export default async function CategoryPage({
               fill
               className="object-cover"
               style={{ objectPosition: asset.objectPosition ?? "center center" }}
-              sizes="(max-width:768px) 100vw, 1120px"
+              sizes="(max-width:768px) 100vw, 1472px"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
@@ -189,9 +189,15 @@ export default async function CategoryPage({
             <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
               {title}
             </h1>
-            <p className="mt-3 max-w-3xl text-text-muted">{intro}</p>
+            <p className="mt-3 max-w-4xl text-text-muted">{intro}</p>
           </>
         )}
+
+        <CatalogueCategoryExtras
+          locale={locale}
+          categoryId={category.id}
+          games={list}
+        />
 
         <div className="mt-2">
           <GamesExplorer
@@ -204,14 +210,37 @@ export default async function CategoryPage({
         </div>
 
         {deep?.sections?.length ? (
-          <RichContentBlocks blocks={deep.sections} locale={locale} />
+          <GroupedSectionGrid
+            blocks={deep.sections}
+            locale={locale}
+            title={locale === "zh" ? "分类导览" : "Category orientation"}
+          />
         ) : (
-          <article className="prose-brand mt-14 max-w-3xl whitespace-pre-line">
-            {localize(category.description, locale)}
-          </article>
+          <GroupedSectionGrid
+            blocks={[
+              {
+                type: "h2",
+                text: { en: localize(category.name, "en"), zh: localize(category.name, "zh") },
+              },
+              { type: "p", text: category.description },
+            ]}
+            locale={locale}
+          />
         )}
 
-        <PlatformCtaRow locale={locale} />
+        <HubCtaBand
+          locale={locale}
+          title={
+            locale === "zh"
+              ? "在平台继续浏览大厅"
+              : "Continue in the live lobby"
+          }
+          body={
+            locale === "zh"
+              ? "本页帮助你比较已核实作品与机制语言。实际开玩仍通过打开平台。"
+              : "This page helps you compare verified titles and mechanics language. Live play still goes through Open platform."
+          }
+        />
 
         <RelatedLinkGrid
           locale={locale}

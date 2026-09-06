@@ -5,14 +5,22 @@ import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
 import { getEcosystemHub, getFaqByGroup, rewardTopics } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
-import { localize } from "@/lib/utils";
+import { absoluteUrl, localize } from "@/lib/utils";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
-import { ctaConfig } from "@/config/site";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  ChecklistPanel,
+  CompareGrid,
+  HubCtaBand,
+  HubH2,
+  InfoGrid,
+  RelatedCards,
+  StepGrid,
+} from "@/components/content/HubModules";
 
 const PATH = "/rewards";
 
@@ -44,108 +52,8 @@ export default async function RewardsPage({
   const dict = getDictionary(locale);
   const hub = getEcosystemHub("rewards");
   if (!hub) notFound();
-  const faq = getFaqByGroup("rewards");
-
-  const copy =
-    locale === "zh"
-      ? {
-          eyebrow: "奖励中心",
-          topicsTitle: "奖励主题导览",
-          relatedTitle: "相关页面",
-        }
-      : {
-          eyebrow: "Rewards Hub",
-          topicsTitle: "Reward topic map",
-          relatedTitle: "Related pages",
-        };
-
-  const sections =
-    locale === "zh"
-      ? [
-          {
-            title: "什么是奖励生态",
-            body: "奖励生态是把活动中心优惠、奖励导览、返水式回馈与 VIP 礼遇连成一张地图的入口。本页说明各通道如何分工，帮你找到正确阅读路径——不编造未发布比例、保证到账时间或个人进度。",
-          },
-          {
-            title: "奖励如何运作",
-            body: "品牌站负责发现与识读：卡片、摘要与主题链接帮你理解有哪些车道。资格确认、领取、贡献进度与结算始终在登录后的 1XROLL 平台完成。把本站当作地图，把平台当作办理处。",
-          },
-          {
-            title: "优惠与奖励的区别",
-            body: "优惠（Promotion）通常是可选择加入、带时限与流水规则的活动摘要——例如已核实的 200% 首存（最高 8,888 USDT，25 倍流水，最低存款 10 USDT）。奖励（Reward）更偏持续关系与活动导览：如何分组迎新、活动回馈与 VIP 相关礼遇。同一数字不要跨页混用；每条车道单独阅读。",
-          },
-          {
-            title: "返水是什么",
-            body: "返水（Rebate）在本站以符合条件投注的回馈式现金返还来描述，常与 VIP 通道相连。公开摘要上限为最高 1.1%；更高比例与礼遇随平台等级解锁。返水不是独立“每日固定表”，也不是投资收益——细节以平台钱包 / VIP 工具为准。",
-          },
-          {
-            title: "VIP 礼遇如何纳入",
-            body: "VIP 是面向活跃玩家的关系通道：返水导向奖励与升级式礼遇概念。本站只做导览，不展示个人等级条，也不编造 VIP 阶梯数字表。要看实时状态，请打开平台 VIP 区域；要对照优惠数字，请回到优惠中心。",
-          },
-          {
-            title: "资格与参与",
-            body: "常见条件可能包括账户状态、活动窗口、地区规则，以及该通道要求的存款或投注贡献。本站不编造额外门槛数字。打开平台后阅读当前规则，再决定是否参与；不确定时先不领取。",
-          },
-          {
-            title: "如何阅读条款",
-            body: "把本站数字当作已发布公开摘要的导览。若与平台实时展示冲突，以平台为准。核对贡献游戏、时限、领取步骤与冲突规则——不要把首存倍数套到返水页，也不要把 VIP 上限当成某次限时活动的保证。",
-          },
-          {
-            title: "如何导航本生态",
-            body: "下方主题卡片链向活动中心 / 优惠、奖励中心自身、返水、VIP 与相关优惠摘要。顶栏与页脚的「奖励」分组也可到达。准备办理时使用「打开平台」；需要冷静时阅读理性游戏。",
-          },
-          {
-            title: "理性参与",
-            body: "奖励不能替代个人限额。不要为了完成活动或“维持等级感”而超出预算。设定时间与金钱边界；压力上升时离开活动，并阅读理性游戏。",
-          },
-        ]
-      : [
-          {
-            title: "What is the rewards ecosystem",
-            body: "The rewards ecosystem is the map that connects Activity Centre offers, rewards orientation, rebate-style cashback and VIP benefits. This hub explains how each lane is meant to be read — without inventing unpublished rates, guaranteed payout clocks or personal progress meters.",
-          },
-          {
-            title: "How rewards work",
-            body: "This brand site handles discovery and literacy: cards, summaries and topic links help you see which lanes exist. Eligibility, claiming, contribution progress and settlement always complete on the 1XROLL platform after login. Treat this site as the map and the platform as the place where actions finish.",
-          },
-          {
-            title: "Promotions vs rewards",
-            body: "A Promotion is usually an opt-in, time-bound offer with its own wagering rules — for example the verified 200% first deposit summary (up to 8,888 USDT, 25× turnover, min. deposit 10 USDT). A Reward is broader orientation around ongoing relationship and activity lanes: how welcome paths, event-style returns and VIP-related benefits are grouped. Do not mix figures across pages; read each lane on its own.",
-          },
-          {
-            title: "What rebates mean here",
-            body: "A Rebate on this site means cashback-style returns on eligible play, often linked to the VIP lane. The published ceiling summarised here is up to 1.1%; higher rates and perks unlock with platform tier status. Rebates are not a fixed daily table and not an investment yield — confirm details in platform wallet / VIP tools.",
-          },
-          {
-            title: "How VIP benefits fit in",
-            body: "VIP is the relationship lane for engaged players: cashback-oriented rewards and upgrade-style benefit concepts. This site orients only — it does not show personal tier meters or invent VIP ladder tables. For live status, open the platform VIP area; for offer figures, return to the Promotion Hub.",
-          },
-          {
-            title: "Eligibility",
-            body: "Common conditions may include account status, offer windows, region rules, and deposit or wagering contribution required by that lane. This site does not invent extra threshold numbers. Read live rules on the platform before you opt in; if unsure, do not claim yet.",
-          },
-          {
-            title: "Reading terms",
-            body: "Treat figures on this site as orientation from published public summaries. If they conflict with live platform display, trust the platform. Check contributing games, timing, claim steps and conflict rules — do not apply a welcome multiple to the rebates page, and do not treat the VIP ceiling as a guarantee for a separate timed offer.",
-          },
-          {
-            title: "How to navigate",
-            body: "Topic cards below link to Activity Centre / promotions, this Rewards Hub, rebates, VIP and related offer summaries. Header and footer Rewards groupings reach the same lanes. Use Open platform when you are ready to act; use Responsible Gaming when you need a calm reset.",
-          },
-          {
-            title: "Responsible participation",
-            body: "Rewards do not replace personal limits. Do not overspend to finish an activity or to chase a sense of tier progress. Keep time and money walls; leave offers when pressure rises, and return to Responsible Gaming.",
-          },
-        ];
-
-  const related = [
-    { href: "/promotions", label: t(dict, "nav.promotions") },
-    { href: "/rebates", label: t(dict, "nav.rebates") },
-    { href: "/vip", label: t(dict, "nav.vip") },
-    { href: "/agent", label: t(dict, "nav.agent") },
-    { href: "/responsible-gaming", label: t(dict, "nav.responsible") },
-    { href: "/faq", label: t(dict, "nav.faq") },
-  ];
+  const faq = getFaqByGroup("rewards").slice(0, 10);
+  const zh = locale === "zh";
 
   return (
     <Section className="pt-8">
@@ -156,105 +64,263 @@ export default async function RewardsPage({
             { label: localize(hub.title, locale) },
           ]}
         />
+        <JsonLd
+          data={[
+            breadcrumbJsonLd([
+              { name: t(dict, "nav.home"), url: absoluteUrl(localePath(locale, "/")) },
+              {
+                name: localize(hub.title, locale),
+                url: absoluteUrl(localePath(locale, PATH)),
+              },
+            ]),
+            faqJsonLd(
+              faq.map((item) => ({
+                question: localize(item.question, locale),
+                answer: localize(item.answer, locale),
+              })),
+            ),
+          ]}
+        />
+
         <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
-          {copy.eyebrow}
+          {zh ? "奖励中心" : "Rewards Hub"}
         </p>
         <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
           {localize(hub.title, locale)}
         </h1>
-        <p className="mt-4 max-w-3xl text-lg text-text-muted">
+        <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-muted md:text-lg">
           {localize(hub.intro, locale)}
         </p>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {sections.map((block) => (
-            <article
-              key={block.title}
-              className="rounded-[1.25rem] border border-border bg-bg-surface p-6"
-            >
-              <h2 className="font-[family-name:var(--font-display)] text-xl text-text">
-                {block.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                {block.body}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <h2 className="mt-14 font-[family-name:var(--font-display)] text-2xl text-text">
-          {copy.topicsTitle}
-        </h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rewardTopics.map((topic) => (
-            <Link
-              key={topic.id}
-              href={localePath(locale, topic.href)}
-              className="group overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface transition hover:border-accent/40"
-            >
-              {topic.image ? (
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={topic.image}
-                    alt={localize(topic.title, locale)}
-                    fill
-                    className="object-cover transition duration-300 group-hover:scale-[1.03]"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
-                </div>
-              ) : null}
-              <div className="space-y-2 p-5">
-                <h3 className="font-[family-name:var(--font-display)] text-xl text-text">
-                  {localize(topic.title, locale)}
-                </h3>
-                <p className="text-sm leading-relaxed text-text-muted">
-                  {localize(topic.summary, locale)}
-                </p>
-                <p className="text-sm leading-relaxed text-text-muted/90">
-                  {localize(topic.body, locale)}
-                </p>
-                <span className="inline-flex text-sm font-medium text-accent">
-                  {t(dict, "common.explore")} →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button href={localePath(locale, "/promotions")}>
-            {t(dict, "nav.promotions")}
-          </Button>
-          <Button href={localePath(locale, "/vip")} variant="secondary">
-            {t(dict, "nav.vip")}
-          </Button>
-          <Button href={ctaConfig.play.href} external variant="outline">
-            {t(dict, "common.openPlatform")}
-          </Button>
-        </div>
-
-        <div className="mt-14">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
-            {copy.relatedTitle}
-          </h2>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((item) => (
+        <div className="mt-12">
+          <HubH2>{zh ? "奖励生态四部分" : "Rewards ecosystem overview"}</HubH2>
+          <p className="mt-3 max-w-3xl text-sm text-text-muted">
+            {zh
+              ? "四条车道来自本站主题数据。每张卡说明它代表什么、用户可期待什么、下一步去哪。"
+              : "Four lanes from this site’s topic data. Each card states what it represents, what to expect, and where to continue."}
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {rewardTopics.map((topic) => (
               <Link
-                key={item.href}
-                href={localePath(locale, item.href)}
-                className="rounded-2xl border border-border bg-bg-surface px-4 py-4 text-sm text-text transition hover:border-accent/40"
+                key={topic.id}
+                href={localePath(locale, topic.href)}
+                className="group overflow-hidden rounded-[1.25rem] border border-border bg-bg-surface transition hover:border-accent/40"
               >
-                {item.label} →
+                {topic.image ? (
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={topic.image}
+                      alt={localize(topic.title, locale)}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width:1280px) 50vw, 25vw"
+                    />
+                  </div>
+                ) : null}
+                <div className="p-5">
+                  <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                    {localize(topic.title, locale)}
+                  </h3>
+                  <p className="mt-2 text-sm text-text-muted">
+                    {localize(topic.summary, locale)}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-text-faint">
+                    {localize(topic.body, locale)}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
 
-        {faq.length ? (
-          <div className="mt-14">
-            <h2 className="mb-5 font-[family-name:var(--font-display)] text-2xl text-text">
-              {t(dict, "nav.faq")}
-            </h2>
+        <StepGrid
+          title={zh ? "奖励如何串在一起" : "How rewards fit together"}
+          subtitle={
+            zh
+              ? "阅读顺序，不是保证发放流水线。每一步仍以平台条款为准。"
+              : "A reading order — not a guaranteed payout pipeline. Each step still follows platform terms."
+          }
+          steps={
+            zh
+              ? [
+                  { title: "优惠", body: "限时、可加入的公开摘要（如已核实首存数字）。" },
+                  { title: "活动参与", body: "在平台完成该活动要求的动作——不超出预算。" },
+                  { title: "符合条件的游玩", body: "贡献规则因通道而异；本站不编造权重。" },
+                  { title: "返水 / VIP", body: "持续回馈概念；公开上限最高 1.1%。" },
+                ]
+              : [
+                  { title: "Promotions", body: "Timed, opt-in public summaries (such as verified welcome figures)." },
+                  { title: "Activity", body: "Complete required actions on the platform — without raising your budget wall." },
+                  { title: "Eligible play", body: "Contribution rules vary by lane; this site does not invent weights." },
+                  { title: "Rebates / VIP", body: "Ongoing return concepts; published ceiling up to 1.1%." },
+                ]
+          }
+        />
+
+        <CompareGrid
+          title={zh ? "优惠 · 奖励 · 返水 · VIP" : "Promotions vs Rewards vs Rebates vs VIP"}
+          columns={
+            zh
+              ? [
+                  { title: "优惠", body: "限时、资格制、常带流水。数字只在该活动条款内有效。" },
+                  { title: "奖励", body: "生态地图：把各通道放在一起读，而不是单一领取按钮。" },
+                  { title: "返水", body: "符合条件投注的回馈式返还；与 VIP 相连，上限摘要 1.1%。" },
+                  { title: "VIP", body: "关系通道。不编造等级表或周月固定金额。" },
+                ]
+              : [
+                  { title: "Promotion", body: "Time-bound, eligibility-based, often with wagering. Figures apply only inside that offer’s terms." },
+                  { title: "Reward", body: "The ecosystem map: how lanes are read together, not a single claim button." },
+                  { title: "Rebate", body: "Cashback-style return on eligible play; linked to VIP; ceiling summarised at 1.1%." },
+                  { title: "VIP", body: "Relationship lane. No invented ladder tables or weekly/monthly amounts." },
+                ]
+          }
+        />
+
+        <StepGrid
+          title={zh ? "如何发现奖励" : "Reward discovery"}
+          steps={
+            zh
+              ? [
+                  { title: "浏览已发布摘要", body: "从优惠与本页主题卡开始，而不是第三方截图。" },
+                  { title: "核对资格", body: "账户、地区与窗口只在平台提示中确认。" },
+                  { title: "阅读条件", body: "流水、贡献游戏、时限分开读，不要跨页混用数字。" },
+                  { title: "回到平台继续", body: "领取与进度只存在于登录后的工具。" },
+                ]
+              : [
+                  { title: "Explore published offers", body: "Start from Promotions and these topic cards — not third-party screenshots." },
+                  { title: "Check eligibility", body: "Account, region and windows are confirmed only in platform prompts." },
+                  { title: "Review conditions", body: "Read wagering, contributing games and timing separately; do not mix figures across pages." },
+                  { title: "Continue on the platform", body: "Claiming and progress exist only in logged-in tools." },
+                ]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "理解资格" : "Understanding reward eligibility"}
+          columns={3}
+          items={
+            zh
+              ? [
+                  { title: "账户状态", body: "新户、验证或地区提示可能改变可见活动。本站不编造门槛分。" },
+                  { title: "活动条件", body: "每条通道有自己的加入规则。摘要不能替代条款全文。" },
+                  { title: "符合条件的活动", body: "哪些投注或任务计入，只在平台列出。" },
+                  { title: "时间窗口", body: "开始、结束与领取截止只在实时规则中。" },
+                  { title: "领取要求", body: "品牌站不能代领或显示个人进度。" },
+                  { title: "冲突规则", body: "同时加入多项时如何处理，以平台为准。" },
+                ]
+              : [
+                  { title: "Account status", body: "New-user, verification or region prompts can change which offers appear. No invented score thresholds." },
+                  { title: "Offer conditions", body: "Each lane has its own join rules. A summary does not replace the full terms." },
+                  { title: "Eligible activity", body: "Which bets or tasks count is listed only on the platform." },
+                  { title: "Time windows", body: "Start, end and claim deadlines live in live rules." },
+                  { title: "Claim requirements", body: "This brand site cannot claim for you or show personal progress." },
+                  { title: "Conflict rules", body: "How stacked offers interact is a platform matter." },
+                ]
+          }
+        />
+
+        <ChecklistPanel
+          title={zh ? "用户应核对什么" : "What users should check"}
+          items={
+            zh
+              ? ["资格", "完整条款", "时间窗口", "贡献 / 计入规则", "领取步骤", "过期与取消"]
+              : ["Eligibility", "Full terms", "Timing", "Contribution rules", "Claim steps", "Expiry and cancel"]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "奖励教育" : "Reward education"}
+          columns={2}
+          items={
+            zh
+              ? [
+                  {
+                    title: "为何条件重要",
+                    body: "条件决定摘要数字会不会变成压力。读条件是保护预算墙，不是找漏洞。",
+                  },
+                  {
+                    title: "如何比较礼遇类型",
+                    body: "限时倍数适合一次路径；返水适合持续游玩语言。选符合你会话计划的类型，而不是数字最大的标题。",
+                  },
+                  {
+                    title: "摘要不能替代条款",
+                    body: "本站镜像公开材料以便识读。冲突时以平台为准。",
+                  },
+                  {
+                    title: "避免误解",
+                    body: "上限不是典型结果；1.1% 不是投资收益率；奖池不是保证头奖。",
+                  },
+                ]
+              : [
+                  {
+                    title: "Why conditions matter",
+                    body: "Conditions decide whether a headline figure becomes pressure. Reading conditions protects your budget wall — it is not a hunt for loopholes.",
+                  },
+                  {
+                    title: "How to compare benefit types",
+                    body: "Timed multiples fit a one-path session; cashback fits ongoing play language. Choose the type that matches your session plan, not the loudest headline.",
+                  },
+                  {
+                    title: "Summaries do not replace terms",
+                    body: "This site mirrors public materials for literacy. When they conflict, trust the platform.",
+                  },
+                  {
+                    title: "Avoid misunderstandings",
+                    body: "A ceiling is not a typical outcome; 1.1% is not an investment yield; a prize pool is not a guaranteed jackpot.",
+                  },
+                ]
+          }
+        />
+
+        <RelatedCards
+          title={zh ? "精选奖励入口" : "Featured reward destinations"}
+          items={[
+            {
+              href: localePath(locale, "/promotions"),
+              title: zh ? "优惠" : "Promotions",
+              body: zh ? "已核实活动摘要与条款概念。" : "Verified offer summaries and terms concepts.",
+            },
+            {
+              href: localePath(locale, "/vip"),
+              title: "VIP",
+              body: zh ? "返水上限与关系通道。" : "Cashback ceiling and relationship lane.",
+            },
+            {
+              href: localePath(locale, "/guides/understanding-rewards-vip"),
+              title: zh ? "奖励攻略" : "Rewards guide",
+              body: zh ? "更慢的生态识读。" : "A slower ecosystem walkthrough.",
+            },
+            {
+              href: localePath(locale, "/faq"),
+              title: zh ? "常见问题" : "FAQ",
+              body: zh ? "奖励分组问答。" : "Grouped answers including rewards.",
+            },
+          ]}
+        />
+
+        <InfoGrid
+          title={zh ? "理性参与" : "Responsible participation"}
+          columns={2}
+          items={[
+            {
+              title: zh ? "奖励不能加高限额" : "Rewards do not raise limits",
+              body: zh
+                ? "不要为完成活动或“维持等级感”而超出预算。"
+                : "Do not overspend to finish an activity or chase a sense of tier progress.",
+            },
+            {
+              title: zh ? "需要重置时离开" : "Leave when you need a reset",
+              body: zh
+                ? "压力上升就停止，并阅读理性游戏。"
+                : "Stop when pressure rises and read Responsible Gaming.",
+              href: localePath(locale, "/responsible-gaming"),
+            },
+          ]}
+        />
+
+        <div className="mt-14">
+          <HubH2>{zh ? "奖励常见问题" : "Rewards FAQ"}</HubH2>
+          <div className="mt-5">
             <Accordion
               items={faq.map((item) => ({
                 id: item.id,
@@ -262,13 +328,23 @@ export default async function RewardsPage({
                 content: localize(item.answer, locale),
               }))}
             />
-            <p className="mt-4 text-sm text-text-muted">
-              <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
-                {locale === "zh" ? "查看全部常见问题" : "View all FAQ"} →
-              </Link>
-            </p>
           </div>
-        ) : null}
+          <p className="mt-4 text-sm text-text-muted">
+            <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
+              {zh ? "查看全部常见问题" : "View all FAQ"} →
+            </Link>
+          </p>
+        </div>
+
+        <HubCtaBand
+          locale={locale}
+          title={zh ? "地图在此，办理在平台" : "The map is here; actions finish on the platform"}
+          body={
+            zh
+              ? "用奖励中心保持识读，再用打开平台处理领取与进度。"
+              : "Use the Rewards Hub for literacy, then Open platform for claims and progress."
+          }
+        />
       </Container>
     </Section>
   );

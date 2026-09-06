@@ -6,13 +6,19 @@ import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { absoluteUrl, localize } from "@/lib/utils";
 import { localePath } from "@/lib/paths";
+import { Button } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container, Section } from "@/components/ui/Container";
 import { ProviderCard } from "@/components/providers/ProviderCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
+  FeatureSplit,
+  HubCtaBand,
+  InfoGrid,
+  StepGrid,
+} from "@/components/content/HubModules";
+import {
   PageFaqSection,
-  PlatformCtaRow,
   RelatedLinkGrid,
 } from "@/components/content/PageSections";
 
@@ -43,6 +49,14 @@ export default async function ProvidersPage({
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const providers = getAllProviders();
+  const featuredStudio = [...providers].sort(
+    (a, b) => getGamesByProvider(b.slug).length - getGamesByProvider(a.slug).length,
+  )[0];
+  const featuredTitles = featuredStudio
+    ? getGamesByProvider(featuredStudio.slug)
+        .map((g) => g.name)
+        .slice(0, 4)
+    : [];
   const faqItems = getFaqByIds([
     "providers",
     "providers-why",
@@ -81,13 +95,13 @@ export default async function ProvidersPage({
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
           {locale === "zh" ? "游戏厂商" : "Game Providers"}
         </h1>
-        <p className="mt-3 max-w-3xl text-text-muted">
+        <p className="mt-3 max-w-4xl text-text-muted">
           {locale === "zh"
             ? "厂商决定界面语言、特色语法与会话节奏。本目录只列出本站已核实工作室：Pragmatic Play、PG Soft、Evolution、Spribe、Jili、Endorphina、Relax Gaming、Playson——不编造额外厂商或奖项。"
             : "Providers shape UI language, feature grammar, and session pacing. This directory lists only verified studios on this site: Pragmatic Play, PG Soft, Evolution, Spribe, Jili, Endorphina, Relax Gaming, and Playson — we do not invent extra studios or awards."}
         </p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {providers.map((p) => {
             const count = getGamesByProvider(p.slug).length;
             return (
@@ -103,26 +117,108 @@ export default async function ProvidersPage({
           })}
         </div>
 
-        <div className="prose-brand mt-14 max-w-3xl space-y-4">
-          <h2>
-            {locale === "zh" ? "为何厂商重要" : "Why providers matter"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "同一主题在不同工作室可能有完全不同的节奏。按厂商浏览，可比较工艺家族，而不是只追单一标题神话。"
-              : "The same theme can feel completely different across studios. Browsing by provider lets you compare craft families instead of chasing title myths."}
-          </p>
-          <h2>
-            {locale === "zh" ? "如何探索" : "How to explore"}
-          </h2>
-          <p>
-            {locale === "zh"
-              ? "打开厂商页查看已核实游戏、相关分类与攻略链接，再回到游戏库筛选。实际开玩仍通过平台入口。"
-              : "Open a provider profile for verified games, related categories, and guide links, then return to the game library filters. Live play still happens via platform entry."}
-          </p>
-        </div>
+        <InfoGrid
+          title={locale === "zh" ? "厂商如何塑造游戏库" : "How providers shape the game library"}
+          subtitle={
+            locale === "zh"
+              ? "工作室决定节奏、界面与分类手感。按厂商浏览是比较工艺家族，而不是追逐“今日最热返还率”传闻。"
+              : "Studios decide pacing, UI and category feel. Provider browsing compares craft families — it is not a hunt for unverified “hot RTP” rumours."
+          }
+          columns={3}
+          items={
+            locale === "zh"
+              ? [
+                  {
+                    title: "不同游戏风格",
+                    body: "竖屏节日老虎机、消除网格、真人秀与短回合时机玩法，往往来自不同工艺习惯。",
+                  },
+                  {
+                    title: "不同分类足迹",
+                    body: "有的工作室在老虎机目录更深，有的出现在真人或加密短回合。打开档案查看本站已核实足迹。",
+                  },
+                  {
+                    title: "为何厂商导航有用",
+                    body: "当你喜欢某种控件布局或特色语法，厂商页比随机跳主题更有效。",
+                  },
+                ]
+              : [
+                  {
+                    title: "Different game styles",
+                    body: "Portrait festive slots, cascade grids, live shows and short timing rounds often come from different craft habits.",
+                  },
+                  {
+                    title: "Different category footprints",
+                    body: "Some studios sit deeper in slots; others appear in live or crypto short rounds. Open a profile for this site’s verified footprint.",
+                  },
+                  {
+                    title: "Why provider navigation helps",
+                    body: "When you like a control layout or feature grammar, a provider page beats hopping themes at random.",
+                  },
+                ]
+          }
+        />
 
-        <PlatformCtaRow locale={locale} />
+        {featuredStudio ? (
+          <FeatureSplit
+            kicker={locale === "zh" ? "精选厂商" : "Featured provider"}
+            title={featuredStudio.name}
+            image={featuredStudio.logo}
+            imageAlt={featuredStudio.name}
+            body={localize(featuredStudio.shortDescription, locale)}
+            points={
+              locale === "zh"
+                ? [
+                    `本站已核实作品 ${getGamesByProvider(featuredStudio.slug).length} 款`,
+                    featuredTitles.length
+                      ? `精选标题：${featuredTitles.join("、")}`
+                      : "打开档案查看标题",
+                    "数量是策展足迹，不是全球发行量",
+                  ]
+                : [
+                    `${getGamesByProvider(featuredStudio.slug).length} verified titles on this site`,
+                    featuredTitles.length
+                      ? `Featured titles: ${featuredTitles.join(", ")}`
+                      : "Open the profile for titles",
+                    "Counts are curated footprint — not global release volume",
+                  ]
+            }
+            cta={
+              <Button href={localePath(locale, `/providers/${featuredStudio.slug}`)} variant="secondary">
+                {locale === "zh" ? "打开厂商档案" : "Open provider profile"}
+              </Button>
+            }
+          />
+        ) : null}
+
+        <StepGrid
+          title={locale === "zh" ? "如何按厂商探索" : "How to explore by provider"}
+          steps={
+            locale === "zh"
+              ? [
+                  { title: "选工作室", body: "从上方目录进入档案，而不是只记一个游戏名。" },
+                  { title: "看已核实作品", body: "数量描述本站策展足迹，不是质量分数。" },
+                  { title: "对比分类", body: "从老虎机跳到真人或短回合，感受节奏差。" },
+                  { title: "打开平台", body: "实际开玩仍走登录 / 注册。" },
+                ]
+              : [
+                  { title: "Pick a studio", body: "Open a profile from the directory above instead of memorising one title." },
+                  { title: "Read verified titles", body: "Counts describe this site’s curated footprint — not a quality score." },
+                  { title: "Compare categories", body: "Jump from slots to live or short rounds to feel pacing differences." },
+                  { title: "Open the platform", body: "Live play still goes through Login / Register." },
+                ]
+          }
+        />
+
+        <HubCtaBand
+          locale={locale}
+          title={locale === "zh" ? "从厂商走进游戏库" : "Move from studios into the library"}
+          body={
+            locale === "zh"
+              ? "档案页列出已核实作品与攻略链接。大厅库存仍以平台为准。"
+              : "Profiles list verified titles and guide links. Lobby inventory still belongs to the platform."
+          }
+        />
+
         <RelatedLinkGrid
           locale={locale}
           title={locale === "zh" ? "相关页面" : "Related pages"}

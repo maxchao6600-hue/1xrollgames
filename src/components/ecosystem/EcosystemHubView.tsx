@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import type { ContentBlock, EcosystemHub, FaqItem, Locale } from "@/types/content";
+import type { EcosystemHub, FaqItem, Locale } from "@/types/content";
 import type { CategoryPageContent } from "@/data/category-pages";
-import { ctaConfig } from "@/config/site";
 import { CATEGORY_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
@@ -10,47 +10,10 @@ import { absoluteUrl, localize } from "@/lib/utils";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
-import type { Metadata } from "next";
-
-function Blocks({ blocks, locale }: { blocks: ContentBlock[]; locale: Locale }) {
-  return (
-    <div className="prose-brand mt-8 max-w-3xl space-y-4">
-      {blocks.map((block, i) => {
-        if (block.type === "h2") {
-          return (
-            <h2 key={i} className="font-[family-name:var(--font-display)] text-2xl text-text">
-              {localize(block.text, locale)}
-            </h2>
-          );
-        }
-        if (block.type === "h3") {
-          return (
-            <h3 key={i} className="text-xl text-text">
-              {localize(block.text, locale)}
-            </h3>
-          );
-        }
-        if (block.type === "ul") {
-          return (
-            <ul key={i} className="list-disc space-y-2 pl-5 text-text-muted">
-              {block.items[locale].map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          );
-        }
-        return (
-          <p key={i} className="leading-relaxed text-text-muted">
-            {localize(block.text, locale)}
-          </p>
-        );
-      })}
-    </div>
-  );
-}
+import { GroupedSectionGrid, HubCtaBand } from "@/components/content/HubModules";
+import { HubCategoryExtras } from "@/components/content/CategoryHubExtras";
 
 export function ecosystemMetadata(
   locale: Locale,
@@ -180,7 +143,7 @@ export function EcosystemHubView({
               <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl text-white md:text-4xl">
                 {title}
               </h1>
-              <p className="mt-2 max-w-2xl text-sm text-white/75 md:text-base">
+              <p className="mt-2 max-w-4xl text-sm text-white/75 md:text-base">
                 {deepContent
                   ? localize(deepContent.intro, locale)
                   : localize(hub.summary, locale)}
@@ -192,34 +155,30 @@ export function EcosystemHubView({
             <h1 className="font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
               {title}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg text-text-muted">{intro}</p>
+            <p className="mt-4 max-w-4xl text-lg text-text-muted">{intro}</p>
           </>
         )}
 
         {asset?.image ? (
-          <p className="max-w-3xl text-base leading-relaxed text-text-muted">{intro}</p>
+          <p className="max-w-4xl text-base leading-relaxed text-text-muted">{intro}</p>
         ) : null}
 
-        <Blocks blocks={sections} locale={locale} />
+        <GroupedSectionGrid blocks={sections} locale={locale} />
+
+        <HubCategoryExtras locale={locale} categoryId={categoryId} />
 
         {showPlatformCtas ? (
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Button href={ctaConfig.play.href} external>
-              {t(dict, "common.openPlatform")}
-            </Button>
-            <Button href={localePath(locale, ctaConfig.register.path)} variant="secondary">
-              {t(dict, "nav.register")}
-            </Button>
-            <Button href={localePath(locale, "/guides")} variant="outline">
-              {t(dict, "nav.guides")}
-            </Button>
-            <Button href={localePath(locale, "/fair-play")} variant="outline">
-              {t(dict, "nav.fairPlay")}
-            </Button>
-            <Button href={localePath(locale, "/responsible-gaming")} variant="outline">
-              {t(dict, "nav.responsible")}
-            </Button>
-          </div>
+          <HubCtaBand
+            locale={locale}
+            title={
+              locale === "zh" ? "实时操作在平台完成" : "Live actions happen on the platform"
+            }
+            body={
+              locale === "zh"
+                ? "本页提供通道识读与导航。登录后的工具、库存与条款以平台为准。"
+                : "This page is lane literacy and navigation. Tools, inventory and terms after login belong to the platform."
+            }
+          />
         ) : null}
 
         {related.length ? (

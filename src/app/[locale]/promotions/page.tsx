@@ -6,13 +6,24 @@ import type { Locale } from "@/types/content";
 import { getFaqByGroup, promotions } from "@/data";
 import { ctaConfig } from "@/config/site";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
-import { localize } from "@/lib/utils";
+import { absoluteUrl, localize } from "@/lib/utils";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Container";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  ChecklistPanel,
+  CompareGrid,
+  FeatureSplit,
+  HubCtaBand,
+  HubH2,
+  InfoGrid,
+  RelatedCards,
+  StepGrid,
+} from "@/components/content/HubModules";
 
 export async function generateMetadata({
   params,
@@ -40,50 +51,10 @@ export default async function PromotionsPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const faq = getFaqByGroup("promotions");
+  const faq = getFaqByGroup("promotions").slice(0, 10);
+  const welcome = promotions.find((p) => p.id === "welcome-200") ?? promotions[0]!;
 
-  const copy =
-    locale === "zh"
-      ? {
-          eyebrow: "活动中心",
-          howTitle: "优惠如何运作",
-          howBody:
-            "本页汇总已在品牌网络发布的优惠摘要。资格确认、领取与进度始终在登录后的 1XROLL 平台完成。品牌站卡片用于发现与导览——不是独立的领取系统。",
-          termsTitle: "为什么条款重要",
-          termsBody:
-            "每项优惠都有资格、贡献游戏、时限与领取规则。卡片上的摘要帮助你快速扫读；完整条款以平台展示为准。若摘要与平台冲突，以平台为准。",
-          eligibleTitle: "资格与参与",
-          eligibleBody:
-            "常见条件可能包括账户状态、存款或投注门槛、地区与活动窗口。本站不编造额外门槛数字。打开平台后阅读当前活动规则，再决定是否参与。",
-          turnoverTitle: "流水概念（教育说明）",
-          turnoverBody:
-            "“流水”或下注要求通常指：在可提取奖励相关资金前，需要完成一定倍数的有效投注。倍数与哪些游戏计入贡献因活动而异。本段只解释概念——具体倍数请只相信你领取的那项活动在平台上显示的数字，不要把其他页面的数字混用。",
-          responsibleTitle: "理性参与优惠",
-          responsibleBody:
-            "优惠不能替代个人限额。不要为了“做完流水”而提高超出预算的注额。若追逐损失或压力上升，请离开活动并阅读理性游戏。",
-          listTitle: "当前活动摘要",
-          faqTitle: "常见问题",
-        }
-      : {
-          eyebrow: "Promotion Hub",
-          howTitle: "How promotions work",
-          howBody:
-            "This page summarises offers published on the brand network. Eligibility, claiming and progress always complete on the 1XROLL platform after login. Brand-site cards are for discovery and orientation — not a separate claim system.",
-          termsTitle: "Why terms matter",
-          termsBody:
-            "Every offer has eligibility, game contribution, timing and claim rules. Card summaries help you scan quickly; full terms live on the platform. If a summary and the platform disagree, trust the platform.",
-          eligibleTitle: "Eligibility",
-          eligibleBody:
-            "Common conditions may include account status, deposit or wagering thresholds, region and offer windows. This site does not invent extra threshold numbers. Read the live offer rules on the platform before you opt in.",
-          turnoverTitle: "Turnover (educational)",
-          turnoverBody:
-            "“Turnover” or wagering usually means completing a multiple of eligible bets before related bonus funds can be withdrawn. Multiples and which games contribute vary by offer. This paragraph explains the idea only — trust the numbers shown for the specific offer you claim on the platform, and do not mix figures from other pages.",
-          responsibleTitle: "Responsible participation",
-          responsibleBody:
-            "Promotions do not replace personal limits. Do not raise stakes beyond your budget just to “finish wagering.” If chasing losses or pressure rises, leave the offer and read Responsible Gaming.",
-          listTitle: "Current offer summaries",
-          faqTitle: "FAQ",
-        };
+  const zh = locale === "zh";
 
   return (
     <Section className="pt-8">
@@ -94,105 +65,420 @@ export default async function PromotionsPage({
             { label: t(dict, "promotions.title") },
           ]}
         />
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          {copy.eyebrow}
+        <JsonLd
+          data={[
+            breadcrumbJsonLd([
+              { name: t(dict, "nav.home"), url: absoluteUrl(localePath(locale, "/")) },
+              {
+                name: t(dict, "promotions.title"),
+                url: absoluteUrl(localePath(locale, "/promotions")),
+              },
+            ]),
+            faqJsonLd(
+              faq.map((item) => ({
+                question: localize(item.question, locale),
+                answer: localize(item.answer, locale),
+              })),
+            ),
+          ]}
+        />
+
+        <p className="text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+          {zh ? "活动中心" : "Promotion Hub"}
         </p>
-        <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl text-text">
+        <h1 className="mt-2 max-w-4xl font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
           {t(dict, "promotions.title")}
         </h1>
-        <p className="mt-3 max-w-2xl text-text-muted">
-          {t(dict, "promotions.subtitle")}
+        <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-muted md:text-lg">
+          {zh
+            ? "本页是已发布优惠的发现中心：浏览摘要、理解条款概念，再在登录后的平台确认资格与领取。卡片上的数字只来自已核实配置——不是独立领取系统。"
+            : "This hub is for discovering published offers: scan summaries, understand terms as concepts, then confirm eligibility and claims on the platform after login. Figures on cards come from verified config — this is not a separate claim system."}
         </p>
 
-        <div className="prose-brand mt-8 max-w-3xl">
-          <h2>{copy.howTitle}</h2>
-          <p>{copy.howBody}</p>
-          <h2>{copy.termsTitle}</h2>
-          <p>{copy.termsBody}</p>
-          <h2>{copy.eligibleTitle}</h2>
-          <p>{copy.eligibleBody}</p>
-          <h2>{copy.turnoverTitle}</h2>
-          <p>{copy.turnoverBody}</p>
-          <h2>{copy.responsibleTitle}</h2>
-          <p>
-            {copy.responsibleBody}{" "}
-            <Link href={localePath(locale, "/responsible-gaming")}>
-              {t(dict, "nav.responsible")}
-            </Link>
-            .
+        <div className="mt-12">
+          <HubH2>{zh ? "当前活动" : "Current promotions"}</HubH2>
+          <p className="mt-3 max-w-3xl text-sm text-text-muted">
+            {zh
+              ? "以下摘要镜像公开材料。资格因账户与地区而异；参与前请阅读平台实时条款。"
+              : "Summaries below mirror published materials. Eligibility varies by account and region — read live platform terms before you join."}
           </p>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3 text-sm">
-          <Link href={localePath(locale, "/rewards")} className="text-accent hover:underline">
-            {t(dict, "nav.rewards")}
-          </Link>
-          <Link href={localePath(locale, "/rebates")} className="text-accent hover:underline">
-            {t(dict, "nav.rebates")}
-          </Link>
-          <Link href={localePath(locale, "/vip")} className="text-accent hover:underline">
-            {t(dict, "nav.vip")}
-          </Link>
-        </div>
-
-        <h2 className="mt-12 font-[family-name:var(--font-display)] text-2xl text-text">
-          {copy.listTitle}
-        </h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {promotions.map((promo) => (
-            <article
-              key={promo.id}
-              className="overflow-hidden rounded-2xl border border-border bg-bg-surface"
-            >
-              {promo.image ? (
-                <div className="relative aspect-[16/9]">
-                  <Image
-                    src={promo.image}
-                    alt={localize(promo.title, locale)}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {promotions.map((promo) => (
+              <article
+                key={promo.id}
+                className="flex flex-col overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface"
+              >
+                {promo.image ? (
+                  <div className="relative aspect-[16/9]">
+                    <Image
+                      src={promo.image}
+                      alt={localize(promo.title, locale)}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width:768px) 100vw, 33vw"
+                    />
+                  </div>
+                ) : null}
+                <div className="flex flex-1 flex-col space-y-3 p-5">
+                  <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-accent uppercase">
+                    {zh ? "已发布摘要" : "Published summary"}
+                  </p>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl text-text">
+                    {localize(promo.title, locale)}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-text-muted">
+                    {localize(promo.description, locale)}
+                  </p>
+                  <p className="text-xs text-text-faint">
+                    {zh
+                      ? "资格因账户而异。领取与进度在平台完成。"
+                      : "Eligibility varies. Claiming and progress complete on the platform."}
+                  </p>
+                  <Link
+                    href={localePath(locale, promo.href)}
+                    className="mt-auto pt-2 text-sm font-medium text-accent hover:underline"
+                  >
+                    {localize(promo.ctaLabel, locale)} →
+                  </Link>
                 </div>
-              ) : null}
-              <div className="space-y-3 p-5">
-                <p className="text-xs uppercase tracking-wide text-accent">
-                  {locale === "zh" ? "当前活动" : "Current activity"}
-                </p>
-                <h3 className="text-xl text-text">
-                  {localize(promo.title, locale)}
-                </h3>
-                <p className="text-sm leading-relaxed text-text-muted">
-                  {localize(promo.description, locale)}
-                </p>
-                <Link
-                  href={localePath(locale, promo.href)}
-                  className="inline-flex text-sm font-medium text-accent hover:underline"
-                >
-                  {localize(promo.ctaLabel, locale)} →
-                </Link>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button href={ctaConfig.register.href} external>
-            {t(dict, "nav.register")}
-          </Button>
-          <Button href={localePath(locale, "/rewards")} variant="secondary">
-            {t(dict, "nav.rewards")}
-          </Button>
-          <Button href={localePath(locale, "/responsible-gaming")} variant="outline">
-            {t(dict, "nav.responsible")}
-          </Button>
-        </div>
+        <InfoGrid
+          title={zh ? "优惠类型一览" : "Promotion overview"}
+          subtitle={
+            zh
+              ? "本站目前策展三类已核实公开摘要。其他大厅活动可能登录后才出现——我们不为未列出的活动编造规则。"
+              : "This site currently curates three verified public summaries. Other lobby activities may appear after login — we do not invent rules for unlisted offers."
+          }
+          columns={3}
+          items={[
+            {
+              title: zh ? "首存类" : "First deposit",
+              body: zh
+                ? "面向首次充值路径的匹配式摘要。已核实：200%、最高 8,888 USDT、25 倍流水、最低 10 USDT。"
+                : "Matching-style summary for a first top-up path. Verified: 200%, up to 8,888 USDT, 25× turnover, min. 10 USDT.",
+            },
+            {
+              title: zh ? "VIP / 返水" : "VIP / cashback",
+              body: zh
+                ? "符合条件投注的回馈上限摘要为最高 1.1%。等级细节只存在于平台。"
+                : "Cashback on eligible bets summarised as up to 1.1%. Tier detail lives only on the platform.",
+            },
+            {
+              title: zh ? "奖池 / 活动" : "Events / prize pool",
+              body: zh
+                ? "指定作品上的奖池式活动。当期规则、作品名单与窗口以平台为准——本站不编造奖池金额。"
+                : "Prize-pool style events on selected titles. Current rules, title lists and windows belong on the platform — we do not invent pool amounts.",
+            },
+          ]}
+        />
 
-        {faq.length ? (
-          <div className="mt-14 max-w-3xl">
-            <h2 className="mb-5 font-[family-name:var(--font-display)] text-2xl text-text">
-              {copy.faqTitle}
-            </h2>
+        <FeatureSplit
+          kicker={zh ? "精选优惠" : "Featured offer"}
+          title={localize(welcome.title, locale)}
+          image={welcome.image}
+          imageAlt={localize(welcome.title, locale)}
+          body={
+            zh
+              ? "这是本站镜像的首存路径摘要。它解释公开数字如何组合，而不是保证你会领到上限。资格、游戏贡献与领取步骤只在平台显示时才算有效。"
+              : "This is the first-deposit path summarised on this site. It explains how published figures combine — it does not guarantee you will receive the ceiling. Eligibility, game contribution and claim steps are valid only as shown on the platform."
+          }
+          points={
+            zh
+              ? [
+                  "200% 首存匹配风格（公开摘要）",
+                  "最高 8,888 USDT — 上限，不是典型结果",
+                  "25 倍流水 — 概念见下方条款卡",
+                  "最低存款 10 USDT",
+                ]
+              : [
+                  "200% first-deposit matching style (published summary)",
+                  "Up to 8,888 USDT — a ceiling, not a typical outcome",
+                  "25× turnover — concept explained in the terms cards",
+                  "Minimum deposit 10 USDT",
+                ]
+          }
+          cta={
+            <>
+              <Button href={ctaConfig.register.href} external>
+                {zh ? "前往平台确认" : "Confirm on platform"}
+              </Button>
+              <Button href={localePath(locale, "/rewards")} variant="secondary">
+                {t(dict, "nav.rewards")}
+              </Button>
+            </>
+          }
+        />
+
+        <StepGrid
+          title={zh ? "优惠如何运作" : "How promotions work"}
+          subtitle={
+            zh
+              ? "四步保持冷静：先读摘要，再核资格，再行动，最后只在平台看进度。"
+              : "Four calm steps: read the summary, check eligibility, complete the required action, then track progress only on the platform."
+          }
+          steps={
+            zh
+              ? [
+                  {
+                    title: "阅读摘要",
+                    body: "用本页卡片理解优惠类型与已核实数字。把摘要当地图，不当领取按钮。",
+                  },
+                  {
+                    title: "核对其资格",
+                    body: "账户状态、地区、是否首存、活动窗口都可能影响资格。本站不编造额外门槛。",
+                  },
+                  {
+                    title: "完成要求动作",
+                    body: "存款、加入或指定投注只在平台规则要求时发生。不要为“做完活动”而超出预算。",
+                  },
+                  {
+                    title: "在平台查看进度",
+                    body: "流水、贡献游戏与领取状态只存在于登录后的工具。品牌站不会显示个人进度条。",
+                  },
+                ]
+              : [
+                  {
+                    title: "Review the offer",
+                    body: "Use cards on this page to understand offer type and verified figures. Treat summaries as a map, not a claim button.",
+                  },
+                  {
+                    title: "Check eligibility",
+                    body: "Account status, region, first-deposit status and offer windows can all matter. This site does not invent extra thresholds.",
+                  },
+                  {
+                    title: "Complete the required action",
+                    body: "Deposits, opt-ins or specified play happen only as the platform rules require. Do not overspend to “finish” an offer.",
+                  },
+                  {
+                    title: "Track progress on the platform",
+                    body: "Turnover, contributing games and claim status live in logged-in tools. This brand site does not show personal progress bars.",
+                  },
+                ]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "理解优惠条款" : "Understanding promotion terms"}
+          subtitle={
+            zh
+              ? "以下卡片解释概念。除已核实的首存数字与 1.1% 返水上限外，不编造具体条件。"
+              : "These cards explain concepts. Aside from verified first-deposit figures and the 1.1% cashback ceiling, we do not invent exact conditions."
+          }
+          columns={3}
+          items={
+            zh
+              ? [
+                  {
+                    title: "资格",
+                    body: "可能包括新账户、地区或活动窗口。以平台当前规则为准。",
+                  },
+                  {
+                    title: "最低存款",
+                    body: "公开首存摘要为 10 USDT。其他活动门槛只在平台列出时才有效。",
+                  },
+                  {
+                    title: "流水 / 投注要求",
+                    body: "通常指提取相关资金前需完成的有效投注倍数。首存摘要为 25 倍；其他活动请勿混用该数字。",
+                  },
+                  {
+                    title: "计入游戏",
+                    body: "哪些分类贡献流水因活动而异。本站不编造权重表。",
+                  },
+                  {
+                    title: "时间窗口",
+                    body: "优惠可能有加入期限或完成期限。过期规则只在平台条款中确认。",
+                  },
+                  {
+                    title: "领取规则",
+                    body: "领取、取消与冲突优惠处理属于平台流程。品牌站不能代领。",
+                  },
+                ]
+              : [
+                  {
+                    title: "Eligibility",
+                    body: "May include new-account status, region or offer windows. Trust the platform’s current rules.",
+                  },
+                  {
+                    title: "Minimum deposit",
+                    body: "The published first-deposit summary uses 10 USDT. Other offer floors are valid only when listed on the platform.",
+                  },
+                  {
+                    title: "Turnover / wagering",
+                    body: "Usually a multiple of eligible bets before related funds can be withdrawn. The welcome summary uses 25× — do not reuse that figure on other offers.",
+                  },
+                  {
+                    title: "Eligible games",
+                    body: "Which categories contribute toward wagering varies by offer. We do not invent weighting tables.",
+                  },
+                  {
+                    title: "Time window",
+                    body: "Offers may have join or completion deadlines. Expiry rules are confirmed only in platform terms.",
+                  },
+                  {
+                    title: "Claim rules",
+                    body: "Claiming, cancelling and conflicting-offer handling belong to platform flows. This brand site cannot claim for you.",
+                  },
+                ]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "如何选择适合自己的优惠" : "How to choose the right promotion"}
+          columns={2}
+          items={
+            zh
+              ? [
+                  {
+                    title: "新用户路径",
+                    body: "若你尚未完成首次充值，先读首存摘要，再决定该数字是否符合你已设定的预算墙。",
+                  },
+                  {
+                    title: "返水式礼遇",
+                    body: "若你更在意持续回馈而非限时倍数，转到 VIP 页阅读最高 1.1% 的公开上限说明。",
+                  },
+                  {
+                    title: "活动式奖池",
+                    body: "奖池类活动依赖当期大厅规则。把它当可选娱乐，而不是必须追上的进度条。",
+                  },
+                  {
+                    title: "个人资格",
+                    body: "同一张卡片不等于人人可领。登录后核对账户提示，再决定是否加入。",
+                  },
+                ]
+              : [
+                  {
+                    title: "New-user offers",
+                    body: "If you have not completed a first top-up, read the welcome summary and decide whether those figures fit a budget wall you already set.",
+                  },
+                  {
+                    title: "Cashback-style benefits",
+                    body: "If you prefer ongoing return language over a timed multiple, open the VIP page for the published up-to-1.1% ceiling.",
+                  },
+                  {
+                    title: "Event-style promotions",
+                    body: "Prize-pool activities depend on the current lobby. Treat them as optional entertainment, not a progress bar you must chase.",
+                  },
+                  {
+                    title: "Personal eligibility",
+                    body: "The same card is not a promise for every account. Confirm prompts after login before you opt in.",
+                  },
+                ]
+          }
+        />
+
+        <CompareGrid
+          title={zh ? "优惠、奖励、返水与 VIP" : "Promotion vs Rewards"}
+          subtitle={
+            zh
+              ? "四条车道互补。不要把不同页的数字叠成一条保证路径。"
+              : "Four complementary lanes. Do not stack figures from different pages into one guaranteed path."
+          }
+          columns={
+            zh
+              ? [
+                  {
+                    title: "优惠",
+                    body: "通常限时、可加入、带资格与流水规则。首存摘要是本站最具体的已核实例子。",
+                  },
+                  {
+                    title: "奖励",
+                    body: "更宽的生态地图：如何把活动、回馈与 VIP 放在一起阅读。",
+                  },
+                  {
+                    title: "返水",
+                    body: "符合条件投注的回馈式返还概念，常与 VIP 相连；上限摘要为 1.1%。",
+                  },
+                  {
+                    title: "VIP",
+                    body: "持续关系通道。不在本站编造 VIP 1–4 阶梯或周月固定金额。",
+                  },
+                ]
+              : [
+                  {
+                    title: "Promotion",
+                    body: "Usually time-bound, opt-in, with eligibility and wagering rules. The welcome summary is this site’s most specific verified example.",
+                  },
+                  {
+                    title: "Rewards",
+                    body: "A wider map of how activities, returns and VIP sit together as a reading path.",
+                  },
+                  {
+                    title: "Rebates",
+                    body: "Cashback-style return on eligible play, often linked to VIP; published ceiling up to 1.1%.",
+                  },
+                  {
+                    title: "VIP",
+                    body: "An ongoing relationship lane. This site does not invent VIP 1–4 ladders or weekly/monthly amounts.",
+                  },
+                ]
+          }
+        />
+
+        <ChecklistPanel
+          title={zh ? "领取前核对" : "Before you claim"}
+          subtitle={
+            zh
+              ? "把这份清单当作冷静仪式，而不是催促加入的话术。"
+              : "Treat this list as a calm ritual — not a push to opt in."
+          }
+          items={
+            zh
+              ? [
+                  "核对其资格提示",
+                  "阅读完整平台条款",
+                  "确认活动仍在时间窗口内",
+                  "理解流水要求（概念 + 该活动数字）",
+                  "查看哪些游戏计入贡献",
+                  "确认领取 / 取消流程",
+                ]
+              : [
+                  "Check eligibility prompts",
+                  "Read full platform terms",
+                  "Confirm the offer is still inside its time window",
+                  "Understand wagering (concept + that offer’s figure)",
+                  "Check which games contribute",
+                  "Confirm claim / cancel flow",
+                ]
+          }
+        />
+
+        <InfoGrid
+          title={zh ? "理性参与" : "Responsible participation"}
+          columns={2}
+          items={
+            zh
+              ? [
+                  {
+                    title: "优惠不能加高预算墙",
+                    body: "不要为了做完流水而提高超出计划的注额。倍数是规则，不是必须完成的任务。",
+                  },
+                  {
+                    title: "需要停时就停",
+                    body: "若追逐损失或压力上升，离开活动并阅读理性游戏。限额优先于任何摘要数字。",
+                    href: localePath(locale, "/responsible-gaming"),
+                  },
+                ]
+              : [
+                  {
+                    title: "Offers do not raise your budget wall",
+                    body: "Do not increase stakes beyond your plan just to finish wagering. A multiple is a rule, not a quest.",
+                  },
+                  {
+                    title: "Stop when entertainment stops",
+                    body: "If chasing losses or pressure rises, leave the offer and read Responsible Gaming. Limits outrank any summary figure.",
+                    href: localePath(locale, "/responsible-gaming"),
+                  },
+                ]
+          }
+        />
+
+        <div className="mt-14">
+          <HubH2>{zh ? "优惠常见问题" : "Promotion FAQ"}</HubH2>
+          <div className="mt-5">
             <Accordion
               items={faq.map((item) => ({
                 id: item.id,
@@ -200,13 +486,49 @@ export default async function PromotionsPage({
                 content: localize(item.answer, locale),
               }))}
             />
-            <p className="mt-4 text-sm text-text-muted">
-              <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
-                {locale === "zh" ? "查看全部常见问题" : "View all FAQ"} →
-              </Link>
-            </p>
           </div>
-        ) : null}
+          <p className="mt-4 text-sm text-text-muted">
+            <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
+              {zh ? "查看全部常见问题" : "View all FAQ"} →
+            </Link>
+          </p>
+        </div>
+
+        <RelatedCards
+          title={zh ? "相关内容" : "Related content"}
+          items={[
+            {
+              href: localePath(locale, "/rewards"),
+              title: zh ? "奖励中心" : "Rewards",
+              body: zh ? "把优惠放回更宽的礼遇地图。" : "Place offers back on the wider benefits map.",
+            },
+            {
+              href: localePath(locale, "/vip"),
+              title: "VIP",
+              body: zh ? "阅读返水上限与关系通道说明。" : "Read cashback ceiling and relationship-lane notes.",
+            },
+            {
+              href: localePath(locale, "/guides/understanding-promotions-terms"),
+              title: zh ? "优惠条款攻略" : "Promotions guide",
+              body: zh ? "更慢的条款识读练习。" : "A slower walkthrough of reading terms.",
+            },
+            {
+              href: localePath(locale, "/responsible-gaming"),
+              title: zh ? "理性游戏" : "Responsible Gaming",
+              body: zh ? "限额、休息与何时停止。" : "Limits, breaks, and when to stop.",
+            },
+          ]}
+        />
+
+        <HubCtaBand
+          locale={locale}
+          title={zh ? "准备好再打开平台" : "Open the platform when you are ready"}
+          body={
+            zh
+              ? "用本页完成识读。领取、进度与冲突规则只在 1XROLL 平台生效。"
+              : "Finish literacy here. Claiming, progress and conflict rules take effect only on the 1XROLL platform."
+          }
+        />
       </Container>
     </Section>
   );

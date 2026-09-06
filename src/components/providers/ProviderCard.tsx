@@ -4,7 +4,7 @@ import type { Locale, Provider } from "@/types/content";
 import { getDictionary, t } from "@/lib/i18n";
 import { providerPath, localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
-import { getGamesByProvider } from "@/data";
+import { getCategory, getGamesByProvider } from "@/data";
 import { providerLogoAlt } from "@/data/assets";
 
 export function ProviderCard({
@@ -18,6 +18,14 @@ export function ProviderCard({
   const games = getGamesByProvider(provider.slug);
   const count = games.length;
   const featured = games.filter((g) => g.image).slice(0, 3);
+  const categoryLabels = [
+    ...new Set(
+      games
+        .map((g) => getCategory(g.category))
+        .filter((c): c is NonNullable<typeof c> => Boolean(c))
+        .map((c) => localize(c.name, locale)),
+    ),
+  ].slice(0, 4);
   const href = providerPath(locale, provider.slug);
 
   return (
@@ -49,9 +57,14 @@ export function ProviderCard({
           </p>
         </div>
       </div>
-      <p className="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-text-muted">
+      <p className="mb-3 line-clamp-3 flex-1 text-sm leading-relaxed text-text-muted">
         {localize(provider.shortDescription, locale)}
       </p>
+      {categoryLabels.length ? (
+        <p className="mb-3 text-[0.7rem] tracking-wide text-accent">
+          {categoryLabels.join(" · ")}
+        </p>
+      ) : null}
       {featured.length ? (
         <ul className="mb-4 space-y-1.5 border-t border-border/70 pt-3">
           {featured.map((game) => (
