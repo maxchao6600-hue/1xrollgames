@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getEcosystemHub } from "@/data";
+import { getEcosystemHub, getFaqByGroup } from "@/data";
 import { isLocale } from "@/lib/i18n";
 import { EcosystemHubView, ecosystemMetadata } from "@/components/ecosystem/EcosystemHubView";
 
@@ -28,11 +28,15 @@ export default async function Page({
   if (!isLocale(raw)) notFound();
   const hub = getEcosystemHub(SLUG);
   if (!hub) notFound();
+  const faq = getFaqByGroup("responsible").filter((item) =>
+    ["fair-play-faq", "responsible", "rg-limits"].includes(item.id),
+  );
   return (
     <EcosystemHubView
       locale={raw}
       hub={hub}
       path={PATH}
+      faqItems={faq}
     />
   );
 }

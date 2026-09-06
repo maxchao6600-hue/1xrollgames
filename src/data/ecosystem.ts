@@ -16,8 +16,8 @@ export const journeySteps: JourneyStep[] = [
     step: 2,
     title: { en: "Download / Access", zh: "下载 / 访问" },
     summary: {
-      en: "Use mobile web, Android APK guidance, or desktop browser access.",
-      zh: "使用手机网页、Android APK 指引或桌面浏览器访问。",
+      en: "Use mobile web, desktop browser, or download-hub access orientation when offered.",
+      zh: "使用手机网页、桌面浏览器，或（在提供时）下载中心的访问导览。",
     },
     href: "/download",
   },
@@ -211,34 +211,112 @@ export const ecosystemHubs: EcosystemHub[] = [
     sections: [
       {
         type: "h2",
-        text: { en: "What agents explore", zh: "代理关注什么" },
+        text: { en: "What is the 1XROLL Agent program?", zh: "什么是 1XROLL 代理计划？" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "The Agent lane is for people who want to introduce eligible players to the 1XROLL entertainment ecosystem through referral-oriented participation. This brand site explains concepts and responsibilities — it does not publish invented commission tables.",
+          zh: "代理通道面向希望通过推荐式参与，向符合条件的玩家介绍 1XROLL 娱乐生态的人。本品牌站解释概念与责任——不发布编造的佣金表。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Who agents are for", zh: "适合谁" },
       },
       {
         type: "ul",
         items: {
           en: [
-            "Referral-oriented growth inside the entertainment ecosystem",
-            "Onboarding resources for new players (guides, download, beginner pages)",
-            "Support paths via FAQ and contact",
+            "Partners who already understand responsible entertainment messaging",
+            "Creators or communities that prefer orientation content over hype claims",
+            "Operators who will read official platform terms before promoting offers",
           ],
           zh: [
-            "娱乐生态内的推荐导向增长",
-            "新玩家入门资源（攻略、下载、新手页）",
-            "通过常见问题与联系页的支持路径",
+            "已理解理性娱乐表述的合作方",
+            "偏好导览内容而非夸大主张的创作者或社区",
+            "推广优惠前会阅读官方平台条款的运营者",
           ],
         },
       },
       {
+        type: "h2",
+        text: { en: "How the agent ecosystem works", zh: "代理生态如何运作" },
+      },
+      {
         type: "p",
         text: {
-          en: "Platform CTAs on this site can include an AgentCode parameter for tracking when configured in environment settings.",
-          zh: "本站平台 CTA 可在环境配置启用时附带 AgentCode 参数以便追踪。",
+          en: "Orientation starts here: share accurate category and guide links, send players to official Login/Register paths, and keep promotional language aligned with published terms. Live dashboards, payout tools and commission rules — when offered — live on the platform side after you are onboarded through official channels.",
+          zh: "导览从这里开始：分享准确的分类与攻略链接，引导玩家走官方登录/注册路径，并让推广用语与已发布条款一致。实时仪表盘、结算工具与佣金规则（若提供）在你通过官方渠道入驻后位于平台侧。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Getting started", zh: "如何开始" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Read FAQ and Contact for orientation questions",
+            "Use beginner and download hubs as honest onboarding material",
+            "Open platform CTAs when you are ready to discuss live partnership terms",
+          ],
+          zh: [
+            "阅读常见问题与联系页处理导览疑问",
+            "使用新手与下载枢纽作为诚实的入门材料",
+            "准备讨论实时合作条款时再打开平台 CTA",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Commission explanation", zh: "佣金说明" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Commission percentages are not invented on this brand site. Discuss live rates, payment schedules and eligibility through official 1XROLL platform channels after onboarding.",
+          zh: "本品牌站不编造佣金比例。入驻后请通过官方 1XROLL 平台渠道讨论实时费率、结算周期与资格。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Agent responsibilities", zh: "代理责任" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Do not invent bonuses, odds, licenses or VIP ladders",
+            "Point players to Responsible Gaming guidance",
+            "Follow promotion guidelines and local law",
+          ],
+          zh: [
+            "不编造优惠、赔率、牌照或 VIP 阶梯",
+            "引导玩家阅读理性游戏指引",
+            "遵守推广规范与当地法律",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Promotion guidelines", zh: "推广指引" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "When you reference offers, link to this site’s Promotions hub or platform terms rather than paraphrasing numbers from memory. Platform CTAs on this site can include an AgentCode parameter for tracking when configured in environment settings.",
+          zh: "提及优惠时，请链向本站优惠枢纽或平台条款，而不是凭记忆改写数字。本站平台 CTA 可在环境配置启用时附带 AgentCode 参数以便追踪。",
         },
       },
     ],
     relatedHrefs: [
       { href: "/register", label: { en: "Register", zh: "注册" } },
       { href: "/beginner-guide", label: { en: "Beginner Guide", zh: "新手指南" } },
+      { href: "/promotions", label: { en: "Promotions", zh: "优惠" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
       { href: "/contact", label: { en: "Contact", zh: "联系" } },
     ],
   },
@@ -490,12 +568,12 @@ export const ecosystemHubs: EcosystemHub[] = [
     slug: "download",
     title: { en: "Download", zh: "下载" },
     summary: {
-      en: "Android, mobile web and desktop access guidance.",
-      zh: "Android、手机网页与桌面访问指引。",
+      en: "Mobile web, desktop and access-orientation guidance for reaching 1XROLL.",
+      zh: "通过手机网页、桌面与访问导览进入 1XROLL 的指引。",
     },
     intro: {
-      en: "Access 1XROLL through mobile web, desktop browser, or Android download guidance using the QR and screenshot assets on this page. iOS users typically continue via mobile browser or platform instructions after login. Download packages should only come from official 1XROLL paths.",
-      zh: "可通过手机网页、桌面浏览器，或本页二维码与截图资源提供的 Android 下载指引访问 1XROLL。iOS 用户通常在登录后通过手机浏览器或平台说明继续。安装包仅应从官方 1XROLL 路径获取。",
+      en: "Reach 1XROLL through mobile web, desktop browser, or the access orientation materials on this page (QR / screenshots and platform CTAs when offered). iOS users typically continue via mobile browser or platform instructions after login. Treat this hub as orientation — not a claim that a store-listed “official Android app” is hosted on this brand site. Any install package should only come from official 1XROLL paths.",
+      zh: "可通过手机网页、桌面浏览器，或本页访问导览材料（二维码 / 截图，以及提供时的平台 CTA）进入 1XROLL。iOS 用户通常在登录后通过手机浏览器或平台说明继续。请把本中心当作访问导览——而非宣称本品牌站托管已上架的“官方 Android 应用”。任何安装包仅应从官方 1XROLL 路径获取。",
     },
     sections: [
       {
@@ -507,12 +585,12 @@ export const ecosystemHubs: EcosystemHub[] = [
         items: {
           en: [
             "Mobile web and desktop browser access to the 1XROLL platform",
-            "Android download guidance via official QR / platform CTA when offered",
-            "iOS: continue with mobile browser or platform instructions — no invented App Store claim on this page",
+            "Access orientation via official QR / platform CTA when offered (including Android device paths when the platform provides them)",
+            "iOS: continue with mobile browser or platform instructions — no invented App Store listing claim on this page",
           ],
           zh: [
             "通过手机网页与桌面浏览器访问 1XROLL 平台",
-            "在提供时，通过官方二维码 / 平台 CTA 获取 Android 下载指引",
+            "在提供时，通过官方二维码 / 平台 CTA 获取访问导览（含平台提供的 Android 设备路径）",
             "iOS：以手机浏览器或平台说明继续——本页不编造 App Store 上架宣称",
           ],
         },
@@ -526,13 +604,13 @@ export const ecosystemHubs: EcosystemHub[] = [
         items: {
           en: [
             "QR and screenshot assets help you recognise official orientation materials",
-            "CTAs route you to the platform for the latest install package when available",
-            "Never install APKs from unofficial mirrors or messaging links",
+            "CTAs route you to the platform for the latest access or install options when available",
+            "Never install packages from unofficial mirrors or messaging links",
           ],
           zh: [
             "二维码与截图帮助你识别官方导览材料",
-            "CTA 在可用时将你带到平台获取最新安装包",
-            "切勿从非官方镜像或聊天链接安装 APK",
+            "CTA 在可用时将你带到平台获取最新访问或安装选项",
+            "切勿从非官方镜像或聊天链接安装软件包",
           ],
         },
       },
@@ -553,8 +631,8 @@ export const ecosystemHubs: EcosystemHub[] = [
       zh: "面向哈希与平台公平概念的透明度导览。",
     },
     intro: {
-      en: "Fair Play explains how 1XROLL talks about transparency and hash-inspired entertainment without fabricating cryptographic audits or unverifiable on-chain guarantees.",
-      zh: "公平游戏说明 1XROLL 如何谈论透明度与哈希灵感娱乐，同时不编造密码学审计或无法核实的链上保证。",
+      en: "Fair Play explains how 1XROLL talks about transparency and hash-inspired entertainment without fabricating cryptographic audits or unverifiable on-chain guarantees. It is an education page on this brand site — not a live audit dashboard.",
+      zh: "公平游戏说明 1XROLL 如何谈论透明度与哈希灵感娱乐，同时不编造密码学审计或无法核实的链上保证。这是本品牌站的教育页——不是实时审计看板。",
     },
     sections: [
       {
@@ -568,11 +646,62 @@ export const ecosystemHubs: EcosystemHub[] = [
             "Clear category and rules orientation before you play",
             "No invented RTP, house-edge or audit seals on this brand site",
             "Hash lanes described as platform products — verify details in the live lobby",
+            "Honest language about what this site can and cannot prove",
           ],
           zh: [
             "游玩前提供清晰的分类与规则导览",
             "本品牌站不编造返还率、庄家优势或审计印章",
             "哈希通道描述为平台产品——细节请在实时大厅核实",
+            "诚实说明本站能够与不能证明的内容",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "Hash and transparency language", zh: "哈希与透明度表述" },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Hash Games and Hash Roulette sit in the ecosystem as transparency-oriented entertainment lanes. Brand copy may describe hash-inspired ideas so you know what to look for after login. That vocabulary is not a substitute for reading platform rules, and it is not a guarantee of third-party cryptographic certification published on this site.",
+          zh: "哈希游戏与哈希轮盘作为偏透明取向的娱乐通道存在于生态中。品牌文案可能说明哈希灵感概念，便于你登录后识别。这些表述不能替代阅读平台规则，也不构成本站发布的第三方密码学认证保证。",
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "What we do not invent", zh: "我们不编造什么" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Seed / hash pairs, audit PDFs or “provably fair” badges without verified materials on this site",
+            "House-edge tables or RTP figures that are not in our verified dataset",
+            "Guaranteed outcomes, timing systems or “beat the hash” claims",
+          ],
+          zh: [
+            "本站无核实材料时不展示种子 / 哈希对、审计 PDF 或“可证明公平”徽章",
+            "不编造未进入已核实数据集的庄家优势表或返还率",
+            "不承诺保证结果、时机系统或“破解哈希”说法",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: { en: "How to use this page", zh: "如何使用本页" },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Read category hubs for orientation, then open the platform lobby for live products",
+            "Pair Fair Play with Responsible Gaming before you stake",
+            "Use FAQ when you need short answers about hash or responsibility topics",
+          ],
+          zh: [
+            "先阅读分类中心导览，再打开平台大厅查看实时产品",
+            "投入前将公平游戏与理性游戏一并阅读",
+            "需要关于哈希或责任主题的短答时使用常见问题",
           ],
         },
       },
@@ -583,8 +712,8 @@ export const ecosystemHubs: EcosystemHub[] = [
       {
         type: "p",
         text: {
-          en: "Transparency language never replaces personal limits. Continue to Responsible Gaming for 18+ guidance.",
-          zh: "透明度表述不能替代个人限额。请继续阅读理性游戏中的 18+ 指引。",
+          en: "Transparency language never replaces personal limits. Continue to Responsible Gaming for 18+ guidance, time and spend habits, and when to stop.",
+          zh: "透明度表述不能替代个人限额。请继续阅读理性游戏中的 18+ 指引、时间与花费习惯，以及何时该停下。",
         },
       },
     ],
@@ -592,6 +721,8 @@ export const ecosystemHubs: EcosystemHub[] = [
       { href: "/games/hash-games", label: { en: "Hash Games", zh: "哈希游戏" } },
       { href: "/games/hash-roulette", label: { en: "Hash Roulette", zh: "哈希轮盘" } },
       { href: "/responsible-gaming", label: { en: "Responsible Gaming", zh: "理性游戏" } },
+      { href: "/faq", label: { en: "FAQ", zh: "常见问题" } },
+      { href: "/about", label: { en: "About", zh: "关于" } },
     ],
   },
   {

@@ -125,10 +125,10 @@ const en = {
     whySubtitle: "A complete ecosystem brand site — not just a slots catalogue.",
     mobileTitle: "Play on mobile with 1XROLL",
     mobileSubtitle:
-      "Use mobile web or Android download guidance from official 1XROLL paths — or continue in the browser on supported devices.",
+      "Use mobile web or Download-page access orientation from official 1XROLL paths — or continue in the browser on supported devices.",
     mobile: {
-      fast: "Fast login on supported Android devices",
-      android: "Mobile web and Android download guidance when offered",
+      fast: "Fast login on supported mobile devices",
+      android: "Mobile web and access orientation when offered",
       notify: "Stay informed about offers and account alerts on the platform",
       secure: "Access via official 1XROLL platform paths",
       cta: "Open download guide",
@@ -150,7 +150,7 @@ const en = {
         "Studio pages that explain craft differences — not just a logo wall.",
       mobile: "Mobile and download access",
       mobileBody:
-        "App orientation with official QR and screenshot assets.",
+        "Access orientation with official QR and screenshot assets.",
       entry: "Clear platform entry",
       entryBody:
         "Login and register CTAs lead to the 1XROLL platform when you are ready.",
@@ -205,7 +205,8 @@ const en = {
   about: { title: "About 1XROLL" },
   contact: {
     title: "Contact",
-    subtitle: "Reach 1XROLL support for account help on the platform, or contact this brand site editorial team.",
+    subtitle:
+      "Account help belongs on the 1XROLL platform. Use this page for brand-site orientation and links to FAQ / Responsible Gaming — we do not invent phone or WhatsApp contacts.",
     emailLabel: "Email",
   },
   faq: {
@@ -228,7 +229,7 @@ const en = {
     brandBlurb:
       "This site is a 1XROLL brand website variation for the complete gaming ecosystem — games, rewards, guides, wallet orientation and platform entry.",
     notice:
-      "18+ only. Gambling can be addictive. Please play within your limits and follow local laws.",
+      "18+ only. Gambling can be addictive. Please play within your limits and follow local laws. 1XROLL is not a Malaysia legal entity; market payment-rail names are not entity claims.",
     copyright: "All rights reserved.",
   },
   notFound: {
@@ -363,10 +364,10 @@ const zh = {
     whySubtitle: "完整生态品牌站——不只是老虎机目录。",
     mobileTitle: "用手机畅玩 1XROLL",
     mobileSubtitle:
-      "使用手机网页，或通过官方 1XROLL 路径提供的 Android 下载指引——也可在支持的设备上继续使用浏览器。",
+      "使用手机网页，或通过官方 1XROLL 路径的下载页访问导览——也可在支持的设备上继续使用浏览器。",
     mobile: {
-      fast: "在支持的 Android 设备上快速登录",
-      android: "手机网页与（在提供时）Android 下载指引",
+      fast: "在支持的移动设备上快速登录",
+      android: "手机网页与（在提供时）访问导览",
       notify: "在平台及时了解优惠与账户提醒",
       secure: "通过官方 1XROLL 平台路径访问",
       cta: "打开下载指南",
@@ -383,7 +384,7 @@ const zh = {
       providers: "厂商发现",
       providersBody: "工作室页面说明工艺差异——不只是 logo 墙。",
       mobile: "移动与下载访问",
-      mobileBody: "使用官方二维码与截图资源的应用导览。",
+      mobileBody: "使用官方二维码与截图资源的访问导览。",
       entry: "清晰平台入口",
       entryBody: "登录与注册 CTA 在你准备好时导向 1XROLL 平台。",
     },
@@ -436,7 +437,8 @@ const zh = {
   about: { title: "关于 1XROLL" },
   contact: {
     title: "联系我们",
-    subtitle: "账户问题请通过平台客服处理；本品牌站编辑团队可接收内容相关问询。",
+    subtitle:
+      "账户帮助请走 1XROLL 平台。本页提供品牌站导览，并链接常见问题 / 理性游戏——我们不编造电话或 WhatsApp 联系方式。",
     emailLabel: "邮箱",
   },
   faq: {
@@ -459,7 +461,7 @@ const zh = {
     brandBlurb:
       "本站是 1XROLL 品牌网站版本，面向完整游戏生态——游戏、奖励、攻略、钱包导览与平台入口。",
     notice:
-      "仅限 18 岁以上。博彩可能令人沉迷。请在限额内游玩，并遵守当地法律。",
+      "仅限 18 岁以上。博彩可能令人沉迷。请在限额内游玩，并遵守当地法律。1XROLL 不是马来西亚法律实体；市场支付通道命名不等于实体主张。",
     copyright: "保留所有权利。",
   },
   notFound: {

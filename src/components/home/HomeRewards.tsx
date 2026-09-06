@@ -24,6 +24,25 @@ export function HomeRewards({ locale }: { locale: Locale }) {
             </Button>
           }
         />
+        <div className="mb-6 rounded-[1.15rem] border border-border bg-bg-surface/80 p-5 text-sm leading-relaxed text-text-muted">
+          {locale === "zh" ? (
+            <>
+              <p className="font-medium text-text">奖励生态如何协作</p>
+              <p className="mt-2">
+                优惠、返水、VIP 与活动入口共同构成账户向体验。本站解释结构与阅读路径，不编造未核实的奖励金额；细则以平台条款为准。
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="font-medium text-text">How the rewards ecosystem fits together</p>
+              <p className="mt-2">
+                Promotions, rebates, VIP and event entry points form an account-based experience.
+                This site explains the structure and reading path — it does not invent unverified
+                reward amounts; platform terms remain authoritative.
+              </p>
+            </>
+          )}
+        </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {rewardTopics.map((topic) => (
             <Link

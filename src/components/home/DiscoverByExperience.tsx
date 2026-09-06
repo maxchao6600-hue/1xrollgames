@@ -21,6 +21,20 @@ export function DiscoverByExperience({ locale }: { locale: Locale }) {
           title={t(dict, "home.categoriesTitle")}
           description={t(dict, "home.categoriesSubtitle")}
         />
+        <div className="mb-6 max-w-3xl text-sm leading-relaxed text-text-muted">
+          {locale === "zh" ? (
+            <p>
+              1XROLL 游戏生态覆盖已核实目录车道（老虎机、真人、加密、快速、捕鱼）与平台枢纽（哈希、体育、棋牌、彩票等）。下方卡片给出名称、简述与可用数量线索——点进分类页可继续阅读完整说明、FAQ 与相关入口。
+            </p>
+          ) : (
+            <p>
+              The 1XROLL gaming ecosystem spans verified catalogue lanes (slots, live, crypto, fast,
+              fishing) and platform hubs (hash, sports, chess & card, lottery, and more). Each card
+              below offers a name, concise description, and availability cue — open a category for
+              full explainers, FAQ, and related links.
+            </p>
+          )}
+        </div>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {lanes.map((cat) => {
             const isPanel = cat.fit === "panel";

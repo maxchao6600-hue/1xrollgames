@@ -37,7 +37,7 @@ export default async function FaqPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const groups = getGroupedFaq();
+  const groups = getGroupedFaq().filter((g) => g.items.length > 0);
   const flatForLd = groups.flatMap((g) =>
     g.items.map((item) => ({
       question: localize(item.question, locale),

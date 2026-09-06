@@ -60,14 +60,36 @@ export default async function GuidesPage({
         <h1 className="font-[family-name:var(--font-display)] text-4xl text-text">
           {t(dict, "guides.hubTitle")}
         </h1>
-        <p className="mt-3 max-w-2xl text-text-muted">
-          {t(dict, "guides.hubSubtitle")}
+        <p className="mt-3 max-w-3xl text-text-muted">
+          {locale === "zh"
+            ? "攻略中心：游戏解读、RTP/波动率教育、真人基础、移动体验、入门路径、分类与厂商说明、优惠条款识读、奖励与 VIP，以及理性游戏。每篇为原创说明，不编造返还率或虚假更新日期。"
+            : "Guides hub: title explainers, RTP/volatility education, live basics, mobile experience, beginner paths, category and provider literacy, promotions terms, rewards & VIP, and responsible gaming. Each article is original orientation — no invented RTP figures or fake update dates."}
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {guides.map((guide) => (
             <ArticleCard key={guide.id} guide={guide} locale={locale} />
           ))}
         </div>
+        <p className="mt-10 text-sm text-text-muted">
+          <a href={localePath(locale, "/games")} className="text-accent hover:underline">
+            {t(dict, "nav.games")}
+          </a>
+          {" · "}
+          <a href={localePath(locale, "/providers")} className="text-accent hover:underline">
+            {t(dict, "nav.providers")}
+          </a>
+          {" · "}
+          <a
+            href={localePath(locale, "/responsible-gaming")}
+            className="text-accent hover:underline"
+          >
+            {t(dict, "nav.responsible")}
+          </a>
+          {" · "}
+          <a href={localePath(locale, "/faq")} className="text-accent hover:underline">
+            {t(dict, "nav.faq")}
+          </a>
+        </p>
       </Container>
     </Section>
   );

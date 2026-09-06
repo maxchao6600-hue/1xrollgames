@@ -98,6 +98,10 @@ export type Guide = {
 export type FaqGroupId =
   | "general"
   | "games"
+  | "slots"
+  | "live"
+  | "sports"
+  | "hash"
   | "account"
   | "deposit"
   | "withdraw"

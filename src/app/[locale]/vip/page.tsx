@@ -45,7 +45,7 @@ export default async function VipPage({
   const dict = getDictionary(locale);
   const hub = getEcosystemHub("vip");
   if (!hub) notFound();
-  const faq = getFaqByGroup("vip").slice(0, 4);
+  const faq = getFaqByGroup("vip");
 
   const blocks =
     locale === "zh"
@@ -60,11 +60,19 @@ export default async function VipPage({
           },
           {
             title: "礼遇如何理解",
-            body: "把品牌站摘要当作导览。资格、贡献游戏与发放节奏请在平台 VIP / 钱包工具中确认。",
+            body: "把品牌站摘要当作导览。资格、贡献游戏与发放节奏请在平台 VIP / 钱包工具中确认。本站不把 VIP 描述为投资产品。",
+          },
+          {
+            title: "与返水、优惠的关系",
+            body: "VIP 返水摘要与返水页、优惠中心相连。活动规则可能另有流水或资格要求——请分别阅读，不要混用数字。",
           },
           {
             title: "我们不编造什么",
             body: "本站不编造 VIP 1 / VIP 2 / VIP 3 阶梯表、保证的每周奖励金额，或自动升级时间表。",
+          },
+          {
+            title: "理性参与",
+            body: "等级或返水比例不应成为提高注额的理由。设定个人限额，需要时阅读理性游戏。",
           },
         ]
       : [
@@ -78,11 +86,19 @@ export default async function VipPage({
           },
           {
             title: "How VIP works here",
-            body: "Treat brand-site summaries as orientation. Confirm eligibility, game contribution and payout schedules inside platform VIP / wallet tools.",
+            body: "Treat brand-site summaries as orientation. Confirm eligibility, game contribution and payout schedules inside platform VIP / wallet tools. This site does not describe VIP as an investment product.",
+          },
+          {
+            title: "How VIP relates to rebates and promotions",
+            body: "VIP cashback summaries connect to the Rebates page and Promotion Hub. Offers may add separate wagering or eligibility rules — read each lane on its own and do not mix figures.",
           },
           {
             title: "What we do not invent",
             body: "We do not invent VIP 1 / VIP 2 / VIP 3 tables, guaranteed weekly bonus amounts, or automatic upgrade timelines on this site.",
+          },
+          {
+            title: "Responsible participation",
+            body: "Tier status or cashback rates are not a reason to raise stakes. Keep personal limits, and return to Responsible Gaming when needed.",
           },
         ];
 
@@ -180,6 +196,11 @@ export default async function VipPage({
                 content: localize(item.answer, locale),
               }))}
             />
+            <p className="mt-4 text-sm text-text-muted">
+              <Link href={localePath(locale, "/faq")} className="text-accent hover:underline">
+                {locale === "zh" ? "查看全部常见问题" : "View all FAQ"} →
+              </Link>
+            </p>
           </div>
         ) : null}
       </Container>

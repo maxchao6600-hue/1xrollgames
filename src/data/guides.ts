@@ -1467,5 +1467,1033 @@ export const guides: Guide[] = [
     author: "1XROLL Editorial Team",
     coverGradient: ["#083344", "#67E8F9"],
   },
-];
 
+  {
+    id: "beginners-guide-1xroll-games",
+    slug: "beginners-guide-1xroll-games",
+    category: "education",
+    title: {
+      en: "Beginner's Guide to 1XROLL Games",
+      zh: "1XROLL 游戏入门指南",
+    },
+    excerpt: {
+      en: "A calm first map of 1XROLL’s catalogue lanes — how to browse slots, live, crypto, fast, and fishing without chasing myths or inventing numbers.",
+      zh: "1XROLL 目录车道的冷静第一张地图——如何浏览老虎机、真人、加密、快速与捕鱼，不追逐神话、不编造数字。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Start here: the site is a reading room",
+          zh: "从这里开始：本站是阅览室",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "If you are new to 1XROLL, treat this brand site as a reading room first and a lobby second. Pages here explain categories, studios, and session habits so you can decide what kind of entertainment you want before you open the live platform. That order matters. Jumping straight into a stake without a map turns curiosity into autopilot. This beginner’s guide gives you the map: what sits in our verified catalogue, how discovery pages differ from play, and which questions to ask yourself before any first session.",
+          zh: "若你刚接触 1XROLL，请先把本品牌站当作阅览室，其次才是大厅。这里的页面解释分类、工作室与对局习惯，让你在打开实时平台前先决定想要哪种娱乐。顺序很重要。没有地图就直接下注，会把好奇变成自动驾驶。本入门指南给你地图：核实目录里有什么、发现页与游玩如何不同，以及第一次对局前该问自己什么。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "We keep claims humble. Catalogue counts on this site currently include thirty-two slots, six live titles, four crypto games, two fast games, and three fishing entries. Hub-style lanes such as sports or lottery may orient you without inventing a local card for every product. When something is only available after login, we say so. That honesty is the beginner’s best friend.",
+          zh: "我们保持谦逊主张。本站目录目前包括三十二款老虎机、六款真人、四款加密游戏、两款快速游戏与三款捕鱼。体育或彩票等枢纽式车道可能只做导览，不为每个产品编造本地卡片。若某内容仅登录后可用，我们会说明。这种诚实是入门者最好的朋友。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Five catalogue lanes in plain language",
+          zh: "五条目录车道的白话说明",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Slots are single-player loops built around spins, symbols, and feature beats. Live casino brings hosts, cameras, and timed betting windows — think Crazy Time spectacle or Lightning Roulette tension. Crypto games on this catalogue highlight short Spribe-style rounds such as Aviator, Mines, Plinko, and Goal. Fast games currently document Crash and Chicken Road for timing-focused energy. Fishing titles lean arcade seascapes and targeting loops across three Big Bass–family entries. You do not need to master all five on day one. Pick one lane that matches your attention style.",
+          zh: "老虎机是围绕旋转、符号与特色节拍的单人循环。真人娱乐场带来主持人、镜头与限时投注窗——可想 Crazy Time 的场面或 Lightning Roulette 的张力。本目录的加密游戏突出 Aviator、Mines、Plinko、Goal 等短回合 Spribe 风格。快速游戏目前收录 Crash 与 Chicken Road，偏时机能量。捕鱼偏街机海景与瞄准循环，共三款 Big Bass 家族作品。第一天不必精通全部五条。选一条匹配你注意力风格的车道即可。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Slots — browse grids, cascades, and portrait craft at your own tap speed",
+            "Live — share a studio clock; decisions sit inside betting windows",
+            "Crypto — short arcs with clear cash-out or reveal moments",
+            "Fast — timing exits and crash-style resolution",
+            "Fishing — aim-led rooms with wave and boss energy",
+          ],
+          zh: [
+            "老虎机——按自己的点击速度浏览盘面、消除与竖屏工艺",
+            "真人——共享工作室时钟；决策落在投注窗内",
+            "加密——带清晰兑现或揭示时刻的短弧",
+            "快速——时机退出与崩溃式结算",
+            "捕鱼——瞄准主导、带浪潮与 Boss 能量的房间",
+          ],
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "How to choose your first title",
+          zh: "如何选择第一款作品",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Choose for readability and tempo, not for rumor. Open a game page, skim how-to-play copy, and ask: Can I see the controls on my phone? Does the loop resolve in seconds or minutes? Do I want solitude or a host in the frame? A compact PG Soft-style slot such as Fortune Tiger teaches portrait UI quickly. A live table teaches patience with windows. An Aviator-like curve teaches exit rules. None of these “pays better” as a beginner secret — they simply train different habits.",
+          zh: "为可读性与节奏选择，不为传闻。打开游戏页，扫一眼玩法说明，并自问：我在手机上能看清控件吗？循环以秒还是以分钟结算？我想要独处还是画面里有主持人？Fortune Tiger 这类紧凑 PG Soft 风格老虎机能快速教会竖屏界面。真人桌教会对窗口的耐心。Aviator 类曲线教会退出规则。这些都不是「新手秘籍更能赢」——它们只是训练不同习惯。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Account and money basics without drama",
+          zh: "不戏剧化的账户与资金基础",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Before any welcome offer excitement, separate entertainment funds from rent and bills. Decide a session budget and a hard stop time while you are calm. If you explore promotions later, read turnover language carefully — published welcome summaries on this brand site mention a 200% first deposit bonus up to 8,888 USDT, 25× turnover, and a minimum deposit of 10 USDT, always subject to live platform terms. Treat those figures as orientation, not as a reason to deposit more than you planned.",
+          zh: "在任何欢迎优惠的兴奋之前，先把娱乐资金与房租账单分开。在冷静时决定对局预算与硬停止时间。若稍后探索优惠，仔细阅读流水用语——本品牌站公开的欢迎摘要提到 200% 首存最高 8,888 USDT、25 倍流水、最低存款 10 USDT，一律以平台实时条款为准。把这些数字当作导览，而不是存入超过计划的理由。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Verification, password hygiene, and device security are beginner skills too. Use a unique password, enable whatever protection the platform offers, and avoid playing on shared public machines. If a page asks you to rush, slow down. Urgency is rarely your ally on day one.",
+          zh: "验证、密码卫生与设备安全也是入门技能。使用独特密码，启用平台提供的保护，避免在公共共用机器上游玩。若某页面催你抓紧，请放慢。第一天里，紧迫很少是盟友。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "A first-session checklist",
+          zh: "第一次对局检查清单",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Pick one category and one title — avoid tab hopping",
+            "Read the in-game help or 1XROLL how-to notes before staking",
+            "Set a timer outside the client",
+            "Keep stakes small while learning controls",
+            "Stop when the timer ends, even if curiosity remains",
+          ],
+          zh: [
+            "只选一个分类与一款作品——避免标签乱跳",
+            "下注前阅读游戏内说明或 1XROLL 玩法笔记",
+            "在客户端外设定计时器",
+            "学习控件期间保持小注",
+            "计时结束就停，即使好奇还在",
+          ],
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "After the session, write one sentence about what you learned — a control location, a feature cue, or how your attention felt at minute fifteen. That sentence is more valuable than any screenshot of a result. Beginners who journal structure improve faster than beginners who chase recovery narratives.",
+          zh: "对局后写下一句你学到的——控件位置、特色线索，或第十五分钟注意力感觉如何。那句话比任何结果截图更有价值。记录结构的入门者，比追逐回本叙事的入门者进步更快。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Common beginner myths to leave at the door",
+          zh: "入门常见神话，请留在门外",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "No colour, timing ritual, or chat tip controls independent rounds. “Due” wins are storytelling, not math you can schedule. Provider reputation describes craft and catalogue presence — Pragmatic Play, PG Soft, Evolution, Spribe, Jili, Endorphina, Relax Gaming, and Playson appear across our provider pages — not a personal luck pipeline. If someone sells certainty, walk away. 1XROLL education exists to shrink mythology, not to replace it with a different costume.",
+          zh: "没有颜色、时机仪式或聊天技巧能控制彼此独立的回合。「该来了」的赢是叙事，不是你能排程的数学。厂商声誉描述工艺与目录存在——Pragmatic Play、PG Soft、Evolution、Spribe、Jili、Endorphina、Relax Gaming、Playson 出现在我们的厂商页——不是个人运气管道。若有人贩卖确定性，走开。1XROLL 教育是为了缩小神话，而不是换一套戏服替换它。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Where to go next on this site",
+          zh: "本站下一步去哪",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "When you want lane literacy, open category pages. When you want studio personality, open provider profiles. When you want calm habits, read the responsible gaming and mobile guides. Sample a portrait slot like Fortune Tiger, a cascade like Mahjong Ways 2, or a short-round title like Aviator only after you know which tempo you are testing. The beginner’s win is orientation. Everything else can wait until the map feels familiar.",
+          zh: "想要车道识读时，打开分类页。想要工作室个性时，打开厂商简介。想要冷静习惯时，阅读负责任游戏与移动攻略。只有在你知道自己在测试哪种节奏后，再去试 Fortune Tiger 这类竖屏老虎机、Mahjong Ways 2 这类消除，或 Aviator 这类短回合。入门者的胜利是定向。其余都可以等地图熟悉后再说。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: how long should a first visit last?",
+          zh: "问答体：第一次访问该多久？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Twenty to thirty focused minutes of browsing plus one short play window is enough for most newcomers. Longer first visits often mix learning with fatigue, and fatigue invents superstitions. End while you can still summarize what you opened. That is the beginner’s real milestone.",
+          zh: "对多数新人，二十到三十分钟专注浏览加一小段游玩窗口就够了。过长的第一次访问常把学习与疲劳混在一起，而疲劳会发明迷信。在你仍能总结打开过什么时结束。那才是入门者真正的里程碑。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["fortune-tiger", "aviator", "crazy-time"],
+    publishedAt: "2025-09-02T09:00:00.000Z",
+    updatedAt: "2026-04-10T08:15:00.000Z",
+    readingTimeMinutes: 12,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#14532D", "#86EFAC"],
+  },
+  {
+    id: "explore-game-categories",
+    slug: "explore-game-categories",
+    category: "education",
+    title: {
+      en: "How to Explore Game Categories",
+      zh: "如何探索游戏分类",
+    },
+    excerpt: {
+      en: "A practical tour of 1XROLL category shelves — catalogue versus hub pages, filters that matter, and how to compare lanes without clutter.",
+      zh: "1XROLL 分类货架实用导览——目录页与枢纽页之别、真正有用的筛选，以及如何不杂乱地比较车道。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Categories are shelves, not rankings",
+          zh: "分类是货架，不是排行榜",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "On 1XROLL, a category is a shelf with a teaching job. Slots, live casino, crypto games, fast games, and fishing carry verified local titles you can open as detail pages. Other lanes — hash games, sports, chess & card, lottery — often work as hubs: orientation, vocabulary, and platform CTAs without inventing a fake local inventory. Knowing which mode you are in prevents frustration. If you expect thirty detail cards on a hub page, you will think something is “missing” when the page is simply being honest.",
+          zh: "在 1XROLL，分类是带教学任务的货架。老虎机、真人娱乐场、加密游戏、快速游戏与捕鱼承载可打开详情页的核实本地作品。其他车道——哈希游戏、体育、棋牌、彩票——常作为枢纽运作：导览、词汇与平台行动号召，不编造虚假本地库存。知道自己处于哪种模式，可避免挫败。若你在枢纽页期待三十张详情卡，会以为「缺了东西」，而页面其实只是在诚实。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Exploration works best when you pick a question first. Are you hunting portrait-friendly slots? Studio spectacle? Short timing rounds? Write the question, then open one shelf. Random hopping across every category in a single sitting usually ends as noise, not literacy.",
+          zh: "探索在你先提出问题时报效最好。你在找竖屏友好的老虎机？工作室场面？短时机回合？写下问题，再打开一个货架。一次坐席里随机跳遍全部分类，结局通常是噪音而非识读。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Catalogue shelves: what the numbers mean",
+          zh: "目录货架：数字意味着什么",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Our brand catalogue currently documents thirty-two slots, six live titles, four crypto games, two fast games, and three fishing entries. Those counts describe what this site curates with local pages — not a claim about every title in the wider platform lobby after login. Use the counts as a sense of breadth while you browse. Depth still comes from reading one game page at a time.",
+          zh: "本品牌目录目前收录三十二款老虎机、六款真人、四款加密游戏、两款快速游戏与三款捕鱼。这些数字描述本站用本地页策展的内容——不是登录后更广阔平台大厅的全部作品主张。浏览时把数字当作广度感。深度仍来自一次读一款游戏页。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Slots — widest discovery surface; compare cascades, lines, and hold-style meters",
+            "Live casino — six studio-led experiences with shared betting windows",
+            "Crypto games — four short-round Spribe-style catalogue entries",
+            "Fast games — two timing-focused neighbours",
+            "Fishing — three arcade-sea titles with related motifs",
+          ],
+          zh: [
+            "老虎机——最宽发现面；比较消除、线赔与锁定式计量表",
+            "真人娱乐场——六种工作室主导体验，共享投注窗",
+            "加密游戏——四款短回合 Spribe 风格目录条目",
+            "快速游戏——两款偏时机的邻近作品",
+            "捕鱼——三款主题相关的街机海景作品",
+          ],
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "Hub shelves: orientation without fake cards",
+          zh: "枢纽货架：没有假卡片的导览",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Hub pages teach vocabulary and pacing, then point you to the platform or to neighbouring catalogue shelves. That design keeps us from inventing fixtures, odds boards, or lottery results. When a hub links you to live baccarat-style catalogue titles or to crypto short rounds, it is offering a bridge — not pretending the hub itself holds every product card.",
+          zh: "枢纽页教授词汇与节奏，再指向平台或邻近目录货架。这种设计避免我们编造赛程、赔率板或彩票开奖。当枢纽链向真人百家乐风格目录作品或加密短回合时，它是在提供桥梁——而不是假装枢纽本身持有每张产品卡。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "A browsing method that stays calm",
+          zh: "保持冷静的浏览方法",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Use a three-pass method. Pass one: skim category intros and note the inventory mode. Pass two: open two or three titles that share a tempo and compare UI notes only. Pass three: pick one title for a timed session or defer play entirely if you are still mapping. Between passes, read a short education guide instead of opening more tabs. Guides reset attention; extra tabs scatter it.",
+          zh: "使用三遍法。第一遍：扫分类导语并记下库存模式。第二遍：打开两三款节奏相近的作品，只比较界面笔记。第三遍：选一款做限时对局，或若仍在绘图则完全推迟游玩。遍与遍之间读一篇短教育攻略，而不是再开标签。攻略重置注意力；额外标签打散它。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Filters that help: provider craft, mobile readability, and session length preference. Filters that rarely help: forum “hot right now” lists and unverified RTP screenshots. If our dataset omits a number, treat the omission as caution. Comparing Sweet Bonanza’s cascade candy energy to Temple Tumble’s structural feel teaches more than chasing anonymous percentages.",
+          zh: "有用的筛选：厂商工艺、移动可读性、对局时长偏好。很少有用的筛选：论坛「正在热」名单与未核实 RTP 截图。若我们的数据集省略数字，把省略当作谨慎。比较 Sweet Bonanza 的糖果消除能量与 Temple Tumble 的结构手感，比追逐匿名百分比更有用。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Cross-lane comparisons worth making",
+          zh: "值得做的跨车道比较",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Compare live windows to slot tap speed when you want to know how much waiting you tolerate. Compare Aviator-style cash-out tension to fishing aim loops when you want active decision density. Compare Crazy Time’s show format to a quiet slot when you need to protect focus. These comparisons are about attention design, not about which lane is “better.”",
+          zh: "想知道自己能容忍多少等待时，比较真人窗口与老虎机点击速度。想要主动决策密度时，比较 Aviator 式兑现张力与捕鱼瞄准循环。需要保护专注时，比较 Crazy Time 的综艺格式与安静老虎机。这些比较关乎注意力设计，无关哪条车道「更好」。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Same mood, different mechanism — spectacle in live versus loud slot themes",
+            "Same phone, different posture — portrait slots versus landscape tables",
+            "Same budget, different clock — short crypto rounds versus longer live shows",
+          ],
+          zh: [
+            "同情绪、不同机制——真人场面对比热闹老虎机主题",
+            "同手机、不同姿势——竖屏老虎机对比横屏桌台",
+            "同预算、不同时钟——加密短回合对比更长真人秀",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Signals that you should change shelves",
+          zh: "该换货架的信号",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "If you cannot read controls, switch titles or categories rather than squinting through a whole session. If a host’s pace keeps you past your timer, leave live for a quieter shelf. If short-round adrenaline stacks too quickly, move to a slower educational browse. Changing shelves is skill, not failure. Category pages exist so you can relocate without inventing a revenge plan inside one game.",
+          zh: "若看不清控件，换作品或分类，而不是眯眼熬完整场。若主持人节奏让你超过计时，离开真人去更安静的货架。若短回合肾上腺素堆得太快，转到更慢的教育浏览。换货架是技能，不是失败。分类页的存在，是为了让你重新定位，而不是在同一游戏里发明报复计划。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: should I finish a whole category?",
+          zh: "问答体：我该把整个分类看完吗？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "No. Completing a shelf is a collector impulse, not a literacy goal. Two well-read titles beat twenty unopened cards. Bookmark the category, leave, and return with a new question later. Exploration compounds when it is intermittent and intentional.",
+          zh: "不必。清空货架是收藏冲动，不是识读目标。两款读透的作品胜过二十张未打开的卡片。收藏分类、离开，稍后再带新问题回来。探索在间歇且刻意时才会复利。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["sweet-bonanza", "temple-tumble", "mines"],
+    publishedAt: "2025-09-08T10:00:00.000Z",
+    updatedAt: "2026-04-12T09:00:00.000Z",
+    readingTimeMinutes: 11,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#1E3A8A", "#93C5FD"],
+  },
+  {
+    id: "understanding-game-providers",
+    slug: "understanding-game-providers",
+    category: "education",
+    title: {
+      en: "Understanding Game Providers",
+      zh: "理解游戏厂商",
+    },
+    excerpt: {
+      en: "How to read studio craft on 1XROLL — what provider pages are for, how eight verified studios differ in feel, and why brand loyalty is not a math edge.",
+      zh: "如何在 1XROLL 阅读工作室工艺——厂商页做什么用、八家核实工作室手感如何不同，以及品牌忠诚为何不是数学优势。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Providers are authors of feel",
+          zh: "厂商是手感的作者",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "A game provider is the studio that designs rules presentation, animation grammar, audio stingers, and mobile layout habits. On 1XROLL, provider pages help you compare those signatures before you commit attention to a single title. Think of providers as authors: some write cascade poems, some stage live broadcasts, some compress tension into a short climb. Authorship explains vibe. It does not assign you a personal advantage.",
+          zh: "游戏厂商是设计规则呈现、动画语法、音效提示与移动布局习惯的工作室。在 1XROLL，厂商页帮助你在把注意力交给单款作品前比较这些签名。把厂商想成作者：有的写消除诗，有的舞台化真人转播，有的把张力压进短爬升。作者身份解释氛围。它不给你个人优势。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Eight verified studios appear across this brand site’s provider index: Pragmatic Play, PG Soft, Evolution, Spribe, Jili, Endorphina, Relax Gaming, and Playson. Learning their silhouettes makes browsing faster because you stop re-learning basic UI patterns from zero on every click.",
+          zh: "本品牌站厂商索引中有八家核实工作室：Pragmatic Play、PG Soft、Evolution、Spribe、Jili、Endorphina、Relax Gaming 与 Playson。学会他们的剪影会让浏览更快，因为你不必每次点击都从零重学基础界面模式。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Craft signatures without mythology",
+          zh: "不神话化的工艺签名",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Pragmatic Play — cascade series language, dense reel energy, familiar franchise motifs",
+            "PG Soft — portrait-first clarity, festive symbol hierarchy, thumb-reach controls",
+            "Evolution — live hosts, camera direction, timed windows, show formats",
+            "Spribe — short-round interfaces with decisive cash-out or reveal moments",
+            "Jili — arcade-forward readability and punchy feedback",
+            "Endorphina — illustration mood and distinctive art direction",
+            "Relax Gaming — structural, puzzle-leaning slot architecture",
+            "Playson — hold-and-meter readability and meter-led tension",
+          ],
+          zh: [
+            "Pragmatic Play——消除系列语汇、密集转轮能量、熟悉的系列母题",
+            "PG Soft——竖屏优先清晰度、节庆符号层级、拇指可及控件",
+            "Evolution——真人主持、镜头调度、限时窗口、综艺格式",
+            "Spribe——带果断兑现或揭示时刻的短回合界面",
+            "Jili——偏街机的可读性与有力反馈",
+            "Endorphina——插画情绪与鲜明美术方向",
+            "Relax Gaming——结构性、偏解谜的老虎机架构",
+            "Playson——锁定与计量表可读性、量表主导的张力",
+          ],
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "How to use a provider page",
+          zh: "如何使用厂商页",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Read the specialty summary, note related titles, then open one game that matches the mood you want to test. Do not treat gameCount fields as a quality score. Counts describe catalogue presence on this site. A smaller footprint can still be the right author for your evening if the craft fits your phone and patience.",
+          zh: "阅读专长摘要，记下相关作品，再打开一款匹配你想测试情绪的游戏。不要把游戏数量字段当作质量分。数量描述本站目录存在感。若工艺契合你的手机与耐心，较小足迹仍可能是今晚的正确作者。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Matching providers to session goals",
+          zh: "按对局目标匹配厂商",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Want calm portrait learning? PG Soft titles such as Fortune Tiger are patient teachers of layout. Want cascade literacy? Pragmatic’s candy and gem families reward scanning practice. Want social production? Evolution live rooms supply hosts and clocks. Want brief decision spikes? Spribe catalogue entries keep arcs short. Switching providers mid-tilt to “change luck” is a mood story; switching to change UI demands is a literacy move.",
+          zh: "想要冷静竖屏学习？Fortune Tiger 这类 PG Soft 作品是布局的耐心老师。想要消除识读？Pragmatic 的糖果与宝石家族奖励扫读练习。想要社交制作？Evolution 真人房提供主持与时钟。想要短暂决策尖峰？Spribe 目录条目保持短弧。倾斜中途换厂商「改运气」是情绪故事；为改变界面需求而换厂商才是识读动作。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Cross-check categories when a studio spans shelves. Pragmatic motifs can appear in slots and fishing-adjacent discovery. Evolution dominates live catalogue energy. Spribe anchors crypto short rounds. Provider literacy and category literacy reinforce each other; neither replaces stake discipline.",
+          zh: "当工作室跨货架时交叉核对分类。Pragmatic 母题可出现在老虎机与捕鱼邻近发现中。Evolution 主导真人目录能量。Spribe 锚定加密短回合。厂商识读与分类识读互相加强；两者都不能替代注额纪律。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "What provider reputation does not mean",
+          zh: "厂商声誉不意味着什么",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Reputation on forums often collapses into superstition: “this studio is hot,” “that studio is cold.” Studios ship many math models and configurations. Your next round does not inherit another player’s anecdote. Use reputation only as a hint about production quality and UI habits you personally enjoy. Refuse anyone who ties a studio name to guaranteed recovery.",
+          zh: "论坛上的声誉常坍缩成迷信：「这工作室热」「那工作室冷」。工作室交付许多数学模型与配置。你的下一回合不继承其他玩家的轶事。只把声誉当作制作质量与你个人喜欢的界面习惯的提示。拒绝任何把工作室名绑上保证回本的人。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Do compare animation clarity and help-panel quality",
+            "Do notice whether controls fit your hands",
+            "Do not invent RTP ladders per studio",
+            "Do not treat awards chatter as verified on this site unless we document it",
+            "Do not switch studios solely to chase a downswing",
+          ],
+          zh: [
+            "要比较动画清晰度与说明面板质量",
+            "要注意控件是否贴合你的手",
+            "不要按工作室编造 RTP 阶梯",
+            "除非本站有记录，否则不要把奖项闲聊当作已核实",
+            "不要仅为追逐下行而换工作室",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "A simple provider tasting flight",
+          zh: "一套简单的厂商品鉴飞行",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "In one calm evening, open three provider pages and one title each. Spend five minutes on UI notes only — no stake escalation. Write which author felt most readable. That tasting flight builds a personal index you can reuse whenever the lobby feels overwhelming. Over time your index becomes faster than any influencer list because it is tuned to your eyes and thumbs.",
+          zh: "在一个冷静晚上，打开三个厂商页并各选一款作品。只花五分钟做界面笔记——不加注。写下哪位作者最可读。这趟品鉴飞行建立可复用的个人索引，每当大厅令人不知所措时都能用。久而久之，你的索引会快过任何网红名单，因为它按你的眼与拇指调校。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: is a bigger studio safer?",
+          zh: "问答体：更大的工作室更安全吗？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Safer usually means clearer UI, stabler clients, and transparent help text — qualities you verify yourself — not a mystical shield. Small or large, evaluate the title in front of you. 1XROLL lists studios to support comparison, not to crown a permanent winner.",
+          zh: "「更安全」通常意味着更清晰的界面、更稳的客户端与透明说明——这些要你自己核实——而不是神秘护盾。无论大小，评估眼前这款作品。1XROLL 列出工作室是为了支持比较，不是加冕永久赢家。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["gates-of-olympus", "fortune-tiger", "lightning-roulette"],
+    relatedProviderSlug: "pragmatic-play",
+    publishedAt: "2025-09-14T11:00:00.000Z",
+    updatedAt: "2026-04-15T10:20:00.000Z",
+    readingTimeMinutes: 12,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#4C1D95", "#C4B5FD"],
+  },
+  {
+    id: "responsible-gaming-guide",
+    slug: "responsible-gaming-guide",
+    category: "education",
+    title: {
+      en: "Responsible Gaming Guide",
+      zh: "负责任游戏指南",
+    },
+    excerpt: {
+      en: "Practical 1XROLL habits for keeping entertainment optional — budgets, timers, tilt signals, and when to step away without shame.",
+      zh: "1XROLL 实用习惯：让娱乐保持可选——预算、计时、倾斜信号，以及何时无羞愧地离开。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Entertainment stays optional — or it stops being entertainment",
+          zh: "娱乐保持可选——否则它就不再是娱乐",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Responsible gaming is not a scolding appendix. It is the operating system that keeps play inside leisure. On 1XROLL we write about structure: money walls, time walls, attention walls, and honest exit rules. If those walls feel annoying, that annoyance is useful data. Walls exist because games are designed to be engaging. Matching engagement with your own limits is fairness to yourself.",
+          zh: "负责任游戏不是训斥附录。它是让游玩留在休闲里的操作系统。在 1XROLL，我们写结构：资金墙、时间墙、注意力墙，以及诚实的退出规则。若这些墙让你烦，烦本身是有用数据。墙存在是因为游戏被设计得引人入胜。用自己的限额去匹配吸引力，是对自己公平。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "This guide avoids fake statistics and miracle self-help. It offers checks you can run before, during, and after a session — whether you are in a Fortune Tiger portrait loop, a Crazy Time broadcast, or an Aviator climb. The product changes; the need for optional play does not.",
+          zh: "本指南避免假统计与奇迹式自助。它提供对局前、中、后可运行的检查——无论你在 Fortune Tiger 竖屏循环、Crazy Time 转播，还是 Aviator 爬升。产品会变；让游玩保持可选的需求不变。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Before you start: three walls",
+          zh: "开始前：三道墙",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Money wall — an entertainment amount you can lose without harming essentials",
+            "Time wall — a visible timer with a pre-chosen end",
+            "Mood wall — no play when angry, exhausted, or numbing another problem",
+          ],
+          zh: [
+            "资金墙——输掉也不伤及生活必需的娱乐金额",
+            "时间墙——带预先选定终点的可见计时器",
+            "情绪墙——愤怒、精疲力竭或在麻木其他问题时不玩",
+          ],
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Set the walls while calm, ideally not on the same screen as the game client. Write them in a notes app. If a promotion catches your eye — including published welcome summaries such as 200% up to 8,888 USDT with 25× turnover and a 10 USDT minimum — decide whether the offer fits the walls you already set. Never raise walls because marketing copy feels exciting.",
+          zh: "在冷静时设墙，最好不在游戏客户端同一屏幕。写在笔记应用里。若某优惠吸引你——包括已发布的欢迎摘要如 200% 最高 8,888 USDT、25 倍流水、最低 10 USDT——判断它是否符合你已设的墙。绝不要因为营销文案兴奋而加高墙外的预算。",
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "Stake sizing as a calm skill",
+          zh: "作为冷静技能的注额",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Small stakes while learning UI are not “thinking small.” They are protecting the learning window. Raise stakes only when boredom — not frustration — is the reason, and only inside the money wall. Frustration-led raises are tilt wearing a strategy costume.",
+          zh: "学习界面时用小注不是「想得太小」。它们是在保护学习窗口。只有当理由是无聊而非挫败，且仍在资金墙内时，才提高注额。挫败驱动的加注，是穿着策略戏服的倾斜。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "During play: tilt signals worth naming",
+          zh: "游玩中：值得命名的倾斜信号",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Tilt is emotional narrowing. You stop evaluating and start chasing. Common signals: speeding up spins, skipping help text you normally read, promising yourself “one recovery,” muting the timer, or hopping categories to force a different feeling. When two signals appear, execute the exit you wrote beforehand. Do not negotiate with the version of you that is already tilted.",
+          zh: "倾斜是情绪收窄。你停止评估，开始追逐。常见信号：加快旋转、跳过平时会读的说明、向自己许诺「回一次本」、静音计时器，或跳分类强迫另一种感觉。当两个信号出现，执行你事先写好的退出。不要与已经倾斜的那个自己谈判。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Live games add social pressure; short-round games add urgency; slots add autopilot. Name the genre pressure so you can counter it. A host’s energy is not a command to stay. A climbing multiplier is not a command to hesitate past your rule. A cascade tease at the timer edge is not a command to overtime.",
+          zh: "真人游戏增加社交压力；短回合增加紧迫；老虎机增加自动驾驶。给类型压力命名，才能对冲。主持人的能量不是留下的命令。爬升倍率不是越过你规则犹豫的命令。计时边缘的消除挑逗不是加班的命令。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "After play: review without rewriting history",
+          zh: "游玩后：复盘而不改写历史",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Ask only structural questions. Did I honor time and money walls? Which UI fact did I learn? When did attention dip? Avoid outcome storytelling that turns a downswing into a debt the next session must repay. Sessions do not owe each other. Closing the client and doing something physical — water, stretch, short walk — marks the boundary better than scrolling related titles immediately.",
+          zh: "只问结构问题。我遵守时间与资金墙了吗？我学到了哪个界面事实？注意力何时下滑？避免把下行变成下一次对局必须偿还的债务的结果叙事。对局彼此不亏欠。关闭客户端并做点身体的事——喝水、伸展、短走——比立刻滑相关作品更能标出边界。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Log walls kept or broken in one private line",
+            "Schedule the next session only if walls held",
+            "Replace revenge urges with a guide-reading break",
+            "Sleep protects decision quality more than any tip list",
+          ],
+          zh: [
+            "用一行私密文字记录守住或打破的墙",
+            "仅在墙守住时才安排下一次对局",
+            "用阅读攻略的休息替换报复冲动",
+            "睡眠比任何技巧清单更能保护决策质量",
+          ],
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "When to seek more than a guide",
+          zh: "何时需要超越指南的帮助",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "If play no longer feels optional, if hiding sessions becomes normal, if funds meant for essentials are at risk, or if mood depends on being in a game, stop and seek local professional or community support. A brand education page cannot replace that help. 1XROLL’s job is orientation and calm language — not diagnosis. Taking a break is a strong decision, not a lost streak.",
+          zh: "若游玩不再感觉可选、隐瞒对局成为常态、生活必需资金面临风险，或情绪依赖待在游戏里，请停止并寻求当地专业或社区支持。品牌教育页不能替代那种帮助。1XROLL 的工作是导览与冷静语言——不是诊断。休息是强决策，不是输掉的连胜。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: does responsible play mean never using promotions?",
+          zh: "问答体：负责任游玩意味着永远不用优惠吗？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "No. It means reading terms, fitting offers inside pre-set walls, and refusing to deposit solely because a percentage looks large. Promotions are optional tools. Walls stay primary.",
+          zh: "不是。它意味着阅读条款、把优惠放进预设墙内，并拒绝只因百分比看起来大就存款。优惠是可选工具。墙仍是首位。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["fortune-tiger", "crazy-time", "aviator"],
+    publishedAt: "2025-09-20T08:30:00.000Z",
+    updatedAt: "2026-04-18T07:45:00.000Z",
+    readingTimeMinutes: 11,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#7F1D1D", "#FCA5A5"],
+  },
+  {
+    id: "understanding-promotions-terms",
+    slug: "understanding-promotions-terms",
+    category: "education",
+    title: {
+      en: "Understanding Promotions and Terms",
+      zh: "理解优惠与条款",
+    },
+    excerpt: {
+      en: "How to read 1XROLL promotion language — welcome summaries, turnover ideas, and term habits — without treating marketing as a strategy manual.",
+      zh: "如何阅读 1XROLL 优惠语言——欢迎摘要、流水概念与条款习惯——不把营销当作策略手册。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Promotions are contracts written in marketing tone",
+          zh: "优惠是用营销语气写成的合约",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "A promotion looks like a gift. Legally and practically it behaves like a conditional agreement: you opt in, you accept constraints, and you unlock value only after conditions clear. On 1XROLL we summarise publicly stated offers so you can orient — then we send you to live platform terms for the binding text. This guide teaches how to read that layer without inventing unpublished rates or secret loopholes.",
+          zh: "优惠看起来像礼物。在法律与实务上，它表现得像有条件协议：你选择加入、接受约束，并仅在条件清除后解锁价值。在 1XROLL，我们摘要公开声明的优惠供你定向——再把你送去平台实时条款阅读具约束力文本。本指南教你如何阅读这一层，不编造未公布比例或秘密漏洞。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "If you remember one sentence, remember this: a large headline percentage is not free money until turnover and eligibility rules are satisfied. Reading those rules is part of playing well.",
+          zh: "若只记一句，请记这句：巨大的标题百分比在流水与资格规则满足前，都不是免费的钱。阅读那些规则是好好玩的一部分。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Welcome offer summary used on this brand site",
+          zh: "本品牌站使用的欢迎优惠摘要",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Published materials mirrored here describe a 200% first deposit bonus up to 8,888 USDT, with 25× turnover and a minimum deposit of 10 USDT. Confirm every figure, game weighting, time limit, and country rule on the live platform before you deposit. Summaries help literacy; they do not replace the operator’s current terms page.",
+          zh: "此处镜像的公开材料描述 200% 首存优惠最高 8,888 USDT，附 25 倍流水与最低存款 10 USDT。存款前请在实时平台确认每一数字、游戏权重、时限与地区规则。摘要帮助识读；不能替代运营商当前条款页。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "200% — the matching style of the headline bonus in published summaries",
+            "Up to 8,888 USDT — a ceiling, not a typical outcome",
+            "25× turnover — playthrough required before withdrawal conditions clear",
+            "Min 10 USDT — eligibility floor for the summarised welcome path",
+          ],
+          zh: [
+            "200%——公开摘要中标题优惠的匹配方式",
+            "最高 8,888 USDT——上限，不是典型结果",
+            "25 倍流水——提现条件清除前所需的打码",
+            "最低 10 USDT——摘要欢迎路径的资格门槛",
+          ],
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "What turnover means in practice",
+          zh: "流水在实务上意味着什么",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Turnover (playthrough) means eligible stakes must accumulate to a multiple of the bonus or bonus-plus-deposit amount — check which base the terms use. Not every game may contribute equally; some may be excluded. Until turnover clears, withdrawals can be restricted. That is normal promotional architecture, not a trick unique to one brand. Plan deposits as if constraints apply, because they usually do.",
+          zh: "流水（打码）意味着符合条件的投注必须累积到优惠或「优惠+存款」金额的某一倍数——请核对条款以哪一种为基数。并非每款游戏贡献相同；有的可能被排除。流水清完前，提现可能受限。这是正常的优惠架构，不是某一品牌独有的伎俩。按约束通常适用来计划存款。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "A term-reading checklist",
+          zh: "条款阅读检查清单",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Opt-in method — automatic, code, or button?",
+            "Expiry — calendar days or hours after deposit?",
+            "Game contribution — which categories count fully?",
+            "Max bet while bonus active — ignored limits can void offers",
+            "Country and payment eligibility — quiet disqualifiers",
+            "Conflict rules — what happens if two offers overlap?",
+          ],
+          zh: [
+            "加入方式——自动、兑换码还是按钮？",
+            "有效期——日历日还是存款后小时数？",
+            "游戏贡献——哪些分类全额计算？",
+            "优惠进行中的最高投注——忽略限额可能作废优惠",
+            "地区与支付资格——安静的取消资格项",
+            "冲突规则——两个优惠重叠时如何处理？",
+          ],
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Screenshot or save the terms version you accepted while calm. Disputes are harder when you only remember the headline. If language is ambiguous, contact support before depositing large amounts. Ambiguity resolved after a deposit is stress you can avoid.",
+          zh: "在冷静时截图或保存你接受的条款版本。只记得标题时，争议更难处理。若语言含糊，先联系支持再存入大额。存款后才澄清含糊，是你可以避免的压力。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Promotions versus session design",
+          zh: "优惠与对局设计",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "A bonus can change how long you feel you “should” play. That pull is psychological. Counter it by keeping the same time wall you would use without an offer. Do not stretch a session to “finish” turnover in one sitting if fatigue arrives first. Multi-day clearing inside your normal entertainment budget beats a heroic overnight grind.",
+          zh: "优惠可能改变你觉得「应该」玩多久。那股拉力是心理的。用没有优惠时也会用的同一道时间墙来对冲。若疲劳先到，不要为「打完」流水而拉长单次对局。在正常娱乐预算内分多日清除，胜过一夜英雄式苦干。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Also separate curiosity browsing from bonus clearing. Use 1XROLL guides and category pages when you want literacy. Use the platform client when you intentionally work through eligible play. Mixing both intentions in a tilted mood produces messy decisions.",
+          zh: "也要把好奇浏览与优惠清除分开。想要识读时用 1XROLL 攻略与分类页。有意完成符合条件投注时用平台客户端。在倾斜情绪里混合两种意图，会产生混乱决策。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Red flags in promo chatter",
+          zh: "优惠闲聊中的红旗",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Ignore anyone claiming guaranteed clearing strategies, invented commission percentages, or fake “insider” term overrides. Ignore pressure to deposit immediately because a countdown GIF looks scary. Real terms survive a night of sleep. If an offer is truly time-boxed, you can still read it carefully within the window — rushing is optional.",
+          zh: "忽略任何声称保证打码策略、编造佣金百分比或虚假「内部」条款覆盖的人。忽略因为倒计时 GIF 看起来吓人而立刻存款的压力。真正的条款熬得过一晚睡眠。若优惠确实有时限，你仍可在窗口内仔细阅读——匆忙是可选的。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: should beginners always take the welcome bonus?",
+          zh: "问答体：新手是否总该拿欢迎优惠？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Only if the constraints fit your walls and you understand turnover. Playing without a bonus can be simpler while you learn UI. Simplicity is a valid strategy. Opting in is optional by design.",
+          zh: "仅当约束符合你的墙且你理解流水时。学习界面时不带优惠游玩可能更简单。简单是有效策略。选择加入在设计上就是可选的。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["sweet-bonanza", "mahjong-ways-2"],
+    publishedAt: "2025-09-26T12:00:00.000Z",
+    updatedAt: "2026-04-20T11:10:00.000Z",
+    readingTimeMinutes: 12,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#854D0E", "#FDE68A"],
+  },
+  {
+    id: "understanding-rewards-vip",
+    slug: "understanding-rewards-vip",
+    category: "education",
+    title: {
+      en: "Understanding Rewards and VIP",
+      zh: "理解奖励与 VIP",
+    },
+    excerpt: {
+      en: "Orientation for 1XROLL rewards hubs and VIP cashback summaries — what we publish, what stays on the platform, and how to keep perks from steering your stake.",
+      zh: "1XROLL 奖励枢纽与 VIP 返水摘要导览——我们公布什么、什么留在平台，以及如何避免礼遇驾驭你的注额。",
+    },
+    content: [
+      {
+        type: "h2",
+        text: {
+          en: "Rewards are lanes, VIP is a relationship layer",
+          zh: "奖励是车道，VIP 是关系层",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "On 1XROLL, rewards topics connect activity-style promotions, rebate-oriented cashback summaries, and VIP Club orientation. Think of rewards as a map of benefit lanes. VIP is the relationship layer that may adjust cashback and perks as engagement grows. This site explains the ideas with published facts only. Live tier status, exact progress meters, and personal offers exist on the platform after login — we do not invent tier ladders here.",
+          zh: "在 1XROLL，奖励主题连接活动式优惠、偏返水的回馈摘要与 VIP 俱乐部导览。把奖励想成利益车道地图。VIP 是关系层，可能随参与度增长调整返水与礼遇。本站只用已发布事实解释这些概念。实时等级状态、精确进度条与个人优惠在登录后的平台上——我们不在此编造等级阶梯。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Reading rewards calmly means asking what a perk requires from your attention and bankroll, not only what it advertises. A cashback line can be helpful hygiene; it can also nudge longer sessions if you treat it like earnings. Keep the distinction clear.",
+          zh: "冷静阅读奖励，意味着问礼遇对你的注意力与资金要求什么，而不只问它宣传什么。返水可以是有用的卫生；若你把它当「收入」，也可能推动更长对局。把区别保持清楚。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Published VIP cashback summary",
+          zh: "已发布 VIP 返水摘要",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Brand materials summarised on this site describe VIP cashback of up to 1.1% on eligible play, with higher tiers unlocking increased rates and perks. That ceiling is an orientation fact, not a personal forecast. Eligibility, game weighting, and payout timing belong to live platform rules. We repeat the public ceiling so you can recognise authentic language; we refuse to fabricate daily rebate tables or commission-style percentages beyond what is published.",
+          zh: "本站摘要的品牌材料将 VIP 返水描述为符合条件投注最高 1.1%，更高等级解锁更高比例与礼遇。该上限是导览事实，不是个人预测。资格、游戏权重与发放时机属于平台实时规则。我们重复公开上限是为了让你认出真实语言；拒绝编造每日返水表或超出已公布范围的佣金式百分比。",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Up to 1.1% — published cashback ceiling on eligible bets",
+            "Higher tiers — unlock increased rates; details on the platform",
+            "Eligible play — not every stake may count the same",
+            "No invented ladder — tier names and thresholds stay off this page unless verified",
+          ],
+          zh: [
+            "最高 1.1%——符合条件投注的已发布返水上限",
+            "更高等级——解锁更高比例；细节在平台",
+            "符合条件投注——并非每笔注额同等计算",
+            "不编造阶梯——除非已核实，等级名称与门槛不出现在本页",
+          ],
+        },
+      },
+      {
+        type: "h3",
+        text: {
+          en: "Cashback is not profit",
+          zh: "返水不是利润",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Cashback softens part of eligible wagering after the fact. It does not turn entertainment into a wage. Budget as if cashback might arrive later and might be smaller than a headline implies once rules apply. Spending more to “earn” cashback is the classic inversion — the perk starts driving the stake instead of following it.",
+          zh: "返水事后软化部分符合条件的投注。它不把娱乐变成工资。预算时假定返水可能较晚到账，且在规则适用后可能小于标题暗示。为「赚」返水而多花，是经典倒置——礼遇开始驾驭注额，而不是跟随注额。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "How rewards hubs fit beside promotions",
+          zh: "奖励枢纽如何与优惠并列",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Promotions often focus on opt-in offers with turnover — for example the welcome path summarised as 200% up to 8,888 USDT, 25×, min 10 USDT. Rewards and VIP pages focus more on ongoing relationship benefits and activity orientation. You can use both, either, or neither. Stacking every lane at once without reading conflicts is how players create accidental pressure. Prefer one active benefit path while learning.",
+          zh: "优惠常聚焦带流水的加入式活动——例如摘要为 200% 最高 8,888 USDT、25 倍、最低 10 USDT 的欢迎路径。奖励与 VIP 页更聚焦持续关系利益与活动导览。你可以两者都用、只用其一，或都不用。不读冲突就叠满所有车道，是玩家制造意外压力的方式。学习期间宁可只走一条活跃利益路径。",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "When ecosystem pages link Activity Center style ideas, Rewards Center orientation, and VIP Club summaries, treat them as a directory. Open one door, finish understanding it, then consider the next. Directory hopping while tilted recreates lobby chaos inside the education layer.",
+          zh: "当生态页连接活动中心式概念、奖励中心导览与 VIP 俱乐部摘要时，把它们当作目录。打开一扇门，理解完，再考虑下一扇。倾斜时在目录间乱跳，会把大厅混乱复制进教育层。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "Keeping perks from steering sessions",
+          zh: "避免礼遇驾驭对局",
+        },
+      },
+      {
+        type: "ul",
+        items: {
+          en: [
+            "Set money and time walls before checking VIP progress",
+            "Review cashback language on calm days, not mid-chase",
+            "Do not invent unpublished tier benefits from screenshots elsewhere",
+            "Use game guides to change atmosphere; do not grind a disliked title only for points myths",
+            "If a perk requires play you would not choose otherwise, skip the perk",
+          ],
+          zh: [
+            "查看 VIP 进度前先设资金与时间墙",
+            "在冷静日阅读返水语言，而非追逐中途",
+            "不要根据别处截图编造未公布的等级礼遇",
+            "用游戏攻略换氛围；不要只为积分神话去磨不喜欢的作品",
+            "若某礼遇要求你本不会选择的游玩，跳过该礼遇",
+          ],
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Provider and category literacy still matter inside VIP play. Whether you open Pragmatic cascades, PG Soft portrait slots, Evolution live rooms, or Spribe short rounds, the craft differences remain. Status layers do not flatten UI needs. Choose titles you can read; let any cashback follow eligible play you already planned.",
+          zh: "在 VIP 游玩中，厂商与分类识读仍然重要。无论你打开 Pragmatic 消除、PG Soft 竖屏老虎机、Evolution 真人房或 Spribe 短回合，工艺差异仍在。状态层不会抹平界面需求。选择你能读懂的作品；让任何返水跟随你已计划的符合条件投注。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "FAQ-style: where do I see my real VIP tier?",
+          zh: "问答体：在哪里看真实 VIP 等级？",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Only on the live platform account area after login. This brand site will not display personal tier meters or invent a ladder graphic. If a third-party page shows a detailed tier table we have not verified, treat it as unverified. Come back to 1XROLL for orientation facts such as the up-to-1.1% cashback ceiling, then confirm the rest in your logged-in client.",
+          zh: "仅在登录后的实时平台账户区域。本品牌站不显示个人等级条，也不编造阶梯图。若第三方页面展示我们未核实的详细等级表，视为未核实。回到 1XROLL 查看如最高 1.1% 返水上限这类导览事实，其余在你登录的客户端确认。",
+        },
+      },
+      {
+        type: "h2",
+        text: {
+          en: "A calm weekly rewards ritual",
+          zh: "冷静的每周奖励仪式",
+        },
+      },
+      {
+        type: "p",
+        text: {
+          en: "Once a week, on a non-play day if possible, open rewards and VIP orientation pages, skim platform terms for anything that changed, and decide whether any active path still fits your walls. Ten quiet minutes of administration prevent hour-long confused sessions later. Rewards work best as scheduled hygiene — not as a reason to open a client at midnight because a badge glowed.",
+          zh: "每周一次，若可能选在非游玩日，打开奖励与 VIP 导览页，扫一眼平台条款是否有变，并决定任何活跃路径是否仍符合你的墙。十分钟安静管理，可避免日后一小时困惑对局。奖励最好当作排程卫生——而不是因为徽章亮了就在午夜打开客户端的理由。",
+        },
+      },
+    ],
+    relatedGameSlugs: ["starlight-princess", "big-bass-bonanza", "plinko"],
+    publishedAt: "2025-10-02T09:30:00.000Z",
+    updatedAt: "2026-04-22T08:50:00.000Z",
+    readingTimeMinutes: 12,
+    author: "1XROLL Editorial Team",
+    coverGradient: ["#0C4A6E", "#7DD3FC"],
+  },
+];

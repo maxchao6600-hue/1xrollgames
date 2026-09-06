@@ -1,5 +1,5 @@
 import type { Locale } from "@/types/content";
-import { faqItems } from "@/data/faq";
+import { getFaqByIds } from "@/data/faq";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
@@ -9,9 +9,27 @@ import { Container, Section, SectionHeader } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqJsonLd } from "@/lib/seo";
 
+const HOME_FAQ_IDS = [
+  "what-is-1xroll",
+  "brand-vs-platform",
+  "how-many-games",
+  "game-categories",
+  "providers",
+  "explore-games",
+  "promotions",
+  "welcome-bonus",
+  "rewards-center",
+  "vip-cashback",
+  "download-faq",
+  "mobile-access",
+  "responsible",
+  "rg-limits",
+  "support",
+];
+
 export function HomeFaq({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const items = faqItems.slice(0, 6).map((item) => ({
+  const items = getFaqByIds(HOME_FAQ_IDS).map((item) => ({
     id: item.id,
     title: localize(item.question, locale),
     content: localize(item.answer, locale),

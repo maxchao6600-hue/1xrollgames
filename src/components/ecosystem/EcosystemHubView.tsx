@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ContentBlock, EcosystemHub, FaqItem, Locale } from "@/types/content";
+import type { CategoryPageContent } from "@/data/category-pages";
 import { ctaConfig } from "@/config/site";
 import { CATEGORY_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
 import { absoluteUrl, localize } from "@/lib/utils";
-import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
@@ -71,6 +72,7 @@ export function EcosystemHubView({
   showPlatformCtas = true,
   categoryId,
   faqItems = [],
+  deepContent,
 }: {
   locale: Locale;
   hub: EcosystemHub;
@@ -79,28 +81,65 @@ export function EcosystemHubView({
   /** Optional category art for visual header */
   categoryId?: string;
   faqItems?: FaqItem[];
+  /** Prefer deep category-page sections when present */
+  deepContent?: CategoryPageContent;
 }) {
   const dict = getDictionary(locale);
   const asset = categoryId ? CATEGORY_ASSETS[categoryId] : undefined;
   const isPanel = asset?.fit === "panel";
+  const title = deepContent
+    ? localize(deepContent.pageTitle, locale)
+    : localize(hub.title, locale);
+  const intro = deepContent
+    ? localize(deepContent.intro, locale)
+    : localize(hub.intro, locale);
+  const sections = deepContent?.sections?.length
+    ? deepContent.sections
+    : hub.sections;
+  const related =
+    deepContent?.relatedHrefs?.length
+      ? deepContent.relatedHrefs
+      : hub.relatedHrefs;
+  const crumbs =
+    path.startsWith("/games/")
+      ? [
+          { label: t(dict, "nav.home"), href: localePath(locale, "/") },
+          { label: t(dict, "nav.games"), href: localePath(locale, "/games") },
+          { label: title },
+        ]
+      : [
+          { label: t(dict, "nav.home"), href: localePath(locale, "/") },
+          { label: title },
+        ];
 
   return (
     <Section className="pt-8">
       <Container>
-        <Breadcrumbs
-          items={[
-            { label: t(dict, "nav.home"), href: localePath(locale, "/") },
-            { label: localize(hub.title, locale) },
-          ]}
-        />
+        <Breadcrumbs items={crumbs} />
         <JsonLd
-          data={breadcrumbJsonLd([
-            { name: t(dict, "nav.home"), url: absoluteUrl(localePath(locale, "/")) },
-            {
-              name: localize(hub.title, locale),
-              url: absoluteUrl(localePath(locale, path)),
-            },
-          ])}
+          data={[
+            breadcrumbJsonLd(
+              crumbs.map((c, i) => ({
+                name: c.label,
+                url: absoluteUrl(
+                  "href" in c && c.href
+                    ? c.href
+                    : localePath(locale, path),
+                ),
+                ...(i === crumbs.length - 1 ? {} : {}),
+              })),
+            ),
+            ...(faqItems.length
+              ? [
+                  faqJsonLd(
+                    faqItems.map((item) => ({
+                      question: localize(item.question, locale),
+                      answer: localize(item.answer, locale),
+                    })),
+                  ),
+                ]
+              : []),
+          ]}
         />
 
         {asset?.image ? (
@@ -125,7 +164,7 @@ export function EcosystemHubView({
             ) : (
               <Image
                 src={asset.image}
-                alt={`${localize(hub.title, locale)} on 1XROLL`}
+                alt={`${title} on 1XROLL`}
                 fill
                 className="object-cover"
                 style={{ objectPosition: asset.objectPosition ?? "center center" }}
@@ -139,31 +178,29 @@ export function EcosystemHubView({
                 {locale === "zh" ? "平台通道" : "Platform lane"}
               </p>
               <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl text-white md:text-4xl">
-                {localize(hub.title, locale)}
+                {title}
               </h1>
               <p className="mt-2 max-w-2xl text-sm text-white/75 md:text-base">
-                {localize(hub.summary, locale)}
+                {deepContent
+                  ? localize(deepContent.intro, locale)
+                  : localize(hub.summary, locale)}
               </p>
             </div>
           </div>
         ) : (
           <>
             <h1 className="font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
-              {localize(hub.title, locale)}
+              {title}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg text-text-muted">
-              {localize(hub.intro, locale)}
-            </p>
+            <p className="mt-4 max-w-3xl text-lg text-text-muted">{intro}</p>
           </>
         )}
 
         {asset?.image ? (
-          <p className="max-w-3xl text-base leading-relaxed text-text-muted">
-            {localize(hub.intro, locale)}
-          </p>
+          <p className="max-w-3xl text-base leading-relaxed text-text-muted">{intro}</p>
         ) : null}
 
-        <Blocks blocks={hub.sections} locale={locale} />
+        <Blocks blocks={sections} locale={locale} />
 
         {showPlatformCtas ? (
           <div className="mt-10 flex flex-wrap gap-3">
@@ -172,6 +209,9 @@ export function EcosystemHubView({
             </Button>
             <Button href={localePath(locale, ctaConfig.register.path)} variant="secondary">
               {t(dict, "nav.register")}
+            </Button>
+            <Button href={localePath(locale, "/guides")} variant="outline">
+              {t(dict, "nav.guides")}
             </Button>
             <Button href={localePath(locale, "/fair-play")} variant="outline">
               {t(dict, "nav.fairPlay")}
@@ -182,13 +222,13 @@ export function EcosystemHubView({
           </div>
         ) : null}
 
-        {hub.relatedHrefs.length ? (
+        {related.length ? (
           <div className="mt-14">
             <h2 className="font-[family-name:var(--font-display)] text-2xl text-text">
               {locale === "zh" ? "相关入口" : "Related destinations"}
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {hub.relatedHrefs.map((item) => (
+              {related.map((item) => (
                 <Link
                   key={item.href}
                   href={localePath(locale, item.href)}

@@ -13,8 +13,14 @@ export {
   faqGroupOrder,
   faqGroupLabels,
   getFaqByGroup,
+  getFaqByIds,
   getGroupedFaq,
 } from "@/data/faq";
+export {
+  categoryPages,
+  getCategoryPageContent,
+} from "@/data/category-pages";
+export type { CategoryPageContent } from "@/data/category-pages";
 export { games } from "@/data/games";
 export { guides } from "@/data/guides";
 export { providers } from "@/data/providers";

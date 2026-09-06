@@ -3,6 +3,10 @@ import type { FaqGroupId, FaqItem } from "@/types/content";
 export const faqGroupOrder: FaqGroupId[] = [
   "general",
   "games",
+  "slots",
+  "live",
+  "sports",
+  "hash",
   "account",
   "deposit",
   "withdraw",
@@ -18,6 +22,10 @@ export const faqGroupOrder: FaqGroupId[] = [
 export const faqGroupLabels: Record<FaqGroupId, { en: string; zh: string }> = {
   general: { en: "General", zh: "综合" },
   games: { en: "Games", zh: "游戏" },
+  slots: { en: "Slots", zh: "老虎机" },
+  live: { en: "Live Casino", zh: "真人赌场" },
+  sports: { en: "Sports", zh: "体育" },
+  hash: { en: "Hash Games", zh: "哈希游戏" },
   account: { en: "Account", zh: "账户" },
   deposit: { en: "Deposit", zh: "存款" },
   withdraw: { en: "Withdraw", zh: "取款" },
@@ -89,6 +97,30 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "providers-why",
+    group: "games",
+    question: {
+      en: "Why browse providers on this brand site?",
+      zh: "为什么要在本品牌站浏览厂商？",
+    },
+    answer: {
+      en: "Provider pages help you compare studio specialties and related titles before opening the live lobby. Availability still depends on the platform catalogue after login.",
+      zh: "厂商页帮助你在进入实时大厅前比较工作室特色与相关作品。实际供应仍以登录后平台目录为准。",
+    },
+  },
+  {
+    id: "explore-games",
+    group: "games",
+    question: {
+      en: "How do I explore games from this site?",
+      zh: "如何从本站探索游戏？",
+    },
+    answer: {
+      en: "Use Games, category hubs and Guides for orientation, then Login or Register to open the platform lobby for live play.",
+      zh: "通过游戏页、分类中心与攻略做导览，再点击登录或注册进入平台大厅进行实时游玩。",
+    },
+  },
+  {
     id: "hash-games-faq",
     group: "games",
     question: {
@@ -98,6 +130,174 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "No. Hash and lottery lanes are explained as hubs. Individual lobby titles open on the platform so we never invent games or artwork.",
       zh: "不会。哈希与彩票以中心页说明。具体大厅作品在平台打开，避免虚构游戏或图片。",
+    },
+  },
+  {
+    id: "fishing-what",
+    group: "games",
+    question: {
+      en: "What is fishing on 1XROLL?",
+      zh: "1XROLL 的捕鱼是什么？",
+    },
+    answer: {
+      en: "Fishing is an arcade-style lane where you aim and shoot targets for rewards. Browse the Fishing category on this site, then open titles in the platform lobby.",
+      zh: "捕鱼是瞄准射击目标获取奖励的街机类通道。可在本站浏览捕鱼分类，再于平台大厅打开具体作品。",
+    },
+  },
+  {
+    id: "crypto-what",
+    group: "games",
+    question: {
+      en: "What are crypto games here?",
+      zh: "这里的加密游戏是什么？",
+    },
+    answer: {
+      en: "Crypto games are short-session entertainment titles often associated with crypto-friendly wallets. Use the Crypto Games category for orientation; confirm live titles on the platform.",
+      zh: "加密游戏多为与加密钱包友好的短局娱乐作品。可浏览加密游戏分类做导览，实时作品以平台为准。",
+    },
+  },
+  {
+    id: "fast-what",
+    group: "games",
+    question: {
+      en: "What are fast games?",
+      zh: "什么是快速游戏？",
+    },
+    answer: {
+      en: "Fast games emphasise short rounds and quick outcomes. Explore the Fast Games category on this brand site, then launch from the platform lobby.",
+      zh: "快速游戏强调短局与快速结果。可在本品牌站浏览快速游戏分类，再从平台大厅启动。",
+    },
+  },
+  {
+    id: "lottery-what",
+    group: "games",
+    question: {
+      en: "How is lottery covered?",
+      zh: "彩票如何覆盖？",
+    },
+    answer: {
+      en: "Lottery is presented as a hub with educational orientation. Specific draws and tickets open on the platform so this site does not invent jackpot figures.",
+      zh: "彩票以中心页与教育导览呈现。具体开奖与购票在平台完成，本站不编造奖池数字。",
+    },
+  },
+  {
+    id: "chess-what",
+    group: "games",
+    question: {
+      en: "What is Chess & Card?",
+      zh: "什么是棋牌？",
+    },
+    answer: {
+      en: "Chess & Card covers table and card-style entertainment lanes. Read the hub for orientation, then open live tables or rooms on the platform.",
+      zh: "棋牌覆盖桌面与纸牌类娱乐通道。可阅读中心页做导览，再在平台打开实时桌台或房间。",
+    },
+  },
+  {
+    id: "slots-what",
+    group: "slots",
+    question: {
+      en: "What are slots on 1XROLL?",
+      zh: "1XROLL 的老虎机是什么？",
+    },
+    answer: {
+      en: "Slots are spinning-reel entertainment titles from multiple studios. Browse the Slots category and provider pages here, then play in the platform lobby.",
+      zh: "老虎机是来自多家工作室的转轮娱乐作品。可在本站浏览老虎机分类与厂商页，再于平台大厅游玩。",
+    },
+  },
+  {
+    id: "slots-rtp",
+    group: "slots",
+    question: {
+      en: "Do you publish RTP percentages for every slot?",
+      zh: "会公布每款老虎机的 RTP 百分比吗？",
+    },
+    answer: {
+      en: "Only where a value is verified in this site’s game dataset. We do not invent RTP figures for titles that lack confirmed data.",
+      zh: "仅在本站游戏数据集已核实的数值时公布。对缺少确认数据的作品，我们不编造 RTP。",
+    },
+  },
+  {
+    id: "slots-volatility",
+    group: "slots",
+    question: {
+      en: "What does slot volatility mean here?",
+      zh: "这里的老虎机波动性是什么意思？",
+    },
+    answer: {
+      en: "Volatility describes how uneven results may feel over a session — lower tends toward steadier outcomes, higher toward streakier ones. Labels appear only when verified in our dataset.",
+      zh: "波动性描述一局体验中结果可能有多不均匀——较低通常更平稳，较高更容易出现连段起伏。仅在数据集已核实的作品上标注。",
+    },
+  },
+  {
+    id: "live-what",
+    group: "live",
+    question: {
+      en: "What is live casino on 1XROLL?",
+      zh: "1XROLL 的真人赌场是什么？",
+    },
+    answer: {
+      en: "Live casino streams real-time tables such as baccarat, roulette and game shows hosted by dealers. Use Live Casino pages for orientation, then join tables on the platform.",
+      zh: "真人赌场以实时桌台呈现，如百家乐、轮盘与由荷官主持的游戏秀。可浏览真人赌场页做导览，再在平台加入桌台。",
+    },
+  },
+  {
+    id: "live-tables",
+    group: "live",
+    question: {
+      en: "How do I choose a live table?",
+      zh: "如何选择真人桌台？",
+    },
+    answer: {
+      en: "Review limits, seat availability and game type inside the platform lobby after login. This brand site does not list live table IDs or invent seating capacity.",
+      zh: "登录后在平台大厅查看限额、座位与游戏类型。本品牌站不罗列实时桌台编号，也不编造座位容量。",
+    },
+  },
+  {
+    id: "sports-odds",
+    group: "sports",
+    question: {
+      en: "Do you publish sports odds on this site?",
+      zh: "本站会公布体育赔率吗？",
+    },
+    answer: {
+      en: "No. Odds change continuously. Use the Sports hub for orientation, then check live markets on the platform.",
+      zh: "不会。赔率持续变动。可阅读体育中心页做导览，实时盘口请在平台查看。",
+    },
+  },
+  {
+    id: "sports-access",
+    group: "sports",
+    question: {
+      en: "How do I access sports betting?",
+      zh: "如何进入体育投注？",
+    },
+    answer: {
+      en: "Open the Sports page on this brand site for context, then Login or Register to reach the platform sports lobby.",
+      zh: "先在本品牌站打开体育页了解背景，再点击登录或注册进入平台体育大厅。",
+    },
+  },
+  {
+    id: "hash-what",
+    group: "hash",
+    question: {
+      en: "What are hash games?",
+      zh: "什么是哈希游戏？",
+    },
+    answer: {
+      en: "Hash games and Hash Roulette are entertainment lanes that use hash-style result presentation. Read the hash hubs here; individual titles open on the platform.",
+      zh: "哈希游戏与哈希轮盘是以哈希风格呈现结果的娱乐通道。可阅读本站哈希中心页；具体作品在平台打开。",
+    },
+  },
+  {
+    id: "hash-fair",
+    group: "hash",
+    question: {
+      en: "How does Fair Play relate to hash games?",
+      zh: "公平游戏与哈希游戏有何关系？",
+    },
+    answer: {
+      en: "Fair Play on this site is orientation language around transparency for hash-inspired entertainment. It does not invent audit seals or guarantee outcomes.",
+      zh: "本站公平游戏页是面向哈希灵感娱乐透明度的导览表述。不编造审计印章，也不保证结果。",
     },
   },
   {
@@ -161,6 +361,18 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "deposit-methods-page",
+    group: "deposit",
+    question: {
+      en: "Where can I review payment method orientation?",
+      zh: "在哪里查看支付方式导览？",
+    },
+    answer: {
+      en: "See the Payment Methods page on this brand site for orientation, then confirm live options inside the platform wallet after login.",
+      zh: "可先阅读本品牌站支付方式页做导览，登录后在平台钱包确认实时可用选项。",
+    },
+  },
+  {
     id: "withdraw-speed",
     group: "withdraw",
     question: {
@@ -194,6 +406,18 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "Published summaries include a 200% first deposit bonus (up to 8,888 USDT, 25× turnover, min. 10 USDT), VIP cashback up to 1.1% on eligible play, and prize-pool style events. Always read live platform terms.",
       zh: "已发布摘要包括 200% 首存（最高 8,888 USDT，25 倍流水，最低 10 USDT）、符合条件投注 VIP 返水最高 1.1%，以及奖池类活动。请务必阅读平台实时条款。",
+    },
+  },
+  {
+    id: "promotions-terms",
+    group: "promotions",
+    question: {
+      en: "Where do promotion terms apply?",
+      zh: "优惠条款在哪里生效？",
+    },
+    answer: {
+      en: "Brand-site summaries are orientation only. Binding eligibility, turnover and expiry rules are shown on the platform when you opt in.",
+      zh: "品牌站摘要仅供导览。具有约束力的资格、流水与有效期规则在你于平台领取时展示。",
     },
   },
   {
@@ -233,6 +457,18 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "welcome-bonus",
+    group: "rewards",
+    question: {
+      en: "What welcome bonus is summarised here?",
+      zh: "这里摘要的迎新优惠是什么？",
+    },
+    answer: {
+      en: "A 200% first deposit bonus up to 8,888 USDT, with 25× turnover and a minimum deposit of 10 USDT — confirm live terms on the platform.",
+      zh: "200% 首存最高 8,888 USDT，25 倍流水，最低存款 10 USDT——实时条款以平台为准。",
+    },
+  },
+  {
     id: "vip-tiers",
     group: "vip",
     question: {
@@ -254,6 +490,18 @@ export const faqItems: FaqItem[] = [
     answer: {
       en: "Up to 1.1% on eligible bets, with higher tiers unlocking increased rates — as published on brand materials mirrored in our promotions data.",
       zh: "符合条件投注最高 1.1%，更高等级解锁更高比例——与我们优惠数据中镜像的品牌公开材料一致。",
+    },
+  },
+  {
+    id: "vip-how",
+    group: "vip",
+    question: {
+      en: "How do I join or check VIP status?",
+      zh: "如何加入或查看 VIP 状态？",
+    },
+    answer: {
+      en: "Read the VIP page on this brand site for orientation, then open the platform VIP area after login for live progress and benefits.",
+      zh: "可先阅读本品牌站 VIP 页做导览，登录后在平台 VIP 区域查看实时进度与权益。",
     },
   },
   {
@@ -288,8 +536,8 @@ export const faqItems: FaqItem[] = [
       zh: "如何下载应用？",
     },
     answer: {
-      en: "Open the Download page for QR and screenshot orientation, then use official platform CTAs for the latest Android package. Prefer official 1XROLL paths only.",
-      zh: "打开下载页查看二维码与截图导览，再通过官方平台 CTA 获取最新 Android 包。请只使用官方 1XROLL 路径。",
+      en: "Open the Download page for QR and screenshot access orientation, then use official platform CTAs for the latest access or install options when offered. Prefer official 1XROLL paths only — this brand site does not host a store-listed app claim.",
+      zh: "打开下载页查看二维码与截图访问导览，再通过官方平台 CTA 获取（在提供时）最新访问或安装选项。请只使用官方 1XROLL 路径——本品牌站不作应用商店上架宣称。",
     },
   },
   {
@@ -312,8 +560,20 @@ export const faqItems: FaqItem[] = [
       zh: "1XROLL 支持移动设备吗？",
     },
     answer: {
-      en: "Yes. Use the responsive site, mobile web access to the platform, and Android download guidance where offered.",
-      zh: "支持。可使用自适应网站、平台手机网页，以及提供的 Android 下载指引。",
+      en: "Yes. Use the responsive brand site, mobile web access to the platform, and Download-page access orientation when offered.",
+      zh: "支持。可使用自适应品牌站、平台手机网页，以及（在提供时）下载页的访问导览。",
+    },
+  },
+  {
+    id: "mobile-access",
+    group: "mobile",
+    question: {
+      en: "What is the recommended mobile access path?",
+      zh: "推荐的移动端访问路径是什么？",
+    },
+    answer: {
+      en: "Start with this responsive brand site, then Login or Register for platform mobile web. Use the Download page for access orientation materials and official CTAs — not unofficial mirrors.",
+      zh: "先使用本自适应品牌站，再通过登录或注册进入平台手机网页。下载页用于访问导览材料与官方 CTA——勿使用非官方镜像。",
     },
   },
   {
@@ -341,6 +601,18 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "rg-limits",
+    group: "responsible",
+    question: {
+      en: "How should I set play limits?",
+      zh: "应如何设定游玩限额？",
+    },
+    answer: {
+      en: "Decide a budget and time boundary before you play, and use any limit tools the platform offers after login. Stop if entertainment stops feeling fun.",
+      zh: "游玩前先设定预算与时间边界，并在登录后使用平台提供的限额工具。若娱乐不再愉快，请立即停止。",
+    },
+  },
+  {
     id: "fair-play-faq",
     group: "responsible",
     question: {
@@ -364,7 +636,314 @@ export const faqItems: FaqItem[] = [
       zh: "账户问题请使用平台在线客服。本站联系页提供 support@1xroll.my 作为品牌站导览邮箱。",
     },
   },
+  {
+    id: "slots-mobile",
+    group: "slots",
+    question: {
+      en: "Are slots readable on mobile?",
+      zh: "老虎机在手机上可读吗？",
+    },
+    answer: {
+      en: "Most catalogue slots are designed for portrait or responsive play. Prefer titles whose UI keeps stake and spin controls reachable with one thumb, and pause if text becomes hard to read.",
+      zh: "多数目录老虎机面向竖屏或响应式游玩。优先选择注额与旋转控件单手可及的作品；若文字难读请暂停。",
+    },
+  },
+  {
+    id: "live-mobile",
+    group: "live",
+    question: {
+      en: "Can I follow live casino on a phone?",
+      zh: "手机上能跟真人娱乐场吗？",
+    },
+    answer: {
+      en: "Yes — use a stable connection and keep the betting window visible. Mobile live play rewards slower stake decisions than rapid slot tapping.",
+      zh: "可以——请使用稳定网络并保持投注窗可见。移动端真人游玩更适合比老虎机连点更慢的注额决策。",
+    },
+  },
+  {
+    id: "live-limits",
+    group: "live",
+    question: {
+      en: "Does this site list live table limits?",
+      zh: "本站会列出真人桌限吗？",
+    },
+    answer: {
+      en: "No. Table limits, seats and schedules appear on the live platform after login. This site explains formats without inventing limits or odds.",
+      zh: "不会。桌限、座位与场次在登录后的实时平台显示。本站只解释玩法格式，不编造限额或赔率。",
+    },
+  },
+  {
+    id: "hash-roulette-lobby",
+    group: "hash",
+    question: {
+      en: "Where do I open Hash Roulette?",
+      zh: "在哪里打开哈希轮盘？",
+    },
+    answer: {
+      en: "Use this hub for orientation, then open the 1XROLL platform via Login/Register or Play CTAs. Lobby placement can vary by account and region.",
+      zh: "先用本枢纽做导览，再通过登录/注册或游玩 CTA 打开 1XROLL 平台。大厅位置可能因账户与地区而异。",
+    },
+  },
+  {
+    id: "hash-limits",
+    group: "hash",
+    question: {
+      en: "Are hash game stakes listed here?",
+      zh: "这里会列出哈希游戏注额吗？",
+    },
+    answer: {
+      en: "No. Stake ranges and round tools live on the platform client. Set personal limits before you open any hash-style round.",
+      zh: "不会。注额范围与回合工具在平台客户端。打开任何哈希风格回合前请先设定个人限额。",
+    },
+  },
+  {
+    id: "hash-games-lobby",
+    group: "hash",
+    question: {
+      en: "How do Hash Games differ from Hash Roulette?",
+      zh: "哈希游戏与哈希轮盘有何不同？",
+    },
+    answer: {
+      en: "Both are orientation hubs for hash-inspired entertainment. Roulette focuses on wheel-style framing; Hash Games covers a wider short-round family. Exact lobbies are on the platform.",
+      zh: "两者都是哈希灵感娱乐的导览枢纽。轮盘侧重轮盘式框架；哈希游戏覆盖更广的短回合家族。具体大厅在平台侧。",
+    },
+  },
+  {
+    id: "hash-pacing",
+    group: "hash",
+    question: {
+      en: "What pacing should I expect from hash-style games?",
+      zh: "哈希风格游戏的节奏如何？",
+    },
+    answer: {
+      en: "Expect short decision loops. That speed can feel intense — use time boxes and avoid stacking rounds when tired.",
+      zh: "预期是短决策循环。这种速度可能显得强烈——请使用时间盒，疲劳时避免叠回合。",
+    },
+  },
+  {
+    id: "crypto-aviator",
+    group: "games",
+    question: {
+      en: "Is Aviator in the crypto games catalogue?",
+      zh: "Aviator 在加密游戏目录里吗？",
+    },
+    answer: {
+      en: "Yes — Aviator is one of the four verified crypto-oriented catalogue titles on this site, alongside other short-round Spribe-style entries where listed.",
+      zh: "是——Aviator 是本站四款已核实加密向目录作品之一，并与其他已列的短回合 Spribe 风格条目并列。",
+    },
+  },
+  {
+    id: "crypto-pacing",
+    group: "games",
+    question: {
+      en: "Why do crypto games feel faster?",
+      zh: "为何加密游戏感觉更快？",
+    },
+    answer: {
+      en: "Many use short rounds with a clear settle moment. Faster pacing is not a skill edge — it is a tempo choice that needs stricter personal limits.",
+      zh: "许多作品用短回合与清晰结算点。更快节奏不是技巧优势——而是更需要严格个人限额的节奏选择。",
+    },
+  },
+  {
+    id: "crypto-mobile",
+    group: "games",
+    question: {
+      en: "Do crypto games work on mobile browsers?",
+      zh: "加密游戏能在手机浏览器运行吗？",
+    },
+    answer: {
+      en: "Catalogue pages are mobile-readable; live play happens on the platform client or mobile web path after login. Prefer a stable connection for timing-sensitive rounds.",
+      zh: "目录页可在移动端阅读；实际游玩在登录后的平台客户端或移动网页路径。对时机敏感的回合请优先稳定网络。",
+    },
+  },
+  {
+    id: "fast-crash",
+    group: "games",
+    question: {
+      en: "What are Fast Games on 1XROLL?",
+      zh: "1XROLL 的快速游戏是什么？",
+    },
+    answer: {
+      en: "A small verified catalogue lane (two titles) for short, timing-focused rounds neighbouring crypto-style play. Open each title page for mechanics notes — we do not invent extra genres.",
+      zh: "小型已核实目录车道（两款），面向邻近加密风格的短时机回合。请打开各作品页查看机制说明——我们不编造额外类型。",
+    },
+  },
+  {
+    id: "fast-pacing",
+    group: "games",
+    question: {
+      en: "How should beginners approach Fast Games?",
+      zh: "新手应如何接触快速游戏？",
+    },
+    answer: {
+      en: "Start with one title, read the how-to notes, and set a short session clock. Fast rounds multiply decisions — fewer rounds with clearer intent beat rapid autopilot.",
+      zh: "先从一款开始，阅读玩法说明，并设定短会话时钟。快速回合会倍增决策——更少但更有意识的回合胜过自动驾驶连点。",
+    },
+  },
+  {
+    id: "fast-limits",
+    group: "games",
+    question: {
+      en: "Do Fast Games need stricter limits?",
+      zh: "快速游戏需要更严格限额吗？",
+    },
+    answer: {
+      en: "Often yes, because rounds resolve quickly. Decide stake and time walls before you start, and stop when the entertainment value drops.",
+      zh: "通常需要，因为回合解决很快。开始前先定注额与时间墙，娱乐感下降时立即停止。",
+    },
+  },
+  {
+    id: "fishing-big-bass",
+    group: "games",
+    question: {
+      en: "Which fishing titles are listed?",
+      zh: "列出了哪些捕鱼作品？",
+    },
+    answer: {
+      en: "This site’s fishing catalogue currently lists three verified titles, including Big Bass Bonanza where present in the dataset. Open the fishing category for the full shelf.",
+      zh: "本站捕鱼目录目前列出三款已核实作品（数据集中含 Big Bass Bonanza 时会显示）。请打开捕鱼分类查看完整货架。",
+    },
+  },
+  {
+    id: "fishing-aim",
+    group: "games",
+    question: {
+      en: "Are fishing games skill-based shooting games?",
+      zh: "捕鱼是技巧射击游戏吗？",
+    },
+    answer: {
+      en: "They often feel arcade-like with aiming or target selection, but outcomes remain chance-driven entertainment. Treat aiming as interface feedback, not a guarantee.",
+      zh: "它们常有街机感与瞄准/选目标，但结果仍是机会驱动的娱乐。把瞄准当作界面反馈，而非保证。",
+    },
+  },
+  {
+    id: "fishing-limits",
+    group: "games",
+    question: {
+      en: "How do I keep fishing sessions intentional?",
+      zh: "如何让捕鱼对局保持有意识？",
+    },
+    answer: {
+      en: "Pick one title, set a time box, and avoid chasing a “last big fish” moment. Return to guides or another category when focus fades.",
+      zh: "选一款作品、设定时间盒，避免追逐「最后一条大鱼」。注意力下降时回到攻略或其他分类。",
+    },
+  },
+  {
+    id: "sports-what",
+    group: "sports",
+    question: {
+      en: "What is the Sports page for?",
+      zh: "体育页是做什么的？",
+    },
+    answer: {
+      en: "Orientation for sports-related entertainment on 1XROLL. Availability can vary by platform — this site does not invent fixtures, odds or live scores.",
+      zh: "为 1XROLL 体育相关娱乐提供导览。可用性可能因平台而异——本站不编造赛程、赔率或实时比分。",
+    },
+  },
+  {
+    id: "sports-lobby",
+    group: "sports",
+    question: {
+      en: "Where do I place sports bets?",
+      zh: "在哪里进行体育投注？",
+    },
+    answer: {
+      en: "On the 1XROLL platform after login, when sports markets are offered for your account. This brand page explains concepts only.",
+      zh: "在登录后的 1XROLL 平台（若你的账户提供体育盘口）。本品牌页仅解释概念。",
+    },
+  },
+  {
+    id: "sports-limits",
+    group: "sports",
+    question: {
+      en: "Why are there no odds on this site?",
+      zh: "为何本站没有赔率？",
+    },
+    answer: {
+      en: "Odds and fixtures change constantly and belong on the live platform. Publishing invented numbers here would mislead readers.",
+      zh: "赔率与赛程不断变化，属于实时平台。在此发布编造数字会误导读者。",
+    },
+  },
+  {
+    id: "chess-lobby",
+    group: "games",
+    question: {
+      en: "How do I access Chess & Card games?",
+      zh: "如何进入棋牌游戏？",
+    },
+    answer: {
+      en: "Use this hub for orientation, then open the platform. Local catalogue cards may be limited — we do not invent table names that are not verified here.",
+      zh: "先用本枢纽导览，再打开平台。本地目录卡可能有限——我们不编造未在本站核实的桌名。",
+    },
+  },
+  {
+    id: "chess-tables",
+    group: "games",
+    question: {
+      en: "Does Chess & Card list every table game?",
+      zh: "棋牌会列出所有桌面游戏吗？",
+    },
+    answer: {
+      en: "No. This page explains the category and links related verified experiences (such as live or slots neighbours) without inventing a full table inventory.",
+      zh: "不会。本页解释分类并链接相关已核实体验（如真人或老虎机邻近页），不编造完整桌台库存。",
+    },
+  },
+  {
+    id: "chess-limits",
+    group: "games",
+    question: {
+      en: "Any tips before trying Chess & Card?",
+      zh: "尝试棋牌前有什么建议？",
+    },
+    answer: {
+      en: "Learn the rules of the specific table you open on the platform, set a budget, and treat multiplayer pace as social entertainment — not a recovery plan.",
+      zh: "先了解你在平台打开的具体桌规，设定预算，并把多人节奏当作社交娱乐——而不是回本计划。",
+    },
+  },
+  {
+    id: "lottery-lobby",
+    group: "games",
+    question: {
+      en: "Where can I buy lottery products?",
+      zh: "在哪里购买彩票产品？",
+    },
+    answer: {
+      en: "Through the 1XROLL platform when lottery products are available for your account. This site is an orientation hub only.",
+      zh: "在账户可用时通过 1XROLL 平台。本站仅为导览枢纽。",
+    },
+  },
+  {
+    id: "lottery-draws",
+    group: "games",
+    question: {
+      en: "Why are winning numbers not shown here?",
+      zh: "为何这里不显示中奖号码？",
+    },
+    answer: {
+      en: "Draw results and jackpots must come from live, integrated sources. This brand site does not invent schedules, probabilities or results.",
+      zh: "开奖结果与头奖须来自实时、已集成来源。本品牌站不编造时间表、概率或结果。",
+    },
+  },
+  {
+    id: "lottery-limits",
+    group: "games",
+    question: {
+      en: "How should I approach lottery-style play?",
+      zh: "应如何看待彩票类游玩？",
+    },
+    answer: {
+      en: "Treat tickets as entertainment spend within a pre-set budget. Do not chase losses across draws, and verify product terms on the platform before participating.",
+      zh: "把购票当作预设预算内的娱乐支出。不要跨期追逐损失，参与前在平台核实产品条款。",
+    },
+  },
 ];
+
+export function getFaqByIds(ids: string[]): FaqItem[] {
+  const map = new Map(faqItems.map((item) => [item.id, item]));
+  return ids
+    .map((id) => map.get(id))
+    .filter((item): item is FaqItem => Boolean(item));
+}
 
 export function getFaqByGroup(group: FaqGroupId) {
   return faqItems.filter((f) => f.group === group);

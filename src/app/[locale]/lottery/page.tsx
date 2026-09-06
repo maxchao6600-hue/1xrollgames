@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getEcosystemHub, getFaqByGroup } from "@/data";
+import {
+  getEcosystemHub,
+  getCategoryPageContent,
+  getFaqByIds,
+} from "@/data";
 import { isLocale } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
+import { localize } from "@/lib/utils";
 import { EcosystemHubView, ecosystemMetadata } from "@/components/ecosystem/EcosystemHubView";
 
 const SLUG = "lottery";
 const PATH = "/lottery";
+const CATEGORY_ID = "lottery" as const;
 
 export async function generateMetadata({
   params,
@@ -14,6 +21,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
+  const deep = getCategoryPageContent(CATEGORY_ID);
+  if (deep) {
+    return buildMetadata({
+      locale: raw,
+      path: PATH,
+      title: localize(deep.pageTitle, raw),
+      description: localize(deep.intro, raw),
+    });
+  }
   const hub = getEcosystemHub(SLUG);
   if (!hub) return {};
   return ecosystemMetadata(raw, hub, PATH);
@@ -28,13 +44,16 @@ export default async function Page({
   if (!isLocale(raw)) notFound();
   const hub = getEcosystemHub(SLUG);
   if (!hub) notFound();
+  const deep = getCategoryPageContent(CATEGORY_ID);
+  const faqItems = deep ? getFaqByIds(deep.faqIds) : [];
   return (
     <EcosystemHubView
       locale={raw}
       hub={hub}
       path={PATH}
-      categoryId="lottery"
-      faqItems={getFaqByGroup("games").slice(0, 4)}
+      categoryId={CATEGORY_ID}
+      deepContent={deep}
+      faqItems={faqItems}
     />
   );
 }

@@ -24,6 +24,26 @@ export function HomePromotions({ locale }: { locale: Locale }) {
             </Button>
           }
         />
+        <div className="mb-6 rounded-[1.15rem] border border-border bg-bg-surface/80 p-5 text-sm leading-relaxed text-text-muted">
+          {locale === "zh" ? (
+            <>
+              <p className="font-medium text-text">优惠区你会看到什么</p>
+              <p className="mt-2">
+                本站汇总已发布活动摘要（如首存类优惠以配置数据为准）。资格、流水与期限因活动而异——参与前请阅读平台条款。奖励与 VIP
+                入口相关，但不会在此编造未核实金额。
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="font-medium text-text">What to expect from Promotions</p>
+              <p className="mt-2">
+                This section summarises published offers (first-deposit details follow config data).
+                Eligibility, wagering and expiry vary by promotion — review platform terms before you
+                join. Rewards and VIP are related, but we do not invent unverified amounts here.
+              </p>
+            </>
+          )}
+        </div>
         <div className="grid gap-4 md:grid-cols-3">
           {promotions.map((promo) => (
             <article

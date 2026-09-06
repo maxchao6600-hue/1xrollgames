@@ -37,6 +37,11 @@ export function HomeVip({ locale }: { locale: Locale }) {
             <p className="mt-3 max-w-md text-base leading-relaxed text-text-muted">
               {t(dict, "home.vipSectionBody")}
             </p>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-text-muted">
+              {locale === "zh"
+                ? "VIP 与符合条件的活动、返水概念相关；已核实表述包含返水最高 1.1%。等级门槛与周月额度不在本站编造——请在登录后查看平台条款。"
+                : "VIP relates to eligible activity and cashback concepts; verified copy includes cashback up to 1.1%. Tier thresholds and weekly/monthly amounts are not invented here — confirm terms on the platform after login."}
+            </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button href={localePath(locale, "/vip")}>
                 {t(dict, "common.explore")} →

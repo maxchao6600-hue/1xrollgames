@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { HomePromoSlider } from "@/components/home/HomePromoSlider";
 import { FeaturedGamesRail } from "@/components/home/FeaturedGamesRail";
 import { DiscoverByExperience } from "@/components/home/DiscoverByExperience";
+import { HomeGameLibrary } from "@/components/home/HomeGameLibrary";
 import { HomeRewards } from "@/components/home/HomeRewards";
 import { HomePromotions } from "@/components/home/HomePromotions";
 import { LatestGuides } from "@/components/home/LatestGuides";
@@ -64,6 +65,7 @@ export default async function HomePage({
       <HomePromoSlider locale={locale} />
       <DiscoverByExperience locale={locale} />
       <FeaturedGamesRail locale={locale} />
+      <HomeGameLibrary locale={locale} />
       <HomePromotions locale={locale} />
       <HomeRewards locale={locale} />
       <HomeVip locale={locale} />
