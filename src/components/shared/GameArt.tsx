@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BRAND_ASSETS } from "@/data/assets";
 import { cn } from "@/lib/utils";
+import { OptionalCardMedia } from "@/components/shared/OptionalCardMedia";
 
 export function GameArt({
   name,
@@ -91,40 +92,21 @@ export function GameArt({
 
 export function CoverArt({
   title,
-  gradient,
   image,
   className,
 }: {
   title: string;
-  gradient: [string, string];
+  gradient?: [string, string];
   image?: string;
   className?: string;
 }) {
+  if (!image?.trim()) return null;
   return (
-    <div
-      className={cn("relative aspect-[16/10] overflow-hidden rounded-2xl", className)}
-      style={
-        image
-          ? undefined
-          : { background: `linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})` }
-      }
-    >
-      {image ? (
-        <Image
-          src={image}
-          alt={`${title} — 1XROLL guide cover`}
-          fill
-          className="object-cover"
-          sizes="(max-width:768px) 100vw, 640px"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_45%)]" />
-      )}
-      {!image ? (
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5">
-          <p className="max-w-md text-lg font-medium text-white md:text-xl">{title}</p>
-        </div>
-      ) : null}
-    </div>
+    <OptionalCardMedia
+      src={image}
+      alt={`${title} — 1XROLL guide`}
+      className={cn("rounded-2xl", className)}
+      sizes="(max-width:768px) 100vw, 640px"
+    />
   );
 }

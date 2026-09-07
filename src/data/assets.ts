@@ -172,14 +172,12 @@ export const PROMOTION_ASSETS: Record<string, string> = {
   "prize-pool": "/promotions/jackpot.webp",
 };
 
-/** Guide cover = related game artwork (explicit), never random */
+/** Guide cover = matching title artwork only. Generic education guides stay text cards. */
 export const GUIDE_ASSETS: Record<string, string> = {
   "fortune-tiger-guide": "/games/fortune-tiger.webp",
   "mahjong-ways-2-guide": "/games/mahjong-ways-2.webp",
   "gates-of-olympus-guide": "/games/gates-of-olympus.webp",
-  "understanding-rtp-volatility": "/games/treasures-of-aztec.webp",
   "live-casino-basics": "/games/crazy-time.webp",
-  "mobile-gaming-guide": "/games/aviator.webp",
 };
 
 export const APP_ASSETS = {

@@ -113,7 +113,13 @@ export default async function GuideDetailPage({
           {t(dict, "common.minRead")}
         </p>
 
-        <div className="mt-8 overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-[1.1fr_0.9fr]">
+        <div
+          className={
+            guide.coverImage
+              ? "mt-8 overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-2"
+              : "mt-8 overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface"
+          }
+        >
           <div className="p-6 md:p-8">
             <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
               {locale === "zh" ? "编辑导读" : "Editorial note"}
@@ -132,17 +138,9 @@ export default async function GuideDetailPage({
               </Button>
             </div>
           </div>
-          <div className="border-t border-border md:border-t-0 md:border-l">
-            {guide.coverImage ? (
-              <div className="relative min-h-[12rem] md:h-full">
-                <CoverArt title={title} gradient={guide.coverGradient} />
-              </div>
-            ) : (
-              <div className="p-4 md:p-5">
-                <CoverArt title={title} gradient={guide.coverGradient} />
-              </div>
-            )}
-          </div>
+          {guide.coverImage ? (
+            <CoverArt title={title} image={guide.coverImage} className="rounded-none" />
+          ) : null}
         </div>
 
         <GroupedSectionGrid blocks={guide.content} locale={locale} />
