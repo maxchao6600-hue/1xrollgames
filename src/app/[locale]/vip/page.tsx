@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/types/content";
 import { getFaqByIds, PUBLISHED_VIP_CASHBACK } from "@/data";
-import { REWARD_ASSETS } from "@/data/assets";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
@@ -18,7 +16,6 @@ import {
   ChecklistPanel,
   ComparisonTable,
   EcosystemFlow,
-  FeatureSplit,
   HighlightPanel,
   HubAnchorNav,
   HubCtaBand,
@@ -102,18 +99,8 @@ export default async function VipPage({
           ]}
         />
 
-        <div className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[20rem]">
-            <Image
-              src={REWARD_ASSETS["vip-club"]}
-              alt={h1}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width:768px) 100vw, 50vw"
-              priority
-            />
-          </div>
-          <div className="flex flex-col justify-center p-7 md:p-10">
+        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-2 md:gap-8 md:p-10">
+          <div>
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">VIP</p>
             <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl text-text md:text-4xl">
               {h1}
@@ -123,17 +110,46 @@ export default async function VipPage({
                 ? "VIP 是 1XROLL 礼遇生态的一部分：帮助你理解持续关系通道、公开返水语言，以及它与奖励、优惠如何并列。实时状态仍在登录后的平台查看。"
                 : "VIP is part of the wider 1XROLL benefits ecosystem: an orientation to the ongoing relationship lane, published cashback language, and how it sits beside Rewards and Promotions. Live status remains on the platform after login."}
             </p>
-            <p className="mt-4 font-[family-name:var(--font-display)] text-2xl text-accent">
-              {zh
-                ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
-                : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
-            </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href={lp("/rewards")}>{t(dict, "nav.rewards")}</Button>
               <Button href={lp("/promotions")} variant="secondary">
                 {t(dict, "nav.promotions")}
               </Button>
             </div>
+          </div>
+          <div className="mt-8 grid gap-3 md:mt-0">
+            <article className="rounded-[1.2rem] border border-border bg-bg-elevated p-5">
+              <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                {zh ? "VIP 礼遇" : "VIP benefits"}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                {zh
+                  ? "持续关系通道的导览。请探索当前 VIP 计划中已提供的礼遇与功能。"
+                  : "Orientation for the ongoing relationship lane. Explore benefits made available through the current VIP program."}
+              </p>
+            </article>
+            <article className="rounded-[1.2rem] border border-accent/30 bg-bg-elevated p-5">
+              <h3 className="font-[family-name:var(--font-display)] text-lg text-accent">
+                {zh
+                  ? `返水最高 ${PUBLISHED_VIP_CASHBACK}`
+                  : `Cashback up to ${PUBLISHED_VIP_CASHBACK}`}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                {zh
+                  ? "已核实公开上限，适用于符合条件的活动——不是人人自动获得的固定比例。"
+                  : "Published ceiling on eligible activity — not a fixed rate for every user."}
+              </p>
+            </article>
+            <article className="rounded-[1.2rem] border border-border bg-bg-elevated p-5">
+              <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                {zh ? "奖励地图" : "Rewards map"}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                {zh
+                  ? "把 VIP 放进奖励中心，与活动、优惠、返水并列阅读。"
+                  : "Place VIP on the Rewards map beside activity, promotions and rebates."}
+              </p>
+            </article>
           </div>
         </div>
 
@@ -222,27 +238,49 @@ export default async function VipPage({
         />
 
         <div id="cashback" className="scroll-mt-28">
-          <FeatureSplit
-            kicker={zh ? "已核实公开上限" : "Published ceiling"}
-            title={zh ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}` : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
-            image={REWARD_ASSETS.rebates}
-            imageAlt={zh ? "返水导览视觉" : "Rebate orientation visual"}
-            body={
-              zh
-                ? `返水通常指符合条件活动的回馈语言。「最高 ${PUBLISHED_VIP_CASHBACK}」是公开上限，不是人人自动获得的固定比例。条款决定资格、权重与时间。返水不同于限时优惠，也不同于奖励中心里其他通道——请分开阅读。`
-                : `Cashback generally means return language on eligible activity. “Up to ${PUBLISHED_VIP_CASHBACK}” is a published ceiling, not a fixed rate for every user. Terms decide eligibility, weighting and timing. Cashback is different from timed promotions and from other reward lanes — read each separately.`
-            }
-            points={
-              zh
-                ? ["在平台核对当前信息", "不要与首存流水叠算", "比例不是加注理由"]
-                : ["Confirm current details on the platform", "Do not stack with welcome wagering", "A rate is not a reason to raise stakes"]
-            }
-            cta={
-              <Button href={lp("/rebates")} variant="secondary">
-                {t(dict, "nav.rebates")}
-              </Button>
-            }
-          />
+          <div className="rounded-[1.35rem] border border-border bg-bg-surface p-6 md:grid md:grid-cols-2 md:gap-8 md:p-8">
+            <div>
+              <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+                {zh ? "已核实公开上限" : "Published ceiling"}
+              </p>
+              <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text md:text-3xl">
+                {zh
+                  ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
+                  : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
+                {zh
+                  ? `返水通常指符合条件活动的回馈语言。「最高 ${PUBLISHED_VIP_CASHBACK}」是公开上限，不是人人自动获得的固定比例。条款决定资格、权重与时间。返水不同于限时优惠，也不同于奖励中心里其他通道——请分开阅读。`
+                  : `Cashback generally means return language on eligible activity. “Up to ${PUBLISHED_VIP_CASHBACK}” is a published ceiling, not a fixed rate for every user. Terms decide eligibility, weighting and timing. Cashback is different from timed promotions and from other reward lanes — read each separately.`}
+              </p>
+              <div className="mt-6">
+                <Button href={lp("/rebates")} variant="secondary">
+                  {t(dict, "nav.rebates")}
+                </Button>
+              </div>
+            </div>
+            <ul className="mt-6 grid gap-3 md:mt-0">
+              {(zh
+                ? [
+                    "在平台核对当前信息",
+                    "不要与首存流水叠算",
+                    "比例不是加注理由",
+                  ]
+                : [
+                    "Confirm current details on the platform",
+                    "Do not stack with welcome wagering",
+                    "A rate is not a reason to raise stakes",
+                  ]
+              ).map((item) => (
+                <li
+                  key={item}
+                  className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div id="compare" className="scroll-mt-28">

@@ -6,7 +6,7 @@ import { categories, categoryPath, getAllGuides, getFaqByIds } from "@/data";
 import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { absoluteUrl, localize } from "@/lib/utils";
-import { localePath } from "@/lib/paths";
+import { guidePath, localePath } from "@/lib/paths";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
@@ -15,7 +15,6 @@ import { ArticleCard } from "@/components/guides/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   ChecklistPanel,
-  FeatureSplit,
   HighlightPanel,
   HubAnchorNav,
   HubCtaBand,
@@ -99,7 +98,7 @@ export default async function GuidesPage({
           ]}
         />
 
-        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-[1.35fr_0.65fr] md:gap-10 md:p-10">
+        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-2 md:gap-8 md:p-10">
           <div>
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
               {zh ? "知识中心" : "Knowledge hub"}
@@ -107,33 +106,45 @@ export default async function GuidesPage({
             <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl text-text md:text-5xl">
               {t(dict, "guides.hubTitle")}
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-muted">
+            <p className="mt-4 text-base leading-relaxed text-text-muted">
               {zh
                 ? "攻略中心帮助你理解如何开始、如何浏览游戏分类、平台功能如何配合优惠与奖励、VIP 与钱包概念如何识读，以及公平游戏与理性参与为什么重要。这里是编辑向导览，不是预测工具。"
                 : "The Guides hub helps you understand getting started, game categories, how platform features sit beside promotions and rewards, VIP and wallet concepts, plus fair play and responsible participation. This is editorial orientation — not a prediction tool."}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href={lp("/games")}>
-                {zh ? "浏览游戏库" : "Explore Game Library"}
+                {zh ? "浏览游戏" : "Explore Games"}
               </Button>
               <Button href="#start" variant="secondary">
-                {zh ? "从入门攻略开始" : "Start with Beginner Guides"}
+                {zh ? "从这里开始" : "Start Here"}
               </Button>
             </div>
           </div>
-          <ul className="mt-8 grid grid-cols-2 gap-3 content-start md:mt-0">
+          <div className="mt-8 grid gap-3 md:mt-0">
             {(zh
-              ? ["入门", "游戏", "奖励", "平台", "理性游戏"]
-              : ["Getting Started", "Games", "Rewards", "Platform", "Responsible Gaming"]
-            ).map((label) => (
-              <li
-                key={label}
-                className="rounded-xl border border-border bg-bg-elevated px-3 py-3 text-sm text-text"
+              ? [
+                  { href: "#start", title: "入门攻略", body: "四步路径、界面识读与新手清单。" },
+                  { href: "#games", title: "游戏攻略", body: "已上线分类怎么读、如何选择作品。" },
+                  { href: "#offers", title: "奖励与优惠", body: "限时活动与奖励中心如何分开阅读。" },
+                ]
+              : [
+                  { href: "#start", title: "Start Guides", body: "Four-step path, interface literacy and a beginner checklist." },
+                  { href: "#games", title: "Game Guides", body: "How to read published categories and choose a title." },
+                  { href: "#offers", title: "Rewards & Offers", body: "Read timed promotions and the rewards map separately." },
+                ]
+            ).map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className="rounded-[1.2rem] border border-border bg-bg-elevated p-5 transition hover:border-accent/40"
               >
-                {label}
-              </li>
+                <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">{card.body}</p>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
 
         <HubAnchorNav
@@ -158,6 +169,48 @@ export default async function GuidesPage({
                 ]
           }
         />
+
+        <article className="mt-8 rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-2 md:gap-8 md:p-10">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+              {zh ? "精选攻略" : "Featured guide"}
+            </p>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl text-text md:text-3xl">
+              {zh ? "如何开始使用 1XROLL" : "How to get started with 1XROLL"}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
+              {zh
+                ? "先理解平台结构，再浏览游戏库，核对优惠与奖励信息，并阅读重要条款与理性参与说明。"
+                : "Understand the platform, explore games, review rewards and promotions, and find the terms and responsible-use information that matter before you participate."}
+            </p>
+            <Button href={guidePath(locale, "beginners-guide-1xroll-games")} className="mt-6">
+              {zh ? "阅读攻略" : "Read Guide"}
+            </Button>
+          </div>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-0">
+            {(zh
+              ? [
+                  "认识主导航与分类",
+                  "浏览游戏库",
+                  "阅读优惠与奖励",
+                  "核对称谓与理性游戏",
+                ]
+              : [
+                  "Learn navigation and categories",
+                  "Explore the game library",
+                  "Review promotions and rewards",
+                  "Check terms and responsible play",
+                ]
+            ).map((item) => (
+              <li
+                key={item}
+                className="rounded-xl border border-border bg-bg-elevated px-4 py-4 text-sm text-text"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </article>
 
         <div id="nav" className="scroll-mt-28">
           <InfoGrid
@@ -343,29 +396,36 @@ export default async function GuidesPage({
         </div>
 
         <div id="wallet" className="scroll-mt-28">
-          <FeatureSplit
-            kicker={zh ? "钱包" : "Wallet"}
-            title={zh ? "交易信息怎么读" : "How to read transaction information"}
-            body={
+          <InfoGrid
+            title={zh ? "钱包与交易导览" : "Wallet & transaction guides"}
+            subtitle={
               zh
-                ? "钱包相关页面帮助你理解存款、取款、返水与交易记录的概念。可用方法与处理条件可能不同，请在继续前查看平台当前展示的信息。完成任何交易前，先阅读适用条款。"
-                : "Wallet pages help you understand deposit, withdrawal, rebate and transaction concepts. Available methods and processing conditions may vary. Review the current information shown on the platform before proceeding, and read applicable terms before completing a transaction."
+                ? "钱包相关页面帮助你理解存款、取款、返水与交易记录的概念。可用方法与处理条件可能不同，请在继续前查看平台当前展示的信息。"
+                : "Wallet pages help you understand deposit, withdrawal, rebate and transaction concepts. Available methods and processing conditions may vary. Review the current information shown on the platform before proceeding."
             }
-            points={
-              zh
-                ? ["存款与取款枢纽", "返水概念通道", "支付方式说明页"]
-                : ["Deposit and withdraw hubs", "Rebate concept lane", "Payment methods page"]
-            }
-            cta={
-              <div className="flex flex-wrap gap-3">
-                <Button href={lp("/deposit")} variant="secondary">
-                  {t(dict, "nav.deposit")}
-                </Button>
-                <Button href={lp("/withdraw")} variant="outline">
-                  {t(dict, "nav.withdraw")}
-                </Button>
-              </div>
-            }
+            columns={4}
+            items={[
+              {
+                title: t(dict, "nav.deposit"),
+                body: zh ? "存款概念与进入平台前应核对的信息。" : "Deposit concepts and what to review before you proceed.",
+                href: lp("/deposit"),
+              },
+              {
+                title: t(dict, "nav.withdraw"),
+                body: zh ? "取款概念与适用条款。" : "Withdrawal concepts and applicable terms.",
+                href: lp("/withdraw"),
+              },
+              {
+                title: t(dict, "nav.rebates"),
+                body: zh ? "返水作为回馈概念通道，与 VIP / 优惠分开阅读。" : "Rebates as a cashback-concept lane — read separately from VIP and promotions.",
+                href: lp("/rebates"),
+              },
+              {
+                title: t(dict, "nav.payments"),
+                body: zh ? "支付方式说明。不编造到账速度。" : "Payment-method orientation. Speeds are not invented here.",
+                href: lp("/payment-methods"),
+              },
+            ]}
           />
         </div>
 
@@ -406,16 +466,31 @@ export default async function GuidesPage({
           </Link>
         </p>
 
-        <div className="mt-10 rounded-[1.35rem] border border-accent/20 bg-gradient-to-br from-bg-surface to-bg-elevated p-6 md:p-8">
-          <HubH2>{zh ? "理性游戏" : "Responsible gaming"}</HubH2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted md:text-base">
-            {zh
-              ? "娱乐应保持在个人限额内。参与前理解条款；不要追逐损失；适时休息。如果游戏不再可控，请离开并寻求支持。"
-              : "Entertainment should stay within personal limits. Understand terms before participating; avoid chasing losses; take breaks. If play stops feeling manageable, step away and seek support."}
-          </p>
-          <Button href={lp("/responsible-gaming")} variant="secondary" className="mt-5">
-            {t(dict, "nav.responsible")}
-          </Button>
+        <div className="mt-10 rounded-[1.35rem] border border-accent/20 bg-bg-surface p-6 md:grid md:grid-cols-2 md:gap-8 md:p-8">
+          <div>
+            <HubH2>{zh ? "理性游戏" : "Responsible gaming"}</HubH2>
+            <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
+              {zh
+                ? "娱乐应保持在个人限额内。参与前理解条款；不要追逐损失；适时休息。如果游戏不再可控，请离开并寻求支持。"
+                : "Entertainment should stay within personal limits. Understand terms before participating; avoid chasing losses; take breaks. If play stops feeling manageable, step away and seek support."}
+            </p>
+            <Button href={lp("/responsible-gaming")} variant="secondary" className="mt-5">
+              {t(dict, "nav.responsible")}
+            </Button>
+          </div>
+          <ul className="mt-6 grid gap-3 md:mt-0">
+            {(zh
+              ? ["保持个人限额", "不要追逐损失", "需要时暂停并寻求支持"]
+              : ["Stay within personal limits", "Do not chase losses", "Pause and seek support when needed"]
+            ).map((item) => (
+              <li
+                key={item}
+                className="rounded-xl border border-border bg-bg-elevated px-4 py-4 text-sm text-text"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-12">

@@ -285,14 +285,12 @@ export function ChecklistPanel({
 }) {
   return (
     <HubBand>
-      <div className="grid gap-8 rounded-[1.35rem] border border-border bg-bg-surface p-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:p-8">
-        <div>
-          <HubH2>{title}</HubH2>
-          {subtitle ? (
-            <p className="mt-3 text-sm leading-relaxed text-text-muted">{subtitle}</p>
-          ) : null}
-        </div>
-        <ul className="grid gap-3 sm:grid-cols-2">
+      <div className="rounded-[1.35rem] border border-border bg-bg-surface p-6 md:p-8">
+        <HubH2>{title}</HubH2>
+        {subtitle ? (
+          <p className="mt-3 text-sm leading-relaxed text-text-muted">{subtitle}</p>
+        ) : null}
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li
               key={item}
@@ -324,22 +322,53 @@ export function FeatureSplit({
   points?: string[];
   cta?: ReactNode;
 }) {
+  const copy = (
+    <>
+      {kicker ? (
+        <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+          {kicker}
+        </p>
+      ) : null}
+      <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text md:text-3xl">
+        {title}
+      </h2>
+      <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">{body}</p>
+      {cta ? <div className="mt-6 flex flex-wrap gap-3">{cta}</div> : null}
+    </>
+  );
+  const pointGrid = points?.length ? (
+    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {points.map((p) => (
+        <li key={p} className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text">
+          {p}
+        </li>
+      ))}
+    </ul>
+  ) : null;
+
+  if (!image) {
+    return (
+      <HubBand>
+        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-6 md:p-8">
+          {copy}
+          {pointGrid ? <div className="mt-6">{pointGrid}</div> : null}
+        </div>
+      </HubBand>
+    );
+  }
+
   return (
     <HubBand>
       <div className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-[1.05fr_0.95fr]">
-        {image ? (
-          <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[20rem]">
-            <Image
-              src={image}
-              alt={imageAlt ?? title}
-              fill
-              className="object-cover"
-              sizes="(max-width:768px) 100vw, 50vw"
-            />
-          </div>
-        ) : (
-          <div className="min-h-[12rem] bg-[radial-gradient(circle_at_30%_20%,rgba(255,196,90,0.18),transparent_50%),linear-gradient(160deg,#0a1210,#101820)]" />
-        )}
+        <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[20rem]">
+          <Image
+            src={image}
+            alt={imageAlt ?? title}
+            fill
+            className="object-cover"
+            sizes="(max-width:768px) 100vw, 50vw"
+          />
+        </div>
         <div className="flex flex-col justify-center p-6 md:p-8">
           {kicker ? (
             <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
@@ -573,29 +602,22 @@ export function HighlightPanel({
 }) {
   return (
     <HubBand>
-      <div
-        className={cn(
-          "grid gap-6 rounded-[1.35rem] border border-accent/25 bg-gradient-to-br from-bg-surface to-bg-elevated p-6 md:p-8",
-          points?.length ? "md:grid-cols-2" : "",
-        )}
-      >
-        <div>
-          {kicker ? (
-            <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
-              {kicker}
-            </p>
-          ) : null}
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">{body}</p>
-        </div>
+      <div className="rounded-[1.35rem] border border-accent/25 bg-bg-surface p-6 md:p-8">
+        {kicker ? (
+          <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+            {kicker}
+          </p>
+        ) : null}
+        <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text">
+          {title}
+        </h2>
+        <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">{body}</p>
         {points?.length ? (
-          <ul className="grid gap-3 content-center">
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {points.map((p) => (
               <li
                 key={p}
-                className="rounded-xl border border-border bg-bg p-4 text-sm text-text"
+                className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text"
               >
                 {p}
               </li>

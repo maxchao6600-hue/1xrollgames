@@ -101,7 +101,7 @@ export default async function AgentPage({
           ]}
         />
 
-        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-[1.3fr_0.7fr] md:gap-10 md:p-10">
+        <div className="rounded-[1.35rem] border border-border bg-bg-surface p-7 md:grid md:grid-cols-2 md:gap-8 md:p-10">
           <div>
             <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
               {zh ? "合作枢纽" : "Partnership hub"}
@@ -121,18 +121,32 @@ export default async function AgentPage({
               </Button>
             </div>
           </div>
-          <div className="mt-8 rounded-[1.2rem] border border-accent/25 bg-bg-elevated p-5 md:mt-0">
-            <p className="text-sm font-medium text-text">
-              {zh ? "本页提供" : "This page covers"}
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-text-muted">
-              {(zh
-                ? ["合作概念", "玩家与代理比较", "一般咨询路径", "负责任推广"]
-                : ["Partnership concepts", "Player vs agent", "General inquiry path", "Responsible promotion"]
-              ).map((item) => (
-                <li key={item}>· {item}</li>
-              ))}
-            </ul>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-0">
+            {(zh
+              ? [
+                  { href: "#program", title: "合作概念", body: "代理关系与玩家账户有何不同。" },
+                  { href: "#compare", title: "玩家与代理", body: "两条路径的用途与应读内容。" },
+                  { href: "#journey", title: "一般咨询路径", body: "从了解到提交，不保证获批。" },
+                  { href: "#principles", title: "负责任推广", body: "准确、透明，不保证赢利。" },
+                ]
+              : [
+                  { href: "#program", title: "Partnership concepts", body: "How an agent relationship differs from a player account." },
+                  { href: "#compare", title: "Player vs Agent", body: "What each path is for, and what to read." },
+                  { href: "#journey", title: "General inquiry path", body: "From exploration to inquiry — not a promise of approval." },
+                  { href: "#principles", title: "Responsible promotion", body: "Accurate, transparent — never guarantee winnings." },
+                ]
+            ).map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className="rounded-[1.2rem] border border-border bg-bg-elevated p-5 transition hover:border-accent/40"
+              >
+                <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">{card.body}</p>
+              </Link>
+            ))}
           </div>
         </div>
 
