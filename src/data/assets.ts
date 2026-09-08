@@ -185,14 +185,15 @@ export const APP_ASSETS = {
   screenshot: "/app/screenshot.webp",
 } as const;
 
-/** Original branded hub graphics (SVG). Not game artwork. */
+/**
+ * Hub visuals. VIP uses licensed Unsplash photography bundled locally.
+ * Agent/Download may still use original SVG until those hubs are redesigned.
+ */
 export const HUB_ASSETS: Record<string, string> = {
-  vipHero: "/hubs/vip-hero.svg",
-  vipCashback: "/hubs/vip-cashback.svg",
-  vipBenefits: "/hubs/vip-benefits.svg",
+  vipHero: "/hubs/vip-hero.webp",
+  vipExperience: "/hubs/vip-experience.webp",
   agentPartnership: "/hubs/agent-partnership.svg",
   agentEcosystem: "/hubs/agent-ecosystem.svg",
-  downloadDesktop: "/hubs/download-desktop.svg",
 };
 
 export function resolveGameImage(slug: string): string | undefined {

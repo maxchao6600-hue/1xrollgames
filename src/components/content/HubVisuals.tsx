@@ -10,17 +10,22 @@ export function HubArt({
   src,
   alt,
   className,
-  aspectClass = "aspect-[4/5]",
+  aspectClass = "aspect-[4/3]",
   priority = false,
+  overlay = false,
+  objectPosition = "center",
 }: {
   src: string;
   alt: string;
   className?: string;
   aspectClass?: string;
   priority?: boolean;
+  overlay?: boolean;
+  objectPosition?: string;
 }) {
   const [failed, setFailed] = useState(false);
   if (!src || failed) return null;
+  const isSvg = src.endsWith(".svg");
 
   return (
     <div
@@ -30,18 +35,36 @@ export function HubArt({
         className,
       )}
     >
-      {/* SVG hub art: native img avoids next/image SVG optimizer limits */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        width={800}
-        height={1000}
-        decoding="async"
-        fetchPriority={priority ? "high" : "auto"}
-        className="absolute inset-0 h-full w-full object-cover"
-        onError={() => setFailed(true)}
-      />
+      {isSvg ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          width={800}
+          height={1000}
+          decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
+          className="absolute inset-0 h-full w-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width:768px) 100vw, 640px"
+          priority={priority}
+          className="object-cover"
+          style={{ objectPosition }}
+          onError={() => setFailed(true)}
+        />
+      )}
+      {overlay ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-black/20"
+        />
+      ) : null}
     </div>
   );
 }
@@ -94,6 +117,41 @@ export function DeviceTablet({ locale }: { locale: Locale }) {
             sizes="320px"
           />
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function DeviceDesktop({
+  locale,
+  priority = false,
+}: {
+  locale: Locale;
+  priority?: boolean;
+}) {
+  return (
+    <div className="overflow-hidden rounded-[1.15rem] border border-border bg-[#070b10] shadow-[0_16px_36px_rgba(0,0,0,0.35)]">
+      <div className="flex items-center gap-2 border-b border-border bg-[#161e28] px-3 py-2">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" aria-hidden />
+        <span className="ml-2 min-w-0 flex-1 truncate rounded-md bg-bg px-2 py-1 text-[10px] text-text-faint">
+          1xrollgames.com
+        </span>
+      </div>
+      <div className="relative aspect-[16/10] bg-bg">
+        <Image
+          src={APP_ASSETS.screenshot}
+          alt={
+            locale === "zh"
+              ? "1XROLL 网站桌面浏览器界面"
+              : "1XROLL website in a desktop browser"
+          }
+          fill
+          className="object-cover object-top"
+          sizes="(max-width:768px) 100vw, 640px"
+          priority={priority}
+        />
       </div>
     </div>
   );

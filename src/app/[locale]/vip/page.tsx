@@ -122,8 +122,10 @@ export default async function VipPage({
           <div className="mt-8 md:mt-0">
             <HubArt
               src={HUB_ASSETS.vipHero}
-              alt={zh ? "1XROLL VIP 会员视觉" : "1XROLL VIP membership visual"}
-              aspectClass="aspect-[4/5]"
+              alt={zh ? "1XROLL VIP 高端体验" : "1XROLL VIP premium experience"}
+              aspectClass="aspect-[16/10] md:aspect-[4/3] md:h-full"
+              objectPosition="bottom"
+              overlay
               priority
             />
           </div>
@@ -154,9 +156,10 @@ export default async function VipPage({
           <HubH2>{zh ? "VIP 一览" : "VIP at a glance"}</HubH2>
           <div className="mt-6 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <HubArt
-              src={HUB_ASSETS.vipBenefits}
-              alt={zh ? "1XROLL VIP 礼遇" : "1XROLL VIP benefits"}
-              aspectClass="aspect-[10/7] h-full min-h-[16rem]"
+              src={HUB_ASSETS.vipExperience}
+              alt={zh ? "1XROLL VIP 礼遇体验" : "1XROLL VIP rewards experience"}
+              aspectClass="aspect-[4/3] h-full min-h-[14rem]"
+              overlay
             />
             <div className="grid gap-3 sm:grid-cols-2">
               {(zh
@@ -229,20 +232,20 @@ export default async function VipPage({
         />
 
         <div id="cashback" className="scroll-mt-28 mt-12 md:mt-16">
-          <div className="rounded-[1.35rem] border border-border bg-bg-surface p-6 md:grid md:grid-cols-2 md:gap-8 md:p-8">
-            <div>
+          <div className="overflow-hidden rounded-[1.35rem] border border-border bg-bg-surface md:grid md:grid-cols-2 md:items-stretch">
+            <div className="order-1 p-6 md:order-2 md:p-8">
               <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
-                {zh ? "已核实公开上限" : "Published ceiling"}
+                {zh ? "VIP 返水" : "VIP cashback"}
               </p>
               <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text md:text-3xl">
                 {zh
-                  ? `VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
-                  : `VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`}
+                  ? `最高 ${PUBLISHED_VIP_CASHBACK}`
+                  : `Up to ${PUBLISHED_VIP_CASHBACK}`}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
                 {zh
-                  ? `返水通常指符合条件活动的回馈语言。「最高 ${PUBLISHED_VIP_CASHBACK}」是公开上限，不是人人自动获得的固定比例。条款决定资格、权重与时间。返水不同于限时优惠，也不同于奖励中心里其他通道——请分开阅读。`
-                  : `Cashback generally means return language on eligible activity. “Up to ${PUBLISHED_VIP_CASHBACK}” is a published ceiling, not a fixed rate for every user. Terms decide eligibility, weighting and timing. Cashback is different from timed promotions and from other reward lanes — read each separately.`}
+                  ? `返水通常指符合条件活动的回馈语言。「最高 ${PUBLISHED_VIP_CASHBACK}」是已核实的公开上限，不是人人自动获得的固定比例。资格、权重与时间以平台当前条款为准。返水不同于限时优惠，也不同于奖励中心里其他通道——请分开阅读。`
+                  : `Cashback generally means return language on eligible activity. “Up to ${PUBLISHED_VIP_CASHBACK}” is a published ceiling, not a guaranteed fixed rate for every user. Eligibility and terms should be reviewed on the platform. Cashback is different from timed promotions and from other reward lanes — read each separately.`}
               </p>
               <div className="mt-6">
                 <Button href={lp("/rebates")} variant="secondary">
@@ -250,15 +253,12 @@ export default async function VipPage({
                 </Button>
               </div>
             </div>
-            <div className="mt-6 md:mt-0">
+            <div className="order-2 md:order-1">
               <HubArt
-                src={HUB_ASSETS.vipCashback}
-                alt={
-                  zh
-                    ? `1XROLL VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
-                    : `1XROLL VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`
-                }
-                aspectClass="aspect-[5/4]"
+                src={HUB_ASSETS.vipExperience}
+                alt=""
+                aspectClass="aspect-[16/10] h-full min-h-[12rem] rounded-none border-0 md:aspect-auto"
+                overlay
               />
             </div>
           </div>

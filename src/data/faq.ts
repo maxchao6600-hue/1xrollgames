@@ -1059,6 +1059,138 @@ export const faqItems: FaqItem[] = [
     },
   },
   {
+    id: "download-how",
+    group: "download",
+    question: {
+      en: "How can I access 1XROLL?",
+      zh: "如何访问 1XROLL？",
+    },
+    answer: {
+      en: "Open this brand site or the 1XROLL platform in a supported modern browser on a phone, tablet or desktop. Use Login or Register on this site when you need an account path, then continue on the platform. This hub explains access — it does not host an app-store listing.",
+      zh: "在手机、平板或桌面的受支持现代浏览器中打开本品牌站或 1XROLL 平台。需要账户路径时使用本站登录或注册，再进入平台。本枢纽说明访问方式——不托管应用商店上架。",
+    },
+  },
+  {
+    id: "download-desktop",
+    group: "download",
+    question: {
+      en: "Can I access 1XROLL on desktop?",
+      zh: "可以在桌面电脑上访问 1XROLL 吗？",
+    },
+    answer: {
+      en: "Yes. Use a desktop browser for this brand site and for platform access after login. There is no verified native Windows or Mac application listed on this page.",
+      zh: "可以。用桌面浏览器阅读本品牌站，并在登录后进入平台。本页不列出已核实的 Windows 或 Mac 原生应用。",
+    },
+  },
+  {
+    id: "download-tablet",
+    group: "download",
+    question: {
+      en: "Can I use a tablet?",
+      zh: "可以使用平板吗？",
+    },
+    answer: {
+      en: "Yes. A tablet browser can read this site and, after login, the platform’s web experience. Treat it as a larger touch screen — not a separate native tablet app.",
+      zh: "可以。平板浏览器可阅读本站，登录后也可使用平台网页体验。请把它当作更大的触控屏幕——不是单独的平板原生应用。",
+    },
+  },
+  {
+    id: "download-app",
+    group: "download",
+    question: {
+      en: "Do I need to install an app?",
+      zh: "必须安装应用吗？",
+    },
+    answer: {
+      en: "No verified App Store or Google Play listing is published on this brand site. Access 1XROLL through your supported web browser. If the platform later offers an official install path, follow only that official prompt — never unofficial APK or IPA files.",
+      zh: "本品牌站未发布已核实的 App Store 或 Google Play 上架信息。请通过受支持的网页浏览器访问 1XROLL。若平台之后提供官方安装路径，请只跟随官方提示——不要使用非官方 APK 或 IPA。",
+    },
+  },
+  {
+    id: "download-games",
+    group: "download",
+    question: {
+      en: "Where can I find the game library?",
+      zh: "在哪里找到游戏库？",
+    },
+    answer: {
+      en: "Open Games on this site to browse verified categories, then use platform access when you are ready to play. Category pages explain the lane; they are not a substitute for the live lobby.",
+      zh: "在本站打开游戏库浏览已核实分类，准备游玩时再进入平台。分类页说明通道，不能替代实时大厅。",
+    },
+  },
+  {
+    id: "download-promos",
+    group: "download",
+    question: {
+      en: "Where can I find promotions?",
+      zh: "在哪里查看优惠？",
+    },
+    answer: {
+      en: "Use the Promotions hub for published offer language, then confirm live eligibility and terms on the platform before opting in.",
+      zh: "在优惠枢纽阅读已发布活动语言，加入前请在平台核对实时资格与条款。",
+    },
+  },
+  {
+    id: "download-rewards",
+    group: "download",
+    question: {
+      en: "Where can I find rewards?",
+      zh: "在哪里查看奖励？",
+    },
+    answer: {
+      en: "Open Rewards for the benefits map, and VIP for ongoing-relationship and published cashback orientation. Account-specific balances stay on the platform after login.",
+      zh: "打开奖励中心查看礼遇地图，VIP 页说明持续关系与公开返水导览。账户明细仍在登录后的平台查看。",
+    },
+  },
+  {
+    id: "download-load",
+    group: "download",
+    question: {
+      en: "What should I do if the website does not load correctly?",
+      zh: "网站无法正常加载时该怎么办？",
+    },
+    answer: {
+      en: "Check your connection, refresh the page, try another updated browser, or switch between mobile and desktop. If a page still fails, use Contact or wait and retry — do not install files from unofficial links as a workaround.",
+      zh: "请检查网络、刷新页面、换用已更新的浏览器，或在手机与桌面之间切换。若仍失败，使用联系页或稍后再试——不要把安装非官方文件当作解决办法。",
+    },
+  },
+  {
+    id: "download-browser",
+    group: "download",
+    question: {
+      en: "What browser should I use?",
+      zh: "应使用什么浏览器？",
+    },
+    answer: {
+      en: "Use a current, widely supported browser that you keep updated. This site does not publish a ranked vendor list or required version numbers.",
+      zh: "使用你正在维护更新、且被广泛支持的现代浏览器。本站不公布浏览器排名或必须的版本号。",
+    },
+  },
+  {
+    id: "download-homescreen",
+    group: "download",
+    question: {
+      en: "How can I make 1XROLL easier to access on mobile?",
+      zh: "如何在手机上更方便地打开 1XROLL？",
+    },
+    answer: {
+      en: "Bookmark this site or, where your browser offers it, add a home-screen shortcut. That shortcut still opens the website — it is not a native application.",
+      zh: "可将本站加入书签；若浏览器提供，也可添加到主屏幕。该快捷方式仍打开网站——不是原生应用。",
+    },
+  },
+  {
+    id: "download-guides",
+    group: "download",
+    question: {
+      en: "Where can I find Guides and support information?",
+      zh: "在哪里查看攻略与支持信息？",
+    },
+    answer: {
+      en: "Open Guides for editorial orientation, FAQ for short answers, Contact for inquiries, and Responsible Gaming for limits and support. Platform-specific account help stays after login.",
+      zh: "攻略提供编辑向导览，常见问题提供短答，联系页用于咨询，理性游戏页说明限额与支持。账户专属帮助仍在登录后的平台。",
+    },
+  },
+  {
     id: "mobile",
     group: "mobile",
     question: {
