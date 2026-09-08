@@ -24,6 +24,8 @@ import {
   RelatedCards,
   StepGrid,
 } from "@/components/content/HubModules";
+import { HubArt, IdentityIcon } from "@/components/content/HubVisuals";
+import { HUB_ASSETS } from "@/data/assets";
 
 const PATH = "/agent";
 const FAQ_IDS = [
@@ -121,32 +123,13 @@ export default async function AgentPage({
               </Button>
             </div>
           </div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-0">
-            {(zh
-              ? [
-                  { href: "#program", title: "合作概念", body: "代理关系与玩家账户有何不同。" },
-                  { href: "#compare", title: "玩家与代理", body: "两条路径的用途与应读内容。" },
-                  { href: "#journey", title: "一般咨询路径", body: "从了解到提交，不保证获批。" },
-                  { href: "#principles", title: "负责任推广", body: "准确、透明，不保证赢利。" },
-                ]
-              : [
-                  { href: "#program", title: "Partnership concepts", body: "How an agent relationship differs from a player account." },
-                  { href: "#compare", title: "Player vs Agent", body: "What each path is for, and what to read." },
-                  { href: "#journey", title: "General inquiry path", body: "From exploration to inquiry — not a promise of approval." },
-                  { href: "#principles", title: "Responsible promotion", body: "Accurate, transparent — never guarantee winnings." },
-                ]
-            ).map((card) => (
-              <Link
-                key={card.title}
-                href={card.href}
-                className="rounded-[1.2rem] border border-border bg-bg-elevated p-5 transition hover:border-accent/40"
-              >
-                <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">{card.body}</p>
-              </Link>
-            ))}
+          <div className="mt-8 md:mt-0">
+            <HubArt
+              src={HUB_ASSETS.agentPartnership}
+              alt={zh ? "1XROLL 代理合作" : "1XROLL agent partnership"}
+              aspectClass="aspect-[10/9]"
+              priority
+            />
           </div>
         </div>
 
@@ -171,24 +154,72 @@ export default async function AgentPage({
           }
         />
 
-        <div id="program" className="scroll-mt-28">
-          <HighlightPanel
-            kicker={zh ? "定义" : "Definition"}
-            title={zh ? "什么是代理计划？" : "What is the Agent program?"}
-            body={
-              zh
-                ? "代理关系通常指以合作为导向、向符合条件的用户介绍 1XROLL 娱乐生态。它不同于普通玩家账户：合作信息有单独条款，实时细则应通过官方渠道核对。本品牌站解释责任与路径，不发布佣金表。"
-                : "An agent relationship generally means partnership-oriented participation: introducing eligible people to the 1XROLL entertainment ecosystem. It differs from a normal player account: partnership information has separate terms, and live details should be confirmed through official channels. This brand site explains responsibilities and paths — it does not publish a commission table."
-            }
-            points={
-              zh
-                ? ["概念导览，不是合同", "条款独立于玩家优惠", "实时条件在官方渠道"]
-                : ["Orientation, not a contract", "Terms sit apart from player offers", "Live conditions stay on official channels"]
-            }
-          />
+        <div id="program" className="scroll-mt-28 mt-12 md:mt-16">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+            <div className="rounded-[1.35rem] border border-accent/25 bg-bg-surface p-6 md:p-8">
+              <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+                {zh ? "定义" : "Definition"}
+              </p>
+              <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-text">
+                {zh ? "什么是代理计划？" : "What is the Agent program?"}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">
+                {zh
+                  ? "代理关系通常指以合作为导向、向符合条件的用户介绍 1XROLL 娱乐生态。它不同于普通玩家账户：合作信息有单独条款，实时细则应通过官方渠道核对。本品牌站解释责任与路径，不发布佣金表。"
+                  : "An agent relationship generally means partnership-oriented participation: introducing eligible people to the 1XROLL entertainment ecosystem. It differs from a normal player account: partnership information has separate terms, and live details should be confirmed through official channels. This brand site explains responsibilities and paths — it does not publish a commission table."}
+              </p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+                {(zh
+                  ? ["概念导览，不是合同", "条款独立于玩家优惠", "实时条件在官方渠道"]
+                  : ["Orientation, not a contract", "Terms sit apart from player offers", "Live conditions stay on official channels"]
+                ).map((p) => (
+                  <li key={p} className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text">
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <HubArt
+              src={HUB_ASSETS.agentEcosystem}
+              alt={zh ? "1XROLL 生态到合作再到受众" : "1XROLL ecosystem to partner to audience"}
+              aspectClass="aspect-[16/9] h-full min-h-[14rem]"
+            />
+          </div>
         </div>
 
         <div id="compare" className="scroll-mt-28">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 md:mt-16">
+            <article className="rounded-[1.25rem] border border-border bg-bg-surface p-6">
+              <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+                {zh ? "玩家" : "Player"}
+              </p>
+              <div className="mt-4 flex gap-3">
+                <IdentityIcon kind="games" />
+                <IdentityIcon kind="rewards" />
+                <IdentityIcon kind="vip" />
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-text-muted">
+                {zh
+                  ? "游戏、奖励与 VIP 识读——面向参与娱乐生态的人。"
+                  : "Games, Rewards and VIP literacy — for people exploring the entertainment ecosystem."}
+              </p>
+            </article>
+            <article className="rounded-[1.25rem] border border-border bg-bg-surface p-6">
+              <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
+                {zh ? "代理" : "Agent"}
+              </p>
+              <div className="mt-4 flex gap-3">
+                <IdentityIcon kind="partner" />
+                <IdentityIcon kind="community" />
+                <IdentityIcon kind="marketing" />
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-text-muted">
+                {zh
+                  ? "合作、社区与负责任推广——不保证收入。"
+                  : "Partnership, community and responsible marketing — not an income guarantee."}
+              </p>
+            </article>
+          </div>
           <ComparisonTable
             title={zh ? "玩家与代理" : "Player vs Agent"}
             columns={zh ? ["玩家", "代理"] : ["Player", "Agent"]}

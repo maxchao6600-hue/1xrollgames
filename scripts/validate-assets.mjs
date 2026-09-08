@@ -46,6 +46,7 @@ const GAME_ASSETS = extractRecord("GAME_ASSETS");
 const PROVIDER_ASSETS = extractRecord("PROVIDER_ASSETS");
 const PROMOTION_ASSETS = extractRecord("PROMOTION_ASSETS");
 const GUIDE_ASSETS = extractRecord("GUIDE_ASSETS");
+const HUB_ASSETS = extractRecord("HUB_ASSETS");
 
 function checkMap(label, map) {
   for (const [key, file] of Object.entries(map)) {
@@ -60,6 +61,7 @@ checkMap("GAME_ASSETS", GAME_ASSETS);
 checkMap("PROVIDER_ASSETS", PROVIDER_ASSETS);
 checkMap("PROMOTION_ASSETS", PROMOTION_ASSETS);
 checkMap("GUIDE_ASSETS", GUIDE_ASSETS);
+checkMap("HUB_ASSETS", HUB_ASSETS);
 
 ["/brand/logo.png", "/og-default.svg", "/app/qr.webp", "/app/screenshot.webp"].forEach(
   (p) => {
@@ -138,5 +140,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Asset validation OK — games:${Object.keys(GAME_ASSETS).length} providers:${Object.keys(PROVIDER_ASSETS).length} promotions:${Object.keys(PROMOTION_ASSETS).length} guides:${Object.keys(GUIDE_ASSETS).length}`,
+  `Asset validation OK — games:${Object.keys(GAME_ASSETS).length} providers:${Object.keys(PROVIDER_ASSETS).length} promotions:${Object.keys(PROMOTION_ASSETS).length} guides:${Object.keys(GUIDE_ASSETS).length} hubs:${Object.keys(HUB_ASSETS).length}`,
 );

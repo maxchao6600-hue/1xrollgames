@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="agEcoTitle">
+  <title id="agEcoTitle">1XROLL ecosystem to partner to audience</title>
+  <defs>
+    <linearGradient id="aeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101820"/>
+      <stop offset="100%" stop-color="#0c1412"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="420" fill="url(#aeBg)"/>
+  <g fill="none" stroke="#2dd4bf" stroke-opacity="0.55" stroke-width="3">
+    <path d="M250 210 L390 210"/>
+    <path d="M570 210 L710 210"/>
+  </g>
+  <polygon points="386,198 410,210 386,222" fill="#2dd4bf" fill-opacity="0.8"/>
+  <polygon points="706,198 730,210 706,222" fill="#2dd4bf" fill-opacity="0.8"/>
+  <rect x="70" y="118" width="180" height="184" rx="24" fill="#161e28" stroke="#ffc45a" stroke-opacity="0.45"/>
+  <rect x="390" y="118" width="180" height="184" rx="24" fill="#161e28" stroke="#2dd4bf" stroke-opacity="0.45"/>
+  <rect x="710" y="118" width="180" height="184" rx="24" fill="#161e28" stroke="#f4f7fb" stroke-opacity="0.2"/>
+  <text x="160" y="208" text-anchor="middle" fill="#ffc45a" font-family="Georgia, 'Times New Roman', serif" font-size="22">1XROLL</text>
+  <text x="160" y="246" text-anchor="middle" fill="#9aa7b8" font-family="system-ui, sans-serif" font-size="14">Ecosystem</text>
+  <text x="480" y="208" text-anchor="middle" fill="#2dd4bf" font-family="Georgia, 'Times New Roman', serif" font-size="22">Partner</text>
+  <text x="480" y="246" text-anchor="middle" fill="#9aa7b8" font-family="system-ui, sans-serif" font-size="14">Agent lane</text>
+  <text x="800" y="208" text-anchor="middle" fill="#f4f7fb" font-family="Georgia, 'Times New Roman', serif" font-size="22">Audience</text>
+  <text x="800" y="246" text-anchor="middle" fill="#9aa7b8" font-family="system-ui, sans-serif" font-size="14">Official paths</text>
+</svg>

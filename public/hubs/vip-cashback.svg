@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-labelledby="vipCbTitle">
+  <title id="vipCbTitle">VIP cashback up to 1.1%</title>
+  <defs>
+    <linearGradient id="cbBg" x1="20%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#0b1210"/>
+      <stop offset="100%" stop-color="#121820"/>
+    </linearGradient>
+    <radialGradient id="cbGold" cx="50%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#ffc45a" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffc45a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="640" fill="url(#cbBg)"/>
+  <rect width="800" height="640" fill="url(#cbGold)"/>
+  <text x="400" y="168" text-anchor="middle" fill="#ffc45a" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="8">VIP CASHBACK</text>
+  <text x="400" y="248" text-anchor="middle" fill="#9aa7b8" font-family="system-ui, sans-serif" font-size="22" letter-spacing="4">UP TO</text>
+  <text x="400" y="400" text-anchor="middle" fill="#f4f7fb" font-family="Georgia, 'Times New Roman', serif" font-size="148" font-weight="600">1.1%</text>
+  <text x="400" y="478" text-anchor="middle" fill="#9aa7b8" font-family="system-ui, sans-serif" font-size="18">Published ceiling on eligible activity</text>
+  <rect x="250" y="520" width="300" height="2" fill="#2dd4bf" fill-opacity="0.45"/>
+</svg>

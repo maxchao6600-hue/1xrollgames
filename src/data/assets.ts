@@ -185,6 +185,16 @@ export const APP_ASSETS = {
   screenshot: "/app/screenshot.webp",
 } as const;
 
+/** Original branded hub graphics (SVG). Not game artwork. */
+export const HUB_ASSETS: Record<string, string> = {
+  vipHero: "/hubs/vip-hero.svg",
+  vipCashback: "/hubs/vip-cashback.svg",
+  vipBenefits: "/hubs/vip-benefits.svg",
+  agentPartnership: "/hubs/agent-partnership.svg",
+  agentEcosystem: "/hubs/agent-ecosystem.svg",
+  downloadDesktop: "/hubs/download-desktop.svg",
+};
+
 export function resolveGameImage(slug: string): string | undefined {
   return GAME_ASSETS[slug];
 }

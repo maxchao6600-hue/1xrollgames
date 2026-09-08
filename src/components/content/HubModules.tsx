@@ -536,11 +536,16 @@ export function JourneyStrip({
             key={step.title}
             className="relative rounded-[1.15rem] border border-border bg-bg-elevated p-4"
           >
-            <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-accent uppercase">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-accent/50 bg-accent-soft text-[0.7rem] font-semibold tracking-wide text-accent">
               {String(i + 1).padStart(2, "0")}
-              {i < steps.length - 1 ? " →" : ""}
-            </p>
-            <h3 className="mt-2 text-sm font-medium text-text">{step.title}</h3>
+            </span>
+            {i < steps.length - 1 ? (
+              <span
+                aria-hidden
+                className="absolute top-8 right-4 hidden h-px w-6 bg-accent/35 xl:block"
+              />
+            ) : null}
+            <h3 className="mt-3 text-sm font-medium text-text">{step.title}</h3>
             <p className="mt-2 text-xs leading-relaxed text-text-muted">{step.body}</p>
           </li>
         ))}

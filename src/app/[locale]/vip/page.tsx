@@ -24,6 +24,8 @@ import {
   JourneyStrip,
   RelatedCards,
 } from "@/components/content/HubModules";
+import { HubArt } from "@/components/content/HubVisuals";
+import { HUB_ASSETS } from "@/data/assets";
 
 const PATH = "/vip";
 const FAQ_IDS = [
@@ -117,39 +119,13 @@ export default async function VipPage({
               </Button>
             </div>
           </div>
-          <div className="mt-8 grid gap-3 md:mt-0">
-            <article className="rounded-[1.2rem] border border-border bg-bg-elevated p-5">
-              <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
-                {zh ? "VIP 礼遇" : "VIP benefits"}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                {zh
-                  ? "持续关系通道的导览。请探索当前 VIP 计划中已提供的礼遇与功能。"
-                  : "Orientation for the ongoing relationship lane. Explore benefits made available through the current VIP program."}
-              </p>
-            </article>
-            <article className="rounded-[1.2rem] border border-accent/30 bg-bg-elevated p-5">
-              <h3 className="font-[family-name:var(--font-display)] text-lg text-accent">
-                {zh
-                  ? `返水最高 ${PUBLISHED_VIP_CASHBACK}`
-                  : `Cashback up to ${PUBLISHED_VIP_CASHBACK}`}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                {zh
-                  ? "已核实公开上限，适用于符合条件的活动——不是人人自动获得的固定比例。"
-                  : "Published ceiling on eligible activity — not a fixed rate for every user."}
-              </p>
-            </article>
-            <article className="rounded-[1.2rem] border border-border bg-bg-elevated p-5">
-              <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
-                {zh ? "奖励地图" : "Rewards map"}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                {zh
-                  ? "把 VIP 放进奖励中心，与活动、优惠、返水并列阅读。"
-                  : "Place VIP on the Rewards map beside activity, promotions and rebates."}
-              </p>
-            </article>
+          <div className="mt-8 md:mt-0">
+            <HubArt
+              src={HUB_ASSETS.vipHero}
+              alt={zh ? "1XROLL VIP 会员视觉" : "1XROLL VIP membership visual"}
+              aspectClass="aspect-[4/5]"
+              priority
+            />
           </div>
         </div>
 
@@ -174,12 +150,16 @@ export default async function VipPage({
           }
         />
 
-        <div id="glance" className="scroll-mt-28">
-          <InfoGrid
-            title={zh ? "VIP 一览" : "VIP at a glance"}
-            columns={4}
-            items={
-              zh
+        <div id="glance" className="scroll-mt-28 mt-12 md:mt-16">
+          <HubH2>{zh ? "VIP 一览" : "VIP at a glance"}</HubH2>
+          <div className="mt-6 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+            <HubArt
+              src={HUB_ASSETS.vipBenefits}
+              alt={zh ? "1XROLL VIP 礼遇" : "1XROLL VIP benefits"}
+              aspectClass="aspect-[10/7] h-full min-h-[16rem]"
+            />
+            <div className="grid gap-3 sm:grid-cols-2">
+              {(zh
                 ? [
                     { title: "VIP 礼遇", body: "持续关系通道的导览，帮助你阅读公开语言。" },
                     { title: "返水", body: `符合条件活动的回馈概念。公开上限最高 ${PUBLISHED_VIP_CASHBACK}。` },
@@ -192,8 +172,19 @@ export default async function VipPage({
                     { title: "Rewards", body: "Places VIP on the Rewards map beside activity and offers." },
                     { title: "Exclusive Experience", body: "Explore the benefits and features made available through the current VIP program." },
                   ]
-            }
-          />
+              ).map((item) => (
+                <article
+                  key={item.title}
+                  className="rounded-[1.2rem] border border-border bg-bg-surface p-5"
+                >
+                  <h3 className="font-[family-name:var(--font-display)] text-lg text-text">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
 
         <HighlightPanel
@@ -237,7 +228,7 @@ export default async function VipPage({
           }
         />
 
-        <div id="cashback" className="scroll-mt-28">
+        <div id="cashback" className="scroll-mt-28 mt-12 md:mt-16">
           <div className="rounded-[1.35rem] border border-border bg-bg-surface p-6 md:grid md:grid-cols-2 md:gap-8 md:p-8">
             <div>
               <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent uppercase">
@@ -255,32 +246,43 @@ export default async function VipPage({
               </p>
               <div className="mt-6">
                 <Button href={lp("/rebates")} variant="secondary">
-                  {t(dict, "nav.rebates")}
+                  {zh ? "了解更多" : "Learn more"}
                 </Button>
               </div>
             </div>
-            <ul className="mt-6 grid gap-3 md:mt-0">
-              {(zh
-                ? [
-                    "在平台核对当前信息",
-                    "不要与首存流水叠算",
-                    "比例不是加注理由",
-                  ]
-                : [
-                    "Confirm current details on the platform",
-                    "Do not stack with welcome wagering",
-                    "A rate is not a reason to raise stakes",
-                  ]
-              ).map((item) => (
-                <li
-                  key={item}
-                  className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 md:mt-0">
+              <HubArt
+                src={HUB_ASSETS.vipCashback}
+                alt={
+                  zh
+                    ? `1XROLL VIP 返水最高 ${PUBLISHED_VIP_CASHBACK}`
+                    : `1XROLL VIP cashback up to ${PUBLISHED_VIP_CASHBACK}`
+                }
+                aspectClass="aspect-[5/4]"
+              />
+            </div>
           </div>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+            {(zh
+              ? [
+                  "在平台核对当前信息",
+                  "不要与首存流水叠算",
+                  "比例不是加注理由",
+                ]
+              : [
+                  "Confirm current details on the platform",
+                  "Do not stack with welcome wagering",
+                  "A rate is not a reason to raise stakes",
+                ]
+            ).map((item) => (
+              <li
+                key={item}
+                className="rounded-xl border border-border bg-bg-elevated p-4 text-sm text-text"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div id="compare" className="scroll-mt-28">
