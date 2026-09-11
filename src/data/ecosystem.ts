@@ -521,8 +521,8 @@ export const ecosystemHubs: EcosystemHub[] = [
       {
         type: "p",
         text: {
-          en: "If a withdrawal needs help, use platform live chat and the Contact page on this brand site for orientation.",
-          zh: "若取款需要协助，请使用平台在线客服，并参考本品牌站联系页。",
+          en: "If a withdrawal needs help, use Telegram or WhatsApp from this brand site, and platform support for account-specific cases after login.",
+          zh: "若取款需要协助，可通过本品牌站 Telegram / WhatsApp 联系客服；登录后的账户个案也可走平台支持。",
         },
       },
     ],

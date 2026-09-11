@@ -10,6 +10,7 @@ import { ctaConfig, siteConfig } from "@/config/site";
 import { CATEGORY_ASSETS } from "@/data/assets";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath, switchLocalePath } from "@/lib/paths";
+import { CustomerServiceIcons } from "@/components/layout/CustomerService";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -152,6 +153,7 @@ export function Header({ locale }: { locale: Locale }) {
         </div>
 
         <div className="flex items-center gap-2">
+          <CustomerServiceIcons locale={locale} />
           <Link
             href={switchLocalePath(pathname, otherLocale)}
             className="hidden rounded-lg border border-border px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/40 hover:text-text md:inline-flex"
@@ -221,6 +223,12 @@ export function Header({ locale }: { locale: Locale }) {
             >
               {otherLocale === "en" ? "English" : "中文"}
             </Link>
+            <div className="mt-3 px-3">
+              <p className="mb-2 text-xs uppercase tracking-wide text-text-muted">
+                {t(dict, "nav.contact")}
+              </p>
+              <CustomerServiceIcons locale={locale} />
+            </div>
             <div className="mt-3 flex gap-2 px-3 pb-2">
               <Button
                 href={localePath(locale, ctaConfig.login.path)}

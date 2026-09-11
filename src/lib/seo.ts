@@ -94,6 +94,9 @@ export function organizationJsonLd() {
     logo: absoluteUrl(siteConfig.logo),
     email: siteConfig.supportEmail,
     description: siteConfig.description.en,
+    sameAs: [siteConfig.social.telegram, siteConfig.social.whatsapp].filter(
+      Boolean,
+    ),
   };
 }
 

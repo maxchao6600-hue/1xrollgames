@@ -12,6 +12,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n";
 import { localePath } from "@/lib/paths";
+import { CustomerServiceTextLinks } from "@/components/layout/CustomerService";
 import { FooterLocaleLinks } from "@/components/layout/FooterLocaleLinks";
 
 function FooterColumn({
@@ -87,6 +88,10 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="flex gap-3 text-sm">
             <FooterLocaleLinks />
           </div>
+          <p className="mt-8 text-sm font-medium text-text">
+            {t(dict, "nav.contact")}
+          </p>
+          <CustomerServiceTextLinks locale={locale} className="mt-3" />
           <p className="mt-8 text-xs leading-relaxed text-text-faint">
             {t(dict, "footer.notice")}
           </p>

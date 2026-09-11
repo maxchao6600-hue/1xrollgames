@@ -1,4 +1,5 @@
 import type { FaqGroupId, FaqItem } from "@/types/content";
+import { siteConfig } from "@/config/site";
 
 export const faqGroupOrder: FaqGroupId[] = [
   "general",
@@ -394,8 +395,8 @@ export const faqItems: FaqItem[] = [
       zh: "取款问题找谁？",
     },
     answer: {
-      en: "Use platform live chat for account cases. The Contact page on this site provides orientation channels.",
-      zh: "账户个案请使用平台在线客服。本站联系页提供导览渠道。",
+      en: "Use Telegram or WhatsApp from this site, or platform support for account cases. The Contact page lists the same official channels.",
+      zh: "可通过本站 Telegram / WhatsApp 联系客服；账户个案也可走平台支持。联系页列出同一套官方渠道。",
     },
   },
   {
@@ -730,8 +731,8 @@ export const faqItems: FaqItem[] = [
       zh: "在哪里可以获得 VIP 相关支持？",
     },
     answer: {
-      en: "Use Contact on this site for orientation questions, and the platform support path after login for account-specific VIP status.",
-      zh: "导览类问题可使用本站联系页；账户专属 VIP 状态请在登录后通过平台支持路径处理。",
+      en: "Use Telegram or WhatsApp from Contact, header or footer on this site. For account-specific VIP status after login, also use the platform support path.",
+      zh: "可通过本站联系页、页头或页脚的 Telegram / WhatsApp 咨询导览问题；登录后的账户专属 VIP 状态请同时走平台支持路径。",
     },
   },
   {
@@ -898,8 +899,8 @@ export const faqItems: FaqItem[] = [
       zh: "在哪里可以获得合作支持？",
     },
     answer: {
-      en: "Use Contact for orientation, and official platform channels after you have submitted an inquiry. Account-specific tools are not displayed on this brand site.",
-      zh: "导览请使用联系页；提交咨询后通过官方平台渠道沟通。账户专属工具不会显示在本品牌站。",
+      en: "Use Telegram or WhatsApp from Contact, header or footer for orientation, and official platform channels after you have submitted an inquiry. Account-specific tools are not displayed on this brand site.",
+      zh: "导览可通过联系页、页头或页脚的 Telegram / WhatsApp；提交咨询后通过官方平台渠道沟通。账户专属工具不会显示在本品牌站。",
     },
   },
   {
@@ -1270,8 +1271,8 @@ export const faqItems: FaqItem[] = [
       zh: "如何联系客服？",
     },
     answer: {
-      en: "Use platform live chat for account issues. This site lists support@1xroll.my on Contact for brand-site orientation.",
-      zh: "账户问题请使用平台在线客服。本站联系页提供 support@1xroll.my 作为品牌站导览邮箱。",
+      en: `Use Telegram (${siteConfig.social.telegram}) or WhatsApp (${siteConfig.social.whatsapp}) from this site’s header, footer, floating buttons or Contact page. For account-specific cases after login, also use platform support. Brand-site email remains ${siteConfig.supportEmail}.`,
+      zh: `可通过本站页头、页脚、浮动按钮或联系页的 Telegram（${siteConfig.social.telegram}）与 WhatsApp（${siteConfig.social.whatsapp}）联系客服。登录后的账户个案也可走平台支持。品牌站邮箱仍为 ${siteConfig.supportEmail}。`,
     },
   },
   {

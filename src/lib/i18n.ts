@@ -33,6 +33,8 @@ const en = {
     privacy: "Privacy",
     login: "Login",
     register: "Register",
+    telegram: "Telegram",
+    whatsapp: "WhatsApp",
     menu: "Menu",
     close: "Close",
     language: "Language",
@@ -207,8 +209,12 @@ const en = {
   contact: {
     title: "Contact 1XROLL",
     subtitle:
-      "Account help belongs on the 1XROLL platform. Use this page for brand-site orientation and links to FAQ / Responsible Gaming — we do not invent phone or WhatsApp contacts.",
+      "Reach 1XROLL customer service on Telegram or WhatsApp. Account-specific cases after login can also use platform support. This page also links FAQ and Responsible Gaming.",
     emailLabel: "Email",
+    telegramCta: "Telegram customer service",
+    whatsappCta: "WhatsApp customer service",
+    telegramLabel: "Telegram",
+    whatsappLabel: "WhatsApp",
   },
   faq: {
     title: "1XROLL FAQ",
@@ -273,6 +279,8 @@ const zh = {
     privacy: "隐私政策",
     login: "登录",
     register: "注册",
+    telegram: "Telegram",
+    whatsapp: "WhatsApp",
     menu: "菜单",
     close: "关闭",
     language: "语言",
@@ -440,8 +448,12 @@ const zh = {
   contact: {
     title: "联系 1XROLL",
     subtitle:
-      "账户帮助请走 1XROLL 平台。本页提供品牌站导览，并链接常见问题 / 理性游戏——我们不编造电话或 WhatsApp 联系方式。",
+      "可通过 Telegram 或 WhatsApp 联系 1XROLL 客服。登录后的账户个案也可走平台支持。本页同时链接常见问题与理性游戏。",
     emailLabel: "邮箱",
+    telegramCta: "Telegram 客服",
+    whatsappCta: "WhatsApp 客服",
+    telegramLabel: "Telegram",
+    whatsappLabel: "WhatsApp",
   },
   faq: {
     title: "1XROLL 常见问题",

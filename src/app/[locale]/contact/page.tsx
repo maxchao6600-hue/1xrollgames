@@ -8,6 +8,7 @@ import { getDictionary, isLocale, t } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { localePath } from "@/lib/paths";
 import { localize } from "@/lib/utils";
+import { CustomerServiceCtas } from "@/components/layout/CustomerService";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
@@ -48,10 +49,10 @@ export default async function ContactPage({
       ? {
           howTitle: "如何获得帮助",
           howBody:
-            "账户、登录、钱包、存款、取款与活动领取问题，请优先使用 1XROLL 平台内的客服渠道（登录后）。本品牌站不托管实时客服聊天，也不处理资金操作。",
+            "账户、登录、钱包、存款、取款与活动领取问题，可先通过本站 Telegram / WhatsApp 客服咨询；登录后也可使用 1XROLL 平台内支持渠道。本品牌站不处理资金操作。",
           platformTitle: "平台入口",
           platformBody:
-            "打开平台以登录或注册，再通过平台工具完成账户与资金相关请求。本页不提供电话、WhatsApp 或线下地址——我们不会编造未核实的联系方式。",
+            "打开平台以登录或注册，再通过平台工具完成账户与资金相关请求。品牌站客服入口为 Telegram 与 WhatsApp；本页仍不提供电话号码或线下地址。",
           brandTitle: "品牌站问询",
           brandBody:
             "若主题是内容勘误、页面链接或本站编辑说明，可使用下方配置的邮箱（如有）。请注明语言偏好与主题。合作类问询同样可通过该邮箱发送；具体商务条款不在本站编造。",
@@ -60,15 +61,15 @@ export default async function ContactPage({
             "许多常见问题已在常见问题与理性游戏中解答。优惠与 VIP 摘要见优惠 / 奖励通道；公平游戏说明透明度表述边界。",
           emailNote: "该地址来自站点配置，用于品牌站导览问询——不是电话或即时通讯替代。",
           noChannels:
-            "本页不列出电话号码、WhatsApp、社交媒体私信或实体办公地址。",
+            "本页不列出电话号码或实体办公地址。即时通讯客服请使用下方 Telegram 与 WhatsApp。",
         }
       : {
           howTitle: "How to get help",
           howBody:
-            "For account, login, wallet, deposit, withdrawal and promotion-claim issues, use 1XROLL platform support channels after you sign in. This brand site does not host live chat and does not process funds.",
+            "For account, login, wallet, deposit, withdrawal and promotion-claim issues, use Telegram or WhatsApp customer service on this site. After you sign in, you can also use 1XROLL platform support. This brand site does not process funds.",
           platformTitle: "Platform entry",
           platformBody:
-            "Open the platform to log in or register, then use platform tools for account and funding requests. This page does not publish phone numbers, WhatsApp contacts or street addresses — we do not invent unverified contact channels.",
+            "Open the platform to log in or register, then use platform tools for account and funding requests. Brand-site customer service is available on Telegram and WhatsApp. This page still does not publish phone numbers or street addresses.",
           brandTitle: "Brand-site inquiries",
           brandBody:
             "For content corrections, broken links or editorial questions about this site, use the configured email below when available. Include your preferred language and topic. Partnership notes may use the same address; we do not invent commercial terms here.",
@@ -78,7 +79,7 @@ export default async function ContactPage({
           emailNote:
             "This address comes from site configuration for brand-site orientation — it is not a phone or messaging substitute.",
           noChannels:
-            "This page does not list phone numbers, WhatsApp, social DMs or physical office addresses.",
+            "This page does not list phone numbers or physical office addresses. Use Telegram and WhatsApp below for messaging support.",
         };
 
   return (
@@ -108,6 +109,8 @@ export default async function ContactPage({
           <h2>{copy.moreTitle}</h2>
           <p>{copy.moreBody}</p>
         </div>
+
+        <CustomerServiceCtas locale={locale} />
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Button href={ctaConfig.play.href} external>

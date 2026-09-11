@@ -29,7 +29,8 @@ export const siteConfig = {
   locales: ["en", "zh"] as const satisfies readonly Locale[],
   supportEmail: "support@1xroll.my",
   social: {
-    telegram: "",
+    telegram: "http://t.me/Customerservice3179",
+    whatsapp: "https://1xrollgamescs1.wasap.my",
     facebook: "",
   },
   logo: "/brand/logo.png",

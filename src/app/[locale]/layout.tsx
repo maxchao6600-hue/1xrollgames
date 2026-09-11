@@ -3,6 +3,7 @@ import type { Locale } from "@/types/content";
 import { isLocale, locales } from "@/lib/i18n";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingCustomerService } from "@/components/layout/CustomerService";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -24,6 +25,7 @@ export default async function LocaleLayout({
       <Header locale={locale} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} />
+      <FloatingCustomerService locale={locale} />
     </div>
   );
 }
